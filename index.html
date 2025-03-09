@@ -1,23 +1,252 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You are loved</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
 
-<meta charset="UTF-8">
+        .header {
+            background-color: #cf77a4;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            width: 100%;
+            overflow: hidden;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        .header a {
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            letter-spacing: 2px;
+            position: relative;
+        }
 
-<title>My GitHub Page</title>
+        .header a span {
+            display: inline-block;
+            animation: wave 2s infinite;
+            font-size: 2rem;
+        }
 
+        .header a span:nth-child(2) { animation-delay: 0.1s; }
+        .header a span:nth-child(3) { animation-delay: 0.2s; }
+        .header a span:nth-child(4) { animation-delay: 0.3s; }
+        .header a span:nth-child(5) { animation-delay: 0.4s; }
+        .header a span:nth-child(6) { animation-delay: 0.5s; }
+        .header a span:nth-child(7) { animation-delay: 0.6s; }
+        .header a span:nth-child(8) { animation-delay: 0.7s; }
+        .header a span:nth-child(9) { animation-delay: 0.8s; }
+        .header a span:nth-child(10) { animation-delay: 0.9s; }
+
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .sidebar {
+            width: 100%;
+            background-color: #ffe7ee;
+            padding: 15px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        @media (min-width: 768px) {
+            .sidebar {
+                width: 30%;
+                margin-bottom: 0;
+            }
+        }
+
+        .sidebar img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .sidebar p {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .cute-box {
+            background-color: #ffccdd;
+            color: #333;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cute-box:hover {
+            background-color: #ffc1d0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                width: 65%;
+            }
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            transition: transform .2s;
+            object-fit: cover;
+        }
+
+        .grid-item img:hover {
+            transform: scale(1.5);
+        }
+
+        .grid-item .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #ffbcd0;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: auto;
+        }
+
+    </style>
 </head>
-
 <body>
 
-<h1>Welcome to My GitHub Page!</h1>
+<div class="header">
+    <h1><a href="/about">
+        <span>D</span>
+        <span>a</span>
+        <span>m</span>
+        <span>a</span>
+        <span>r</span>
+        <span>i</span>
+        <span>s</span>
+        <span> </span>
+    </a></h1>
+</div>
 
-<p>This is my first website hosted on GitHub Pages.</p>
+<div class="main-content">
+    <div class="sidebar">
+        <img src="https://damarisguzman.neocities.org/Portfolio/maris%20is%20in.png" alt="Your Image">
+        <p>Hi, it's so good to see you! Welcome to my portfolio site :) This website still under construction, but feel free to explore the pages. Thank you for visiting! *TIP: This is best experienced on a desktop. </p>
+
+<div class="cute-box">
+    <a href="https://damarisguzman.neocities.org/about" style="color: inherit; text-decoration: none;">
+        Click to learn about me
+    </a>
+</div>
+    </div>
+<div class="grid-container">
+    <div class="grid-item">
+        <a href="https://damarisguzman.neocities.org/currently">
+            <img src="https://damarisguzman.neocities.org/Portfolio/red%20tissue1.png" alt="Image 1">
+            <div class="overlay-text">Current Project/s</div>
+        </a>
+    </div>
+    <div class="grid-item">
+       <a href="https://damarisguzman.neocities.org/newmaris">
+        <img src="https://damarisguzman.neocities.org/Portfolio/7a280062-d254-4330-8f43-5c0b854049b8_rwc_180x0x920x720x1280.jpg" alt="Image 3">
+        <div class="overlay-text">New Media</div>
+       </a>
+    </div>
+    <div class="grid-item">
+       <a href="https://damarisguzman.neocities.org/video">
+        <img src="https://damarisguzman.neocities.org/Portfolio/spiral0.png" alt="Image 2">
+        <div class="overlay-text">Video Editing</div>
+       </a>
+    </div>
+    <div class="grid-item">
+      <a href="https://damarisguzman.neocities.org/3danimation"> 
+        <img src="https://damarisguzman.neocities.org/Portfolio/Guzman_One_2024.png" alt="Image 4">
+        <div class="overlay-text">3D Animation</div>
+      </a>
+    </div>
+    <div class="grid-item">
+      <a href="https://damarisguzman.neocities.org/archive">
+        <img src="https://damarisguzman.neocities.org/Portfolio/IMG_5149.PNG" alt="Image 5">
+        <div class="overlay-text">Archive</div>
+      </a>
+    </div>
+    <div class="grid-item">
+      <a href="https://damarisguzman.neocities.org/more">
+        <img src="https://damarisguzman.neocities.org/Portfolio/DRIP.JPG" alt="Image 6">
+        <div class="overlay-text">More Media</div>
+      </a>
+    </div>
+</div>
+
+</div>
+
+<div class="footer">
+    <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
+</div>
 
 </body>
-
 </html>
