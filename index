@@ -3,32 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            background-color: #fff; /* White background */
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-        .gif {
-            max-width: 80%;
-            height: auto;
-            margin-top: 20px;
-        }
-    </style>
+    <title>My First Web Page</title>
 </head>
 <body>
-    <h1>Let me in</h1>
-    <img src="https://damarisguzman.neocities.org/Portfolio/brain.gif" alt="Centered GIF" class="gif">
+    <h1>Welcome to My Website</h1>
+    <p>This is my first HTML page.</p>
 </body>
 </html>
