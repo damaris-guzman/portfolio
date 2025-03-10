@@ -8,5 +8,8 @@
 <body>
     <h1>Welcome to My Website</h1>
     <p>This is my first HTML page.</p>
+    
+    <!-- Brain GIF -->
+    <img src="brain.gif" alt="Brain GIF">
 </body>
 </html>
