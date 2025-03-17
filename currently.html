@@ -112,6 +112,16 @@
             color: #666;
         }
 
+        .tag-banner {
+            background-color: #cf77a4;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
         .right {
             width: 65%;
             display: flex;
@@ -126,19 +136,11 @@
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .gallery-item video {
+        .gallery-item video, .gallery-item iframe {
             width: 100%;
             height: auto;
             border-radius: 5px;
             background: #000;
-            display: block;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            background: #ccc;
             display: block;
         }
 
@@ -178,20 +180,8 @@
         <div class="title">Neuro Bytes</div>
         <div class="description">Where does our agency end and the algorithm take over?</div>
 
-        <div class="expandable-box" onclick="toggleExpand()">
-            Concept ▼
-            <div class="hidden-text">
-                This project centers around a short video that critically examines the entanglement between human cognition and digital technology, visualizing the cyclical relationship between productivity, burnout, and digital embodiment. The video integrates visual effects, animated UI overlays, and glitch transitions to simulate the overwhelming sensory experience of navigating hyper-mediated digital spaces. Drawing inspiration from posthumanist discourse, the project interrogates the porous boundary between human agency and algorithmic influence, illustrating the ways in which technology extends, fragments, and distorts self-perception.
-
-At its core, the video engages with the aesthetics of malfunction—graphical glitches, corrupted data streams, and intrusive notifications serve as both formal and conceptual devices that underscore the tensions between human cognition and technological acceleration. The protagonist’s interface, which overlays health metrics, emotional status, and a Tamagotchi-style wellness monitor, transforms the body into an informatic system, a site of constant optimization yet inevitable dysfunction. The visual language draws from both PC Music aesthetics and early internet kitsch, employing glossy neon UI elements to construct a hyper-stylized representation of technological embodiment.
-
-The control panel UI functions as a diegetic interface, a responsive system that visualizes the protagonist’s deteriorating mental state. The notifications—rendered as polished, hyperreal buttons—appear above the computer screen at moments of peak sensory overload, serving as both narrative cues and meta-commentary on the gamification of digital labor. These interruptions, at once sterile and frenetic, articulate a tension between control and collapse, highlighting how digital interfaces mediate self-regulation while simultaneously inducing cognitive fatigue. As the protagonist reaches a breaking point, the system spirals into glitch-induced chaos, culminating in a final moment of technological and corporeal burnout—an abrupt shutdown that mirrors the limits of both machine and mind.
-
-By merging experimental visual effects, UI-driven storytelling, and conceptual inquiries into digital subjectivity, Neuro Bytes presents a meditation on the pressures of technological embodiment, illustrating the ways in which humans and machines co-constitute each other in an era of algorithmic acceleration.
-            </div>
-        </div>
-
-        <div class="expandable-box" onclick="toggleExpandComponents()">
+        <!-- Components Expandable Box (Now First) -->
+        <div class="expandable-box" onclick="toggleExpand('components-text')">
             Components to the project ▼
             <div class="hidden-text" id="components-text">
                 <ul style="list-style-type: none; padding-left: 0;">
@@ -206,35 +196,51 @@ By merging experimental visual effects, UI-driven storytelling, and conceptual i
                 </ul>
             </div>
         </div>
+
+        <!-- Concept Expandable Box -->
+        <div class="expandable-box" onclick="toggleExpand('concept-text')">
+            Concept ▼
+            <div class="hidden-text" id="concept-text">
+                <div class="tag-banner">Technological embodiment, immersion, posthumanism, cybernetic loops</div>
+                <p>.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Right Side (Gallery) -->
     <div class="right">
-    <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" 
-            width="100%" height="360" allowfullscreen>
-        </iframe>
-        <div class="gallery-description">
-            <p><strong>Visualizing an AI "brain" (AE)</strong></p>
-            <p>Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment.</p>
+        <div class="gallery-item">
+            <iframe src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" 
+                width="100%" height="360" allowfullscreen>
+            </iframe>
+            <div class="gallery-description">
+                <p><strong>Visualizing an AI "brain" (AE)</strong></p>
+                <p>Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1R9_dTNzHJ9dh4fgVOvFK6adwPikBWm-A/preview" 
-            width="100%" height="360" allowfullscreen>
-        </iframe>
-        <div class="gallery-description">
-            <p><strong>Visualization v2 (AE)</strong></p>
-            <p>Simultaneously sensual and slightly uncanny, invoking the sense of looking up close at a viscous biological mass or a surreal, alien landscape.</p>
-        </div>
-    </div>
-
-    <div class="gallery-item">
-        <img src="placeholder.jpg" alt="Placeholder">
-        <div class="gallery-description">
-            <p><strong>Additional Visualization</strong></p>
-            <p>Description of the third media element.</p>
+        <div class="gallery-item">
+            <iframe src="https://drive.google.com/file/d/1R9_dTNzHJ9dh4fgVOvFK6adwPikBWm-A/preview" 
+                width="100%" height="360" allowfullscreen>
+            </iframe>
+            <div class="gallery-description">
+                <p><strong>Visualization v2 (AE)</strong></p>
+                <p>Simultaneously sensual and slightly uncanny, invoking the sense of looking up close at a viscous biological mass or a surreal, alien landscape.</p>
+            </div>
         </div>
     </div>
 </div>
+
+<div class="footer">
+    <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
+</div>
+
+<script>
+    function toggleExpand(id) {
+        var text = document.getElementById(id);
+        text.style.display = text.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>
