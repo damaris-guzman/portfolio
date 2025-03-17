@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currently Working On - Neuro Bytes</title>
     <style>
+        /* Import DepartureMono font */
+        @font-face {
+            font-family: 'DepartureMono';
+            src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Apply font to the whole page */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'DepartureMono', monospace;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
@@ -117,6 +126,14 @@
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
         }
 
+        .gallery-item video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            background: #000;
+            display: block;
+        }
+
         .gallery-item img {
             width: 100%;
             height: auto;
@@ -172,16 +189,21 @@
     <!-- Right Side (Gallery) -->
     <div class="right">
         <div class="gallery-item">
+            <video controls>
+                <source src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/view?usp=sharing" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="gallery-description">Description for first video.</div>
+        </div>
+        <div class="gallery-item">
+            <video controls>
+                <source src="https://drive.google.com/file/d/1R9_dTNzHJ9dh4fgVOvFK6adwPikBWm-A/view?usp=drive_link" type="video/mp4">
+            </video>
+            <div class="gallery-description">Description for second video.</div>
+        </div>
+        <div class="gallery-item">
             <img src="placeholder.jpg" alt="Placeholder">
             <div class="gallery-description">Image description here.</div>
-        </div>
-        <div class="gallery-item">
-            <img src="placeholder.jpg" alt="Placeholder">
-            <div class="gallery-description">Another image description.</div>
-        </div>
-        <div class="gallery-item">
-            <img src="placeholder.jpg" alt="Placeholder">
-            <div class="gallery-description">More content about the project.</div>
         </div>
     </div>
 </div>
