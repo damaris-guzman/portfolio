@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currently Working On - Neuro Bytes</title>
     <style>
-        /* Import DepartureMono font */
         @font-face {
             font-family: 'DepartureMono';
             src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
@@ -13,7 +12,6 @@
             font-style: normal;
         }
 
-        /* Apply font to the whole page */
         body {
             font-family: 'DepartureMono', monospace;
             margin: 0;
@@ -90,55 +88,10 @@
             color: #555;
         }
 
-        .expandable-box {
-            margin-top: 10px;
-            background: #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            text-align: left;
-            position: relative;
-        }
-
-        .expandable-box:hover {
-            background: #ccc;
-        }
-
-        .hidden-text {
-            display: none;
-            padding-top: 10px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .tag-banner {
-            background-color: #cf77a4;
-            color: white;
-            padding: 8px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .right {
-            width: 65%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .gallery-item {
-            background: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery-item video, .gallery-item iframe {
-            width: 100%;
-            height: auto;
+        .gallery-item iframe {
+            width: auto;
+            height: 300px;
+            max-width: 100%;
             border-radius: 5px;
             background: #000;
             display: block;
@@ -164,55 +117,25 @@
 
 <div class="header">
     <div class="tabs">
-        <a href="https://damarisguzman.neocities.org/newmaris">New Media</a>
-        <a href="https://damarisguzman.neocities.org/video">Video Editing</a>
+        <a href="#">New Media</a>
+        <a href="#">Video Editing</a>
     </div>
-    <h1><a href="/about">Currently...</a></h1>
+    <h1><a href="#">Currently...</a></h1>
     <div class="tabs">
-        <a href="https://damarisguzman.neocities.org/3danimation">3D Animation</a>
-        <a href="https://damarisguzman.neocities.org/archive">Archive</a>
+        <a href="#">3D Animation</a>
+        <a href="#">Archive</a>
     </div>
 </div>
 
 <div class="content">
-    <!-- Left Side (Title and Text) -->
     <div class="left">
         <div class="title">Neuro Bytes</div>
         <div class="description">Where does our agency end and the algorithm take over?</div>
-
-        <!-- Components Expandable Box (Now First) -->
-        <div class="expandable-box" onclick="toggleExpand('components-text')">
-            Components to the project ▼
-            <div class="hidden-text" id="components-text">
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li>★ Fully edited 25-second video.
-                        <ul style="list-style-type: none; padding-left: 20px;">
-                            <li>➜ Equipped with VFX, 3D animation, and immersive film techniques.</li>
-                        </ul>
-                    </li>
-                    <li>★ Interactive control panel.</li>
-                    <li>★ Meditative AE simulations.</li>
-                    <li>★ Virtual gallery.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Concept Expandable Box -->
-        <div class="expandable-box" onclick="toggleExpand('concept-text')">
-            Concept ▼
-            <div class="hidden-text" id="concept-text">
-                <div class="tag-banner">Technological embodiment, immersion, posthumanism, cybernetic loops</div>
-                <p>.</p>
-            </div>
-        </div>
     </div>
 
-    <!-- Right Side (Gallery) -->
     <div class="right">
         <div class="gallery-item">
-            <iframe src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" 
-                width="300" height="300" allowfullscreen>
-            </iframe>
+            <iframe src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" allowfullscreen></iframe>
             <div class="gallery-description">
                 <p><strong>Visualizing an AI "brain" (AE)</strong></p>
                 <p>Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment.</p>
@@ -220,9 +143,7 @@
         </div>
 
         <div class="gallery-item">
-            <iframe src="https://drive.google.com/file/d/1R9_dTNzHJ9dh4fgVOvFK6adwPikBWm-A/preview" 
-                width="300" height="300" allowfullscreen>
-            </iframe>
+            <iframe src="https://drive.google.com/file/d/1R9_dTNzHJ9dh4fgVOvFK6adwPikBWm-A/preview" allowfullscreen></iframe>
             <div class="gallery-description">
                 <p><strong>Visualization v2 (AE)</strong></p>
                 <p>Simultaneously sensual and slightly uncanny, invoking the sense of looking up close at a viscous biological mass or a surreal, alien landscape.</p>
@@ -234,13 +155,6 @@
 <div class="footer">
     <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
 </div>
-
-<script>
-    function toggleExpand(id) {
-        var text = document.getElementById(id);
-        text.style.display = text.style.display === "block" ? "none" : "block";
-    }
-</script>
 
 </body>
 </html>
