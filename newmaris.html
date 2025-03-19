@@ -96,6 +96,15 @@
             display: block;
         }
 
+        .gallery-item img {
+            width: 100%; /* Ensures the image takes up the full width of its container */
+            max-width: 300px; /* Sets a maximum width for the images */
+            height: auto; /* Maintains the aspect ratio */
+            object-fit: cover; /* Ensures the image fills the container without distortion */
+            display: block;
+            margin: 0 auto; /* Centers the image horizontally */
+        }
+
         .gallery-description {
             margin-top: 10px;
             font-size: 1rem;
@@ -225,10 +234,10 @@
     <div class="right">
         <h2>Interviews + Studio Visits</h2>
         <div class="gallery-item">
-            <img src="https://via.placeholder.com/300" alt="Placeholder Image 1">
+            <img src="snibbe.png" alt="Placeholder Image 1">
             <div class="gallery-description">
-                <p><strong>Placeholder Image 1</strong></p>
-                <p>Description for the placeholder image 1.</p>
+                <p><strong>Studio visit with Scott Snibbe (November, 2024)</strong></p>
+                <p>One of the highlights of my life. We had an enlightening conversation regarding his recent project Hidden Geometries!</p>
             </div>
         </div>
         <div style="display: flex; justify-content: center; align-items: center;">
@@ -247,16 +256,19 @@
     let currentFrame = 0;
     const frames = [
         {
-            imgSrc: "https://via.placeholder.com/300",
-            imgDesc: "Description for the placeholder image 1."
+            imgSrc: "images/snibbe.png",
+            imgTitle: "Studio visit with Scott Snibbe (November, 2024)",
+            imgDesc: "One of the highlights of my life. We had an enlightening conversation regarding his recent project Hidden Geometries!"
         },
         {
-            imgSrc: "https://via.placeholder.com/300",
-            imgDesc: "Description for the placeholder image 2."
+            imgSrc: "images/TamikoThiel.jpg",
+            imgTitle: "Studio Visit with Tamiko Thiel (October, 2024)",
+            imgDesc: "During my first semester at SJSU, I had the honor of presenting my work to Tamiko Thiel for feedback!"
         },
         {
-            imgSrc: "https://via.placeholder.com/300",
-            imgDesc: "Description for the placeholder image 3."
+            imgSrc: "images/gpt-me3 (1).jpg",
+            imgTitle: "Interview with Avital Meshi (April, 2024)",
+            imgDesc: "A fascinating deep dive into AI, identity, and performance with Avital Meshi! In this interview, we discuss her latest projects, including GPT Me and AI Seance, and how she navigates the intersection of technology and embodiment. From exploring AI’s biases through performance to experimenting with wearable GPT devices, Meshi’s work challenges how we perceive ourselves in the digital age."
         }
     ];
 
@@ -273,8 +285,14 @@
     function updateFrame() {
         const frame = frames[currentFrame];
         document.querySelector('.right .gallery-item img').src = frame.imgSrc;
-        document.querySelector('.right .gallery-description').innerHTML = `<p><strong>${frame.imgDesc}</strong></p>`;
+        document.querySelector('.right .gallery-description').innerHTML = `
+            <p><strong>${frame.imgTitle}</strong></p>
+            <p>${frame.imgDesc}</p>
+        `;
     }
+
+    // Initialize the first frame
+    updateFrame();
 
     function toggleExpand(id) {
         var text = document.getElementById(id);
