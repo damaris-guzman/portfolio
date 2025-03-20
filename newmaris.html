@@ -187,6 +187,35 @@
             font-size: 0.9rem;
             color: #666;
         }
+
+        .gradient-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            animation: gradient-animation 3s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .gradient-button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -244,6 +273,11 @@
             <button class="arrow-button" onclick="prevFrame()">&#9664;</button>
             <button class="heart-button">&#10084;</button>
             <button class="arrow-button" onclick="nextFrame()">&#9654;</button>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/avital-meshi?pli=1" target="_blank" class="gradient-button">
+                （✿ ͡◕ ᴗ◕)つ━━✫・*。Click here to read the interview!
+            </a>
         </div>
     </div>
 </div>
