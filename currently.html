@@ -219,6 +219,20 @@
         .hidden {
             display: none;
         }
+
+        .research-box {
+            background: linear-gradient(45deg, #ff8fb2, #cf77a4, #ffbcd0);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .research-box:hover {
+            background: linear-gradient(45deg, #ffbcd0, #cf77a4, #ff8fb2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -265,6 +279,11 @@
                 <div class="tag-banner">Technological embodiment, immersion, posthumanism, cybernetic loops</div>
                 <p>.</p>
             </div>
+        </div>
+
+        <!-- Research Box -->
+        <div class="expandable-box research-box" onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')">
+            Research
         </div>
 
         <!-- Buttons -->
