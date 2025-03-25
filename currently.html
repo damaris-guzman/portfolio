@@ -233,6 +233,55 @@
             background: linear-gradient(45deg, #ffbcd0, #cf77a4, #ff8fb2);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
+
+        /* Responsive Design for Mobile Devices */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column; /* Stack content vertically */
+            }
+
+            .content {
+                flex-direction: column; /* Stack left and right sections */
+                padding: 20px; /* Reduce padding for smaller screens */
+                gap: 20px;
+            }
+
+            .left, .right {
+                width: 100%; /* Make both sections take full width */
+            }
+
+            .gallery-item {
+                width: 100%; /* Make gallery items take full width */
+                margin-bottom: 20px; /* Add spacing between items */
+            }
+
+            .gallery-item iframe {
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            .header h1 a {
+                font-size: 1.5rem; /* Reduce font size for smaller screens */
+            }
+
+            .tabs {
+                flex-direction: column; /* Stack tabs vertically */
+                gap: 10px; /* Reduce gap between tabs */
+            }
+
+            .buttons {
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 10px; /* Reduce gap between buttons */
+            }
+
+            .button {
+                width: 100%; /* Make buttons take full width */
+                text-align: center;
+            }
+
+            .footer {
+                font-size: 0.9rem; /* Reduce footer font size */
+            }
+        }
     </style>
 </head>
 <body>
@@ -380,16 +429,16 @@
 
     <!-- Placeholder for Interactive Panel -->
     <div class="right hidden" id="interactive-panel-gallery">
-        <div class="gallery-item">
+        <div class="gallery-item" style="width: 600px;"> <!-- Adjusted width -->
             <iframe src="https://drive.google.com/file/d/1nqYlf22bLAENsBPDH_l_4jEriyuK3fn8/preview" 
-                width="300" height="300" allowfullscreen>
+                width="600" height="500" allowfullscreen> <!-- Adjusted width and increased height -->
             </iframe>
             <div class="gallery-description">
                 <p><strong>Interactive Control Panel</strong></p>
                 <p>This piece will be fabricated using laser cutters, 3D printers, Arduino LCD displays, and old buttons from kid toys.</p>
-                    <p>The control panel symbolizes technology’s illusion of control. Although the main character appears to adjust her internal state, monitoring and manipulating focus or mood, the panel itself ultimately does nothing.</p>
-                        <p>This parallels our perceived agency over internet use, despite hidden systems like data collection and addictive design that quietly shape our behavior.</p>
-                        <p>The panel becomes an “operational double,” giving the appearance of control while never actually altering reality.</p>
+                <p>The control panel symbolizes technology’s illusion of control. Although the main character appears to adjust her internal state, monitoring and manipulating focus or mood, the panel itself ultimately does nothing.</p>
+                <p>This parallels our perceived agency over internet use, despite hidden systems like data collection and addictive design that quietly shape our behavior.</p>
+                <p>The panel becomes an “operational double,” giving the appearance of control while never actually altering reality.</p>
             </div>
         </div>
     </div>
