@@ -182,7 +182,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+            background: linear-gradient(to bottom, #f0f0f0, #d0f0d0);
         }
 
         .button.sims {
@@ -282,20 +282,47 @@
                 font-size: 0.9rem; /* Reduce footer font size */
             }
         }
+
+        .gallery-viewer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .arrow-button {
+            background-color: #cf77a4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="tabs">
-        <a href="https://damaris-guzman.github.io/damarisguzman.github.io/newmaris.html">New Media</a>
-        <a href="https://youtu.be/xvFZjo5PgG0?si=_09hVRRc5sLOPAKY">Video Editing</a>
-    </div>
-    <h1><a href="/about">Currently...</a></h1>
-    <div class="tabs">
-        <a href="https://youtu.be/xvFZjo5PgG0?si=_09hVRRc5sLOPAKY">3D Animation</a>
-        <a href="https://youtu.be/xvFZjo5PgG0?si=_09hVRRc5sLOPAKY">Archive</a>
-    </div>
+  <div class="tabs desktop-tabs">
+    <a href="https://damaris-guzman.github.io/damarisguzman.github.io/newmaris.html">New Media</a>
+    <a href="https://youtu.be/xvFZjo5PgG0?si=_09hVRRc5sLOPAKY">Video Editing</a>
+  </div>
+  <h1>
+    <a href="/about">
+      Currently<br>
+      working on...
+    </a>
+  </h1>
+  <div class="tabs desktop-tabs">
+    <a href="https://youtu.be/xvFZjo5PgG0?si=_09hVRRc5sLOPAKY">3D Animation</a>
+    <a href="https://youtu.be/xvFZjo5PgG0?si=_09hVRRc5sLOPAKY">Archive</a>
+  </div>
 </div>
 
 <div class="content">
@@ -304,35 +331,40 @@
         <div class="title">Neuro Bytes</div>
         <div class="description">Where does our agency end and the algorithm take over?</div>
 
-        <!-- Components Expandable Box (Now First) -->
-        <div class="expandable-box" onclick="toggleExpand('components-text')">
-            Components to the project ▼
-            <div class="hidden-text" id="components-text">
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li>★ Fully edited 25-second video.
-                        <ul style="list-style-type: none; padding-left: 20px;">
-                            <li>➜ Equipped with VFX, 3D animation, and immersive film techniques.</li>
-                        </ul>
-                    </li>
-                    <li>★ Interactive control panel.</li>
-                    <li>★ Meditative AE simulations.</li>
-                    <li>★ Virtual gallery.</li>
+        <!-- Project Description Scroll Box (always visible) -->
+        <div class="concept-box" style="border: 1px solid #ccc; border-radius: 5px; overflow: hidden; margin-top: 10px;">
+          <div class="concept-content" style="height: 150px; overflow-y: auto; padding: 10px; font-size: 0.9rem; color: #666;">
+             <p>This project pairs a looping short video to a chunky arcade control panel to show how digital systems promise choice while steering behavior. On screen a user reaches for the panel, the camera dives through their eyes into tissue and circuit paths, then lands inside a computer interface where folders flicker between Project_Focus, User_Data, and Self.exe; an error warning shatters into pixels, ads push a “Premium Focus+” upgrade, and the loop restarts (kind of like doom-scrolling).</p>
+             <p>In the gallery only a few buttons on the laser-cut console trigger brief audio-visual changes before control snaps back, mirroring platforms that harvest data yet decide what we see.</p>
+             <p>In short, the project is a two-part installation: a visceral film that visualizes the merger of flesh and interface, and an interactive “operational double” that lets the audience discover just how little control they truly have. </p>
+            </div>
+        </div>
+
+        <!-- Concept Expandable Box: Now placed BELOW the description scroll box -->
+        <div class="expandable-box" style="margin-top: 10px;" onclick="toggleExpand('concept-pink')">
+          Concept ▼
+          <div class="hidden-text" id="concept-pink">
+            <div class="tag-banner" style="background-color: #cf77a4; color: white; padding: 8px; text-align: center; font-size: 0.9rem;">
+              Technological embodiment, immersion, posthumanism, cybernetic loops
+            </div>
+          </div>
+        </div>
+
+        <!-- Components Expandable Box placed BELOW the concept box -->
+        <div class="expandable-box" style="margin-top: 10px;" onclick="toggleExpand('components-text')">
+          Components to the project ▼
+          <div class="hidden-text" id="components-text">
+            <ul style="list-style-type: none; padding-left: 0;">
+              <li>★ Fully edited 25-second video.
+                <ul style="list-style-type: none; padding-left: 20px;">
+                  <li>➜ Equipped with VFX, 3D animation, and immersive film techniques.</li>
                 </ul>
-            </div>
-        </div>
-
-        <!-- Concept Expandable Box -->
-        <div class="expandable-box" onclick="toggleExpand('concept-text')">
-            Concept ▼
-            <div class="hidden-text" id="concept-text">
-                <div class="tag-banner">Technological embodiment, immersion, posthumanism, cybernetic loops</div>
-                <p>.</p>
-            </div>
-        </div>
-
-        <!-- Research Box -->
-        <div class="expandable-box research-box" onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')">
-            Research
+              </li>
+              <li>★ Interactive control panel.</li>
+              <li>★ Meditative AE simulations.</li>
+              <li>★ Virtual gallery.</li>
+            </ul>
+          </div>
         </div>
 
         <!-- Buttons -->
@@ -342,14 +374,9 @@
             <button class="button full-video" onclick="showGallery('full-video')">Video in process</button>
         </div>
 
-        <!-- New Non-Expandable Text Box -->
-        <div class="description">
-            This project centers around a short video that explores how human cognition and digital technology intertwine, illustrating a cycle of productivity, burnout, and digital embodiment. Influenced by posthumanist thought, the project blurs the boundary between human agency and algorithmic influence, showing how technology extends and distorts self-perception.
-            <br><br>
-           The protagonist’s interface, layered with health metrics, emotional tracking, and a Tamagotchi-style wellness monitor, turns the body into an informatic system, always optimizing yet bound to fail. 
-            A diegetic control panel reflects the protagonist’s deteriorating mental state, with notifications interrupting at moments of peak overload, both narrative cues and commentary on the gamification of digital labor. As the protagonist snaps, the system plunges into glitch chaos, ending in a mutual burnout of mind and machine. The video is not only reflective of technological discourse but overall self-medication and addiction.
-            <br><br>
-            Through hyper-edited visuals, UI-driven storytelling, and reflections on digital subjectivity, “Neuro Bytes” probes the pressures of technological embodiment, revealing how humans and machines continually shape each other in an era of algorithmic acceleration.
+        <!-- Research Summarized Button placed BELOW the buttons -->
+        <div class="expandable-box research-box" onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')" style="margin-top: 10px; text-align: center;">
+            Research Summarized
         </div>
     </div>
 
@@ -445,29 +472,48 @@
 
     <!-- Placeholder for Video -->
     <div class="right hidden" id="full-video-gallery">
-        <div class="gallery-item">
-            <iframe src="https://www.youtube.com/embed/3IB28p7wyxw" 
-                width="300" height="300" allowfullscreen>
-            </iframe>
-            <div class="gallery-description">
-                <p><strong>Draft video simulating shot list</strong></p>
-                <p>Mostly focused on showing the shot sequences.</p>
+        <!-- Title directly above the gallery -->
+        <div class="gallery-title" style="text-align: center; margin: 0; padding: 10px; font-size: 1.8rem; font-weight: bold; color: #333;">
+            Summarized storyboard below (◕‿◕)
+        </div>
+        
+        <!-- Gallery Viewer directly below title with no extra margin -->
+        <div class="gallery-viewer" style="margin: 0; padding: 0;">
+            <button class="arrow-button" onclick="prevGalleryImage()">‹</button>
+            <img id="gallery-viewer-image" src="story1.png" alt="Gallery Viewer Image" style="max-width: 80%; height: auto; cursor: pointer;" onclick="openGalleryFullscreen()">
+            <button class="arrow-button" onclick="nextGalleryImage()">›</button>
+        </div>
+        
+        <!-- Flex container for draft video and SoundCloud embed -->
+        <div class="flex-container" style="display: flex; gap: 20px; justify-content: space-between; margin-top: 20px;">
+            <div class="gallery-item">
+                <iframe src="https://www.youtube.com/embed/3IB28p7wyxw" width="300" height="300" allowfullscreen></iframe>
+                <div class="gallery-description">
+                    <p><strong>Draft video simulating shot list</strong></p>
+                    <p>Mostly focused on showing the shot sequences.</p>
                     <p>Lil VFX visible.</p>
                     <p>The content of the display monitor shows the main character editing the video in real time.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+                    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/asteria/whatd-i-say&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                </iframe>
+                <div class="gallery-description">
+                    <p><strong>Song used: What'd I Say</strong></p>
+                    <p><strong> by asteria + d3r</strong></p>
+                    <p>2:00-2:25</p>
+                </div>
             </div>
         </div>
-
-        <!-- SoundCloud Embed -->
-        <div class="gallery-item">
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" 
-                allow="autoplay" 
-                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/asteria/whatd-i-say&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-            </iframe>
-            <div class="gallery-description">
-                <p><strong>Song used: What'd I Say</strong></p>
-                <p><strong> by asteria + d3r</strong></p>
-                <p>2:00-2:25</p>
-            </div>
+        
+        <!-- Fullscreen overlay for gallery viewer -->
+        <div id="gallery-fullscreen-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center;">
+            <button class="arrow-button" style="position: absolute; left: 20px;" onclick="prevGalleryImage()">‹</button>
+            <img id="gallery-fullscreen-image" src="story1.png" alt="Fullscreen Gallery Image" style="max-width: 90%; max-height: 90%;">
+            <button class="arrow-button" style="position: absolute; right: 20px;" onclick="nextGalleryImage()">›</button>
+            <button onclick="closeGalleryFullscreen()" style="position: absolute; top: 20px; right: 20px; background: #cf77a4; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.5rem; cursor: pointer;">×</button>
         </div>
     </div>
 </div>
@@ -487,6 +533,36 @@
         document.getElementById('interactive-panel-gallery').classList.add('hidden');
         document.getElementById('full-video-gallery').classList.add('hidden');
         document.getElementById(galleryId + '-gallery').classList.remove('hidden');
+    }
+
+    const galleryImages = [
+        "story1.png", // First image
+        "story2.png"  // Second image
+    ];
+    let currentGalleryIndex = 0;
+
+    function updateGalleryViewerImage() {
+        document.getElementById("gallery-viewer-image").src = galleryImages[currentGalleryIndex];
+        document.getElementById("gallery-fullscreen-image").src = galleryImages[currentGalleryIndex];
+    }
+
+    function prevGalleryImage() {
+        currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateGalleryViewerImage();
+    }
+
+    function nextGalleryImage() {
+        currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+        updateGalleryViewerImage();
+    }
+
+    function openGalleryFullscreen() {
+        document.getElementById("gallery-fullscreen-overlay").style.display = "flex";
+        document.getElementById("gallery-fullscreen-image").src = galleryImages[currentGalleryIndex];
+    }
+
+    function closeGalleryFullscreen() {
+        document.getElementById("gallery-fullscreen-overlay").style.display = "none";
     }
 </script>
 
