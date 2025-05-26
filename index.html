@@ -29,21 +29,25 @@
         .header {
             background-color: #cf77a4;
             color: white;
-            padding: 10px;
-            text-align: center;
+            height: 70px; /* ust as needed: half the previous height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-transform: uppercase;
             font-weight: bold;
             width: 100%;
             overflow: hidden;
         }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px; /* ust font size if needed */
+        }
 
         .header a {
             color: white;
             text-decoration: none;
-            display: inline-block;
-            font-size: 24px;
             letter-spacing: 2px;
-            position: relative;
         }
 
         .main-content {
@@ -140,6 +144,39 @@
             margin-top: auto;
         }
 
+        .cute-box {
+            text-align: center; /* Center the button inside the box */
+            margin-top: 20px; /* Add spacing above the box */
+        }
+
+        .gradient-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #ff8fb2, #ff6f91);
+            background-size: 200% 200%;
+            animation: gradient 3s infinite alternate;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .gradient-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -155,10 +192,10 @@
 <div class="main-content">
     <div class="sidebar">
         <img src="https://damarisguzman.neocities.org/Portfolio/maris%20is%20in.png" alt="Your Image">
-        <p>Hi, it's so good to see you! Welcome to my portfolio site :) This website is still under construction, but feel free to explore the pages. Thank you for visiting! *TIP: Best viewed on desktop.</p>
+        <p>Hi, it's so good to see you! Welcome to my portfolio site :) Every day I see my dream, so I invite you to see it too. Thank you for visiting!</p>
 
         <div class="cute-box">
-            <a href="https://damarisguzman.neocities.org/about" style="color: inherit; text-decoration: none;">
+            <a href="https://damarisguzman.neocities.org/about" class="gradient-button">
                 Click to learn about me
             </a>
         </div>
@@ -172,10 +209,16 @@
             </a>
         </div>
         <div class="grid-item">
-           <a href="newmaris.html">
-            <img src="https://damarisguzman.neocities.org/Portfolio/7a280062-d254-4330-8f43-5c0b854049b8_rwc_180x0x920x720x1280.jpg" alt="New Media">
+          <a href="https://damaris-guzman.github.io/portfolio/teaching.html">
+            <img src="https://damarisguzman.neocities.org/kiri%20ar%20(1).gif" alt="Teaching">
+            <div class="overlay-text">Teaching</div>
+          </a>
+        </div>
+        <div class="grid-item">
+          <a href="https://damarisguzman.neocities.org/newmaris">
+            <img src="https://damarisguzman.neocities.org/Portfolio/7a280062-d254-4330-8f43-5c0b854049b8_rwc_180x0x920x720x1280.jpg" alt="More Media">
             <div class="overlay-text">New Media</div>
-           </a>
+          </a>
         </div>
         <div class="grid-item">
            <a href="https://damarisguzman.neocities.org/video">
@@ -193,12 +236,6 @@
           <a href="https://damarisguzman.neocities.org/archive">
             <img src="https://damarisguzman.neocities.org/Portfolio/IMG_5149.PNG" alt="Archive">
             <div class="overlay-text">Archive</div>
-          </a>
-        </div>
-        <div class="grid-item">
-          <a href="https://damarisguzman.neocities.org/more">
-            <img src="https://damarisguzman.neocities.org/Portfolio/DRIP.JPG" alt="More Media">
-            <div class="overlay-text">More Media</div>
           </a>
         </div>
     </div>
