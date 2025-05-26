@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching</title>
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* Header */
+    .header {
+      background-color: #cf77a4;
+      color: white;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative; /* added for positioning the nav menu */
+    }
+    .header h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header h1 a {
+      color: white;
+      text-decoration: none;
+      font-size: 2rem;
+      display: inline-block;
+      letter-spacing: 5px;
+    }
+    /* Hamburger button */
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem; /* increased size */
+      color: white;
+      background: none;
+      border: none;
+    }
+    /* Navigation Menu */
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px; /* moved from left to right */
+      background-color: #ffbcd0; /* updated background */
+      border: 2px solid #b94a7b; /* added border */
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 5px;
+      gap: 10px;
+      z-index: 100;
+    }
+    .nav-menu a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover {
+      background-color: #ff8fb2;
+    }
+    .tabs {
+      display: flex;
+      gap: 30px;
+    }
+    .tabs a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      background-color: #ff8fb2;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .tabs a:hover {
+      background-color: #e47d9b;
+    }
+    .content {
+      padding: 40px;
+      flex-grow: 1;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    /* Left and right columns for teaching page */
+    .teaching-left {
+      flex: 1;
+      min-width: 300px;
+    }
+    .teaching-right {
+      flex: 1;
+      min-width: 300px;
+      margin-top: 0; /* changed from 70px to 0 */
+    }
+    .footer {
+      background-color: #ffbcd0;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+    }
+    /* Additional styles */
+    .expandable-box {
+      background: #ddd;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+    }
+    .expandable-box:hover {
+      background: #ccc;
+    }
+    .hidden-text {
+      display: none;
+      padding-top: 10px;
+      font-size: 0.9rem;
+      color: #666;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    .glossy-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 10px;
+      background: linear-gradient(90deg, #ff8fb2, #cf77a4, #ff8fb2);
+      background-size: 200% 200%;
+      animation: gradient-animation 3s infinite alternate;
+      cursor: pointer;
+    }
+    @keyframes gradient-animation {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .media-box {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .media-box img, .media-box video {
+      max-width: 100%;
+      height: auto;
+    }
+    /* Star bullet text styling */
+    .star-text {
+      margin-left: 20px;
+    }
+    /* Animated toggle for Review of Spring 2025 with animated rainbow gradient */
+    .animated-toggle {
+      background: linear-gradient(rgba(255,0,0,1) 0%, rgba(255,154,0,1) 10%, rgba(208,222,33,1) 20%, rgba(79,220,74,1) 30%, rgba(63,218,216,1) 40%, rgba(47,201,226,1) 50%, rgba(28,127,238,1) 60%, rgba(95,21,242,1) 70%, rgba(186,12,248,1) 80%, rgba(251,7,217,1) 90%, rgba(255,0,0,1) 100%) 0 0/100% 200%;
+      animation: a 2s linear infinite;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    @keyframes a {
+      to { background-position: 0 -200%; }
+    }
+    /* Spring Highlights title styling */
+    .highlights-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    /* Add this new style block or append to your existing CSS */
+    .scroll-box {
+      max-height: 500px; /* Adjust as needed */
+      overflow-y: auto;
+    }
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .tabs {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      /* Change this so that the menu stays hidden by default */
+      .nav-menu {
+        display: none;
+      }
+      .content {
+        flex-direction: column;
+        padding: 20px;
+      }
+      .teaching-left, .teaching-right {
+        flex: 1 1 100%;
+        min-width: 100%;
+      }
+    }
+  </style>
+  <script>
+    function toggleExpand(id) {
+      var elem = document.getElementById(id);
+      elem.style.display = (elem.style.display === "block") ? "none" : "block";
+    }
+    // Toggle navigation menu visibility
+    function toggleMenu() {
+      var menu = document.querySelector('.nav-menu');
+      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Header and Navigation Menu -->
+  <div class="header">
+    <!-- Left-side tabs or logo could remain if needed -->
+    <h1><a href="/about">Teaching</a></h1>
+    <!-- Hamburger icon -->
+    <button class="hamburger">&#9776;</button>
+    <!-- Updated Pop-up Navigation Menu -->
+    <div class="nav-menu">
+        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+        <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
+        <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+                <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Left Column: Teaching text content -->
+    <div class="teaching-left">
+      <h2>Teaching Art 74: Intro to Digital Media</h2>
+      
+      <!-- Static Art 74 Content with subtitles and bullet text -->
+      <div>
+        <p><strong>Course Overview:</strong></p>
+        <p class="star-text">★ I’m currently teaching Art 74: Intro to Digital Media. The course emphasizes creative thinking, problem-solving, and computer literacy by introducing diverse software tools – from Adobe Creative Cloud to open‑source platforms.</p>
+        <p><strong>What the Class Entails:</strong></p>
+        <p class="star-text">★ Students complete a series of short projects including glitch art, pixel art, meme culture, net art, and interactive code-based work, culminating in a final project and portfolio.</p>
+      </div>
+      
+      <!-- Review of Spring 2025 Toggle with animated rainbow gradient -->
+      <div class="animated-toggle" onclick="toggleExpand('review-spring')">
+        Review of Spring 2025 ▼
+      </div>
+      <div class="hidden-text" id="review-spring">
+        <p>Teaching has been the most rewarding experience of my academic journey. It consistently fuels my own growth.</p>
+        <p>Every time I prepare or present material, I refine my understanding of the subject. This exchange of discovery is one of my favorite parts of teaching. It reminds me that I am growing alongside my students, visibly improving my organizational skills, communication skills, and more.</p>
+        <p>Admittedly, during my first semester at SJSU I was hesitant and constantly afraid of making mistakes. Teaching forced me to evolve quickly and dramatically, shifting my focus away from myself and toward the needs of my students. As I taught, I realized how important it was to embrace the process rather than fixating solely on outcomes. This mindset has genuinely enhanced my enjoyment of life, freeing me from the fear of failure. It shows in my current project, which includes challenges I never thought I would pursue or commit to, such as coding, circuit programming, digital fabrication, and metal fabrication. Previously, I considered myself purely a video artist and nothing more.</p>
+        <p>Starting in Spring 2025 was a significant challenge with a much heavier workload than I anticipated. I genuinely struggled, especially since I began teaching during just my second semester at SJSU. This path is not typical for MFA students, who usually wait until their third or fourth semester to teach. Additionally, the mandatory teaching preparation class is not recommended in the first semester, so I took it during my second semester while already teaching.</p>
+        <p>I emphasize these difficulties not to complain, but to demonstrate that I am committed to going above and beyond in order to reach my goals and excel.</p>
+      </div>
+      
+      <!-- Teaching Philosophy Toggle -->
+      <div class="expandable-box" onclick="toggleExpand('teaching-philosophy')">
+        Teaching Philosophy ▼
+        <div class="hidden-text" id="teaching-philosophy">
+          <p>As bell hooks reminds us, “the classroom remains the most radical space of possibility in the academy.” It is fundamentally our responsibility as educators to transform that space into one that liberates and empowers all learners. My teaching practice is grounded in inclusivity, empathy, and continuous curiosity. That curiosity drives me to keep exploring, revising, and improving so that every student has the opportunity to thrive.</p>
+          <p>My background in special education profoundly shapes the way I plan lessons and interact with students. Through that experience, I discovered the power of adaptation, accessibility, and varied learning pathways. I am mindful of diverse needs, whether by creating step-by-step tutorials for those who prefer detailed guidance or by adapting instructions for learners requiring additional support. I continually ask myself how I can further empower each student, guided by a sense of curiosity that keeps me flexible, attentive, and open to new strategies.</p>
+          <p>As a digital artist, I bring a real-time awareness of internet culture, emerging technologies, and the shifting world around us into the classroom. Each module begins with a concise lecture that introduces key theories, artist works, and critical texts. We discuss how these ideas relate to design principles such as composition, interaction, and accessibility. By moving from research to conversation to hands-on making, we reveal how scholarship informs creative decisions.</p>
+          <p>To deepen students' thinking, I include frequent opportunities for self-reflection through journaling and group critiques. This helps them develop critical thinking and communication skills. At the same time, teaching fuels my own growth: every time I prepare or present material, I refine my understanding of the subject. This flow of shared discovery is one of my favorite parts of teaching, reminding me that I am growing alongside my students.</p>
+          <p>I also make space in class to discuss current events such as immigration policies, economic instability, or mental health that impact students’ lives and creative perspectives. I connect them with relevant campus and community resources when needed. By honoring the full context of their experiences, I hope to invite a space where students feel supported in expressing themselves and empowered to build meaningful, forward-thinking work.</p>
+          <p>Ultimately, I want my classroom to be an active, supportive, and curious space, where every student can find excitement in experimentation, see missteps as opportunities for deeper understanding, and discover their own unique creative voice. By asking myself each day what else I can do to spark curiosity, I stay committed to growing as both an educator and an artist. This sense of daily purpose is interlaced into my affirmation that every day I see my dream, because the journey of pursuing my goals is itself the dream. By living and teaching in this spirit, I hope to offer students a space where they, too, can find the path that resonates most deeply with their own aspirations.</p>
+        </div>
+      </div>
+      
+      <!-- Glossy Buttons -->
+      <div>
+      </div>
+    </div>
+    
+    <!-- Right Column: Media -->
+    <div class="teaching-right">
+      <!-- Spring 2025 Highlights Title -->
+      <div class="highlights-title">Spring 2025 Highlights</div>
+      
+      <!-- Augmented Reality Exhibition with scrollable content -->
+      <div class="media-box scroll-box">
+        <h3>Augmented Reality Exhibition</h3>
+        <p>My class was invited to showcase their glitch art at the "Echoes of Expression" augmented reality exhibition in the MLK Library's Digital Humanities Center, and several pieces were also displayed in a display case in the Art Building.</p>
+        <p>I initially took a video at the library, but it didn't save, so I recorded another in a different room to capture how it looked. The students were thrilled about this opportunity and shared photos of their work with friends and family. Honestly, I felt very emotional as well; I’m incredibly grateful that we had this opportunity! ٩(◕‿◕｡)۶</p>
+        <p><strong>Video:</strong></p>
+        <iframe src="https://drive.google.com/file/d/1PKV-zQw0wfpd7gqQLFHzGEZcPO9XYApZ/preview" style="width:100%; height:480px;" frameborder="0" allowfullscreen></iframe>
+        <img src="Echoes of Expression Flyer.png" alt="AR Exhibition Poster">
+      </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer" style="clear: both; width: 100%;">
+    <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
+  </div>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', function() {
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+});
+</script></body></html>
