@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Editing</title>
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;  /* Added to remove left/right scroll */
+    }
+    .header {
+      background-color: #cf77a4;
+      color: white;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .header h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header h1 a {
+      color: white;
+      text-decoration: none;
+      font-size: 2rem;
+      display: inline-block;
+      letter-spacing: 5px;
+    }
+    .tabs {
+      display: flex;
+      gap: 15px;
+    }
+    .tabs a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      background-color: #ff8fb2;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .tabs a:hover {
+      background-color: #e47d9b;
+    }
+    /* Additional style for YouTube Shorts container */
+    .shorts-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 20px;
+    }
+    .shorts-container iframe {
+      width: 100%;
+      /* Use vertical (9:16) aspect ratio for videos */
+      aspect-ratio: 9 / 16;
+      height: auto;
+      border: none;
+    }
+    /* Instagram embed style */
+    .instagram-container blockquote.instagram-media {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+    /* Existing header navigation */
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+    }
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      background-color: #ffbcd0;  /* New color instead of previous pink */
+      border: 2px solid #b94a7b;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 5px;
+      gap: 10px;
+      z-index: 100; 
+    }
+    .nav-menu a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover {
+      background-color: #ff8fb2;
+    }
+    /* ...other existing styles... */
+    .footer {
+      box-sizing: border-box;
+      display: block;
+      width: 100%; 
+      background-color: #ffbcd0;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .shorts-container {
+        grid-template-columns: 1fr !important;
+      }
+      .instagram-additional-container {
+        grid-template-columns: 1fr !important;
+      }
+      .youtube-additional-container {
+        grid-template-columns: 1fr !important;
+      }
+      .films-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1><a href="/about">Archive</a></h1>
+    <button class="hamburger">&#9776;</button>
+    <div class="nav-menu">
+      <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+      <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
+      <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+      <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+      <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+      <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+    </div>
+  </div>
+  
+  <!-- Under Construction Banner -->
+  <div class="construction-banner" style="background-color: #ff8fb2; color: white; text-align: center; padding: 10px; font-size: 1rem;">
+    *This page is still under construction*
+  </div>
+
+  <!-- Container for YouTube Shorts (first 4 videos) -->
+  <div class="shorts-container">
+    <iframe src="https://www.youtube.com/embed/Im3vAVDW81Q?si=cF0fL7kMzO0XN8ey" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/_xjbQLyG6E4?si=rvu4wYcyzbvHeplK" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/jfn4SwRdVnM?si=Qau1VpuRTznAVcul" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/SQgMevzKtkY?si=0HlHomIYy-NAwJsY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+
+  <!-- New container for additional Instagram reels -->
+  <div class="instagram-additional-container shorts-container" style="grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px;">
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BsbWJ87HRq6/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/B2M0uPsFI9d/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/B0y27njn_WJ/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BmewpxugJKR/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Bp0YCxQn5Zg/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
+    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BdMG4VnA7fJ/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
+  </div>
+
+  <!-- New container for YouTube videos with descriptions -->
+  <div class="youtube-additional-container shorts-container" style="grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px;">
+    <div class="youtube-video">
+      <iframe src="https://www.youtube.com/embed/uC8WVVVqTak?si=9H4ukeAceO6TyTOW" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+       <h3 style="margin: 0 0 10px;">Shapes - Visual Music (January, 2019)</h3>
+      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">Inspired by Norman McLaren's "Dots", I animated a short visual-music piece of my own.</p>
+      <p>Song by Crapface x Zen (has since been deleted)</p>
+    </div>
+    <div class="youtube-video">
+      <iframe src="https://www.youtube.com/embed/UpMNBgfSmjk?si=OMSn8BUvEwJHPz5e" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+       <h3 style="margin: 0 0 10px;">Loss (December, 2017)</h3>
+      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">My first short music video!</p>
+      <p>Song by the belfry luna aka freeman713 (has since been deleted).</p>
+    </div>
+  </div>
+
+  <!-- Divider and Films Section -->
+  <hr style="margin: 40px 0;">
+  <div class="films-banner" style="text-align: center; padding: 20px;">
+    <h2>Films I've been in</h2>
+  </div>
+  <div class="films-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <div class="film" style="flex: 1 1 45%; max-width: 45%;">
+      <h3 style="margin: 0 0 10px;">What's a nice girl like you doing in a college like this? by Kevin Artemio Menez (2023)</h3>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/jwOuenl7ubI?si=1tqFwAaXlISvAnt7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I love this film!</p>
+    </div>
+    <div class="film" style="flex: 1 1 45%; max-width: 45%;">
+      <h3 style="margin: 0 0 10px;">Companion by Jacqueline Wong (2023)</h3>
+      <iframe src="https://www.youtube.com/embed/bvA_GBx53o8?si=1WQeomlEeMRah_GT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I was casted last minute, like the day before, Lol. I'm not an actor, by the way.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+      <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
+  </div>
+
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script>
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    // Toggle the display between 'flex' and 'none'
+    if (navMenu.style.display === 'flex') {
+      navMenu.style.display = 'none';
+    } else {
+      navMenu.style.display = 'flex';
+      navMenu.style.flexDirection = 'column';
+    }
+  });
+</script>
+</body>
+</html>
