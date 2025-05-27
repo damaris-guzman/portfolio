@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newmaris</title>
+    <title>New Media Experiments (tangible and/or spatial)</title>
     <style>
         /* Import DepartureMono font */
         @font-face {
@@ -33,6 +33,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative; /* Added to position nav-menu correctly */
         }
 
         .header h1 {
@@ -47,6 +48,41 @@
             font-size: 2rem;
             display: inline-block;
             letter-spacing: 5px;
+        }
+
+        .hamburger {
+            cursor: pointer;
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+        }
+
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background-color: #cf77a4;
+            width: 200px;
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .nav-menu a {
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background-color: #e47d9b;
         }
 
         .tabs {
@@ -74,96 +110,20 @@
             gap: 40px;
         }
 
-        .left, .right {
-            width: 50%;
+        .left {
+            width: 35%;
         }
 
-        .gallery-item {
-            background: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            width: 100%;
-            height: auto;
-        }
-
-        .gallery-item video, .gallery-item iframe, .gallery-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            background: #000;
-            display: block;
-        }
-
-        .gallery-item img {
-            width: 100%; /* Ensures the image takes up the full width of its container */
-            max-width: 300px; /* Sets a maximum width for the images */
-            height: auto; /* Maintains the aspect ratio */
-            object-fit: cover; /* Ensures the image fills the container without distortion */
-            display: block;
-            margin: 0 auto; /* Centers the image horizontally */
-        }
-
-        .gallery-description {
-            margin-top: 10px;
-            font-size: 1rem;
-            color: #444;
-        }
-
-        .footer {
-            background-color: #ffbcd0;
-            color: white;
-            text-align: center;
-            padding: 10px;
+        .title {
+            font-size: 2rem;
             font-weight: bold;
-            margin-top: auto;
+            color: #333;
         }
 
-        .arrow-button {
-            background-color: #cf77a4;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 10px;
-        }
-
-        .heart-button {
-            background-color: #ff8fb2;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .hidden {
-            display: none;
+        .description {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #555;
         }
 
         .expandable-box {
@@ -187,37 +147,391 @@
             font-size: 0.9rem;
             color: #666;
         }
+
+        .tag-banner {
+            background-color: #cf77a4;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .right {
+            width: 65%;
+            display: flex;
+            flex-direction: row; /* Keep row to place items side by side */
+            flex-wrap: wrap; /* Allow wrapping to the next line */
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            width: 300px; /* Set width to match the iframe */
+            height: auto; /* Dynamically adjust height based on content */
+        }
+
+        .gallery-item iframe {
+            width: 100%; /* Ensure iframe takes full width of the gallery item */
+            height: 150px; /* Adjust the height as needed */
+            border-radius: 5px;
+            background: #000;
+            display: block;
+        }
+
+        .gallery-description {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #444;
+            text-align: left; /* Align text to the left */
+        }
+
+        .footer {
+            background-color: #ffbcd0;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            margin-top: auto;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align buttons to the left */
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-family: 'DepartureMono', monospace;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Digital Fabrication: Blue/Green */
+        .button.sims {
+            background: linear-gradient(45deg, #1e90ff, #32cd32);
+        }
+
+        /* Circuit Programming: Purple/Yellow */
+        .button.interactive-panel {
+            background: linear-gradient(45deg, #800080, #ffff00);
+        }
+
+        /* 360 Video: Orange/Yellow */
+        .button.full-video {
+            background: linear-gradient(45deg, #ff7f50, #ffff66);
+        }
+
+        /* Studio Visits: Rainbow */
+        .button.studio-visits {
+            background: linear-gradient(45deg, #ff69b4, #ffffff);
+        }
+
+        .button:hover {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .research-box {
+            background: linear-gradient(45deg, #ff8fb2, #cf77a4, #ffbcd0);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .research-box:hover {
+            background: linear-gradient(45deg, #ffbcd0, #cf77a4, #ff8fb2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design for Mobile Devices */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column; /* Stack content vertically */
+            }
+
+            .content {
+                flex-direction: column; /* Stack left and right sections */
+                padding: 20px; /* Reduce padding for smaller screens */
+                gap: 20px;
+            }
+
+            .left, .right {
+                width: 100%; /* Make both sections take full width */
+            }
+
+            .gallery-item {
+                width: 100%; /* Make gallery items take full width */
+                margin-bottom: 20px; /* Add spacing between items */
+            }
+
+            .gallery-item iframe {
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            .header h1 a {
+                font-size: 1.5rem; /* Reduce font size for smaller screens */
+            }
+
+            .tabs {
+                flex-direction: column; /* Stack tabs vertically */
+                gap: 10px; /* Reduce gap between tabs */
+            }
+
+            .buttons {
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 10px; /* Reduce gap between buttons */
+            }
+
+            .button {
+                width: 100%; /* Make buttons take full width */
+                text-align: center;
+            }
+
+            .footer {
+                font-size: 0.9rem; /* Reduce footer font size */
+            }
+        }
+
+        .gallery-viewer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .arrow-button {
+            background-color: #cf77a4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+        }
+
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background-color: #cf77a4;
+            width: 200px;
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .nav-menu a {
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background-color: #e47d9b;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+
+        .hamburger {
+            display: flex; /* Always show hamburger menu */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background-color: #cf77a4;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background-color: #e47d9b;
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                display: none; /* Hide tabs on mobile */
+            }
+
+            .hamburger {
+                display: flex; /* Show hamburger menu on mobile */
+            }
+
+            .nav-menu {
+                display: flex; /* Show nav menu on mobile */
+            }
+        }
+
+        .gallery-box {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .carousel {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        .carousel img {
+            width: 250px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .scroll-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+
+        .studio-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .studio-gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .studio-gallery-item img {
+            width: 100%;
+            border-radius: 5px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="tabs">
-        <a href="https://damaris-guzman.github.io/damarisguzman.github.io/newmaris.html">New Media</a>
-        <a href="https://damaris-guzman.github.io/damarisguzman.github.io/video.html">Video Editing</a>
-    </div>
     <h1><a href="/about">New Media</a></h1>
-    <div class="tabs">
-        <a href="https://damaris-guzman.github.io/damarisguzman.github.io/3danimation.html">3D Animation</a>
-        <a href="https://damaris-guzman.github.io/damarisguzman.github.io/archive.html">Archive</a>
+    <button class="hamburger">&#9776;</button>
+    <div class="nav-menu">
+        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+        <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
+        <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+                <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+
     </div>
 </div>
 
 <div class="content">
-    <!-- Left Side (Video Frame) -->
+    <!-- Left Side (Title and Text) -->
     <div class="left">
-        <h2>New Media Experiments</h2>
-        <div class="gallery-item">
-            <iframe src="https://www.youtube.com/embed/BCxLCVuKP-s" 
-                width="300" height="300" allowfullscreen>
+        <div class="title">New Media Experiments</div>
+        <div class="description">Tangible and/or spatial experiences</div>
+        <!-- Buttons -->
+        <div class="buttons">
+            <button class="button sims" onclick="showGallery('sims')">Metal Fabrication</button>
+            <button class="button interactive-panel" onclick="showGallery('interactive-panel')">Circuit Programming</button>
+            <button class="button full-video" onclick="showGallery('full-video')">360 Video</button>
+            <button class="button studio-visits" onclick="showGallery('studio')">Studio Visits</button>
+        </div>
+    </div>  <!-- End of left side -->
+
+    <!-- Right Side (Gallery) -->
+    <div class="right hidden" id="sims-gallery">
+        <div class="gallery-box" id="metal-box" style="background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 5px; max-height: 400px; overflow-y: auto;">
+            <!-- Title and initial description -->
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">Metal Casted Locket</h2>
+            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">Prototype for a locket to be shown in Stephanie Dinkin's exhibition at the San Jose Institute of Contemporary Art for Fall, 2025. </p>
+            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">This pendant is modeled after the cross-section of an okra pod; a nod to seed-bearing vessels and personal memory. </p>
+            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">A scalloped brass shell frames a glass inset that reveals the pod’s interior geometry: ten walnut-hued “seeds” (micro 3-D prints) encircle a faceted emerald core. Hinge it open and the seeds sit flush against the viewer, transforming a common vegetable slice into a miniature reliquary that stores growth, nourishment, and hidden value close to the heart.</p>
+            
+            <!-- Image Carousel with larger images -->
+            <div class="lock-carousel" style="position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <button class="arrow-button" style="position: absolute; left: 0;" onclick="prevLockImage()">&#8249;</button>
+                <img id="lockCarouselImage" src="https://damarisguzman.neocities.org/lock1.jpg" alt="Lock Prototype" style="width: 250px; border-radius: 5px;">
+                <button class="arrow-button" style="position: absolute; right: 0;" onclick="nextLockImage()">&#8250;</button>
+            </div>
+            
+            <!-- Secondary description -->
+            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">The above images show experimental lock designs. Below are additional prototypes with further details.</p>
+            
+            <!-- Two images with description below each, aligned to bottom -->
+            <div class="prints" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end;">
+              <div class="print-item" style="flex: 1; min-width: 200px; text-align: center;">
+                <img src="https://damarisguzman.neocities.org/prints.JPG" alt="Limited Edition Prints" style="width: 100%; max-width: 300px; border-radius: 5px;">
+                <p style="font-size: 0.9rem; color: #555;">3D printed prototypes.</p>
+              </div>
+              <div class="print-item" style="flex: 1; min-width: 200px; text-align: center;">
+                <img src="https://damarisguzman.neocities.org/okra%20render.png" alt="Okra Render Prototype" style="width: 100%; max-width: 300px; border-radius: 5px;">
+                <p style="font-size: 0.9rem; color: #555;">Okra render prototype.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Placeholder for Interactive Panel -->
+    <div class="right hidden" id="interactive-panel-gallery">
+        <div class="gallery-item" style="width: 600px;"> <!-- Adjusted width -->
+            <iframe src="https://drive.google.com/file/d/19aAT2gDHZDQ2U3jYgfXAyVNBM_InhG4s/preview" 
+                width="600" height="500" allowfullscreen> <!-- Adjusted width and increased height -->
             </iframe>
             <div class="gallery-description">
+                <p><strong>Interactive Control Panel</strong></p>
+                <p> *This is a prototype. The final version may look drastically different.* </p>
+                <p>The control panel is a laser cut console filled with recycled toy buttons, arcade switches, dials, a joystick, and an Arduino LCD display. This is a prototype, so the final version will likely have fewer buttons. Most inputs are just for show; only a couple actually do anything. Each of them alter the video slightly by changing color hues, adding blur, glitching clips, etc. By allowing participant to discover which buttons work, the panel shows how technology can promise total control while giving almost none. Conceptually it sits beside algorithm driven platforms that mimic choice while quietly steering results to serve the platform’s own goals, not the user’s. </div>
+                    <p> In this case, you're serving mine. (◕ᴗ◕✿)</p> 
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder for Video -->
+    <div class="right hidden" id="full-video-gallery">
+        <div class="gallery-item" style="width: 600px;">
+            <iframe src="https://www.youtube.com/embed/BCxLCVuKP-s" width="600" height="400" allowfullscreen></iframe>
+            <div class="gallery-description">
                 <p><strong>Reborn (05/24) 360 video (Draft Project)</strong></p>
-                <p>Reborn invites you to reflect on how complex digital ecologies intertwine with the psyche, prompting deeper introspection into the delicate interplay between freedom + constraint, perception + transformation, in an ever-evolving fusion of the physical + virtual realms
-                </p>
-                <div class="expandable-box" onclick="toggleExpand('materials-text')">
+                <p>Reborn invites you to reflect on how complex digital ecologies intertwine with the psyche, prompting deeper introspection into the delicate interplay between freedom + constraint, perception + transformation, in an ever-evolving fusion of the physical + virtual realms.</p>
+                <div class="expandable-box" onclick="toggleExpand('materials-text-360')">
                     Materials ▼
-                    <div class="hidden-text" id="materials-text">
+                    <div class="hidden-text" id="materials-text-360">
                         <ul style="list-style-type: none; padding-left: 0;">
                             <li>★ Shot with a Insta360 camera.</li>
                             <li>★ Edited in Premiere.</li>
@@ -229,76 +543,118 @@
             </div>
         </div>
     </div>
+    
 
-    <!-- Right Side (Image Frame) -->
-    <div class="right">
-        <h2>Interviews + Studio Visits</h2>
-        <div class="gallery-item">
-            <img src="snibbe.png" alt="Placeholder Image 1">
-            <div class="gallery-description">
-                <p><strong>Studio visit with Scott Snibbe (November, 2024)</strong></p>
-                <p>One of the highlights of my life. We had an enlightening conversation regarding his recent project Hidden Geometries!</p>
-            </div>
-        </div>
-        <div style="display: flex; justify-content: center; align-items: center;">
-            <button class="arrow-button" onclick="prevFrame()">&#9664;</button>
-            <button class="heart-button">&#10084;</button>
-            <button class="arrow-button" onclick="nextFrame()">&#9654;</button>
-        </div>
-    </div>
-</div>
+
+
+
 
 <div class="footer">
     <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
 </div>
 
 <script>
-    let currentFrame = 0;
-    const frames = [
-        {
-            imgSrc: "images/snibbe.png",
-            imgTitle: "Studio visit with Scott Snibbe (November, 2024)",
-            imgDesc: "One of the highlights of my life. We had an enlightening conversation regarding his recent project Hidden Geometries!"
-        },
-        {
-            imgSrc: "images/Tamiko.jpg",
-            imgTitle: "Studio Visit with Tamiko Thiel (October, 2024)",
-            imgDesc: "During my first semester at SJSU, I had the honor of presenting my work to Tamiko Thiel for feedback!"
-        },
-        {
-            imgSrc: "images/gpt-me3 (1).jpg",
-            imgTitle: "Interview with Avital Meshi (April, 2024)",
-            imgDesc: "A fascinating deep dive into AI, identity, and performance with Avital Meshi! In this interview, we discuss her latest projects, including GPT Me and AI Seance, and how she navigates the intersection of technology and embodiment. From exploring AI’s biases through performance to experimenting with wearable GPT devices, Meshi’s work challenges how we perceive ourselves in the digital age."
-        }
-    ];
-
-    function nextFrame() {
-        currentFrame = (currentFrame + 1) % frames.length;
-        updateFrame();
-    }
-
-    function prevFrame() {
-        currentFrame = (currentFrame - 1 + frames.length) % frames.length;
-        updateFrame();
-    }
-
-    function updateFrame() {
-        const frame = frames[currentFrame];
-        document.querySelector('.right .gallery-item img').src = frame.imgSrc;
-        document.querySelector('.right .gallery-description').innerHTML = `
-            <p><strong>${frame.imgTitle}</strong></p>
-            <p>${frame.imgDesc}</p>
-        `;
-    }
-
-    // Initialize the first frame
-    updateFrame();
-
     function toggleExpand(id) {
         var text = document.getElementById(id);
         text.style.display = text.style.display === "block" ? "none" : "block";
     }
-</script>
 
+    function showGallery(galleryId) {
+        document.getElementById('sims-gallery').classList.add('hidden');
+        document.getElementById('interactive-panel-gallery').classList.add('hidden');
+        document.getElementById('full-video-gallery').classList.add('hidden');
+        document.getElementById(galleryId + '-gallery').classList.remove('hidden');
+    }
+
+    const galleryImages = [
+        "story1.png", // First image
+        "story2.png"  // Second image
+    ];
+    let currentGalleryIndex = 0;
+
+    function updateGalleryViewerImage() {
+        document.getElementById("gallery-viewer-image").src = galleryImages[currentGalleryIndex];
+        document.getElementById("gallery-fullscreen-image").src = galleryImages[currentGalleryIndex];
+    }
+
+    function prevGalleryImage() {
+        currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateGalleryViewerImage();
+    }
+
+    function nextGalleryImage() {
+        currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+        updateGalleryViewerImage();
+    }
+
+    function openGalleryFullscreen() {
+        document.getElementById("gallery-fullscreen-overlay").style.display = "flex";
+        document.getElementById("gallery-fullscreen-image").src = galleryImages[currentGalleryIndex];
+    }
+
+    function closeGalleryFullscreen() {
+        document.getElementById("gallery-fullscreen-overlay").style.display = "none";
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', function() {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    });
+
+    function scrollDownBox() {
+        const box = document.getElementById("metal-box");
+        // Scroll down by 100px; you can adjust this value
+        box.scrollTop += 100;
+    }
+
+    // Lock image carousel functionality
+    const lockImages = [
+        "https://damarisguzman.neocities.org/lock1.jpg",
+        "https://damarisguzman.neocities.org/lock2.jpg",
+        "https://damarisguzman.neocities.org/lock3.jpg"
+    ];
+    let currentLockIndex = 0;
+    
+    function updateLockCarouselImage() {
+        document.getElementById("lockCarouselImage").src = lockImages[currentLockIndex];
+    }
+
+    function prevLockImage() {
+        currentLockIndex = (currentLockIndex - 1 + lockImages.length) % lockImages.length;
+        updateLockCarouselImage();
+    }
+
+    function nextLockImage() {
+        currentLockIndex = (currentLockIndex + 1) % lockImages.length;
+        updateLockCarouselImage();
+    }
+
+    // Studio image carousel functionality
+    const studioImages = [
+        "studio1.jpg",
+        "studio2.jpg",
+        "studio3.jpg",
+        "studio4.jpg"
+    ];
+    let currentStudioIndex = 0;
+    
+    function updateStudioCarouselImage() {
+        document.getElementById("studioCarouselImage").src = studioImages[currentStudioIndex];
+    }
+
+    function prevStudioImage() {
+        currentStudioIndex = (currentStudioIndex - 1 + studioImages.length) % studioImages.length;
+        updateStudioCarouselImage();
+    }
+
+    function nextStudioImage() {
+        currentStudioIndex = (currentStudioIndex + 1) % studioImages.length;
+        updateStudioCarouselImage();
+    }
+</script>t>
 </body>
-</html>
+
+</html></html>
