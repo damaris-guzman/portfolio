@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;  /* Prevents horizontal scroll */
+    }
+    .header {
+      background-color: #cf77a4;
+      color: white;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .header h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header h1 a {
+      color: white;
+      text-decoration: none;
+      font-size: 2rem;
+      display: inline-block;
+      letter-spacing: 5px;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+    }
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      background-color: #ffbcd0;
+      border: 2px solid #b94a7b;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 5px;
+      gap: 10px;
+      z-index: 100;
+    }
+    .nav-menu a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover {
+      background-color: #ff8fb2;
+    }
+
+    /* Additional styles for the content */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F9F9F9;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #F5F5F5;
+      padding: 20px;
+      border: 1px solid #DDD;
+      border-radius: 5px;
+    }
+
+    .profile {
+      width: 500px;
+      background-color: #F5F5F5;
+      padding: 20px;
+      border: 1px solid #DDD;
+      border-radius: 5px;
+      margin-left: 20px;
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .profile-info {
+      margin-bottom: 20px;
+    }
+
+    .profile-info h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      color: #777;
+    }
+
+    .profile-description {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .profile-tags {
+      margin-top: 10px;
+    }
+
+    .profile-tags span {
+      display: inline-block;
+      padding: 3px 10px;
+      margin-top: 5px;
+      background-color: #DDD;
+      color: #555;
+      margin-right: 5px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .image-gallery img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-image {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 5px;
+    }
+
+    .custom-fields {
+      margin-top: 20px;
+    }
+
+    .custom-field {
+      background-color: #EEE;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .custom-field h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .custom-field p {
+      margin: 5px 0;
+      color: #777;
+      display: none;
+    }
+
+    .divider {
+      position: relative;
+      padding: 5px;
+    }
+
+    .divider::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      border-top: 2px solid #DDD;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .footer {
+      box-sizing: border-box;
+      display: block;
+      width: 100%; /* Full width */
+      background-color: #ffbcd0;
+      color: white;
+      text-align: center;
+      padding: 20px; /* Match header's padding */
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .sidebar {
+        width: 90%;
+        margin-bottom: 20px;
+      }
+      .profile {
+        width: 90%;
+        margin-left: 0;
+        margin-top: 20px; /* extra spacing between sidebar and profile */
+      }
+    }
+  </style>
+  <script>
+    function toggleCustomField(fieldId) {
+      var fieldContent = document.getElementById(fieldId);
+      var isDisplayed = getComputedStyle(fieldContent).display === 'block';
+
+      fieldContent.style.display = isDisplayed ? 'none' : 'block';
+    }
+
+    function openLightbox(imageUrl) {
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImage = document.getElementById('lightbox-image');
+
+      lightboxImage.src = imageUrl;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      var lightbox = document.getElementById('lightbox');
+
+      lightbox.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
+      hamburger.addEventListener('click', function() {
+          navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="header">
+      <h1><a href="/about">About Me ★~(◠‿◕✿)</a></h1>
+      <button class="hamburger">&#9776;</button>
+      <div class="nav-menu">
+          <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+          <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
+          <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+          <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+          <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+          <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+          <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+          <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+        <div class="profile-image" style="background-image: url('https://damarisguzman.neocities.org/About/IMG_6527.png');"></div>
+        <h2>Damaris Guzman</h2>
+
+        <!-- Custom Fields -->
+        <div class="custom-fields">
+            <div class="custom-field" onclick="toggleCustomField('custom-field-1-content')">
+                <h3>SJSU MFA Digital Media</h3>
+                <p id="custom-field-1-content">2nd Semester</p>
+            </div>
+            <div class="custom-field" onclick="toggleCustomField('custom-field-2-content')">
+                <h3>UCSC Film & Digital Media</h3>
+                <p id="custom-field-2-content">GPA: 3.5 - 2024</p>
+            </div>
+        </div>
+
+        <!-- Profile Tags -->
+        <div class="profile-tags">
+            <span>Original Character</span>
+            <span>Based</span>
+            <span>Loved</span>
+            <span>Connected</span>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons" style="display: flex; justify-content: flex-start; gap: 20px; margin: 20px 0;">
+            <a href="https://instagram.com/grill0101" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" style="width: 40px; height: 40px;">
+            </a>
+            <a href="https://www.linkedin.com/in/damaris-guzman-0101/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" style="width: 40px; height: 40px;">
+            </a>
+        </div>
+    </div>
+
+    <div class="profile">
+        <div class="banner-image">
+
+        </div>
+        <div class="profile-description">
+            <h2></h2>
+            <p>Hi, it's so nice to connect with you. ٩(◕‿◕｡)۶ </p>
+            <p>I'm a digital media artist pursuing my MFA in Digital Media Art at San Jose State University. My 3D animations and layered videos distort reality with immersive textures and high-energy, fast-paced edits to visualize the dopamine hits and instant gratification of social media and consumer culture. When I shift into a slower pace, I create meditative experiences that straddle the line between the biological (reminiscent of cells or tissues) and the synthetic, suggestive of polished chrome or silicone. These entrancing compositions invite prolonged viewing to appreciate subtle shifts in color and glimmering highlights, while remaining simultaneously sensual and slightly uncanny, evoking the sensation of peering into a viscous biological mass or a surreal, alien landscape.</p> 
+            <p>Overall, my work centers around identity, perception, technological embodiment, and posthuman existence in an age of rapid technological consumption.</p>
+
+<p>My main practice is video art, where I create immersive, multi-sensory narratives.</p> 
+    <p>Currently, I'm transitioning to designing digitally fabricated and programmed interactive experiences, as well as audio-visuals for VJing.</p> 
+    <p>Every day I see my dream, so I invite you to see it too. </p>
+        </div>
+
+        <div class="divider"></div>
+        <div class="image-gallery">
+            <img src="https://damarisguzman.neocities.org/KIRI%20DANCE.gif" onclick="openLightbox('wow.jpg')">
+            <img src="https://damarisguzman.neocities.org/Portfolio/gra.JPG" onclick="openLightbox('wow.jpg')">
+        </div>
+    </div>
+</div>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-image" class="lightbox-image" src="">
+</div>
+
+<div class="footer">
+    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
+</div>
+
+</body>
+</html>
