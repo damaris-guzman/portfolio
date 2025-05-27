@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Editing</title>
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;  /* Added to remove left/right scroll */
+    }
+    .header {
+      background-color: #cf77a4;
+      color: white;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .header h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header h1 a {
+      color: white;
+      text-decoration: none;
+      font-size: 2rem;
+      display: inline-block;
+      letter-spacing: 5px;
+    }
+    .tabs {
+      display: flex;
+      gap: 15px;
+    }
+    .tabs a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px 20px;
+      background-color: #ff8fb2;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .tabs a:hover {
+      background-color: #e47d9b;
+    }
+    /* Secondary Section: Out of Sync & Blissful Consumption */
+    .secondary-section {
+      padding: 20px;
+    }
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .video-item {
+      background-color: #ffffff;
+      border: 2px solid #cf77a4;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .video-item .video-player {
+      width: 100%;
+      height: 315px;
+      overflow: hidden;
+    }
+    .video-item iframe,
+    .video-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+      object-fit: cover;
+    }
+    .video-item .text-box {
+      padding: 15px;
+      background-color: #ffe7ee;
+      color: #333;
+      font-size: 14px;
+      text-align: left;
+    }
+    .video-item .text-box h3 {
+      margin: 0 0 5px 0;
+      font-size: 18px;
+      color: #cf77a4;
+    }
+    .video-item .text-box p {
+      margin: 0;
+      line-height: 1.5;
+    }
+    /* Cute Tab with Animated Text Block */
+    .cute-tab {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: 50px; /* Same height as your header/footer */
+      line-height: 50px; /* Vertically center the text */
+      margin: 20px 0;
+      background: linear-gradient(45deg, #ff8fb2, #cf77a4, #ffbcd0);
+      background-size: 300% 300%;
+      color: white;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      animation: gradientMove 5s ease infinite;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .cute-tab:hover {
+      opacity: 0.8;
+    }
+    /* Animated Text Block inside the box */
+    .animated-text {
+      position: relative;
+      height: 50px; /* Match the parent height */
+      overflow: hidden;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .animated-text span {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+    }
+    /* First message (Sequence Editor) is visible at first */
+    .animated-text span:first-child {
+      animation: fadeFirst 16s infinite;
+    }
+    /* Second message starts invisible and then fades in */
+    .animated-text span:nth-child(2) {
+      animation: fadeSecond 16s infinite;
+    }
+    @keyframes fadeFirst {
+      0%, 35% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes fadeSecond {
+      0%, 50% { opacity: 0; }
+      65%, 100% { opacity: 1; }
+    }
+    /* Main Grid: YouTube Music Videos */
+    .main-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      flex: 1;
+    }
+    .footer {
+      display: flex;               /* Use flex to align content like the header */
+      justify-content: center;     /* Center the text */
+      align-items: center;         /* Vertically center the content */
+      width: 100%;                 /* Full width */
+      background-color: #ffbcd0;
+      color: white;
+      padding: 20px;              
+      min-height: 70px;          
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+    /* Instagram Videos Section */
+    .instagram-videos-section {
+      padding: 20px;
+      display: grid;
+      /* Lowered the minimum column width to 250px */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .music-video {
+      margin-bottom: 20px;
+    }
+    /* Optionally, if the inline styles on the blockquotes/images are causing issues,
+       you might want to remove or override conflicting styles */
+    .instagram-media img {
+      object-fit: contain;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .video-item .video-player {
+        height: 215px;
+      }
+      .video-item .text-box {
+        font-size: 13px;
+      }
+    }
+    /* Override the default height for Instagram video players */
+    .instagram-videos-section .video-item .video-player {
+      height: 700px; /* Increase this value as needed to show the entire frame */
+    }
+    /* New scroll box style */
+    .scroll-box {
+      max-height: 150px; /* Adjust height as needed */
+      overflow-y: auto;
+    }
+  .header {
+            position: relative;
+            /* ...existing header styles... */
+        }
+        .hamburger {
+            cursor: pointer;
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+        }
+        .nav-menu {
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background-color: #ffbcd0;  /* New color instead of previous pink */
+            border: 2px solid #b94a7b;  /* Added border */
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 5px;
+            gap: 10px;
+            z-index: 100; 
+        }
+        .nav-menu a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .nav-menu a:hover {
+            background-color: #ff8fb2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <!-- Left-side tabs or logo could remain if needed -->
+    <h1><a href="/about">Video Editing</a></h1>
+    <!-- Hamburger icon -->
+    <button class="hamburger">&#9776;</button>
+    <!-- Updated Pop-up Navigation Menu -->
+    <div class="nav-menu">
+        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+        <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
+        <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+                <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+
+    </div>
+</div>
+
+<!-- Secondary Section: Out of Sync & Blissful Consumption -->
+<div class="secondary-section">
+  <div class="secondary-grid">
+    <!-- "Out of Sync" Video -->
+    <div class="video-item">
+      <div class="video-player">
+        <iframe src="https://www.youtube.com/embed/Kd1HZfeYpHU?si=NCSW6MOoLon67hqL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="text-box scroll-box">
+        <h3>Out of Sync - February 2024</h3>
+        <p>Out of Sync is a found footage project exploring the human mind's relationship with technology and chaos. Through a mix of my own 3D animations, free vectors, and early web footage, it portrays the overwhelming nature of modern life. A moment of silence leads to a reconnecting with nature, symbolizing presence amidst chaos. </p>
+        <p>The project reflects on technology's impact on the psyche, urging viewers to embrace the serenity of the present moment.</p>
+      </div>
+    </div>
+  
+    <!-- "Blissful Consumption - March 2024" Video -->
+    <div class="video-item">
+      <div class="video-player">
+        <iframe src="https://www.youtube.com/embed/bWhJl0zmoeg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="text-box">
+        <h3>Blissful Consumption - March 2024</h3>
+        <p>A prototype for an augmented reality concept.</p>
+      </div>
+    </div>
+  
+    <!-- "Blissful Consumption - June 2024" GIF -->
+    <div class="video-item">
+      <div class="video-player">
+        <iframe src="https://www.youtube.com/embed/tL_ZGEeQwTc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="text-box">
+        <h3>Blissful Consumption - June 2024</h3>
+        <p>Another snippet from the same conceptualized project</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instagram Videos Section: Now using the same .video-item style -->
+<div class="instagram-videos-section" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+  <!-- Instagram Music Video 1 -->
+  <div class="video-item">
+    <div class="video-player">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Cewbv-tgaB7/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow: 0 1px 10px rgba(0,0,0,0.15); margin: 1px; padding:0; width:100%; height:100%;">
+        <div style="padding:16px;">
+          <a href="https://www.instagram.com/reel/Cewbv-tgaB7/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+            <div style="display:block; width:100%; height:auto;">
+              <img src="https://via.placeholder.com/300x600" style="width:100%; height:auto; object-fit:contain;" alt="Instagram Video Thumbnail">
+            </div>
+          </a>
+          <p style="color:#c9c8cd; font-family:Arial, sans-serif; font-size:14px; line-height:17px;" target="_blank">
+            A post shared by damaris 🦎🃏🎲🎱🔋 (@grill0101)
+          </p>
+        </div>
+      </blockquote>
+      <script async src="//www.instagram.com/embed.js"></script>
+    </div>
+    <div class="text-box">
+      <h3>"Cry" - Donatachi (2022)</h3>
+      <p>This video was filmed and edited entirely by me. It includes 3D models and animations by me. The only visuals not produced by me are Nyan cat and the bunny from Mario 64.</p>
+    </div>
+  </div>
+
+  <!-- Instagram Music Video 2 -->
+  <div class="video-item">
+    <div class="video-player">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/CesEN_ogjj1/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow: 0 1px 10px rgba(0,0,0,0.15); margin: 1px; padding:0; width:100%; height:100%;">
+        <div style="padding:16px;">
+          <a href="https://www.instagram.com/reel/CesEN_ogjj1/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+            <div style="display:block; width:100%; height:auto;">
+              <img src="https://via.placeholder.com/300x600" style="width:100%; height:auto; object-fit:contain;" alt="Instagram Video Thumbnail">
+            </div>
+          </a>
+          <p style="color:#c9c8cd; font-family:Arial, sans-serif; font-size:14px; line-height:17px;" target="_blank">
+            A post shared by damaris 🦎🃏🎲🎱🔋 (@grill0101)
+          </p>
+        </div>
+      </blockquote>
+      <script async src="//www.instagram.com/embed.js"></script>
+    </div>
+    <div class="text-box">
+      <h3>"December" - Romance Planet (2022)</h3>
+      <p>Filmed and edited entirely by me. I produced all of the 3D models and animations. The brain environment is a 3D replica I made of the brain scene from Spongebob.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Animated Text Block: Service with a Smile -->
+<a href="https://www.facebook.com/watch/?v=348288673250107" class="cute-tab">
+  <div class="animated-text">
+    <span>Sequence Editor for Service with a Smile (2021)</span>
+    <span>Best Short film at the 2019 United Latino International Film Festival</span>
+  </div>
+</a>
+
+<!-- Main Video Grid: YouTube Music Videos -->
+<div class="main-content">
+  <!-- "In My Head" Video -->
+  <div class="video-item">
+    <div class="video-player">
+      <iframe src="https://www.youtube.com/embed/NtzbDERG8-A?si=wKdou27TGEEWPauo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="text-box">
+      <h3>"In My Head" - Kabwasa (2020)</h3>
+      <p>I independently edited the music video, taking charge of the entire editing process and designing the interface elements featured in the video. I was given significant creative freedom to reflect a chaotic brain immersed in internet culture, video games, and nostalgia.</p>
+    </div>
+  </div>
+  
+  <!-- "i prefer pixels over atoms!" Video -->
+  <div class="video-item">
+    <div class="video-player">
+      <iframe src="https://www.youtube.com/embed/IUVzuDCRGxM?si=NqF4m9RT9swvx5Y-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="text-box">
+      <h3>i prefer pixels over atoms! (2019)</h3>
+      <p>Exploring the preference for digital life over tangible reality, this short film marks my early creative journey.</p>
+    </div>
+  </div>
+  
+  <!-- "Worker's Truth" Video -->
+  <div class="video-item">
+    <div class="video-player">
+      <iframe src="https://www.youtube.com/embed/MRMR3J_ebvY?si=WKzwi8Rk9tb7AfLg&amp;start=97" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="text-box">
+      <h3>"Worker's Truth" - Kabwasa (2018)</h3>
+      <p>I edited and produced the visual effects for the hologram in this music video (1:37-1:45).</p>
+    </div>
+  </div>
+  <div class="footer">
+      <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
+  </div>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', function() {
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+});
+</script>
+</html>
