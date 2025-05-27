@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Animation</title>
+    <style>
+        /* Import DepartureMono font */
+        @font-face {
+            font-family: 'DepartureMono';
+            src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Apply font to the whole page */
+        body {
+            font-family: 'DepartureMono', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #cf77a4;
+            color: white;
+            padding: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .header h1 {
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .header h1 a {
+            color: white;
+            text-decoration: none;
+            font-size: 2rem;
+            display: inline-block;
+            letter-spacing: 5px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 30px;
+        }
+
+        .tabs a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 20px;
+            background-color: #ff8fb2;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tabs a:hover {
+            background-color: #e47d9b;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .video-flex {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .left-video, .right-video {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            height: auto;
+            text-align: center;
+        }
+
+        .left-video iframe, .right-video iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            background: #000;
+        }
+
+        .gradient-banner {
+            background: linear-gradient(90deg, rgba(255, 0, 150, 0.5), rgba(0, 204, 255, 0.5));
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: #ffbcd0; 
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .extra-videos {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .extra-video-left {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .extra-video-left iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            background: #000;
+        }
+
+        .extra-video-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .vertical-video {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .vertical-video iframe {
+            width: 100%;
+            height: 600px;
+            border-radius: 5px;
+            background: #000;
+        }
+
+        .instagram-videos-section {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .video-item {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .video-player {
+            position: relative;
+            width: 100%;
+            padding-top: 177%; /* 16:9 Aspect Ratio */
+        }
+
+        .video-player blockquote {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .video-player blockquote a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-player blockquote img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .vertical-video blockquote.instagram-media {
+            width: calc(100% - 100px) !important; 
+            height: calc(((100% - 100px) * 9) / 16) !important;
+        }
+
+        /* Carousel styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            width: calc((250px * 3) + (10px * 2)); /* 3 items plus 2 gaps */
+            margin: 0 auto;
+        }
+        .video-carousel {
+            display: flex;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+            width: 250px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 10px;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+        }
+        .left-arrow {
+            left: 10px;
+        }
+        .right-arrow {
+            right: 10px;
+        }
+        .carousel-arrow img {
+            width: 100%;
+            height: 100%;
+            /* For the right arrow, flip the image horizontally */
+        }
+        .right-arrow img {
+            transform: scaleX(-1);
+        }
+
+        /* New header pop-up menu styles */
+        .header {
+            position: relative;
+            /* ...existing header styles... */
+        }
+        .hamburger {
+            cursor: pointer;
+            font-size: 2rem;
+            color: white;
+            background: none;
+            border: none;
+        }
+        .nav-menu {
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background-color: #ffbcd0;  /* New color instead of previous pink */
+            border: 2px solid #b94a7b;  /* Added border */
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 5px;
+            gap: 10px;
+            z-index: 100; 
+        }
+        .nav-menu a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .nav-menu a:hover {
+            background-color: #ff8fb2;
+        }
+
+        @media (max-width: 768px) {
+    .video-flex {
+        flex-direction: column;
+    }
+    .left-video,
+    .right-video {
+        width: 100%;
+    }
+    .extra-videos {
+        flex-direction: column;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <!-- Left-side tabs or logo could remain if needed -->
+    <h1><a href="/about">3D Animation</a></h1>
+    <!-- Hamburger icon -->
+    <button class="hamburger">&#9776;</button>
+    <!-- Updated Pop-up Navigation Menu -->
+    <div class="nav-menu">
+        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+        <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
+        <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+                <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="video-flex">
+        <div class="left-video">
+            <iframe src="https://www.youtube.com/embed/rEuKtwoRwp0?si=4-apWbm5fG3SN9G9" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen></iframe>
+            <p><strong>One (August 2024)</strong></p>
+            <p>Bubblegum dreamlike surrealism, straddling the line b/w the biological (reminiscent of cells or tissues) + the synthetic (suggestive of polished chrome or silicone). 
+               An entrancing, immersive, and meditative composition that invites prolonged viewing to appreciate its subtle shifts in color + glimmering highlights. Modeled and animated in Blender, edited with After Effects.</p>
+            </p>
+            <a href="https://www.instagram.com/p/C_eLYgfyAg_/?img_index=6" target="_blank">
+                <div class="gradient-banner">
+                    Displayed at the Black Box Gallery in the group show "Glow" at SJSU (August 2024)
+                </div>
+            </a>
+        </div>
+        <div class="right-video">
+            <iframe src="https://www.youtube.com/embed/YTrjgIrTJyM?si=_KRGl4qkNZh5-cbC" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen></iframe>
+            <p><strong>Circuit Co (August, 2024)</strong></p>
+            <p>The bright neon highlights, the deep-blue backdrop, and the swirling distortions create a sense of high-tech immersion, as if the viewer is peering into a living digital matrix.</p>
+        <p>3D modeled circuit board using Blender.</p> 
+<p>Lights animated to flow through the circuit.</p>
+<p>Edited in After Effects using displacements.</p>
+<p>Green “0's = distorted motion graphics. </p>
+
+        <p>Song: Melonball Bounce (Sprite) [Instrumental] by Raymond Scott
+                    </div>
+    </div> <!-- end of existing video-flex -->
+
+    <div class="extra-videos">
+        <div class="extra-video-left">
+            <iframe src="https://www.youtube.com/embed/UfstGvHrZ0s?si=GNMQ2siatJe48P8v" 
+                title="Extra Left Video" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen></iframe>
+            <p><strong>Liquid Memory (January 2022)</strong></p>
+            <p>Soft shades of purple and blue roll together like slow-moving clouds while a shimmering rainbow fish weaves through the scene, tapping into childhood nostalgia. Psychedelic bursts ripple across a shiny, almost metallic surface, building quick coral-like patterns that melt back into the flow.</p>
+            <p>The piece was originally created as a dream-state sequence for a short film that never got finished, and it still feels like a fragment of that unreal story. </p>
+        </div>
+        <div class="extra-video-right">
+            <div class="vertical-video">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CJCvoohp2kr/" data-instgrm-version="14" style="background:#FFF; border:0; margin:1px; width:100%;"></blockquote>
+                <script async defer src="//www.instagram.com/embed.js"></script>
+                <p><strong>Variety of renders (December, 2020)</strong></p>
+                <p>Variety of styles too.</p>
+            </div>
+        </div>
+    </div> <!-- end of extra-videos -->
+
+    
+    <script>
+        // New carousel navigation using transform
+        let currentIndex = 0;
+        const carousel = document.querySelector('.video-carousel');
+        const totalItems = carousel.querySelectorAll('.carousel-item').length;
+        const visibleCount = 3;
+        const itemWidth = 250; // must match .carousel-item width
+        const gap = 10; // matches the CSS gap on .video-carousel
+
+        document.querySelector('.right-arrow').addEventListener('click', () => {
+            if (currentIndex < totalItems - visibleCount) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        document.querySelector('.left-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * (itemWidth + gap)}px)`;
+        }
+    </script>
+
+    <!-- Instagram Videos Section -->
+<div class="instagram-videos" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;">
+    <div style="flex: 0 1 250px;">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CLx_hNFJCdi/" data-instgrm-version="14" style="background:#FFF; border:0; width:100%;"></blockquote>
+    </div>
+    <div style="flex: 0 1 250px;">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CeSY1sbgnmS/" data-instgrm-version="14" style="background:#FFF; border:0; width:100%;"></blockquote>
+    </div>
+    <div style="flex: 0 1 250px;">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CKfXLUnJBmD/" data-instgrm-version="14" style="background:#FFF; border:0; width:100%;"></blockquote>
+    </div>
+    <div style="flex: 0 1 250px;">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CKYHDu2pplI/" data-instgrm-version="14" style="background:#FFF; border:0; width:100%;"></blockquote>
+    </div>
+    <div style="flex: 0 1 250px;">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/CMAtO76piWh/" data-instgrm-version="14" style="background:#FFF; border:0; width:100%;"></blockquote>
+    </div>
+    <!-- Replaced last Instagram block with YouTube Short embed -->
+    <div style="flex: 0 1 250px;">
+        <iframe src="https://www.youtube.com/embed/zacD-T2o0o8?si=BTRyAPWNl3nUITjo" 
+            title="YouTube Short" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen 
+            style="background:#FFF; border:0; width:100%; height:100%;"></iframe>
+    </div>
+    <script async defer src="//www.instagram.com/embed.js"></script>
+</div> <!-- end of content -->
+
+<div class="footer">
+        <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', function() {
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+});
+</script>
+</body>
+</html>
