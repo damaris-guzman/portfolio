@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Editing</title>
+  <title>Archiveヽ(•‿•)ノ</title>
   <style>
     @font-face {
       font-family: 'DepartureMono';
@@ -60,29 +60,170 @@
     .tabs a:hover {
       background-color: #e47d9b;
     }
-    /* Additional style for YouTube Shorts container */
-    .shorts-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+    /* Secondary Section: Out of Sync & Blissful Consumption */
+    .secondary-section {
       padding: 20px;
     }
-    .shorts-container iframe {
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .video-item {
+      background-color: #ffffff;
+      border: 2px solid #cf77a4;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .video-item .video-player {
       width: 100%;
-      /* Use vertical (9:16) aspect ratio for videos */
-      aspect-ratio: 9 / 16;
-      height: auto;
+      height: 315px;
+      overflow: hidden;
+    }
+    .video-item iframe,
+    .video-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
       border: none;
+      object-fit: cover;
     }
-    /* Instagram embed style */
-    .instagram-container blockquote.instagram-media {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      border: 0;
+    .video-item .text-box {
+      padding: 15px;
+      background-color: #ffe7ee;
+      color: #333;
+      font-size: 14px;
+      text-align: left;
+    }
+    .video-item .text-box h3 {
+      margin: 0 0 5px 0;
+      font-size: 18px;
+      color: #cf77a4;
+    }
+    .video-item .text-box p {
       margin: 0;
-      padding: 0;
+      line-height: 1.5;
     }
-    /* Existing header navigation */
+    /* Cute Tab with Animated Text Block */
+    .cute-tab {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: 50px; /* Same height as your header/footer */
+      line-height: 50px; /* Vertically center the text */
+      margin: 20px 0;
+      background: linear-gradient(45deg, #ff8fb2, #cf77a4, #ffbcd0);
+      background-size: 300% 300%;
+      color: white;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+      animation: gradientMove 5s ease infinite;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .cute-tab:hover {
+      opacity: 0.8;
+    }
+    /* Animated Text Block inside the box */
+    .animated-text {
+      position: relative;
+      height: 50px; /* Match the parent height */
+      overflow: hidden;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .animated-text span {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+    }
+    /* First message (Sequence Editor) is visible at first */
+    .animated-text span:first-child {
+      animation: fadeFirst 16s infinite;
+    }
+    /* Second message starts invisible and then fades in */
+    .animated-text span:nth-child(2) {
+      animation: fadeSecond 16s infinite;
+    }
+    @keyframes fadeFirst {
+      0%, 35% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes fadeSecond {
+      0%, 50% { opacity: 0; }
+      65%, 100% { opacity: 1; }
+    }
+    /* Main Grid: YouTube Music Videos */
+    .main-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      flex: 1;
+    }
+    .footer {
+      box-sizing: border-box;
+      display: block;
+      width: 100%; /* Full width */
+      background-color: #ffbcd0;
+      color: white;
+      text-align: center;
+      padding: 20px; /* Match header's padding */
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+    /* Instagram Videos Section */
+    .instagram-videos-section {
+      padding: 20px;
+      display: grid;
+      /* Lowered the minimum column width to 250px */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .music-video {
+      margin-bottom: 20px;
+    }
+    /* Optionally, if the inline styles on the blockquotes/images are causing issues,
+       you might want to remove or override conflicting styles */
+    .instagram-media img {
+      object-fit: contain;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .video-item .video-player {
+        height: 215px;
+      }
+      .video-item .text-box {
+        font-size: 13px;
+      }
+    }
+    /* Override the default height for Instagram video players */
+    .instagram-videos-section .video-item .video-player {
+      height: 700px; /* Increase this value as needed to show the entire frame */
+    }
+    /* New scroll box style */
+    .scroll-box {
+      max-height: 150px; /* Adjust height as needed */
+      overflow-y: auto;
+    }
+  .header {
+      position: relative;
+      /* ...existing header styles... */
+    }
     .hamburger {
       cursor: pointer;
       font-size: 2rem;
@@ -95,7 +236,7 @@
       top: 100%;
       right: 20px;
       background-color: #ffbcd0;  /* New color instead of previous pink */
-      border: 2px solid #b94a7b;
+      border: 2px solid #b94a7b;  /* Added border */
       display: none;
       flex-direction: column;
       padding: 10px;
@@ -112,129 +253,418 @@
     .nav-menu a:hover {
       background-color: #ff8fb2;
     }
-    /* ...other existing styles... */
-    .footer {
-      box-sizing: border-box;
-      display: block;
-      width: 100%; 
-      background-color: #ffbcd0;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-top: auto;
+    /* Glossy Social Media Buttons */
+    .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 15px;
     }
-
-    @media only screen and (max-width: 600px) {
-      .shorts-container {
-        grid-template-columns: 1fr !important;
-      }
-      .instagram-additional-container {
-        grid-template-columns: 1fr !important;
-      }
-      .youtube-additional-container {
-        grid-template-columns: 1fr !important;
-      }
-      .films-container {
-        flex-direction: column;
-        align-items: center;
-      }
+    .social-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
     }
-  </style>
+    .social-button:hover {
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        box-shadow: 3px 3px 6px #bebebe, -3px -3px 6px #ffffff;
+    }
+    /* Container for YouTube Shorts: Centering videos with flex */
+    .shorts-container {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 0 50px;
+    }
+    /* Short Videos: Adjust dimensions for YouTube Shorts (9:16 ratio) */
+    .shorts-container iframe {
+        width: 240px;
+        height: 426.67px;
+    }
+    /* Divider styling */
+    .divider {
+        text-align: center;
+        font-family: monospace;
+        margin: 40px 0;
+        white-space: pre;
+    }
+    </style>
 </head>
 <body>
 
-  <div class="header">
-    <h1><a href="/about">Archive</a></h1>
+<div class="header">
+    <!-- Left-side tabs or logo could remain if needed -->
+    <h1><a href="/about">Archive ヽ(•‿•)ノ</a></h1>
+    <!-- Hamburger icon -->
     <button class="hamburger">&#9776;</button>
+    <!-- Updated Pop-up Navigation Menu -->
     <div class="nav-menu">
-      <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-      <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
-      <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
-      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-      <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
-      <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-      <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
-      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+        <a href="https://damaris-guzman.github.io/portfolio/about.html"><span class="icon">&#128100;</span> About me</a>
+        <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+<a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+        
     </div>
+</div>
+<!-- Glossy Social Media Buttons -->
+<div class="social-buttons">
+    <a href="https://instagram.com/grill0101" class="social-button">@grill0101</a>
+    <a href="https://instagram.com/grilledarchive" class="social-button">@grilledarchive</a>
+    <a href="https://www.youtube.com/@grill0101" class="social-button">Youtube</a>
+    <a href="https://www.youtube.com/@maris-4-life" class="social-button">2nd Youtube</a>
+<a href="https://soundcloud.com/grill0101/" class="social-button">Soundcloud</a>
   </div>
+  <!-- Container for YouTube Shorts (first 4 videos) with carousel controls -->
+<div class="youtube-short-carousel" style="position: relative; overflow: hidden; padding: 20px;">
+  <!-- Left Arrow -->
+  <button class="shorts-prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+    &#8249;
+  </button>
   
-  <!-- Under Construction Banner -->
-  <div class="construction-banner" style="background-color: #ff8fb2; color: white; text-align: center; padding: 10px; font-size: 1rem;">
-    *This page is still under construction*
-  </div>
+  <!-- Carousel Container -->
+  <div class="shorts-container" style="display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; scroll-behavior: smooth; padding: 0 50px;">
+    <iframe src="https://www.youtube.com/embed/Im3vAVDW81Q?si=cF0fL7kMzO0XN8ey" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:240px; height:426.67px; flex-shrink: 0; border: none;"></iframe>
+    <iframe src="https://www.youtube.com/embed/_xjbQLyG6E4?si=rvu4wYcyzbvHeplK" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:240px; height:426.67px; flex-shrink: 0; border: none;"></iframe>
+    <iframe src="https://www.youtube.com/embed/jfn4SwRdVnM?si=Qau1VpuRTznAVcul" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:240px; height:426.67px; flex-shrink: 0; border: none;"></iframe>
+    <iframe src="https://www.youtube.com/embed/SQgMevzKtkY?si=0HlHomIYy-NAwJsY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:240px; height:426.67px; flex-shrink: 0; border: none;"></iframe>
+  <iframe src="https://www.youtube.com/embed/lnNRFO5YtS0?si=lV6AgMgoEbH_dkjt" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:240px; height:426.67px; flex-shrink: 0; border: none;"></iframe>
+  <iframe src="https://www.youtube.com/embed/O0iaen-tmrg?feature=share" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:240px; height:426.67px; flex-shrink: 0; border: none;"></iframe>
+  <iframe src="https://www.youtube.com/embed/rWvysaRs3-0?si=B2G5ac8dA_yNUT1B" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:240px; height:426.67px; flex-shrink: 0; border: none;"></iframe>  
+</div>
+  
+  <!-- Right Arrow -->
+  <button class="shorts-next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+    &#8250;
+  </button>
+</div>
 
-  <!-- Container for YouTube Shorts (first 4 videos) -->
-  <div class="shorts-container">
-    <iframe src="https://www.youtube.com/embed/Im3vAVDW81Q?si=cF0fL7kMzO0XN8ey" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/_xjbQLyG6E4?si=rvu4wYcyzbvHeplK" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/jfn4SwRdVnM?si=Qau1VpuRTznAVcul" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/SQgMevzKtkY?si=0HlHomIYy-NAwJsY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-
-
-  <!-- New container for additional Instagram reels -->
-  <div class="instagram-additional-container shorts-container" style="grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px;">
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BsbWJ87HRq6/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/B2M0uPsFI9d/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/B0y27njn_WJ/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BmewpxugJKR/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Bp0YCxQn5Zg/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BdMG4VnA7fJ/" data-instgrm-version="14" style="width:100%; aspect-ratio: 9/16; border:0; margin:0; padding:0;"></blockquote>
-  </div>
-
-  <!-- New container for YouTube videos with descriptions -->
-  <div class="youtube-additional-container shorts-container" style="grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px;">
-    <div class="youtube-video">
-      <iframe src="https://www.youtube.com/embed/uC8WVVVqTak?si=9H4ukeAceO6TyTOW" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
-       <h3 style="margin: 0 0 10px;">Shapes - Visual Music (January, 2019)</h3>
-      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">Inspired by Norman McLaren's "Dots", I animated a short visual-music piece of my own.</p>
-      <p>Song by Crapface x Zen (has since been deleted)</p>
+<script>
+  // Shorts Carousel controls
+  const shortsContainer = document.querySelector('.shorts-container');
+  document.querySelector('.shorts-prev').addEventListener('click', () => {
+    shortsContainer.scrollBy({ left: -250, behavior: 'smooth' });
+  });
+  document.querySelector('.shorts-next').addEventListener('click', () => {
+    shortsContainer.scrollBy({ left: 250, behavior: 'smooth' });
+  });
+</script>
+    
+    <!-- Header for Films Section -->
+    <h2 style="text-align: center; margin: 40px 0 10px;">Films I've been in</h2>
+    
+    <div class="films-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px;">
+      <div class="film" style="flex: 1 1 45%; max-width: 45%; background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px;">
+        <h3 style="margin: 0 0 10px;">What's a nice girl like you doing in a college like this? by Kevin Artemio Menez (2023)</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/jwOuenl7ubI?si=1tqFwAaXlISvAnt7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+        <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I love this film!</p>
+      </div>
+      <div class="film" style="flex: 1 1 45%; max-width: 45%; background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px;">
+        <h3 style="margin: 0 0 10px;">Companion by Jacqueline Wong (2023)</h3>
+        <iframe src="https://www.youtube.com/embed/bvA_GBx53o8?si=1WQeomlEeMRah_GT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+        <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I was casted last minute, like the day before, Lol. I'm not an actor, by the way.</p>
+      </div>
     </div>
-    <div class="youtube-video">
-      <iframe src="https://www.youtube.com/embed/UpMNBgfSmjk?si=OMSn8BUvEwJHPz5e" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
-       <h3 style="margin: 0 0 10px;">Loss (December, 2017)</h3>
-      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">My first short music video!</p>
-      <p>Song by the belfry luna aka freeman713 (has since been deleted).</p>
+    
+    <!-- Header for Instagram Videos Gallery -->
+    <h2 style="text-align: center; margin: 40px 0 10px;">Video Art Moments (2019-2017)</h2>
+    
+    <!-- Instagram Videos Gallery with Carousel -->
+    <div class="instagram-carousel" style="position: relative; overflow: hidden; padding: 20px;">
+      <!-- Left Arrow -->
+      <button class="carousel-prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+        &#8249;
+      </button>
+      <!-- Carousel Container -->
+      <div class="instagram-additional-container" style="display: flex; gap: 10px; overflow-x: auto; scroll-behavior: smooth; padding: 0 50px;">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BsbWJ87HRq6/?hidecaption=true" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/B2M0uPsFI9d/?hidecaption=true" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/B0y27njn_WJ/?hidecaption=true" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BmewpxugJKR/?hidecaption=true" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Bp0YCxQn5Zg/?hidecaption=true" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/BdMG4VnA7fJ/?hidecaption=true" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/BzBXVwvAjJt/" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>      
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/BT0JQ6hjGNQ/" data-instgrm-version="14" style="min-width: 180px; height: 350px; border: 0; margin: 0; padding: 0;"></blockquote>
+      </div>
+      <!-- Right Arrow -->
+      <button class="carousel-next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+        &#8250;
+      </button>
     </div>
-  </div>
+    
+    <!-- Header for Net Art Collages Section -->
+    <h2 style="text-align: center; margin: 40px 0 10px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+  Net Art Collages (2020-2016)
+  <a href="https://www.hypezine.org/post/an-interview-with-damaris-tries" target="_blank" style="display: inline-block; background: linear-gradient(145deg, #ff66a5, #ff85c1); padding: 10px 20px; border-radius: 25px; color: white; text-decoration: none; box-shadow: 5px 5px 10px rgba(0,0,0,0.2);">
+    2019 Interview - Hype Zine
+  </a>
+</h2>
+    
+    <div class="netart-carousel" style="position: relative; overflow: hidden; padding: 20px;">
+      <!-- Left Arrow -->
+      <button class="netart-prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+        &#8249;
+      </button>
+      <!-- Carousel Container -->
+      <div class="netart-additional-container" style="display: flex; gap: 10px; overflow-x: auto; scroll-behavior: smooth; padding: 0 50px;">
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7644.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/sitting%20here.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/geckomaris.png" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7646.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7645.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7648.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7649.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7650.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7651.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7652.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7653.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7641.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7635.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7627.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7654.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7623.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7628.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7637.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7625.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <!-- Additional Net Art Collage Items -->
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7655.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7638.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+             <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7624.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+          <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7626.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+          <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7639.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7620.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7616.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7618.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7612.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7613.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7615.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7611.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="netart-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/edits/IMG_7610.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+      </div>
+      <!-- Right Arrow -->
+      <button class="netart-next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+        &#8250;
+      </button>
+    </div>
+       
+    <!-- Header for YouTube Shorts Section -->
+    <h2 style="text-align: center; margin: 40px 0 10px;">Shorts I've made</h2>
+    
+    <!-- Container for Additional YouTube Videos (Shorts) -->
+    <div class="youtube-additional-container shorts-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px;">
+      <div class="youtube-video" style="background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px;">
+        <iframe src="https://www.youtube.com/embed/uC8WVVVqTak?si=9H4ukeAceO6TyTOW" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+         <h3 style="margin: 10px 0 0;">Shapes - Visual Music (January, 2019)</h3>
+        <p style="margin: 10px 0 0;">Inspired by Norman McLaren's "Dots", I animated a short visual-music piece of my own.</p>
+        <p style="margin: 10px 0 0;">Song by Crapface x Zen (has since been deleted)</p>
+      </div>
+      <div class="youtube-video" style="background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px;">
+        <iframe src="https://www.youtube.com/embed/UpMNBgfSmjk?si=OMSn8BUvEwJHPz5e" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
+         <h3 style="margin: 10px 0 0;">Loss (December, 2017)</h3>
+        <p style="margin: 10px 0 0;">My first short music video! We only had about an hour to film this, but it turned out okay.</p>
+        <p style="margin: 10px 0 0;">Song by the belfry luna aka freeman713 (has since been deleted)</p>
+      </div>
+    </div>
+    <!-- Header for Fit pics Section -->
+    <h2 style="text-align: center; margin: 40px 0 10px;">Extra Maris Swag</h2>
+    
+    <div class="fitpics-carousel" style="position: relative; overflow: hidden; padding: 20px;">
+      <!-- Left Arrow -->
+      <button class="fitpics-prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+        &#8249;
+      </button>
+      <!-- Carousel Container -->
+      <div class="fitpics-additional-container" style="display: flex; gap: 10px; overflow-x: auto; scroll-behavior: smooth; padding: 0 50px;">
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/IMG_7551.JPG" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/IMG_7606.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/398134287_643477674653848_3403730545440165503_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/398093754_6478597525596457_9140583203493394930_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/the%20good%20in%20my%20life%20is%20a%20reflection%20of%20urs%20%23normal%20%23catchingup.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/400200128_361935339610923_1941037166916452414_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/398292750_328435376575150_520951022972906440_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/399563615_3217926135182213_3467218329987670484_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <!-- Existing item -->
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/398626910_1458812097996115_85843479703029117_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <!-- New image inserted right after the previous one -->
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/399320588_2293597430830062_4224131107766592527_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/1st%20look.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/421794159_391407996764217_2825284014167176066_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/394624290_344611414649767_920546759329257576_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/394958151_1380040052630919_963490806911249648_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+        <div class="fitpics-item" style="min-width: 250px; height: 250px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;">
+          <img src="https://damarisguzman.neocities.org/fits/404590913_863015228616917_1176703942144602362_n.jpg" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+      </div>
+      <!-- Right Arrow -->
+      <button class="fitpics-next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer;">
+        &#8250;
+      </button>
+    </div>
+    
+    <!-- Modal Overlay for Full-Scale Image -->
+<div id="image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 2000;">
+  <img id="modal-img" src="" style="max-width: 90%; max-height: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+</div>
 
-  <!-- Divider and Films Section -->
-  <hr style="margin: 40px 0;">
-  <div class="films-banner" style="text-align: center; padding: 20px;">
-    <h2>Films I've been in</h2>
-  </div>
-  <div class="films-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-    <div class="film" style="flex: 1 1 45%; max-width: 45%;">
-      <h3 style="margin: 0 0 10px;">What's a nice girl like you doing in a college like this? by Kevin Artemio Menez (2023)</h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/jwOuenl7ubI?si=1tqFwAaXlISvAnt7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
-      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I love this film!</p>
-    </div>
-    <div class="film" style="flex: 1 1 45%; max-width: 45%;">
-      <h3 style="margin: 0 0 10px;">Companion by Jacqueline Wong (2023)</h3>
-      <iframe src="https://www.youtube.com/embed/bvA_GBx53o8?si=1WQeomlEeMRah_GT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
-      <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I was casted last minute, like the day before, Lol. I'm not an actor, by the way.</p>
-    </div>
-  </div>
+<script>
+  // Select modal elements
+  const imageModal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('modal-img');
 
-  <div class="footer">
+  // Add click event to all images within netart-item
+  document.querySelectorAll('.netart-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      modalImg.src = img.src;
+      imageModal.style.display = 'flex';
+    });
+  });
+
+  // Close the modal when clicking outside the image
+  imageModal.addEventListener('click', (event) => {
+    if (event.target === imageModal) {
+      imageModal.style.display = 'none';
+    }
+  });
+</script>
+    
+    <div class="footer">
       <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
-  </div>
+    </div>
 
-  <script async src="//www.instagram.com/embed.js"></script>
-  <script>
+    <script async defer src="//www.instagram.com/embed.js"></script>
+    <script>
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
 
   hamburger.addEventListener('click', () => {
-    // Toggle the display between 'flex' and 'none'
     if (navMenu.style.display === 'flex') {
       navMenu.style.display = 'none';
     } else {
       navMenu.style.display = 'flex';
-      navMenu.style.flexDirection = 'column';
+      navMenu.style.flexDirection = 'column'; // ensure correct layout
     }
+  });
+
+  // Net Art Collages Carousel controls
+  const netartContainer = document.querySelector('.netart-additional-container');
+  document.querySelector('.netart-prev').addEventListener('click', () => {
+    netartContainer.scrollBy({ left: -250, behavior: 'smooth' });
+  });
+  document.querySelector('.netart-next').addEventListener('click', () => {
+    netartContainer.scrollBy({ left: 250, behavior: 'smooth' });
+  });
+  
+  // Fit pics Carousel controls
+  const fitpicsContainer = document.querySelector('.fitpics-additional-container');
+  document.querySelector('.fitpics-prev').addEventListener('click', () => {
+    fitpicsContainer.scrollBy({ left: -250, behavior: 'smooth' });
+  });
+  document.querySelector('.fitpics-next').addEventListener('click', () => {
+    fitpicsContainer.scrollBy({ left: 250, behavior: 'smooth' });
   });
 </script>
 </body>
