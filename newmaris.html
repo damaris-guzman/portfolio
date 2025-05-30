@@ -161,8 +161,7 @@
         .right {
             width: 65%;
             display: flex;
-            flex-direction: row; /* Keep row to place items side by side */
-            flex-wrap: wrap; /* Allow wrapping to the next line */
+            flex-wrap: wrap;
             gap: 20px;
         }
 
@@ -310,6 +309,10 @@
             .footer {
                 font-size: 0.9rem; /* Reduce footer font size */
             }
+
+            .studio-gallery-grid {
+                grid-template-columns: 1fr !important;
+            }
         }
 
         .gallery-viewer {
@@ -394,6 +397,14 @@
             .nav-menu {
                 display: flex; /* Show nav menu on mobile */
             }
+
+            #full-video-gallery .gallery-item {
+        width: 100% !important;
+    }
+    #full-video-gallery .gallery-item iframe {
+        width: 100% !important;
+        height: auto;
+    }
         }
 
         .gallery-box {
@@ -459,9 +470,13 @@
 
     </div>
 </div>
+  <!-- Under Construction Banner -->
+  <div class="construction-banner" style="background-color: #ff8fb2; color: white; text-align: center; padding: 10px; font-size: 1rem;">
+    *This page is still under construction*
+  </div>
 
 <div class="content">
-    <!-- Left Side (Title and Text) -->
+    <!-- Left Side (Title, Text, & Buttons) -->
     <div class="left">
         <div class="title">New Media Experiments</div>
         <div class="description">Tangible and/or spatial experiences</div>
@@ -474,80 +489,115 @@
         </div>
     </div>  <!-- End of left side -->
 
-    <!-- Right Side (Gallery) -->
-    <div class="right hidden" id="sims-gallery">
-        <div class="gallery-box" id="metal-box" style="background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 5px; max-height: 400px; overflow-y: auto;">
-            <!-- Title and initial description -->
-            <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">Metal Casted Locket</h2>
-            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">Prototype for a locket to be shown in Stephanie Dinkin's exhibition at the San Jose Institute of Contemporary Art for Fall, 2025. </p>
-            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">This pendant is modeled after the cross-section of an okra pod; a nod to seed-bearing vessels and personal memory. </p>
-            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">A scalloped brass shell frames a glass inset that reveals the pod’s interior geometry: ten walnut-hued “seeds” (micro 3-D prints) encircle a faceted emerald core. Hinge it open and the seeds sit flush against the viewer, transforming a common vegetable slice into a miniature reliquary that stores growth, nourishment, and hidden value close to the heart.</p>
-            
-            <!-- Image Carousel with larger images -->
-            <div class="lock-carousel" style="position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                <button class="arrow-button" style="position: absolute; left: 0;" onclick="prevLockImage()">&#8249;</button>
-                <img id="lockCarouselImage" src="https://damarisguzman.neocities.org/lock1.jpg" alt="Lock Prototype" style="width: 250px; border-radius: 5px;">
-                <button class="arrow-button" style="position: absolute; right: 0;" onclick="nextLockImage()">&#8250;</button>
-            </div>
-            
-            <!-- Secondary description -->
-            <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">The above images show experimental lock designs. Below are additional prototypes with further details.</p>
-            
-            <!-- Two images with description below each, aligned to bottom -->
-            <div class="prints" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end;">
-              <div class="print-item" style="flex: 1; min-width: 200px; text-align: center;">
-                <img src="https://damarisguzman.neocities.org/prints.JPG" alt="Limited Edition Prints" style="width: 100%; max-width: 300px; border-radius: 5px;">
-                <p style="font-size: 0.9rem; color: #555;">3D printed prototypes.</p>
+    <!-- Right Side Container -->
+    <div class="right">
+        <!-- Sims Gallery -->
+        <div id="sims-gallery" class="gallery-container">
+            <div class="gallery-box" id="metal-box" style="background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 5px; max-height: 400px; overflow-y: auto;">
+                <!-- Title and initial description -->
+                <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">Metal Casted Locket</h2>
+                <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">Prototype for a locket to be shown in Stephanie Dinkin's exhibition at the San Jose Institute of Contemporary Art for Fall, 2025. </p>
+                <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">This pendant is modeled after the cross-section of an okra pod; a nod to seed-bearing vessels and personal memory. </p>
+                <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">A scalloped brass shell frames a glass inset that reveals the pod’s interior geometry: ten walnut-hued “seeds” (micro 3-D prints) encircle a faceted emerald core. Hinge it open and the seeds sit flush against the viewer, transforming a common vegetable slice into a miniature reliquary that stores growth, nourishment, and hidden value close to the heart.</p>
+                
+                <!-- Image Carousel with larger images -->
+                <div class="lock-carousel" style="position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                    <button class="arrow-button" style="position: absolute; left: 0;" onclick="prevLockImage()">&#8249;</button>
+                    <img id="lockCarouselImage" src="https://damarisguzman.neocities.org/lock1.jpg" alt="Lock Prototype" style="width: 250px; border-radius: 5px;">
+                    <button class="arrow-button" style="position: absolute; right: 0;" onclick="nextLockImage()">&#8250;</button>
+                </div>
+                
+                <!-- Secondary description -->
+                <p style="font-size: 1rem; margin-bottom: 20px; color: #555;">The above images show experimental lock designs. Below are additional prototypes with further details.</p>
+                
+                <!-- Two images with description below each, aligned to bottom -->
+                <div class="prints" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end;">
+                  <div class="print-item" style="flex: 1; min-width: 200px; text-align: center;">
+                    <img src="https://damarisguzman.neocities.org/prints.JPG" alt="Limited Edition Prints" style="width: 100%; max-width: 300px; border-radius: 5px;">
+                    <p style="font-size: 0.9rem; color: #555;">3D printed prototypes.</p>
+                  </div>
+                  <div class="print-item" style="flex: 1; min-width: 200px; text-align: center;">
+                    <img src="https://damarisguzman.neocities.org/okra%20render.png" alt="Okra Render Prototype" style="width: 100%; max-width: 300px; border-radius: 5px;">
+                    <p style="font-size: 0.9rem; color: #555;">Okra render prototype.</p>
+                  </div>
+                </div>
               </div>
-              <div class="print-item" style="flex: 1; min-width: 200px; text-align: center;">
-                <img src="https://damarisguzman.neocities.org/okra%20render.png" alt="Okra Render Prototype" style="width: 100%; max-width: 300px; border-radius: 5px;">
-                <p style="font-size: 0.9rem; color: #555;">Okra render prototype.</p>
-              </div>
             </div>
-          </div>
-        </div>
 
-    <!-- Placeholder for Interactive Panel -->
-    <div class="right hidden" id="interactive-panel-gallery">
-        <div class="gallery-item" style="width: 600px;"> <!-- Adjusted width -->
-            <iframe src="https://drive.google.com/file/d/19aAT2gDHZDQ2U3jYgfXAyVNBM_InhG4s/preview" 
-                width="600" height="500" allowfullscreen> <!-- Adjusted width and increased height -->
-            </iframe>
-            <div class="gallery-description">
-                <p><strong>Interactive Control Panel</strong></p>
-                <p> *This is a prototype. The final version may look drastically different.* </p>
-                <p>The control panel is a laser cut console filled with recycled toy buttons, arcade switches, dials, a joystick, and an Arduino LCD display. This is a prototype, so the final version will likely have fewer buttons. Most inputs are just for show; only a couple actually do anything. Each of them alter the video slightly by changing color hues, adding blur, glitching clips, etc. By allowing participant to discover which buttons work, the panel shows how technology can promise total control while giving almost none. Conceptually it sits beside algorithm driven platforms that mimic choice while quietly steering results to serve the platform’s own goals, not the user’s. </div>
-                    <p> In this case, you're serving mine. (◕ᴗ◕✿)</p> 
+        <!-- Interactive Panel Gallery -->
+        <div id="interactive-panel-gallery" class="gallery-container hidden">
+            <div class="gallery-item" style="width: 600px;"> <!-- Adjusted width -->
+                <iframe src="https://drive.google.com/file/d/19aAT2gDHZDQ2U3jYgfXAyVNBM_InhG4s/preview" 
+                    width="600" height="500" allowfullscreen> <!-- Adjusted width and increased height -->
+                </iframe>
+                <div class="gallery-description">
+                    <p><strong>Interactive Control Panel</strong></p>
+                    <p> *This is a prototype. The final version may look drastically different.* </p>
+                    <p>The control panel is a laser cut console filled with recycled toy buttons, arcade switches, dials, a joystick, and an Arduino LCD display. This is a prototype, so the final version will likely have fewer buttons. Most inputs are just for show; only a couple actually do anything. Each of them alter the video slightly by changing color hues, adding blur, glitching clips, etc. By allowing participant to discover which buttons work, the panel shows how technology can promise total control while giving almost none. Conceptually it sits beside algorithm driven platforms that mimic choice while quietly steering results to serve the platform’s own goals, not the user’s. </div>
+                        <p> In this case, you're serving mine. (◕ᴗ◕✿)</p> 
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Placeholder for Video -->
-    <div class="right hidden" id="full-video-gallery">
-        <div class="gallery-item" style="width: 600px;">
-            <iframe src="https://www.youtube.com/embed/BCxLCVuKP-s" width="600" height="400" allowfullscreen></iframe>
-            <div class="gallery-description">
-                <p><strong>Reborn (05/24) 360 video (Draft Project)</strong></p>
-                <p>Reborn invites you to reflect on how complex digital ecologies intertwine with the psyche, prompting deeper introspection into the delicate interplay between freedom + constraint, perception + transformation, in an ever-evolving fusion of the physical + virtual realms.</p>
-                <div class="expandable-box" onclick="toggleExpand('materials-text-360')">
-                    Materials ▼
-                    <div class="hidden-text" id="materials-text-360">
-                        <ul style="list-style-type: none; padding-left: 0;">
-                            <li>★ Shot with a Insta360 camera.</li>
-                            <li>★ Edited in Premiere.</li>
-                            <li>★ Intro produced with After Effects.</li>
-                            <li>★ Edited the soundscape using Protools.</li>
-                        </ul>
+      
+        <!-- Full Video Gallery -->
+        <div id="full-video-gallery" class="gallery-container hidden">
+            <div class="gallery-item" style="width: 600px;">
+                <iframe src="https://www.youtube.com/embed/BCxLCVuKP-s" width="600" height="400" allowfullscreen></iframe>
+                <div class="gallery-description">
+                    <p><strong>Reborn (05/24) 360 video (Draft Project)</strong></p>
+                    <p>Reborn invites you to reflect on how complex digital ecologies intertwine with the psyche, prompting deeper introspection into the delicate interplay between freedom + constraint, perception + transformation, in an ever-evolving fusion of the physical + virtual realms.</p>
+                    <div class="expandable-box" onclick="toggleExpand('materials-text-360')">
+                        Materials ▼
+                        <div class="hidden-text" id="materials-text-360">
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li>★ Shot with a Insta360 camera.</li>
+                                <li>★ Edited in Premiere.</li>
+                                <li>★ Intro produced with After Effects.</li>
+                                <li>★ Edited the soundscape using Protools.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+      
+        <!-- Studio Gallery (Now inside the right container) -->
+        <div id="studio-gallery" class="gallery-container hidden">
+            <div class="studio-gallery-grid">
+                                <div class="studio-gallery-item" style="border: 1px solid #ccc; background: #fff; border-radius: 5px; padding: 10px;">
+                    <h3>I visit the Artist:</h3>
+                    <h3>Studio visit with Scott Snibbe! (November, 2024)</h3>
+                    <img src="https://damarisguzman.neocities.org/Portfolio/snibbe.png" alt="Studio Three">
+                    <p>I was blessed with an opportunity to visit Scott Snibbe’s studio! He let me interact with a wall-sized touchscreen, where I swirled galaxies in Gravilux (2010) and trailed pixel-ants in Antograph (2010); a hands-on reminder that mindfulness can live inside code. Then he showed me his recent project "Hidden Geometries": low-res deity grids, thangka-ratio overlays, and layer after layer of mineral pigment mixed with heated animal glue.</p>
+                    <p>Snibbe was extremely friendly and even sent me off with a few gifts!</p>
+                    <p>Watch the short video below for more details.</p>
+                    <p>[This was a sped run presentation + I've since improved on my presentation skills]</p>
+                    <iframe src="https://drive.google.com/file/d/1aOkKbYG1T-alA_ZJ9vIXhpMHX2GrCek9/preview" allowfullscreen style="width: 100%; aspect-ratio: 16/9; border: none; margin-top: 10px;"></iframe>
+                </div>
+                <div class="studio-gallery-item" style="border: 1px solid #ccc; background: #fff; border-radius: 5px; padding: 10px;">
+                    <h3>An interview with Avital Meshi (April, 2023)</h3>
+                    <img src="https://damarisguzman.neocities.org/Portfolio/gpt-me_orig.jpg" alt="Studio Four" style="width: 85%;">
+                    <p>UC Davis performance-studies scholar Avital Meshi joins me on Zoom to unpack her AI-driven practice, such as wearing a GPT-powered device that speaks on her behalf. We discuss bias in facial-recognition systems, techno-feminism, balancing motherhood with art, and the physical limits of performance (yes, she really built an electric chair). An inspiring dive into post-human identity, experimentation, and ethical tech.</p>
+                    <a href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/avital-meshi?authuser=1" target="_blank" style="display:inline-block; margin-top:10px; padding:10px 20px; background: linear-gradient(45deg, #ff69b4, #ffffff); color: #333; text-decoration: none; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                        Click here to read the full interview!
+                    </a>
+                </div>
+                <div class="studio-gallery-item" style="border: 1px solid #ccc; background: #fff; border-radius: 5px; padding: 10px;">
+                    <h3>Artist Visits Me:</h3>
+                    <h3>Studio visit with Lilla LoCurto and Bill Outcault!</h3>
+                        <h3>(April, 2025)</h3>
+                    <p>The duo stopped by my studio for an impromptu look at the sprawling, multi-system piece you’ll find on the Current Projects page. Their frank critique (complete with several laughs) exposed just how tangled my explanation had become and challenged me to condense the concept into a crisp, elevator-length pitch. That nudge toward clarity sparked an immediate revised written summary and a streamlined storyboard.</p>
+                </div>
+                <div class="studio-gallery-item" style="border: 1px solid #ccc; background: #fff; border-radius: 5px; padding: 10px;">
+                    <h3>Artist Visits Me:</h3>
+                    <h3>Studio visit with Tamiko Thiel! (November, 2024)</h3>
+                    <p>Pioneering AR/VR artist Tamiko Thiel met with me (before I even had a formal studio) to unpack my early experiments in technological embodiment and real-time image generation. Drawing on her decades of spatial storytelling, she urged me to strip visuals to their essentials for accessibility, layer information so users aren’t overwhelmed, and test interactions on low-power devices first. Her guidance helped me understand a new level of storytelling thru AR.</p>
+                </div>
+
+            </div>
+        </div>
     </div>
-    
-
-
-
-
+</div>
 
 <div class="footer">
     <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
@@ -560,9 +610,8 @@
     }
 
     function showGallery(galleryId) {
-        document.getElementById('sims-gallery').classList.add('hidden');
-        document.getElementById('interactive-panel-gallery').classList.add('hidden');
-        document.getElementById('full-video-gallery').classList.add('hidden');
+        const galleries = ['sims', 'interactive-panel', 'full-video', 'studio'];
+        galleries.forEach(id => document.getElementById(id + '-gallery').classList.add('hidden'));
         document.getElementById(galleryId + '-gallery').classList.remove('hidden');
     }
 
@@ -656,5 +705,4 @@
     }
 </script>t>
 </body>
-
 </html></html>
