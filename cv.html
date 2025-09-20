@@ -6,16 +6,18 @@
   <title>CV - Damaris Guzman</title>
   <link rel="stylesheet" href="styles.css">
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
 
-    hamburger.addEventListener('click', () => {
-      if (navMenu.style.display === 'flex') {
-        navMenu.style.display = 'none';
-      } else {
-        navMenu.style.display = 'flex';
-        navMenu.style.flexDirection = 'column'; // ensure correct layout
-      }
+      hamburger.addEventListener('click', () => {
+        if (navMenu.style.display === 'flex') {
+          navMenu.style.display = 'none';
+        } else {
+          navMenu.style.display = 'flex';
+          navMenu.style.flexDirection = 'column'; // ensure correct layout
+        }
+      });
     });
   </script>
 </head>
@@ -32,7 +34,6 @@
           <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
           <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
           <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
-          <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
       </div>
   </div>
 
@@ -223,26 +224,70 @@
             <ul>
                 <li>Video Editing (After Effects, Premiere Pro)</li>
                 <li>3D Animation (Blender)</li>
-                <li>Digital Fabrication (3D printing / Laser cutting / CNC)</li>
                 <li>Higher Education Teaching</li>
+                <li>Digital Fabrication (3D printing / Laser cutting / CNC)</li>
                 <li>Interactive Media Design (Touch Designer, p5.js)</li>
                 <li>Web Design (HTML, CSS)</li>
-                <li>Experimental Video Production</li>
+                <li>Cinematography + Videography</li>
+                <li>Photography (Studio + Outdoor, Portrait, Event)</li>
+                <li>Boom Operation</li>
+                <li>Sound Editing</li>
+                <li>Content Creation & Social Media Management</li>
             </ul>
         </div>
 
-        <div class="cv-section">
-            <h2>Artistic Focus</h2>
-            <p>My work explores the blurred boundaries between identity, agency, and community in our hyperconnected age. I create digital worlds that oscillate between the hyperactive and the meditative, examining how digital design can subtly shape behavior and perception.</p>
-            
-            <p>Influenced by posthumanist thought, I see technology as an extension of the body: a merging of biology and code that challenges our understanding of embodiment. My visual experiments serve as both personal reflections and broader social commentaries.</p>
-        </div>
+         <div class="cv-section">
+             <h2>Artistic Focus</h2>
+             <div class="artistic-focus-container">
+                 <p>Hi, it's so nice to connect with you. ٩(◕‿◕｡)۶ </p>
+                 <br>
+                 <p>I create digital worlds that oscillate between the hyperactive and the meditative, asking what happens to identity and agency when pixels start to pulse like living tissue. As an MFA candidate and Teaching Associate at San José State University, I move across experimental video, 3D animation, digital fabrication, and Arduino-driven interfaces, threading them together into immersive, multi-sensory narratives.</p>
+                 <br>
+                 <p>I'm captivated by how digital media goes beyond mere entertainment, actively
+reconfiguring how we think, feel, and connect. My work explores the blurred boundaries between
+identity, agency, and community in our hyperconnected age. Using Blender and After Effects, I
+produce looped narratives that merge 3D animation with real-world footage, mirroring social
+media's addictive feedback loops and examining how digital design can subtly shape behavior
+and perception.</p>
+                 <br>
+                 <p>Influenced by posthumanist thought, I see technology as an extension of the body: a
+merging of biology and code that challenges our understanding of embodiment. These visual
+experiments serve as both personal reflections and broader social commentaries, questioning
+whether we're steering technology or being steered, and whether our identities are truly ours or
+shaped by infinite feedback loops. I'm drawn to glossy, surreal aesthetics, often inspired by PC
+Music visual artists such as Timothy Luke, Daniel Swan, and Team Rolfes. Their visionary work
+blurs authenticity and artifice, reflecting my interest in the uneasy boundary between synthetic
+and organic forms.</p>
+                 <br>
+                 <p>As my practice evolves, I've begun incorporating physical elements that coincide with my
+digital visuals, including custom, digitally fabricated and circuit-based interactivity.
+These additions introduce a tactile layer that bridges the virtual and physical realms.</p>
+                 <br>
+                 <p>Despite the rush and sensory overload in many of my projects, I'm also invested in
+encouraging quiet introspection. I create meditative simulations as a counterpoint to the frenetic
+energy, slowing viewers down and encouraging them to drift into a more contemplative
+headspace. By balancing these two extremes (fast-paced, hyper-synthetic-reality versus a serene,
+dreamlike interlude) I reflect on how our external digital lives (scrolling, liking, posting)
+intertwine with our internal emotional states (yearning, comparing, questioning). In my view,
+self-expression meets external observation in the ways technology mediates everything we see,
+feel, and share.</p>
+                 <br>
+                 <p>Ultimately, I strive to create resonant moments of awareness by building spaces that unify
+mind and body, digital and physical, in a shared journey of reflection and discovery. My hope is
+that people leave feeling both energized and unsettled, questioning their own habits and
+assumptions, and perhaps reclaiming a bit of agency in the process.</p>
+                 <br>
+                 <p>Overall, my work centers around identity, perception, technological embodiment, and posthuman existence in an age of rapid technological consumption.</p>
+                 <br>
+                 <p>Every day I see my dream, so I invite you to see it too. ★~(◠‿◕✿)</p>
+             </div>
+         </div>
 
         <div class="cv-section">
             <h2>Contact</h2>
             <p><strong>Email:</strong> damaris.guzman@sjsu.edu</p>
-            <p><strong>Instagram:</strong> @grill0101</p>
-            <p><strong>LinkedIn:</strong> linkedin.com/in/damaris-guzman-0101/</p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/grill0101" target="_blank">@grill0101</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/damaris-guzman-0101/" target="_blank">linkedin.com/in/damaris-guzman-0101/</a></p>
         </div>
     </div>
 </div>
