@@ -109,6 +109,7 @@
             display: flex;
             padding: 40px;
             gap: 40px;
+            flex: 1; /* allow content to grow so footer sits at document bottom */
         }
 
         .left {
@@ -185,6 +186,13 @@
             display: block;
         }
 
+        /* Make the net-art (b8) gallery scrollable so long descriptions/iframe content can be scrolled */
+        #b8-gallery .gallery-item {
+            max-height: 520px;
+            overflow-y: auto;
+            padding-right: 12px; /* room for scrollbar */
+        }
+
         .gallery-description {
             margin-top: 10px;
             font-size: 1rem;
@@ -196,9 +204,9 @@
             background-color: #ffbcd0;
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 12px 20px;
             font-weight: bold;
-            margin-top: auto;
+            width: 100%; /* full-bleed footer */
         }
 
         .buttons {
@@ -243,6 +251,30 @@
 
         .button:hover {
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* GIF-only button styles: remove background and visuals so only the gif shows */
+        .button img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 260px; /* larger: gifs will display bigger on desktop */
+            border-radius: 0; /* gifs usually look best unrounded */
+            pointer-events: none; /* allow clicks to register on button, not the image */
+        }
+
+        .button {
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            border: none !important;
+            border-radius: 0 !important;
+        }
+
+        /* Ensure hover doesn't reintroduce visual effects */
+        .button:hover {
+            background: transparent !important;
+            box-shadow: none !important;
         }
 
         .hidden {
@@ -305,6 +337,11 @@
             .button {
                 width: 100%; /* Make buttons take full width */
                 text-align: center;
+            }
+
+            /* cap gif size on small screens */
+            .button img {
+                max-width: 220px;
             }
 
             .footer {
@@ -479,18 +516,53 @@
     <!-- Left Side (Title, Text, & Buttons) -->
     <div class="left">
         <div class="title">New Media Experiments</div>
-        <div class="description">Tangible and/or spatial experiences</div>
+        <div class="description">Coded, tangible and/or spatial experiences</div>
         <!-- Buttons -->
         <div class="buttons">
-            <button class="button sims" onclick="showGallery('sims')">Metal Fabrication</button>
-            <button class="button interactive-panel" onclick="showGallery('interactive-panel')">Circuit Programming</button>
-            <button class="button full-video" onclick="showGallery('full-video')">360 Video</button>
-            <button class="button studio-visits" onclick="showGallery('studio')">Studio Visits</button>
+            <button class="button b8" onclick="showGallery('b8')">
+                <img src="images/b8.gif" alt="b8" style="width: 200%; height: auto; max-width: 250px;">
+            </button>
+            <button class="button sims" onclick="showGallery('sims')">
+                <img src="images/b4.gif" alt="b4" style="width: 200%; height: auto; max-width: 250px;">
+            </button>
+            <button class="button interactive-panel" onclick="showGallery('interactive-panel')">
+                <img src="images/b5.gif" alt="b5" style="width: 200%; height: auto; max-width: 250px;">
+            </button>
+            <button class="button full-video" onclick="showGallery('full-video')">
+                <img src="images/b6.gif" alt="b6" style="width: 200%; height: auto; max-width: 250px;">
+            </button>
+            <button class="button studio-visits" onclick="showGallery('studio')">
+                <img src="images/b7.gif" alt="b7" style="width: 200%; height: auto; max-width: 250px;">
+            </button>
         </div>
     </div>  <!-- End of left side -->
 
     <!-- Right Side Container -->
+     
     <div class="right">
+        <!-- B8 Gallery (Predicted-Systems preview) -->
+        <div id="b8-gallery" class="gallery-container hidden">
+            <div class="gallery-item" style="width: 600px;">
+                <iframe src="https://damaris-guzman.github.io/Predicted-Systems/swag.html" width="600" height="350" allowfullscreen style="border-radius:5px; border:none; display:block; margin-bottom:12px;"></iframe>
+                <div class="gallery-description">
+                    <h2 style="margin:0 0 8px 0;">Predicted-Systems</h2>
+                    <p>“You’re a product of your environment” once referred only to the three-dimensional world; now we curate that environment pixel by pixel. Every time I unlock my phone, apps launch precision-targeted nudges straight into my subconscious.</p>
+
+                    <p>This net-art archive displays only the Instagram ads I actually tapped, sorted into three pages: Music (events, songs), Fashion (merch, accessories), and Art practice-related consumption (art classes, events, creative products). For every ad I annotate the exact impulse that triggered the click so visitors can trace how visual cues, interests, and algorithms converge. Mapping those micro-decisions shows one thing clearly: the feed wins my clicks by weaponizing nostalgia. :3</p>
+
+                    <p>Every page is a hypercolored moodboard of my own tastes: glitter fonts, scene-kid pinks, SoundCloud embeds, Matrix green text, etc. In other words, the layout itself feels custom-skinned for me; a visual mirror of how social media algorithms dress their pitches in my favorite palettes and references, so I’ll trust them.</p>
+
+                    <p>By mimicking those tailored aesthetics, the site exposes the trick: personalization isn’t a warm hug, it’s a purchase nudge. The louder the UI says “this is so you,” the easier it is to slide a buy-button under your thumb. Here, every glitter border or retro meme becomes evidence of that seduction loop, proof that feeling special is often just step one in the conversion funnel.</p>
+
+                    <div style="text-align:center; margin-top:16px;">
+                        <a href="https://damaris-guzman.github.io/Predicted-Systems/" target="_blank" style="display:inline-block;">
+                            <img src="images/b9.gif" alt="b9" style="width:220px; height:auto; display:block; margin:0 auto;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Sims Gallery -->
         <div id="sims-gallery" class="gallery-container">
             <div class="gallery-box" id="metal-box" style="background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 5px; max-height: 400px; overflow-y: auto;">
@@ -600,7 +672,7 @@
 </div>
 
 <div class="footer">
-    <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
+    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
 </div>
 
 <script>
@@ -610,7 +682,7 @@
     }
 
     function showGallery(galleryId) {
-        const galleries = ['sims', 'interactive-panel', 'full-video', 'studio'];
+        const galleries = ['b8', 'sims', 'interactive-panel', 'full-video', 'studio'];
         galleries.forEach(id => document.getElementById(id + '-gallery').classList.add('hidden'));
         document.getElementById(galleryId + '-gallery').classList.remove('hidden');
     }
@@ -656,6 +728,8 @@
                 navMenu.style.flexDirection = 'column'; // ensure correct layout
             }
         });
+        // Show the net-art (b8) gallery by default on page load
+        if (typeof showGallery === 'function') showGallery('b8');
     });
 
     function scrollDownBox() {
