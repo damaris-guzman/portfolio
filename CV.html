@@ -5,6 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV - Damaris Guzman</title>
   <link rel="stylesheet" href="./style.css">
+    <style>
+        /* CV mobile adjustments: stack dates above details on small screens */
+        .cv-entry {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .cv-dates {
+            min-width: 140px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .cv-entry {
+                flex-direction: column; /* stack vertically on mobile */
+                gap: 8px;
+            }
+
+            .cv-dates {
+                min-width: 0;
+                font-size: 0.95rem;
+            }
+
+            .cv-details h4 {
+                margin-top: 0.2rem;
+                font-size: 1.05rem;
+            }
+
+            .cv-details p, .cv-details .skills {
+                font-size: 0.95rem;
+                line-height: 1.4;
+            }
+        }
+    </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const hamburger = document.querySelector('.hamburger');
