@@ -1,10 +1,12 @@
+bitch, i hate coding.
+--------------------------------------------
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video Editing</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
   <style>
     @font-face {
       font-family: 'DepartureMono';
@@ -175,19 +177,30 @@
       padding: 20px;
       flex: 1;
     }
-    .footer {
-      display: flex;               /* Use flex to align content like the header */
-      justify-content: center;     /* Center the text */
-      align-items: center;         /* Vertically center the content */
-      width: 100%;                 /* Full width */
-      background-color: #ffbcd0;
-      color: white;
-      padding: 20px;              
-      min-height: 70px;          
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-top: auto;
+    /* Uniform video boxes: fixed visual height, responsive video area, scrollable text */
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      height: 420px;               /* total box height - adjust as needed */
+      background-clip: padding-box;
     }
+    .video-item .video-player {
+      flex: 0 0 60%;               /* video area takes ~60% of box height */
+      height: auto;               
+      min-height: 180px;
+      max-height: 260px;
+    }
+    .video-item .text-box {
+      flex: 1 1 40%;               /* text area fills remaining space */
+      overflow-y: auto;           /* enable scrolling when content is long */
+      padding: 12px;              /* ensure comfortable padding */
+      box-sizing: border-box;
+      background-color: #ffe7ee;
+    }
+    /* footer layout is handled by the global `style.css` so we avoid
+       duplicating rules here. The external CSS ensures the footer
+       participates in the document flow and is pushed to the bottom.
+    */
     /* Instagram Videos Section */
     .instagram-videos-section {
       padding: 20px;
@@ -213,9 +226,11 @@
         font-size: 13px;
       }
     }
-    /* Override the default height for Instagram video players */
+    /* Override the default height for Instagram video players so they follow the same card sizing */
     .instagram-videos-section .video-item .video-player {
-      height: 700px; /* Increase this value as needed to show the entire frame */
+      flex: 0 0 60%;
+      max-height: 260px !important;
+      height: auto !important;
     }
     /* New scroll box style */
     .scroll-box {
@@ -374,7 +389,7 @@
 </a>
 
 <!-- Main Video Grid: YouTube Music Videos -->
-<div class="main-content">
+  <div class="main-content">
   <!-- "In My Head" Video -->
   <div class="video-item">
     <div class="video-player">
@@ -407,8 +422,10 @@
       <p>I edited and produced the visual effects for the hologram in this music video (1:37-1:45).</p>
     </div>
   </div>
+  </div> <!-- end .main-content -->
+
   <div class="footer">
-      <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
+    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
   </div>
 </body>
 <script>
