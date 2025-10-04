@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Every Day I See My Dream</title>
 
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
   <style>
     /* Import DepartureMono font */
     @font-face {
@@ -345,7 +345,7 @@
       margin: 0 10px;
     }
 
-    /* Footer styling moved to centralized style.css */
+    /* footer styling is managed in style.css */
 
     /* Responsive */
     @media (max-width: 1024px) {
@@ -427,12 +427,12 @@
         Components to the project ▼
         <div class="hidden-text" id="components-text">
           <ul style="list-style-type:none; padding-left:0; margin:0;">
-            <li>★ 3D Printed + Metal Casted Locket</li>
             <li>★ Meditative AE simulations</li>
-            <li>★ Audio-visual controller</li>
-            <li>★ Fully edited 33-second video.
+            <li>★ Performed live through a MAX/MSP system with a MIDI controller</li>
+            <li>★ Fully edited 33-second video / Multi-screen
               <ul style="list-style-type:none; padding-left:20px; margin:8px 0 0;">
                 <li>➜ Equipped with VFX, 3D animation, and immersive film techniques.</li>
+                          <li>★ 3D Printed + Metal Casted Locket</li>
               </ul>
             </li>
           </ul>
@@ -446,10 +446,9 @@
           <button class="button unlock-it" onclick="showGallery('unlock-it')">Unlock-it</button>
         </div>
 
-        <!-- Row of three original buttons (same size as before) -->
-        <button class="button sims" onclick="showGallery('sims')">Sims</button>
-        <button class="button interactive-panel" onclick="showGallery('interactive-panel')">Interactive Panel</button>
-        <button class="button full-video" onclick="showGallery('full-video')">Video in process</button>
+  <!-- Row of three original buttons (same size as before) -->
+  <button class="button sims" onclick="showGallery('sims')">Sims</button>
+  <button class="button full-video" onclick="showGallery('full-video')">Video in process</button>
       </div>
 
       <!-- Exhibition info -->
@@ -638,13 +637,13 @@
 
   </div>
 
-  <!-- Image preview overlay (shared) -->
+  <!-- Image preview overlay -->
   <div id="image-preview-overlay">
     <img id="image-preview-img" src="" alt="Preview">
     <button class="close-btn" aria-label="Close preview">×</button>
   </div>
 
-  <!-- Footer -->
+  <!-- yuh -->
   <div class="footer">
     <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
   </div>
@@ -718,7 +717,7 @@
       // Initialize storyboard image in case user lands on full-video first
       updateGalleryViewerImage();
 
-      // Image lightbox preview for gallery images
+      // preview for gallery images
       const overlay = document.getElementById('image-preview-overlay');
       const overlayImg = document.getElementById('image-preview-img');
       const closeBtn = overlay.querySelector('.close-btn');
