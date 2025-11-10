@@ -352,6 +352,53 @@
       margin: 0 10px;
     }
 
+    /* Image Navigator Styles */
+    .image-navigator {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      background-color: var(--pink-2);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .nav-arrow:hover {
+      opacity: 1;
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(207, 119, 164, 0.4);
+    }
+
+    .nav-arrow-left {
+      left: 10px;
+    }
+
+    .nav-arrow-right {
+      right: 10px;
+    }
+
+    #navigable-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: opacity 0.3s ease;
+    }
+
     /* footer styling is managed in style.css */
 
     /* Responsive */
@@ -433,17 +480,15 @@
       <div class="expandable-box" onclick="toggleExpand('components-text')">
         Components to the project ▼
         <div class="hidden-text" id="components-text">
-          <ul style="list-style-type:none; padding-left:0; margin:0;">
-            <li>★ Meditative AE simulations</li>
-            <li>★ Performed live through a MAX/MSP system with a MIDI controller</li>
-            <li>★ 3D Printed + Metal Casted Locket</li>
-            <li>★ AI modded Furby (1st gen, 1989 edition).
-              <ul style="list-style-type:none; padding-left:20px; margin:8px 0 0;">
-                <li>➜ Reacts to audience presence. Rude, threatening demeanor.</li>
-              </ul>
-              </ul>
-            </li>
-          </ul>
+          <div style="padding-left:0; margin:0;">
+            <div>★ Meditative AE simulations</div>
+            <div>★ Remixed using Resolume Avenue</div>
+            <div style="padding-left:20px; margin:8px 0 0;">➜ Webcam enabled</div>
+            <div>★ Ctrl1 (Prototype)</div>
+            <div>★ 3D Printed Lockets (2 variations)</div>
+            <div>★ Metal Casted Locket</div>
+            <div>★ Projection Mapping</div>
+          </div>
         </div>
       </div>
 
@@ -454,10 +499,9 @@
           <button class="button unlock-it" onclick="showGallery('unlock-it')">Unlock-it</button>
         </div>
 
-  <!-- Row of three original buttons (same size as before) -->
+  <!-- Row of two buttons (same size as before) -->
   <button class="button sims" onclick="showGallery('sims')">Sims</button>
-  <button class="button full-video" onclick="showGallery('full-video')">Archived Assets</button>
-  <button class="button live-thru-me" onclick="window.location.href='live-thru-me.html'">Live-thru-me</button>
+  <button class="button live-thru-me" onclick="showGallery('live-thru-me')">Live-thru-me</button>
       </div>
 
       <!-- Exhibition info -->
@@ -470,6 +514,27 @@
 
     <!-- Right: Sims Gallery (default visible) -->
     <div class="right" id="sims-gallery">
+      
+      <!-- Story behind the sims toggle -->
+      <div class="expandable-box" onclick="toggleExpand('story-behind-sims')" style="margin-bottom: 30px; display: inline-block; width: auto;">
+        The story behind the sims ▼
+        <div class="hidden-text" id="story-behind-sims">
+          <p>The simulations visualize the divide between flesh and circuitry, letting a living body breathe in algorithmic matter until organic sensation + computer logic fuse as one. It's like visualizing a literal AI enter your body and alter it or even try to mirror you. From synthetic to organic.</p>
+          
+          <p>So, I could 3d animate these visuals, but I choose to produce them as simulations because simulations are alive.</p>
+          
+          <p>A 3-D animation is a pre-baked movie: once you hit "render," every pixel is locked, every frame predetermined. A simulation is the opposite, it's a living algorithm that keeps solving itself while you watch. I'm interested in that becoming. The artwork isn't a file; it's an ever-current negotiation between code, GPU, and viewer eyes.</p>
+          
+          <p>Key-framing a 3-D scene keeps the artist in full command. But as a simulation I surrender part of that control to mathematics like diffusion and random seeds. The piece embodies N. Katherine Hayles' posthuman idea that meaning emerges when information and materiality co-construct each other. I write the rules; the computer performs them; we co-author the result.</p>
+          
+          <p>Each visual hands a little more control to the algorithm, letting us feel how digital systems capture sensory space and, in turn, shape our nervous system, exactly like an endless social-media scroll that studies every pause and feeds it back as the next hit.</p>
+          
+          <p>Taken together, the pieces form a kind of playground for thinking about technological embodiment. You can watch images pulse and behave like organs, feel control drift between your hand and the algorithm, and catch your own reflection inside a feedback storm because the algorithm is, in essence, mirroring you.</p>
+          
+          <p>My goal is to evoke awareness of the fusion between internet algorithms and the technological codes that both reflect our behavior and guide it toward corporate consumption goals. I want viewers to feel closer to technology on their own terms…aware of how every touch, scroll, and click subtly engages the nervous system, shaping our psychological states and everyday decisions, for better or worse. By making data capture and behavioral nudging visible in physical space, I hope to create a moment of choice: to either continue following the script or consciously break it.</p>
+        </div>
+      </div>
+
       <div class="gallery-item">
         <iframe src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" allowfullscreen></iframe>
         <div class="gallery-description">
@@ -630,16 +695,36 @@
         <div class="gallery-description">
           <p><strong>Unlock-it</strong></p>
           <p>A 3D-printed locket frames a micro-SD card like a jewel—visible but forever sealed in resin. Part lock and part key, it keeps its data present yet unreachable, turning digital memory into a fossilized relic.</p>
-       <p>When storage outlives readability, are our archives keepsakes or tombs?</p>
         </div>
 
       </div>
       <div class="gallery-item gallery-item-wide">
-        <img src="unlock1.JPG" alt="Unlock-it: Metal Cast (Aluminum)" class="previewable">
+        <div class="image-navigator">
+          <button class="nav-arrow nav-arrow-left" onclick="previousImage()">‹</button>
+          <img id="navigable-image" src="unlock1.JPG" alt="Unlock-it: Metal Cast (Aluminum)" class="previewable">
+          <button class="nav-arrow nav-arrow-right" onclick="nextImage()">›</button>
+        </div>
         <div class="gallery-description">
           <p><strong>Metal Cast (Aluminum)</strong></p>
-          <p>Aluminum casting in progress — not yet finished and made for the “Video in process.” The immersive simulations are visualized in the main video to accompany all these components at once; the locket stores the immersive simulations that visualize embodiments of human–AI fusion, where flesh and digital code fuse as one. By localizing them inside a wearable object, the work compresses vast networks of computation into a personal relic.</p>
-          <p>If the simulations represent a fusion of AI, internet culture, and human embodiment, then the locket becomes a symbolic “interface-organ” — a prosthesis where the user is fused with their data. Wearing it enacts the merger: the body is no longer distinct from the network but bound to it.</p>
+          <p>I also 3D printed miniature versions of the locket as mold to metal cast. Pretty epic right? I got invited to share them for Stephanie Dinkin’s ICA show, Data Trust, so here’s what they looked like in the show. They weren’t actually done as some pieces still needed to be cut off and polished, but it made it to the show, nonetheless.</p>
+          <p>The immersive simulations are visualized in a video I was working on to accompany all these components at once; the locket stores the immersive simulations that visualize embodiments of human–AI fusion, where flesh and digital code fuse as one. By localizing them inside a wearable object, the work compresses vast networks of computation into a personal relic.</p>
+          <p>If the simulations represent a fusion of AI, internet culture, and human embodiment, then the locket becomes a symbolic “interface-organ” where the user is fused with their data. Wearing it enacts the merger: the body is no longer distinct from the network but bound to it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Live-thru-me -->
+    <div class="right hidden" id="live-thru-me-gallery">
+      <div class="gallery-item" style="width: 100%;">
+        <div class="gallery-description">
+          <p><strong>Live-thru-me: Interactive MIDI Experience</strong></p>
+          <p>At the center of the gallery is a midi board. Here, you can remix my simulations using a pre-baked VJing system I put together in Resolume Avenue. Ideally, I had a version of this experience programmed in MAX/MSP, but the processing wasn't done well, and I was running out of time to showcase it in the show. I tried this in TouchDesigner initially, but again, I wasn't able to finalize a working system in time.</p>
+          
+          <p>In the gallery I invite visitors to interact with a midi board. The pads trigger my pre-rendered simulations. And the dials add surface effects like glow or distortion. You're not actually changing the mechanisms of the video editing or the video itself as it, you're just adding filters basically. Which parallels with thinking you have control on a digital platform when every decision you make feeds an algorithm that actively attempts to control the path you're on. The interface offers real interaction, but only inside a sandbox that I and the software already defined. In this case, I am using Resolume Avenue, which is a VJing software.</p>
+          
+          <p>One of the pads turns on a live camera that blob-tracks the audience and loops their own image back into the projection. Legend Katherine Hayles would call this embodied virtuality information and body feeding each other in real time. Because the software still decides the outcome, the board also stages posthuman agency, where control is shared between human and machine.</p>
+          
+          <p>And honestly, the board is just fun. The visuals bloom and shimmer in a way that feels hypnotic. That pleasure loop mirrors how we swipe through social media: we make tiny choices about what to watch, the algorithm notes each pause, then serves an endless stream designed to hold us longer. Here, every pad tap or dial turn gives you that same hit of control, but the software is quietly steering the flow….nudging you to stay, explore, and lose track of time. The mathematician Norbert Wiener called this kind of two-way flow a "feedback loop." You try to control the image, but the image also measures you in real time. Agency feels shared rather than owned.</p>
         </div>
       </div>
     </div>
@@ -665,7 +750,7 @@
     }
 
     /* Gallery switching */
-    const galleryIds = ['sims', 'interactive-panel', 'full-video', 'unlock-it'];
+    const galleryIds = ['sims', 'interactive-panel', 'full-video', 'unlock-it', 'live-thru-me'];
     function showGallery(galleryId) {
       galleryIds.forEach(id => {
         const el = document.getElementById(id + '-gallery');
@@ -708,6 +793,29 @@
     function closeGalleryFullscreen() {
       const overlay = document.getElementById("gallery-fullscreen-overlay");
       if (overlay) overlay.style.display = "none";
+    }
+
+    /* Navigable Image Functions */
+    const navigableImages = ["unlock1.JPG", "images/metal-locket.JPG"];
+    const navigableAlts = ["Unlock-it: Metal Cast (Aluminum)", "Unlock-it: Metal Locket"];
+    let currentNavigableIndex = 0;
+
+    function updateNavigableImage() {
+      const img = document.getElementById("navigable-image");
+      if (img) {
+        img.src = navigableImages[currentNavigableIndex];
+        img.alt = navigableAlts[currentNavigableIndex];
+      }
+    }
+
+    function previousImage() {
+      currentNavigableIndex = (currentNavigableIndex - 1 + navigableImages.length) % navigableImages.length;
+      updateNavigableImage();
+    }
+
+    function nextImage() {
+      currentNavigableIndex = (currentNavigableIndex + 1) % navigableImages.length;
+      updateNavigableImage();
     }
 
     /* Menu */
