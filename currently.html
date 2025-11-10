@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -293,10 +294,16 @@
       background-size: 200% 200%;
       animation: gradient 3s infinite;
     }
+    .button.live-thru-me {
+      background: linear-gradient(45deg, #ff6fa3, var(--pink-1));
+      background-size: 200% 200%;
+      animation: gradient 3s infinite;
+    }
     /* Make the three lower pink buttons slightly smaller */
     .button.sims,
     .button.interactive-panel,
-    .button.full-video {
+    .button.full-video,
+    .button.live-thru-me {
       padding: 8px 12px;
       font-size: 0.9rem;
     }
@@ -429,7 +436,6 @@
           <ul style="list-style-type:none; padding-left:0; margin:0;">
             <li>★ Meditative AE simulations</li>
             <li>★ Performed live through a MAX/MSP system with a MIDI controller</li>
-            <li>★ Multi-screen / 3D animated video
             <li>★ 3D Printed + Metal Casted Locket</li>
             <li>★ AI modded Furby (1st gen, 1989 edition).
               <ul style="list-style-type:none; padding-left:20px; margin:8px 0 0;">
@@ -450,7 +456,8 @@
 
   <!-- Row of three original buttons (same size as before) -->
   <button class="button sims" onclick="showGallery('sims')">Sims</button>
-  <button class="button full-video" onclick="showGallery('full-video')">Video in process</button>
+  <button class="button full-video" onclick="showGallery('full-video')">Archived Assets</button>
+  <button class="button live-thru-me" onclick="window.location.href='live-thru-me.html'">Live-thru-me</button>
       </div>
 
       <!-- Exhibition info -->
@@ -557,33 +564,33 @@
     </div>
 
     <!-- Right: Full Video / Storyboard -->
-    <div class="right hidden" id="full-video-gallery" style="flex-direction: column; flex-wrap: nowrap;">
-      <div class="gallery-title" style="text-align:center; margin:0; padding:10px; font-size:1.1rem; font-weight:bold; color:#333; width:100%;">
+    <div class="right hidden" id="full-video-gallery">
+      <div class="gallery-title" style="text-align:center; margin:0 0 20px 0; padding:15px; font-size:1.1rem; font-weight:bold; color:#333; background: var(--card); border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
         *The sequence has been altered to include a metal-casted locket, so this storyboard doesn't fully showcase the structure of this vision.
       </div>
 
-      <div class="gallery-viewer" style="margin:10px 0; padding:0; width:100%; display:flex; justify-content:center; align-items:center;">
-        <button class="arrow-button" style="width:30px; height:30px; font-size:1.2rem;" onclick="prevGalleryImage()">‹</button>
-        <img id="gallery-viewer-image" src="story1.png" alt="Gallery Viewer Image" style="max-width:300px; height:auto; cursor:pointer;" onclick="openGalleryFullscreen()">
-        <button class="arrow-button" style="width:30px; height:30px; font-size:1.2rem;" onclick="nextGalleryImage()">›</button>
+      <div class="gallery-viewer" style="margin:0 0 25px 0; padding:20px; background: var(--card); border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display:flex; justify-content:center; align-items:center; gap: 15px;">
+        <button class="arrow-button" style="width:40px; height:40px; font-size:1.4rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" onclick="prevGalleryImage()">‹</button>
+        <img id="gallery-viewer-image" src="story1.png" alt="Gallery Viewer Image" style="max-width:350px; height:auto; cursor:pointer; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" onclick="openGalleryFullscreen()">
+        <button class="arrow-button" style="width:40px; height:40px; font-size:1.4rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" onclick="nextGalleryImage()">›</button>
       </div>
 
-      <div class="flex-container" style="display:flex; flex-direction:column; gap:10px; margin-top:10px; width:100%;">
-        <div class="gallery-item" style="width:100%; max-width:400px; padding:10px;">
-          <iframe src="https://www.youtube.com/embed/3IB28p7wyxw" width="100%" height="200" allowfullscreen></iframe>
-          <div class="gallery-description" style="font-size:0.9rem;">
-            <p><strong>Draft video simulating shot list.</strong></p>
-            <p>Mostly focused on showing the shot sequences. Lil VFX visible. The content of the display monitor shows the main character editing the video in real time.</p>
+      <div class="flex-container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:20px; width:100%;">
+        <div class="gallery-item" style="background: var(--card); padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+          <iframe src="https://www.youtube.com/embed/3IB28p7wyxw" width="100%" height="220" style="border-radius: 8px; border: none;" allowfullscreen></iframe>
+          <div class="gallery-description" style="font-size:0.9rem; margin-top: 15px; color: var(--text-light);">
+            <p style="margin: 0 0 10px 0; font-weight: bold; color: var(--pink-2);"><strong>Draft video simulating shot list.</strong></p>
+            <p style="margin: 0; line-height: 1.5;">Mostly focused on showing the shot sequences. Lil VFX visible. The content of the display monitor shows the main character editing the video in real time.</p>
           </div>
         </div>
 
-        <div class="gallery-item" style="width:100%; max-width:400px; padding:10px;">
-          <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay"
+        <div class="gallery-item" style="background: var(--card); padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column;">
+          <iframe width="100%" height="140" scrolling="no" frameborder="no" allow="autoplay" style="border-radius: 8px;"
                   src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/asteria/whatd-i-say&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
           </iframe>
-          <div class="gallery-description" style="font-size:0.9rem;">
-            <p><strong>Song used: What'd I Say by asteria + d3r</strong></p>
-            <p>:14–:47</p>
+          <div class="gallery-description" style="font-size:0.9rem; margin-top: 15px; color: var(--text-light);">
+            <p style="margin: 0 0 10px 0; font-weight: bold; color: var(--pink-2);"><strong>Song used: What'd I Say by asteria + d3r</strong></p>
+            <p style="margin: 0; line-height: 1.5;">:14–:47</p>
           </div>
         </div>
       </div>
@@ -591,11 +598,11 @@
       <!-- Fullscreen overlay -->
       <div id="gallery-fullscreen-overlay"
            style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
-        <button class="arrow-button" style="position:absolute; left:20px;" onclick="prevGalleryImage()">‹</button>
-        <img id="gallery-fullscreen-image" src="story1.png" alt="Fullscreen Gallery Image" style="max-width:90%; max-height:90%;">
-        <button class="arrow-button" style="position:absolute; right:20px;" onclick="nextGalleryImage()">›</button>
+        <button class="arrow-button" style="position:absolute; left:20px; width:50px; height:50px; font-size:1.8rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer;" onclick="prevGalleryImage()">‹</button>
+        <img id="gallery-fullscreen-image" src="story1.png" alt="Fullscreen Gallery Image" style="max-width:90%; max-height:90%; border-radius: 8px;">
+        <button class="arrow-button" style="position:absolute; right:20px; width:50px; height:50px; font-size:1.8rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer;" onclick="nextGalleryImage()">›</button>
         <button onclick="closeGalleryFullscreen()"
-                style="position:absolute; top:20px; right:20px; background: var(--pink-2); color:#fff; border:none; border-radius:50%; width:40px; height:40px; font-size:1.5rem; cursor:pointer;">×</button>
+                style="position:absolute; top:20px; right:20px; background: var(--pink-2); color:#fff; border:none; border-radius:50%; width:50px; height:50px; font-size:1.5rem; cursor:pointer;">×</button>
       </div>
     </div>
 
