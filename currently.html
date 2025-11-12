@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Every Day I See My Dream</title>
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -243,23 +245,17 @@
     }
 
     /* BUTTONS AREA
-       Grid wrapper ensures: Unlock-it spans ALL 3 columns above;
-       the three original buttons sit below in their own cells.
-       This way Unlock-it width === combined width of the row of three. */
+       Grid wrapper with 2x2 layout */
     .buttons-wrap {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* three equal columns fill the left column width */
-      gap: 20px;
+      grid-template-columns: 1fr 1fr; /* two equal columns */
+      grid-template-rows: auto auto; /* two rows */
+      gap: 15px;
       width: 100%;
       margin: 20px 0;
     }
 
-    /* Top, full-width button that spans 3 columns */
-    .unlock-it-span {
-      grid-column: 1 / -1;
-      display: flex;
-      justify-content: center;
-    }
+    /* Remove the old unlock-it-span class */
 
     /* Button base */
     .button {
@@ -280,40 +276,55 @@
     .button:active { transform: translateY(1px); }
 
     .button.sims {
-      background: linear-gradient(45deg, var(--pink-1), var(--pink-4));
-      background-size: 200% 200%;
-      animation: gradient 3s infinite;
+      background: linear-gradient(-45deg, var(--pink-1), var(--pink-4), #ff6fa3, var(--pink-3));
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
     }
     .button.interactive-panel {
-      background: linear-gradient(45deg, var(--pink-2), #b0568a);
-      background-size: 200% 200%;
-      animation: gradient 3s infinite;
+      background: linear-gradient(-45deg, var(--pink-2), #b0568a, var(--pink-4), #ff8fb2);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
     }
     .button.full-video {
-      background: linear-gradient(45deg, var(--pink-3), #ff9cb0);
-      background-size: 200% 200%;
-      animation: gradient 3s infinite;
+      background: linear-gradient(-45deg, var(--pink-3), #ff9cb0, var(--pink-1), #ffbcd0);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
     }
     .button.live-thru-me {
-      background: linear-gradient(45deg, #ff6fa3, var(--pink-1));
-      background-size: 200% 200%;
-      animation: gradient 3s infinite;
+      background: linear-gradient(-45deg, #ff6fa3, var(--pink-1), var(--pink-4), #cf77a4);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
     }
-    /* Make the three lower pink buttons slightly smaller */
+    .button.ctrl-1 {
+      background: linear-gradient(-45deg, #cf77a4, #ff9ac6, var(--pink-2), #ff6fa3);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
+    }
     .button.sims,
     .button.interactive-panel,
     .button.full-video,
-    .button.live-thru-me {
+    .button.live-thru-me,
+    .button.unlock-it,
+    .button.unlock-me,
+    .button.ctrl-1 {
       padding: 8px 12px;
       font-size: 0.9rem;
     }
-    /* NEW: animated pink gradient for Unlock-it (same height as others) */
+    /* Animated Bootstrap-style gradient for Unlock-it */
     .button.unlock-it {
-      background: linear-gradient(90deg, #ff9ac6, #ff6fa3, #ff9ac6);
-      background-size: 200% 200%;
+      background: linear-gradient(-45deg, #ff9ac6, #ff6fa3, var(--pink-4), #ffbcd0);
+      background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
       letter-spacing: 0.5px;
-      width: 100%;  /* fills the spanning area */
+      width: 100%;
+    }
+    /* Animated Bootstrap-style gradient for Unlock-me */
+    .button.unlock-me {
+      background: linear-gradient(-45deg, #ff8fb2, var(--pink-2), #ff6fa3, var(--pink-3));
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
+      letter-spacing: 0.5px;
+      width: 100%;
     }
 
     @keyframes gradient {
@@ -323,7 +334,9 @@
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 100% 100%; }
+      75% { background-position: 0% 100%; }
       100% { background-position: 0% 50%; }
     }
 
@@ -400,6 +413,21 @@
     }
 
     /* footer styling is managed in style.css */
+    .footer {
+      background-color: var(--pink-2);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+      font-family: 'DepartureMono', monospace;
+      font-size: 0.9rem;
+      border-top: 3px solid var(--pink-4);
+    }
+
+    .footer p {
+      margin: 0;
+      letter-spacing: 1px;
+    }
 
     /* Responsive */
     @media (max-width: 1024px) {
@@ -420,13 +448,116 @@
 
       .header h1 a { font-size: 1.5rem; }
 
-      /* Stack everything to 1 column on mobile */
+      /* Keep 2x2 grid on mobile but with smaller gap */
       .buttons-wrap {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
       }
-      .unlock-it-span { grid-column: 1; }
-      .button.unlock-it { width: 100%; }
+      .button.unlock-it,
+      .button.unlock-me { 
+        width: 100%; 
+        font-size: 0.8rem;
+        padding: 6px 8px;
+      }
+
+      /* Mobile optimization for simulation viewer */
+      .simulation-viewer {
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 15px !important;
+        margin: 0 0 15px 0 !important;
+      }
+      
+      .simulation-content {
+        width: 100% !important;
+        max-width: none !important;
+      }
+      
+      #simulation-iframe {
+        height: 200px !important;
+      }
+      
+      #simulation-description {
+        margin-top: 10px !important;
+        padding: 10px !important;
+        font-size: 0.85rem !important;
+      }
+      
+      .simulation-viewer .arrow-button {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 1.2rem !important;
+      }
+
+      /* Mobile navigation arrows container */
+      .simulation-nav-mobile {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 10px;
+      }
+    }
+
+    /* Bootstrap Integration Styles */
+    .bootstrap-content {
+      margin-top: 0;
+      padding: 20px 0;
+    }
+
+    .bootstrap-content .container {
+      max-width: 1200px;
+    }
+
+    .component-card {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--pink-2);
+      transition: all 0.3s ease;
+    }
+
+    .component-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .component-title {
+      font-weight: bold;
+      color: var(--pink-2);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .story-content {
+      padding: 1rem;
+      background: white;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    .story-toggle {
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
+    /* Bootstrap override for maintaining existing styles */
+    .bootstrap-content .card {
+      border: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .bootstrap-content .card-title {
+      color: var(--text);
+      font-family: 'DepartureMono', monospace;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .bootstrap-content .card-text {
+      font-family: 'DepartureMono', monospace;
+      font-size: 1.2rem;
     }
   </style>
 </head>
@@ -452,151 +583,122 @@
   <div class="update-notice">This page is still being updated</div>
 
   <!-- Content -->
-  <div class="content">
-    <!-- Left -->
-    <div class="left">
-      <div class="title">Every Day I See My Dream</div>
-      <div class="description">Where does the dream end and the feed begin?</div>
+  <div class="bootstrap-content">
+    <div class="container">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-lg-4 col-md-12">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2 class="card-title">Every Day I See My Dream</h2>
+              <p class="card-text text-muted">Where does the dream end and the feed begin?</p>
 
       <div class="concept-box">
         <div class="concept-content">
          <p>Every day I see my dream unfolds as a lucid, looping fever; the screen shows me hopes I never said aloud, translated into pixels before I can claim them.</p> 
-            <p>In the gallery, chrome wings cradle a fossilized SD card, promising flight yet sealing memory inside a glittering reliquary. Twin projections breathe: one pulses like a hyper edited diary, the locket flashing as an “interface organ” that sutures flesh to code, while the other drifts in slow motion, skin and neural nets dissolving into a glitch.</p>
+            <p>In the gallery, chrome wings cradle a fossilized SD card, promising flight yet sealing memory in a glittering reliquary. Parallel to this work and its metal cast are three additional keys, each projection-mapped with animated simulations. Scan them left to right and the sequence leaps from pure circuitry to living tissue to thinking brain, a rapid evolution that asks where technology ends and the body begins.</p>
             <p>At the center of the room, a midi board invites visitors to remix the visuals using blooms, blurs, and glitches, yet one unmarked pad suddenly swaps in a live feed from the camera tracking the crowd, casting their own faces across the projection and revealing that the feed itself is gazing back. What seems like a personal reverie is really a feedback circuit, private thoughts returned as public spectacle.</p>
              <p>The dream on display is vivid yet slippery, always recombining, never letting anyone hold a single shape for long, …and the room whispers a question: as our visions scroll before us, are we still the dreamers, or have we become the engine that keeps the images turning? </p>
           <p>In short, the project is a two-part installation: a visceral film that visualizes the merger of flesh and interface, and an interactive “operational double” that lets the audience discover just how little control they truly have.</p>
         </div>
       </div>
 
-      <div class="expandable-box" onclick="toggleExpand('concept-pink')">
-        Concept ▼
-        <div class="hidden-text" id="concept-pink">
-          <div class="tag-banner">
-            Technological embodiment, immersion, posthumanism, cybernetic loops
+              <div class="expandable-box" onclick="toggleExpand('concept-pink')">
+                Concept ▼
+                <div class="hidden-text" id="concept-pink">
+                  <div class="tag-banner">
+                    Technological embodiment, immersion, posthumanism, cybernetic loops
+                  </div>
+                </div>
+              </div>
+
+              <div class="expandable-box" onclick="toggleExpand('components-text')">
+                Components to the project ▼
+                <div class="hidden-text" id="components-text">
+                  <div style="padding-left:0; margin:0;">
+                    <div>★ Meditative AE simulations</div>
+                    <div>★ Remixed using Resolume Avenue</div>
+                    <div style="padding-left:20px; margin:8px 0 0;">➜ Webcam enabled</div>
+                    <div>★ Ctrl1 (Prototype)</div>
+                    <div>★ 3D Printed Lockets (2 variations)</div>
+                    <div>★ Metal Casted Locket</div>
+                    <div>★ Projection Mapping</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUTTONS AREA -->
+              <div class="buttons-wrap">
+                <!-- Top row: Unlock-it and Unlock-me (2 columns) -->
+                <button class="button unlock-it" onclick="showGallery('unlock-it')" style="grid-column: 1;">Unlock-it</button>
+                <button class="button unlock-me" onclick="showGallery('unlock-me')" style="grid-column: 2;">Unlock-me</button>
+                <!-- Bottom row: Sims, Live-thru-me, and Ctrl-1 (3 columns) -->
+                <button class="button sims" onclick="showGallery('sims')" style="grid-column: 1;">Sims</button>
+                <button class="button live-thru-me" onclick="showGallery('live-thru-me')" style="grid-column: 2;">Live-thru-me</button>
+                <button class="button ctrl-1" onclick="showGallery('ctrl-1')" style="grid-column: 1 / 3;">Ctrl-1</button>
+              </div>
+
+              <!-- Exhibition info -->
+              <div class="info-box"
+                   onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')"
+                   style="margin-top:10px; text-align:center; background-color:#fff; border:2px solid var(--pink-2); border-radius:10px; padding:15px; cursor:pointer;">
+                Black Gallery in the Art building @ SJSU 11/12-20
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="expandable-box" onclick="toggleExpand('components-text')">
-        Components to the project ▼
-        <div class="hidden-text" id="components-text">
-          <div style="padding-left:0; margin:0;">
-            <div>★ Meditative AE simulations</div>
-            <div>★ Remixed using Resolume Avenue</div>
-            <div style="padding-left:20px; margin:8px 0 0;">➜ Webcam enabled</div>
-            <div>★ Ctrl1 (Prototype)</div>
-            <div>★ 3D Printed Lockets (2 variations)</div>
-            <div>★ Metal Casted Locket</div>
-            <div>★ Projection Mapping</div>
-          </div>
-        </div>
-      </div>
+        <!-- Right Column -->
+        <div class="col-lg-8 col-md-12">
 
-      <!-- BUTTONS AREA -->
-      <div class="buttons-wrap">
-        <!-- Top full-width Unlock-it (spans 3 cols) -->
-        <div class="unlock-it-span">
-          <button class="button unlock-it" onclick="showGallery('unlock-it')">Unlock-it</button>
-        </div>
+          <!-- Sims Gallery (default visible) -->
+          <div class="gallery-section" id="sims-gallery">
+            
+            <!-- Story behind the sims toggle -->
+            <div class="component-card story-toggle" data-bs-toggle="collapse" data-bs-target="#story-behind-sims" aria-expanded="false">
+              <div class="component-title">The story behind the sims ▼</div>
+            </div>
+            <div class="collapse" id="story-behind-sims">
+              <div class="story-content">
+                <p>The simulations visualize the divide between flesh and circuitry, letting a living body breathe in algorithmic matter until organic sensation + computer logic fuse as one. It's like visualizing a literal AI enter your body and alter it or even try to mirror you. From synthetic to organic.</p>
+                
+                <p>So, I could 3d animate these visuals, but I choose to produce them as simulations because simulations are alive.</p>
+                
+                <p>A 3-D animation is a pre-baked movie: once you hit "render," every pixel is locked, every frame predetermined. A simulation is the opposite, it's a living algorithm that keeps solving itself while you watch. I'm interested in that becoming. The artwork isn't a file; it's an ever-current negotiation between code, GPU, and viewer eyes.</p>
+                
+                <p>Key-framing a 3-D scene keeps the artist in full command. But as a simulation I surrender part of that control to mathematics like diffusion and random seeds. The piece embodies N. Katherine Hayles' posthuman idea that meaning emerges when information and materiality co-construct each other. I write the rules; the computer performs them; we co-author the result.</p>
+                
+                <p>Each visual hands a little more control to the algorithm, letting us feel how digital systems capture sensory space and, in turn, shape our nervous system, exactly like an endless social-media scroll that studies every pause and feeds it back as the next hit.</p>
+                
+                <p>Taken together, the pieces form a kind of playground for thinking about technological embodiment. You can watch images pulse and behave like organs, feel control drift between your hand and the algorithm, and catch your own reflection inside a feedback storm because the algorithm is, in essence, mirroring you.</p>
+                
+                <p>My goal is to evoke awareness of the fusion between internet algorithms and the technological codes that both reflect our behavior and guide it toward corporate consumption goals. I want viewers to feel closer to technology on their own terms…aware of how every touch, scroll, and click subtly engages the nervous system, shaping our psychological states and everyday decisions, for better or worse. By making data capture and behavioral nudging visible in physical space, I hope to create a moment of choice: to either continue following the script or consciously break it.</p>
+              </div>
+            </div>
 
-  <!-- Row of two buttons (same size as before) -->
-  <button class="button sims" onclick="showGallery('sims')">Sims</button>
-  <button class="button live-thru-me" onclick="showGallery('live-thru-me')">Live-thru-me</button>
-      </div>
-
-      <!-- Exhibition info -->
-      <div class="info-box"
-           onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')"
-           style="margin-top:10px; text-align:center; background-color:#fff; border:2px solid var(--pink-2); border-radius:10px; padding:15px; cursor:pointer;">
-        This project will exhibit for two weeks in the Black Box Gallery at SJSU from November 11 to 20, 2025.
-      </div>
-    </div>
-
-    <!-- Right: Sims Gallery (default visible) -->
-    <div class="right" id="sims-gallery">
-      
-      <!-- Story behind the sims toggle -->
-      <div class="expandable-box" onclick="toggleExpand('story-behind-sims')" style="margin-bottom: 30px; display: inline-block; width: auto;">
-        The story behind the sims ▼
-        <div class="hidden-text" id="story-behind-sims">
-          <p>The simulations visualize the divide between flesh and circuitry, letting a living body breathe in algorithmic matter until organic sensation + computer logic fuse as one. It's like visualizing a literal AI enter your body and alter it or even try to mirror you. From synthetic to organic.</p>
-          
-          <p>So, I could 3d animate these visuals, but I choose to produce them as simulations because simulations are alive.</p>
-          
-          <p>A 3-D animation is a pre-baked movie: once you hit "render," every pixel is locked, every frame predetermined. A simulation is the opposite, it's a living algorithm that keeps solving itself while you watch. I'm interested in that becoming. The artwork isn't a file; it's an ever-current negotiation between code, GPU, and viewer eyes.</p>
-          
-          <p>Key-framing a 3-D scene keeps the artist in full command. But as a simulation I surrender part of that control to mathematics like diffusion and random seeds. The piece embodies N. Katherine Hayles' posthuman idea that meaning emerges when information and materiality co-construct each other. I write the rules; the computer performs them; we co-author the result.</p>
-          
-          <p>Each visual hands a little more control to the algorithm, letting us feel how digital systems capture sensory space and, in turn, shape our nervous system, exactly like an endless social-media scroll that studies every pause and feeds it back as the next hit.</p>
-          
-          <p>Taken together, the pieces form a kind of playground for thinking about technological embodiment. You can watch images pulse and behave like organs, feel control drift between your hand and the algorithm, and catch your own reflection inside a feedback storm because the algorithm is, in essence, mirroring you.</p>
-          
-          <p>My goal is to evoke awareness of the fusion between internet algorithms and the technological codes that both reflect our behavior and guide it toward corporate consumption goals. I want viewers to feel closer to technology on their own terms…aware of how every touch, scroll, and click subtly engages the nervous system, shaping our psychological states and everyday decisions, for better or worse. By making data capture and behavioral nudging visible in physical space, I hope to create a moment of choice: to either continue following the script or consciously break it.</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Brain Visualization (AE)</strong></p>
-          <p>Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment.</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1R9_dTNzHJ9dh4fgVOvFK6adwPikBWm-A/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Brain Visualization v2 (AE)</strong></p>
-          <p>Simultaneously sensual and slightly uncanny, invoking the sense of looking up close at a viscous biological mass or a surreal, alien landscape.</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1eph2annTC-Fzagp6LCjtU6UtALvc3Fei/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Circuit</strong></p>
-          <p>The bright neon highlights, the deep-blue backdrop, and the swirling distortions create a sense of high-tech immersion, as if the viewer is peering into a living digital matrix.</p>
-          <p>3D modeled circuit board using Blender.</p>
-          <p>Lights animated to flow through the circuit.</p>
-          <p>Edited in After Effects using displacements. Green “0”s = distorted motion graphics.</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1c4khlrv39Qfp5mrUcU2o4J1RWrIATGcv/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Inside_v1 (AE)</strong></p>
-          <p>Using After Effects, I animated a shifting, interconnected “organic body”… It’s important to note that no, I didn’t use AI for any of these visuals. Made entirely in AE.</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1Qq5grgGN1mepIzF-80pDCablz4MaCJ6M/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Inside_v2 (AE)</strong></p>
-          <p>AI doesn’t “see” the way we do; it predicts, interpolates, and generates. If human perception is mediated through our senses, AI’s perception is mediated through algorithms.</p>
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/164FlI3Y-JhjDk5dnZryHfpFHLsA1Mq6d/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Inside_v3 (AE)</strong></p>
-          <p>An abstract, fleshy-pink simulation that suggests swirling, organic forms, as though we’re peering into magnified tissue or vaporous clouds.</p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1n2niK8kNrZbce9Maz36YzMiGZpkByCUn/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Inside-us(AE)</strong></p>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <iframe src="https://drive.google.com/file/d/1_E7ssnWu3cuHBN_6rB_qORpXKCWbgnnm/preview" allowfullscreen></iframe>
-        <div class="gallery-description">
-          <p><strong>Inside-us_v2(AE)</strong></p>
-        </div>
-      </div>
+            <!-- Simulation Video Viewer -->
+            <div class="simulation-viewer" style="margin:0 0 25px 0; padding:20px; background: var(--card); border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display:flex; justify-content:center; align-items:center; gap: 15px;">
+              <!-- Desktop layout: arrows on sides -->
+              <button class="arrow-button d-none d-md-flex" style="width:40px; height:40px; font-size:1.4rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" onclick="prevSimulation()">‹</button>
+              
+              <div class="simulation-content" style="flex: 1; max-width: 600px;">
+                <iframe id="simulation-iframe" src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" style="width: 100%; height: 350px; border-radius: 8px; border: none;" allowfullscreen></iframe>
+                
+                <!-- Mobile navigation arrows below video -->
+                <div class="simulation-nav-mobile d-md-none" style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+                  <button class="arrow-button" style="width:35px; height:35px; font-size:1.2rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" onclick="prevSimulation()">‹</button>
+                  <button class="arrow-button" style="width:35px; height:35px; font-size:1.2rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" onclick="nextSimulation()">›</button>
+                </div>
+                
+                <div id="simulation-description" class="gallery-description" style="margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
+                  <p><strong>Neural.gel (AE)</strong></p>
+                  <p>Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment.</p>
+                </div>
+              </div>
+              
+              <!-- Desktop layout: arrows on sides -->
+              <button class="arrow-button d-none d-md-flex" style="width:40px; height:40px; font-size:1.4rem; background: var(--pink-2); color: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" onclick="nextSimulation()">›</button>
+            </div>
 
 
 
@@ -685,7 +787,7 @@
           </p>
         </div>
         <div class="gallery-description">
-          <p><strong>3D Model for the Locket</strong></p>
+          <p><strong>Unlock-it 3D Model</strong></p>
           <p>Press play to activate the 3D viewer. Click and drag to rotate the model, and select full screen if you’d like a closer look.</p>
         </div>
       </div>
@@ -701,14 +803,68 @@
       <div class="gallery-item gallery-item-wide">
         <div class="image-navigator">
           <button class="nav-arrow nav-arrow-left" onclick="previousImage()">‹</button>
-          <img id="navigable-image" src="unlock1.JPG" alt="Unlock-it: Metal Cast (Aluminum)" class="previewable">
+          <img id="navigable-image" src="unlock1.JPG" alt="Unlock-it: Metal Cast" class="previewable">
           <button class="nav-arrow nav-arrow-right" onclick="nextImage()">›</button>
         </div>
         <div class="gallery-description">
-          <p><strong>Metal Cast (Aluminum)</strong></p>
+          <p><strong>Metal Cast (Bronze)</strong></p>
           <p>I also 3D printed miniature versions of the locket as mold to metal cast. Pretty epic right? I got invited to share them for Stephanie Dinkin’s ICA show, Data Trust, so here’s what they looked like in the show. They weren’t actually done as some pieces still needed to be cut off and polished, but it made it to the show, nonetheless.</p>
           <p>The immersive simulations are visualized in a video I was working on to accompany all these components at once; the locket stores the immersive simulations that visualize embodiments of human–AI fusion, where flesh and digital code fuse as one. By localizing them inside a wearable object, the work compresses vast networks of computation into a personal relic.</p>
           <p>If the simulations represent a fusion of AI, internet culture, and human embodiment, then the locket becomes a symbolic “interface-organ” where the user is fused with their data. Wearing it enacts the merger: the body is no longer distinct from the network but bound to it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Unlock-me (NEW) -->
+    <div class="gallery-section hidden" id="unlock-me-gallery">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- 3D Model Column -->
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="sketchfab-embed-wrapper">
+                  <iframe title="Unlock-me" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/a503ecacc4014e57bc6d6af4537d613f/embed" style="width: 100%; height: 400px;">
+                  </iframe>
+                  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                    <a href="https://sketchfab.com/3d-models/unlock-me-a503ecacc4014e57bc6d6af4537d613f?utm_medium=embed&utm_campaign=share-popup&utm_content=a503ecacc4014e57bc6d6af4537d613f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Unlock-me </a>
+                    by <a href="https://sketchfab.com/damarisisalive?utm_medium=embed&utm_campaign=share-popup&utm_content=a503ecacc4014e57bc6d6af4537d613f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> damarisisalive </a> on
+                    <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=a503ecacc4014e57bc6d6af4537d613f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                  </p>
+                </div>
+                <div class="gallery-description mt-3">
+                  <p><strong>Unlock-me 3D Model</strong></p>
+                  <p>Press play to activate the 3D viewer. Click and drag to rotate the model, and select full screen if you'd like a closer look at this interactive piece.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Video Column -->
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <iframe src="https://drive.google.com/file/d/1cC-7iHczBKdF3KuH2qfex_BunYXBR6ST/preview" allowfullscreen style="width: 100%; height: 400px; border-radius: 8px; border: none;"></iframe>
+                <div class="gallery-description mt-3">
+                  <p><strong>Projection Mapping Installation</strong></p>
+                  <p>Opposite Unlock-it you will find three winged keys, my Unlock-me sculptures, glowing under tightly-mapped projections from MadMapper. The moving images cling to the plastic shells, so hardware and video fuse until each pendant seems to breathe. Media thinker Katherine Hayles calls this effect "embodied virtuality," code grafted onto matter in plain sight.</p>
+                  
+                  <p>Every key tells a different chapter of the same story:</p>
+                  
+                  <p><strong>Circuit / DNA hybrid</strong><br>
+                  Electric-blue traces race over the wings while a twisting DNA helix glows inside the keyhole; a pulse of crimson tissue flickers beneath, hinting at what lies under every line of code.</p>
+                  
+                  <p><strong>Flesh on flesh</strong><br>
+                  Two layered simulations of viscera ooze and ripple, pushing the viewer from electronics into raw biology.</p>
+                  
+                  <p><strong>Neural mesh</strong><br>
+                  A shimmering mesh of lime and violet neurons fires across the surface, completing the journey from silicon to skin to intersection...or completion.</p>
+                  
+                  <p>Look left to right, the sequence moves from pure circuitry to living tissue to thinking brain; a quick evolution that asks where technology ends and the body begins.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -725,6 +881,22 @@
           <p>One of the pads turns on a live camera that blob-tracks the audience and loops their own image back into the projection. Legend Katherine Hayles would call this embodied virtuality information and body feeding each other in real time. Because the software still decides the outcome, the board also stages posthuman agency, where control is shared between human and machine.</p>
           
           <p>And honestly, the board is just fun. The visuals bloom and shimmer in a way that feels hypnotic. That pleasure loop mirrors how we swipe through social media: we make tiny choices about what to watch, the algorithm notes each pause, then serves an endless stream designed to hold us longer. Here, every pad tap or dial turn gives you that same hit of control, but the software is quietly steering the flow….nudging you to stay, explore, and lose track of time. The mathematician Norbert Wiener called this kind of two-way flow a "feedback loop." You try to control the image, but the image also measures you in real time. Agency feels shared rather than owned.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Ctrl-1 -->
+    <div class="right hidden" id="ctrl-1-gallery">
+      <div class="gallery-item" style="width: 100%;">
+        <img src="images/blue.gif" alt="Blue gif animation" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;">
+        <div class="gallery-description">
+
+      <div class="gallery-item" style="width: 100%;">
+        <img src="images/ctrl-1.JPG" alt="Ctrl-1 Physical Console" style="width: 100%; height: 400px; border-radius: 8px; object-fit: cover;" class="previewable">
+        <div class="gallery-description">
+          <p><strong>Ctrl-1 *Prototype* Collaboration with Meriel Hossain</strong></p>
+          <p>Ctrl-1 is a laser cut console filled with recycled toy buttons, arcade switches, dials, a joystick, and an Arduino LCD display. This is a prototype. Most inputs are just for show; only one actually does anything. The goal was to basically create an experimental console where some buttons activate changes to a video projection while others don't. By allowing participant to discover which buttons work, the panel shows how technology can promise total control while giving almost none. Conceptually it sits beside algorithm driven platforms that mimic choice while quietly steering results to serve the platform's own goals, not the user's.</p>
+          <p>In this case, you're serving mine. (◕ᴗ◕✿)</p>
         </div>
       </div>
     </div>
@@ -750,7 +922,7 @@
     }
 
     /* Gallery switching */
-    const galleryIds = ['sims', 'interactive-panel', 'full-video', 'unlock-it', 'live-thru-me'];
+    const galleryIds = ['sims', 'interactive-panel', 'full-video', 'unlock-it', 'unlock-me', 'live-thru-me', 'ctrl-1'];
     function showGallery(galleryId) {
       galleryIds.forEach(id => {
         const el = document.getElementById(id + '-gallery');
@@ -768,6 +940,72 @@
     /* Storyboard viewer */
     const galleryImages = ["story1.png", "story2.png"];
     let currentGalleryIndex = 0;
+
+    /* Simulation viewer */
+    const simulations = [
+      {
+        src: "https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview",
+        title: "Neuro.gel (AE)",
+        description: "Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment."
+      },
+      {
+        src: "https://drive.google.com/file/d/1R9_dTNzHJ9dh4fgVOvFK6adwPikBWm-A/preview",
+        title: "jelly.neurons :) (AE)",
+        description: "Simultaneously sensual and slightly uncanny, invoking the sense of looking up close at a viscous biological mass or a surreal, alien landscape."
+      },
+      {
+        src: "https://drive.google.com/file/d/1eph2annTC-Fzagp6LCjtU6UtALvc3Fei/preview",
+        title: "Circuit-melt (Blender + AE)",
+        description: "The bright neon highlights, the deep-blue backdrop, and the swirling distortions create a sense of high-tech immersion, as if the viewer is peering into a living digital matrix.<br><br>3D modeled circuit board using Blender.<br>Lights animated to flow through the circuit.<br>Edited in After Effects using displacements. Green \"0\"s = distorted motion graphics."
+      },
+      {
+        src: "https://drive.google.com/file/d/1c4khlrv39Qfp5mrUcU2o4J1RWrIATGcv/preview",
+        title: "Inside_v1 (AE)",
+        description: "Using After Effects, I animated a shifting, interconnected \"organic body\"… It's important to note that no, I didn't use AI for any of these visuals. Made entirely in AE."
+      },
+      {
+        src: "https://drive.google.com/file/d/1Qq5grgGN1mepIzF-80pDCablz4MaCJ6M/preview",
+        title: "Inside_v2 (AE)",
+        description: "AI doesn't \"see\" the way we do; it predicts, interpolates, and generates. If human perception is mediated through our senses, AI's perception is mediated through algorithms."
+      },
+      {
+        src: "https://drive.google.com/file/d/164FlI3Y-JhjDk5dnZryHfpFHLsA1Mq6d/preview",
+        title: "Inside_v3 (AE)",
+        description: "An abstract, fleshy-pink simulation that suggests swirling, organic forms, as though we're peering into magnified tissue or vaporous clouds."
+      },
+      {
+        src: "https://drive.google.com/file/d/1n2niK8kNrZbce9Maz36YzMiGZpkByCUn/preview",
+        title: "Inside-us(AE)",
+        description: ""
+      },
+      {
+        src: "https://drive.google.com/file/d/1_E7ssnWu3cuHBN_6rB_qORpXKCWbgnnm/preview",
+        title: "Inside-us_v2(AE)",
+        description: ""
+      }
+    ];
+    let currentSimulationIndex = 0;
+
+    function updateSimulationViewer() {
+      const iframe = document.getElementById("simulation-iframe");
+      const description = document.getElementById("simulation-description");
+      const simulation = simulations[currentSimulationIndex];
+      
+      if (iframe && description && simulation) {
+        iframe.src = simulation.src;
+        description.innerHTML = `<p><strong>${simulation.title}</strong></p><p>${simulation.description}</p>`;
+      }
+    }
+
+    function prevSimulation() {
+      currentSimulationIndex = (currentSimulationIndex - 1 + simulations.length) % simulations.length;
+      updateSimulationViewer();
+    }
+
+    function nextSimulation() {
+      currentSimulationIndex = (currentSimulationIndex + 1) % simulations.length;
+      updateSimulationViewer();
+    }
 
     function updateGalleryViewerImage() {
       const img = document.getElementById("gallery-viewer-image");
@@ -796,7 +1034,7 @@
     }
 
     /* Navigable Image Functions */
-    const navigableImages = ["unlock1.JPG", "images/metal-locket.JPG"];
+    const navigableImages = ["unlock1.JPG", "images/locket-p.JPG"];
     const navigableAlts = ["Unlock-it: Metal Cast (Aluminum)", "Unlock-it: Metal Locket"];
     let currentNavigableIndex = 0;
 
@@ -856,6 +1094,8 @@
       });
     });
   </script>
+
+  <!-- Bootstrap JavaScript Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
