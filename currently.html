@@ -422,6 +422,9 @@
       font-family: 'DepartureMono', monospace;
       font-size: 0.9rem;
       border-top: 3px solid var(--pink-4);
+      /* Ensure footer is visible */
+      position: relative;
+      z-index: 1;
     }
 
     .footer p {
@@ -907,11 +910,6 @@
   <div id="image-preview-overlay">
     <img id="image-preview-img" src="" alt="Preview">
     <button class="close-btn" aria-label="Close preview">×</button>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
   </div>
 
   <script>
