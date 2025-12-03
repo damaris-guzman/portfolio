@@ -8,6 +8,10 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -34,14 +38,21 @@
 
     * { box-sizing: border-box; }
 
+    html {
+      overflow-y: auto;
+      height: 100%;
+    }
+
     body {
       font-family: 'DepartureMono', monospace;
       margin: 0;
       padding: 0;
-      background-color: var(--bg);
+      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+      background-attachment: fixed;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      height: auto;
       color: var(--text);
     }
 
@@ -112,14 +123,17 @@
 
     /* Content layout */
     .update-notice {
-      background-color: #fff;
-      color: #333;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+      backdrop-filter: blur(10px);
+      color: var(--pink-2);
       text-align: center;
       padding: 15px;
       margin: 0;
       border-bottom: 2px solid var(--pink-2);
       font-size: 1rem;
       font-weight: bold;
+      position: relative;
+      z-index: 2;
     }
 
     .content {
@@ -136,11 +150,12 @@
     .description { font-size: 1.2rem; margin-top: 10px; color: var(--text-light); }
 
     .concept-box {
-      border: 1px solid #ccc;
+      border: 1px solid rgba(204, 204, 204, 0.3);
       border-radius: 8px;
       overflow: hidden;
       margin-top: 10px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(5px);
     }
 
     .concept-content {
@@ -153,16 +168,20 @@
 
     .expandable-box {
       margin-top: 10px;
-      background: #ddd;
+      background: rgba(221, 221, 221, 0.6);
+      backdrop-filter: blur(8px);
       padding: 10px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 0.95rem;
       text-align: left;
       position: relative;
-      transition: background 0.2s ease;
+      transition: all 0.3s ease;
     }
-    .expandable-box:hover { background: #ccc; }
+    .expandable-box:hover { 
+      background: rgba(204, 204, 204, 0.8);
+      transform: translateX(3px);
+    }
 
     .hidden-text { display: none; padding-top: 10px; font-size: 0.9rem; color: #666; }
 
@@ -178,13 +197,19 @@
 
     /* Gallery cards */
     .gallery-item {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       display: flex;
       flex-direction: column;
       width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     /* Wide variant: spans two card widths plus one gap (aligns with two cards above) */
     .gallery-item-wide {
@@ -340,6 +365,12 @@
       100% { background-position: 0% 50%; }
     }
 
+    @keyframes sparkle-fade {
+      0% { opacity: 1; transform: scale(0) rotate(0deg); }
+      50% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
+      100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
+    }
+
     .hidden { display: none; }
 
     /* Gallery viewer (storyboard) */
@@ -412,9 +443,9 @@
       transition: opacity 0.3s ease;
     }
 
-    /* footer styling is managed in style.css */
+    /* footer styling is managed in glossy-theme.css */
     .footer {
-      background-color: var(--pink-2);
+      background: linear-gradient(135deg, var(--pink-2), var(--pink-4));
       color: #fff;
       text-align: center;
       padding: 20px;
@@ -422,9 +453,9 @@
       font-family: 'DepartureMono', monospace;
       font-size: 0.9rem;
       border-top: 3px solid var(--pink-4);
-      /* Ensure footer is visible */
       position: relative;
       z-index: 1;
+      backdrop-filter: blur(10px);
     }
 
     .footer p {
@@ -505,6 +536,8 @@
     .bootstrap-content {
       margin-top: 0;
       padding: 20px 0;
+      min-height: auto;
+      flex: 1;
     }
 
     .bootstrap-content .container {
@@ -512,7 +545,8 @@
     }
 
     .component-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
       border-radius: 15px;
       padding: 1.5rem;
       margin: 1rem 0;
@@ -524,6 +558,7 @@
     .component-card:hover {
       transform: translateX(5px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .component-title {
@@ -535,9 +570,11 @@
 
     .story-content {
       padding: 1rem;
-      background: white;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
       border-radius: 10px;
       margin-top: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .story-toggle {
@@ -549,6 +586,14 @@
     .bootstrap-content .card {
       border: none;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .bootstrap-content .card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-3px);
     }
 
     .bootstrap-content .card-title {
@@ -564,10 +609,18 @@
     }
   </style>
 </head>
-<body>
+<body class="animated-bg">
+
+<!-- Animated particles background -->
+<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 10px; height: 10px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 10%; left: 10%; animation: float 20s ease-in-out infinite;"></div>
+    <div style="position: absolute; width: 15px; height: 15px; background: rgba(207, 119, 164, 0.3); border-radius: 50%; top: 20%; left: 80%; animation: float 25s ease-in-out infinite 2s;"></div>
+    <div style="position: absolute; width: 8px; height: 8px; background: rgba(255, 188, 208, 0.3); border-radius: 50%; top: 70%; left: 20%; animation: float 30s ease-in-out infinite 4s;"></div>
+    <div style="position: absolute; width: 12px; height: 12px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 60%; left: 90%; animation: float 22s ease-in-out infinite 3s;"></div>
+</div>
 
   <!-- Header -->
-  <div class="header">
+  <div class="header glass-header">
     <h1><a href="/about">Currently working on...</a></h1>
     <button class="hamburger" aria-label="Toggle menu">&#9776;</button>
     <nav class="nav-menu" aria-label="Main">
@@ -583,15 +636,15 @@
   </div>
 
   <!-- Notice -->
-  <div class="update-notice">This page is still being updated</div>
+  <div class="update-notice glossy-notice"><i class="bi bi-cone-striped me-2"></i>This page is still being updated<i class="bi bi-cone-striped ms-2"></i></div>
 
   <!-- Content -->
-  <div class="bootstrap-content">
+  <div class="bootstrap-content" style="position: relative; z-index: 1;">
     <div class="container">
       <div class="row">
         <!-- Left Column -->
         <div class="col-lg-4 col-md-12">
-          <div class="card mb-4">
+          <div class="card mb-4 frosted-sidebar">
             <div class="card-body">
               <h2 class="card-title">Every Day I See My Dream</h2>
               <p class="card-text text-muted">Where does the dream end and the feed begin?</p>
@@ -631,7 +684,7 @@
               </div>
 
               <!-- BUTTONS AREA -->
-              <div class="buttons-wrap">
+              <div class="buttons-wrap" style="position: relative; z-index: 10;">
                 <!-- Top row: Unlock-it and Unlock-me (2 columns) -->
                 <button class="button unlock-it" onclick="showGallery('unlock-it')" style="grid-column: 1;">Unlock-it</button>
                 <button class="button unlock-me" onclick="showGallery('unlock-me')" style="grid-column: 2;">Unlock-me</button>
@@ -801,8 +854,8 @@
           <p><strong>Unlock-it</strong></p>
           <p>A 3D-printed locket frames a micro-SD card like a jewel—visible but forever sealed in resin. Part lock and part key, it keeps its data present yet unreachable, turning digital memory into a fossilized relic.</p>
         </div>
-
       </div>
+
       <div class="gallery-item gallery-item-wide">
         <div class="image-navigator">
           <button class="nav-arrow nav-arrow-left" onclick="previousImage()">‹</button>
@@ -891,7 +944,7 @@
     <!-- Right: Ctrl-1 -->
     <div class="right hidden" id="ctrl-1-gallery">
       <div class="gallery-item" style="width: 100%;">
-        <img src="images/blue.gif" alt="Blue gif animation" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;">
+        <img src="https://damarisguzman.neocities.org/link-gifs/blue.gif" alt="Blue gif animation" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;">
         <div class="gallery-description">
 
       <div class="gallery-item" style="width: 100%;">
@@ -904,6 +957,12 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+  <!-- Footer -->
+  <div class="footer frosted-footer">
+    <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN <i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
   </div>
 
   <!-- Image preview overlay (shared) -->
@@ -1093,7 +1152,30 @@
     });
   </script>
 
-  <!-- Bootstrap JavaScript Bundle -->
+    <!-- Bootstrap JavaScript Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // Sparkle effect on click
+    document.addEventListener('click', function(e) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        sparkle.style.left = e.pageX + 'px';
+        sparkle.style.top = e.pageY + 'px';
+        sparkle.style.position = 'fixed';
+        sparkle.style.fontSize = '24px';
+        sparkle.style.pointerEvents = 'none';
+        sparkle.style.zIndex = '9999';
+        sparkle.style.animation = 'sparkle-fade 0.6s ease-out';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 600);
+    });
+  </script>
 </body>
 </html>
