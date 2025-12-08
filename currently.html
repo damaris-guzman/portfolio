@@ -67,6 +67,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
+      z-index: 9998;
     }
 
     .header h1 {
@@ -96,14 +97,14 @@
     .nav-menu {
       display: none;
       flex-direction: column;
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 70px;
       right: 20px;
       background-color: var(--pink-2);
       width: 220px;
       border-radius: 8px;
       overflow: hidden;
-      z-index: 1000;
+      z-index: 9999;
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
 
@@ -443,20 +444,7 @@
       transition: opacity 0.3s ease;
     }
 
-    /* footer styling is managed in glossy-theme.css */
-    .footer {
-      background: linear-gradient(135deg, var(--pink-2), var(--pink-4));
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: auto;
-      font-family: 'DepartureMono', monospace;
-      font-size: 0.9rem;
-      border-top: 3px solid var(--pink-4);
-      position: relative;
-      z-index: 1;
-      backdrop-filter: blur(10px);
-    }
+    /* footer styling is managed in style.css */
 
     .footer p {
       margin: 0;
@@ -535,9 +523,9 @@
     /* Bootstrap Integration Styles */
     .bootstrap-content {
       margin-top: 0;
-      padding: 20px 0;
+      padding: 20px 0 60px 0;
       min-height: auto;
-      flex: 1;
+      flex: 1 0 auto;
     }
 
     .bootstrap-content .container {
@@ -675,30 +663,31 @@
                     <div>★ Meditative AE simulations</div>
                     <div>★ Remixed using Resolume Avenue</div>
                     <div style="padding-left:20px; margin:8px 0 0;">➜ Webcam enabled</div>
-                    <div>★ Ctrl1 (Prototype)</div>
+                    <div>★ Ctrl1 (Arduino Prototype)</div>
                     <div>★ 3D Printed Lockets (2 variations)</div>
                     <div>★ Metal Casted Locket</div>
-                    <div>★ Projection Mapping</div>
+                    <div>★ Flight of Promise - Projection Mapping</div>
                   </div>
                 </div>
               </div>
 
               <!-- BUTTONS AREA -->
               <div class="buttons-wrap" style="position: relative; z-index: 10;">
-                <!-- Top row: Unlock-it and Unlock-me (2 columns) -->
-                <button class="button unlock-it" onclick="showGallery('unlock-it')" style="grid-column: 1;">Unlock-it</button>
-                <button class="button unlock-me" onclick="showGallery('unlock-me')" style="grid-column: 2;">Unlock-me</button>
-                <!-- Bottom row: Sims, Live-thru-me, and Ctrl-1 (3 columns) -->
+                <!-- Top row: Sims and Live-thru-me (2 columns) -->
                 <button class="button sims" onclick="showGallery('sims')" style="grid-column: 1;">Sims</button>
                 <button class="button live-thru-me" onclick="showGallery('live-thru-me')" style="grid-column: 2;">Live-thru-me</button>
+                <!-- Second row: Unlock-it and Unlock-me (2 columns) -->
+                <button class="button unlock-it" onclick="showGallery('unlock-it')" style="grid-column: 1;">Unlock-it</button>
+                <button class="button unlock-me" onclick="showGallery('unlock-me')" style="grid-column: 2;">Unlock-me</button>
+                <!-- Third row: Ctrl-1 (spans 2 columns) -->
                 <button class="button ctrl-1" onclick="showGallery('ctrl-1')" style="grid-column: 1 / 3;">Ctrl-1</button>
               </div>
 
               <!-- Exhibition info -->
               <div class="info-box"
-                   onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')"
+                   onclick="window.open('https://www.instagram.com/p/DR5bPvikl0w/?img_index=1', '_blank')"
                    style="margin-top:10px; text-align:center; background-color:#fff; border:2px solid var(--pink-2); border-radius:10px; padding:15px; cursor:pointer;">
-                Black Gallery in the Art building @ SJSU 11/12-20
+                Exhibited in the Black Gallery in the Art building @ SJSU 11/12/2025 - 11/20/2025
               </div>
             </div>
           </div>
@@ -830,7 +819,7 @@
     </div>
 
     <!-- Right: Unlock-it (NEW) -->
-    <div class="right hidden" id="unlock-it-gallery">
+    <div class="right hidden" id="unlock-it-gallery" style="width: 100% !important;">
 
       <div class="gallery-item">
         <div class="sketchfab-embed-wrapper">
@@ -864,7 +853,7 @@
         </div>
         <div class="gallery-description">
           <p><strong>Metal Cast (Bronze)</strong></p>
-          <p>I also 3D printed miniature versions of the locket as mold to metal cast. Pretty epic right? I got invited to share them for Stephanie Dinkin’s ICA show, Data Trust, so here’s what they looked like in the show. They weren’t actually done as some pieces still needed to be cut off and polished, but it made it to the show, nonetheless.</p>
+          <p>I also 3D printed miniature versions of the locket as mold to metal cast. Pretty epic right? I got invited to share them for <a href="https://www.icasanjose.org/upcoming-exhibitions/data_trust/?utm_source=San+Jose+ICA+News+Blast&utm_campaign=cfa71ae81f-EMAIL_CAMPAIGN_2023_10_16_08_15_COPY_01&utm_medium=email&utm_term=0_-5a0f930f36-97939396" target="_blank" style="color: var(--pink-2); font-weight: bold;">Stephanie Dinkin's ICA show, Data Trust</a>, so here’s what they looked like in the show. They weren’t actually done as some pieces still needed to be cut off and polished, but it made it to the show, nonetheless.</p>
           <p>The immersive simulations are visualized in a video I was working on to accompany all these components at once; the locket stores the immersive simulations that visualize embodiments of human–AI fusion, where flesh and digital code fuse as one. By localizing them inside a wearable object, the work compresses vast networks of computation into a personal relic.</p>
           <p>If the simulations represent a fusion of AI, internet culture, and human embodiment, then the locket becomes a symbolic “interface-organ” where the user is fused with their data. Wearing it enacts the merger: the body is no longer distinct from the network but bound to it.</p>
         </div>
@@ -926,11 +915,12 @@
     </div>
 
     <!-- Right: Live-thru-me -->
-    <div class="right hidden" id="live-thru-me-gallery">
-      <div class="gallery-item" style="width: 100%;">
+    <div class="right hidden" id="live-thru-me-gallery" style="width: 100% !important;">
+      <div class="gallery-item" style="width: 100%; max-width: none; margin: 0 auto;">
+        <img src="images/maris5.jpg" alt="Live-thru-me MIDI setup" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
         <div class="gallery-description">
           <p><strong>Live-thru-me: Interactive MIDI Experience</strong></p>
-          <p>At the center of the gallery is a midi board. Here, you can remix my simulations using a pre-baked VJing system I put together in Resolume Avenue. Ideally, I had a version of this experience programmed in MAX/MSP, but the processing wasn't done well, and I was running out of time to showcase it in the show. I tried this in TouchDesigner initially, but again, I wasn't able to finalize a working system in time.</p>
+          <iframe src="https://www.youtube.com/embed/fU1FfPY5tJQ?si=84eo6iv3gYbY7Z8Q" width="100%" height="500" style="border-radius: 8px; border: none; margin: 15px 0;" allowfullscreen></iframe>
           
           <p>In the gallery I invite visitors to interact with a midi board. The pads trigger my pre-rendered simulations. And the dials add surface effects like glow or distortion. You're not actually changing the mechanisms of the video editing or the video itself as it, you're just adding filters basically. Which parallels with thinking you have control on a digital platform when every decision you make feeds an algorithm that actively attempts to control the path you're on. The interface offers real interaction, but only inside a sandbox that I and the software already defined. In this case, I am using Resolume Avenue, which is a VJing software.</p>
           
@@ -942,8 +932,8 @@
     </div>
 
     <!-- Right: Ctrl-1 -->
-    <div class="right hidden" id="ctrl-1-gallery">
-      <div class="gallery-item" style="width: 100%;">
+    <div class="right hidden" id="ctrl-1-gallery" style="width: 100% !important;">
+      <div class="gallery-item" style="width: 100%; max-width: none; margin: 0 auto;">
         <img src="https://damarisguzman.neocities.org/link-gifs/blue.gif" alt="Blue gif animation" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;">
         <div class="gallery-description">
 
