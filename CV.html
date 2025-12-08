@@ -4,7 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV - Damaris Guzman</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
   <link rel="stylesheet" href="./style.css">
+    <style>
+        /* CV mobile adjustments: stack dates above details on small screens */
+        .cv-entry {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .cv-dates {
+            min-width: 140px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .cv-entry {
+                flex-direction: column; /* stack vertically on mobile */
+                gap: 8px;
+            }
+
+            .cv-dates {
+                min-width: 0;
+                font-size: 0.95rem;
+            }
+
+            .cv-details h4 {
+                margin-top: 0.2rem;
+                font-size: 1.05rem;
+            }
+
+            .cv-details p, .cv-details .skills {
+                font-size: 0.95rem;
+                line-height: 1.4;
+            }
+        }
+    </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const hamburger = document.querySelector('.hamburger');
@@ -22,7 +64,7 @@
   </script>
 </head>
 <body>
-  <div class="header">
+  <div class="header glass-header">
       <h1><a href="/about">CV ★~(◠‿◕✿)</a></h1>
       <button class="hamburger">&#9776;</button>
       <div class="nav-menu">
@@ -291,8 +333,11 @@ assumptions, and perhaps reclaiming a bit of agency in the process.</p>
     </div>
 </div>
 
-<div class="footer">
-    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="footer frosted-footer mt-auto">
+    <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN <i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
 </div>
 
 </body>
