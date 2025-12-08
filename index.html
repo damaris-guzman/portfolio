@@ -1,9 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connecting</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Glossy Theme -->
+    <link rel="stylesheet" href="glossy-theme.css">
     <style>
         /* Import DepartureMono font */
         @font-face {
@@ -18,12 +25,16 @@
             font-family: 'DepartureMono', monospace;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
+            background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+            background-attachment: fixed;
             min-height: 100vh;
-            align-items: center;
-            justify-content: flex-start; /* Changed from center */
+            height: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        html {
+            overflow-y: auto;
         }
 
         .header {
@@ -36,7 +47,6 @@
             align-items: center;
             text-transform: uppercase;
             font-weight: bold;
-            overflow: hidden;
             padding: 0 20px;
         }
         
@@ -77,7 +87,7 @@
         .sidebar {
             width: 100%;
             background-color: #ffe7ee;
-            padding: 15px;
+            padding: 25px;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             align-self: flex-start;
@@ -85,15 +95,19 @@
 
         @media (min-width: 768px) {
             .sidebar {
-                width: 30%;
+                width: 100%;
                 margin-bottom: 0;
             }
         }
 
         .sidebar img {
             width: 100%;
+            max-width: 300px;
             border-radius: 10px;
             margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .grid-container {
@@ -132,7 +146,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             text-align: center;
             background-color: rgba(0, 0, 0, 0.5);
@@ -183,13 +197,37 @@
             }
         }
 
+        .construction-notice {
+            background-color: #ff8fb2;
+            color: white;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .construction-notice p {
+            margin: 0;
+        }
+
     </style>
 </head>
-<body>
+<body class="animated-bg">
 
-<div class="header">
+<!-- Animated particles background -->
+<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 10px; height: 10px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 10%; left: 10%; animation: float 20s ease-in-out infinite;"></div>
+    <div style="position: absolute; width: 15px; height: 15px; background: rgba(207, 119, 164, 0.3); border-radius: 50%; top: 20%; left: 80%; animation: float 25s ease-in-out infinite 2s;"></div>
+    <div style="position: absolute; width: 8px; height: 8px; background: rgba(255, 188, 208, 0.3); border-radius: 50%; top: 70%; left: 20%; animation: float 30s ease-in-out infinite 4s;"></div>
+    <div style="position: absolute; width: 12px; height: 12px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 60%; left: 90%; animation: float 22s ease-in-out infinite 3s;"></div>
+</div>
+
+<div class="header glass-header">
     <h1>
-        <a href="/about">
+        <a href="/cv">
             <span>D</span><span>a</span><span>m</span><span>a</span><span>r</span><span>i</span><span>s</span>
             <span> </span>
             <span>G</span><span>U</span><span>Z</span><span>M</span><span>A</span><span>N</span>
@@ -198,61 +236,110 @@
     </h1>
 </div>
 
-<div class="main-content">
-    <div class="sidebar">
-        <img src="https://damarisguzman.neocities.org/Portfolio/maris%20is%20in.png" alt="Your Image">
-        <p>Hi, it's so good to see you! Welcome to my portfolio site :) Every day I see my dream, so I invite you to see it too. Thank you for visiting!</p>
+<div class="construction-notice glossy-notice">
+    <p><i class="bi bi-cone-striped me-2"></i>This site is under construction<i class="bi bi-cone-striped ms-2"></i></p>
+</div>
 
-        <div class="cute-box">
-            <a href="https://damaris-guzman.github.io/portfolio/CV.html" class="gradient-button">
-                Click to learn about me
-            </a>
-        </div>
-    </div>
+<div class="container-fluid my-4 pb-5" style="position: relative; z-index: 1; max-width: 1800px;">
+    <div class="row g-2">
+        <div class="col-lg-4">
+            <div class="sidebar frosted-sidebar" data-bs-toggle="tooltip" data-bs-placement="top" title="Welcome!">
+                <img src="https://damarisguzman.neocities.org/Portfolio/maris%20is%20in.png" alt="Your Image" class="img-fluid rounded shadow-sm">
+                <p class="mt-3">Hi, it's so good to see you! Welcome to my portfolio site :) Every day I see my dream, so I invite you to see it too. Thank you for visiting!</p>
 
-    <div class="grid-container">
-        <div class="grid-item">
-            <a href="https://damaris-guzman.github.io/portfolio/currently.html">
-                <img src="https://damarisguzman.neocities.org/Portfolio/red%20tissue1.png" alt="Current Projects">
-                <div class="overlay-text">Current Project/s</div>
-            </a>
+                <div class="cute-box">
+                    <a href="https://damaris-guzman.github.io/portfolio/CV.html" class="glossy-btn" data-bs-toggle="tooltip" title="Learn more about me">
+                        <i class="bi bi-person-circle me-2"></i>Click to learn about me
+                    </a>
+                </div>
+                <div class="cute-box">
+                    <a href="https://damaris-guzman.github.io/portfolio/publications.html" class="glossy-btn" data-bs-toggle="tooltip" title="Read my publications">
+                        <i class="bi bi-journal-text me-2"></i>Publications
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="grid-item">
-          <a href="https://damaris-guzman.github.io/portfolio/teaching.html">
-            <img src="https://damarisguzman.neocities.org/kiri%20ar%20(1).gif" alt="Teaching">
-            <div class="overlay-text">Teaching</div>
-          </a>
-        </div>
-        <div class="grid-item">
-          <a href="https://damaris-guzman.github.io/portfolio/newmaris.html">
-            <img src="https://damarisguzman.neocities.org/Portfolio/7a280062-d254-4330-8f43-5c0b854049b8_rwc_180x0x920x720x1280.jpg" alt="More Media">
-            <div class="overlay-text">New Media</div>
-          </a>
-        </div>
-        <div class="grid-item">
-           <a href="https://damaris-guzman.github.io/portfolio/video.html">
-            <img src="https://damarisguzman.neocities.org/Portfolio/spiral0.png" alt="Video Editing">
-            <div class="overlay-text">Video Editing</div>
-           </a>
-        </div>
-        <div class="grid-item">
-          <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"> 
-            <img src="https://damarisguzman.neocities.org/Portfolio/Guzman_One_2024.png" alt="3D Animation">
-            <div class="overlay-text">3D Animation</div>
-          </a>
-        </div>
-        <div class="grid-item">
-          <a href="https://damaris-guzman.github.io/portfolio/archive.html">
-            <img src="https://damarisguzman.neocities.org/Portfolio/IMG_5149.PNG" alt="Archive">
-            <div class="overlay-text">Archive</div>
-          </a>
+
+        <div class="col-lg-8">
+            <div class="row g-3">
+                <div class="col-4">
+                    <div class="grid-item glossy-grid-item">
+                        <a href="https://damaris-guzman.github.io/portfolio/currently.html">
+                            <img src="https://damarisguzman.neocities.org/link-gifs/dream-gif-1.gif" alt="Every day I see my dream" class="w-100 h-100" style="object-fit: cover;">
+                            <div class="overlay-text">Every day I see my dream</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="New media experiments">
+                        <a href="https://damaris-guzman.github.io/portfolio/newmaris.html">
+                            <img src="https://damarisguzman.neocities.org/Portfolio/7a280062-d254-4330-8f43-5c0b854049b8_rwc_180x0x920x720x1280.jpg" alt="More Media" class="w-100 h-100" style="object-fit: cover;">
+                            <div class="overlay-text"><i class="bi bi-palette me-2"></i>New Media</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="My teaching experience">
+                        <a href="https://damaris-guzman.github.io/portfolio/teaching.html">
+                            <img src="https://damarisguzman.neocities.org/kiri%20ar%20(1).gif" alt="Teaching" class="w-100 h-100" style="object-fit: cover;">
+                            <div class="overlay-text"><i class="bi bi-mortarboard me-2"></i>Teaching</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="Video editing work">
+                        <a href="https://damaris-guzman.github.io/portfolio/video.html">
+                            <img src="https://damarisguzman.neocities.org/Portfolio/spiral0.png" alt="Video Editing" class="w-100 h-100" style="object-fit: cover;">
+                            <div class="overlay-text"><i class="bi bi-film me-2"></i>Video Editing</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="3D animation projects">
+                        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html">
+                            <img src="https://damarisguzman.neocities.org/Portfolio/Guzman_One_2024.png" alt="3D Animation" class="w-100 h-100" style="object-fit: cover;">
+                            <div class="overlay-text"><i class="bi bi-box me-2"></i>3D Animation</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="Project archive">
+                        <a href="https://damaris-guzman.github.io/portfolio/archive.html">
+                            <img src="https://damarisguzman.neocities.org/Portfolio/IMG_5149.PNG" alt="Archive" class="w-100 h-100" style="object-fit: cover;">
+                            <div class="overlay-text"><i class="bi bi-archive me-2"></i>Archive</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="footer">
-    <p>© 2025 DAMARIS GUZMAN</p>
+<div class="footer frosted-footer mt-auto">
+    <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN <i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // Sparkle effect on click
+    document.addEventListener('click', function(e) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        sparkle.style.left = e.pageX + 'px';
+        sparkle.style.top = e.pageY + 'px';
+        sparkle.style.fontSize = '24px';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 600);
+    });
+</script>
 
 </body>
 </html>

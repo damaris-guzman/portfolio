@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,10 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -34,14 +38,21 @@
 
     * { box-sizing: border-box; }
 
+    html {
+      overflow-y: auto;
+      height: 100%;
+    }
+
     body {
       font-family: 'DepartureMono', monospace;
       margin: 0;
       padding: 0;
-      background-color: var(--bg);
+      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+      background-attachment: fixed;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      height: auto;
       color: var(--text);
     }
 
@@ -56,6 +67,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
+      z-index: 9998;
     }
 
     .header h1 {
@@ -85,14 +97,14 @@
     .nav-menu {
       display: none;
       flex-direction: column;
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 70px;
       right: 20px;
       background-color: var(--pink-2);
       width: 220px;
       border-radius: 8px;
       overflow: hidden;
-      z-index: 1000;
+      z-index: 9999;
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
 
@@ -112,14 +124,17 @@
 
     /* Content layout */
     .update-notice {
-      background-color: #fff;
-      color: #333;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+      backdrop-filter: blur(10px);
+      color: var(--pink-2);
       text-align: center;
       padding: 15px;
       margin: 0;
       border-bottom: 2px solid var(--pink-2);
       font-size: 1rem;
       font-weight: bold;
+      position: relative;
+      z-index: 2;
     }
 
     .content {
@@ -136,11 +151,12 @@
     .description { font-size: 1.2rem; margin-top: 10px; color: var(--text-light); }
 
     .concept-box {
-      border: 1px solid #ccc;
+      border: 1px solid rgba(204, 204, 204, 0.3);
       border-radius: 8px;
       overflow: hidden;
       margin-top: 10px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(5px);
     }
 
     .concept-content {
@@ -153,16 +169,20 @@
 
     .expandable-box {
       margin-top: 10px;
-      background: #ddd;
+      background: rgba(221, 221, 221, 0.6);
+      backdrop-filter: blur(8px);
       padding: 10px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 0.95rem;
       text-align: left;
       position: relative;
-      transition: background 0.2s ease;
+      transition: all 0.3s ease;
     }
-    .expandable-box:hover { background: #ccc; }
+    .expandable-box:hover { 
+      background: rgba(204, 204, 204, 0.8);
+      transform: translateX(3px);
+    }
 
     .hidden-text { display: none; padding-top: 10px; font-size: 0.9rem; color: #666; }
 
@@ -178,13 +198,19 @@
 
     /* Gallery cards */
     .gallery-item {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       display: flex;
       flex-direction: column;
       width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     /* Wide variant: spans two card widths plus one gap (aligns with two cards above) */
     .gallery-item-wide {
@@ -295,12 +321,18 @@
       background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
     }
+    .button.ctrl-1 {
+      background: linear-gradient(-45deg, #cf77a4, #ff9ac6, var(--pink-2), #ff6fa3);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite;
+    }
     .button.sims,
     .button.interactive-panel,
     .button.full-video,
     .button.live-thru-me,
     .button.unlock-it,
-    .button.unlock-me {
+    .button.unlock-me,
+    .button.ctrl-1 {
       padding: 8px 12px;
       font-size: 0.9rem;
     }
@@ -332,6 +364,12 @@
       50% { background-position: 100% 100%; }
       75% { background-position: 0% 100%; }
       100% { background-position: 0% 50%; }
+    }
+
+    @keyframes sparkle-fade {
+      0% { opacity: 1; transform: scale(0) rotate(0deg); }
+      50% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
+      100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
     }
 
     .hidden { display: none; }
@@ -407,16 +445,6 @@
     }
 
     /* footer styling is managed in style.css */
-    .footer {
-      background-color: var(--pink-2);
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: auto;
-      font-family: 'DepartureMono', monospace;
-      font-size: 0.9rem;
-      border-top: 3px solid var(--pink-4);
-    }
 
     .footer p {
       margin: 0;
@@ -495,7 +523,9 @@
     /* Bootstrap Integration Styles */
     .bootstrap-content {
       margin-top: 0;
-      padding: 20px 0;
+      padding: 20px 0 60px 0;
+      min-height: auto;
+      flex: 1 0 auto;
     }
 
     .bootstrap-content .container {
@@ -503,7 +533,8 @@
     }
 
     .component-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
       border-radius: 15px;
       padding: 1.5rem;
       margin: 1rem 0;
@@ -515,6 +546,7 @@
     .component-card:hover {
       transform: translateX(5px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .component-title {
@@ -526,9 +558,11 @@
 
     .story-content {
       padding: 1rem;
-      background: white;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
       border-radius: 10px;
       margin-top: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .story-toggle {
@@ -540,6 +574,14 @@
     .bootstrap-content .card {
       border: none;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .bootstrap-content .card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-3px);
     }
 
     .bootstrap-content .card-title {
@@ -555,10 +597,18 @@
     }
   </style>
 </head>
-<body>
+<body class="animated-bg">
+
+<!-- Animated particles background -->
+<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; width: 10px; height: 10px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 10%; left: 10%; animation: float 20s ease-in-out infinite;"></div>
+    <div style="position: absolute; width: 15px; height: 15px; background: rgba(207, 119, 164, 0.3); border-radius: 50%; top: 20%; left: 80%; animation: float 25s ease-in-out infinite 2s;"></div>
+    <div style="position: absolute; width: 8px; height: 8px; background: rgba(255, 188, 208, 0.3); border-radius: 50%; top: 70%; left: 20%; animation: float 30s ease-in-out infinite 4s;"></div>
+    <div style="position: absolute; width: 12px; height: 12px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 60%; left: 90%; animation: float 22s ease-in-out infinite 3s;"></div>
+</div>
 
   <!-- Header -->
-  <div class="header">
+  <div class="header glass-header">
     <h1><a href="/about">Currently working on...</a></h1>
     <button class="hamburger" aria-label="Toggle menu">&#9776;</button>
     <nav class="nav-menu" aria-label="Main">
@@ -574,15 +624,15 @@
   </div>
 
   <!-- Notice -->
-  <div class="update-notice">This page is still being updated</div>
+  <div class="update-notice glossy-notice"><i class="bi bi-cone-striped me-2"></i>This page is still being updated<i class="bi bi-cone-striped ms-2"></i></div>
 
   <!-- Content -->
-  <div class="bootstrap-content">
+  <div class="bootstrap-content" style="position: relative; z-index: 1;">
     <div class="container">
       <div class="row">
         <!-- Left Column -->
         <div class="col-lg-4 col-md-12">
-          <div class="card mb-4">
+          <div class="card mb-4 frosted-sidebar">
             <div class="card-body">
               <h2 class="card-title">Every Day I See My Dream</h2>
               <p class="card-text text-muted">Where does the dream end and the feed begin?</p>
@@ -590,7 +640,7 @@
       <div class="concept-box">
         <div class="concept-content">
          <p>Every day I see my dream unfolds as a lucid, looping fever; the screen shows me hopes I never said aloud, translated into pixels before I can claim them.</p> 
-            <p>In the gallery, chrome wings cradle a fossilized SD card, promising flight yet sealing memory inside a glittering reliquary. Twin projections breathe: one pulses like a hyper edited diary, the locket flashing as an “interface organ” that sutures flesh to code, while the other drifts in slow motion, skin and neural nets dissolving into a glitch.</p>
+            <p>In the gallery, chrome wings cradle a fossilized SD card, promising flight yet sealing memory in a glittering reliquary. Parallel to this work and its metal cast are three additional keys, each projection-mapped with animated simulations. Scan them left to right and the sequence leaps from pure circuitry to living tissue to thinking brain, a rapid evolution that asks where technology ends and the body begins.</p>
             <p>At the center of the room, a midi board invites visitors to remix the visuals using blooms, blurs, and glitches, yet one unmarked pad suddenly swaps in a live feed from the camera tracking the crowd, casting their own faces across the projection and revealing that the feed itself is gazing back. What seems like a personal reverie is really a feedback circuit, private thoughts returned as public spectacle.</p>
              <p>The dream on display is vivid yet slippery, always recombining, never letting anyone hold a single shape for long, …and the room whispers a question: as our visions scroll before us, are we still the dreamers, or have we become the engine that keeps the images turning? </p>
           <p>In short, the project is a two-part installation: a visceral film that visualizes the merger of flesh and interface, and an interactive “operational double” that lets the audience discover just how little control they truly have.</p>
@@ -613,29 +663,31 @@
                     <div>★ Meditative AE simulations</div>
                     <div>★ Remixed using Resolume Avenue</div>
                     <div style="padding-left:20px; margin:8px 0 0;">➜ Webcam enabled</div>
-                    <div>★ Ctrl1 (Prototype)</div>
+                    <div>★ Ctrl1 (Arduino Prototype)</div>
                     <div>★ 3D Printed Lockets (2 variations)</div>
                     <div>★ Metal Casted Locket</div>
-                    <div>★ Projection Mapping</div>
+                    <div>★ Flight of Promise - Projection Mapping</div>
                   </div>
                 </div>
               </div>
 
               <!-- BUTTONS AREA -->
-              <div class="buttons-wrap">
-                <!-- Top row: Unlock-it and Unlock-me (2 columns) -->
-                <button class="button unlock-it" onclick="showGallery('unlock-it')" style="grid-column: 1;">Unlock-it</button>
-                <button class="button unlock-me" onclick="showGallery('unlock-me')" style="grid-column: 2;">Unlock-me</button>
-                <!-- Bottom row: Sims and Live-thru-me (2 columns) -->
+              <div class="buttons-wrap" style="position: relative; z-index: 10;">
+                <!-- Top row: Sims and Live-thru-me (2 columns) -->
                 <button class="button sims" onclick="showGallery('sims')" style="grid-column: 1;">Sims</button>
                 <button class="button live-thru-me" onclick="showGallery('live-thru-me')" style="grid-column: 2;">Live-thru-me</button>
+                <!-- Second row: Unlock-it and Unlock-me (2 columns) -->
+                <button class="button unlock-it" onclick="showGallery('unlock-it')" style="grid-column: 1;">Unlock-it</button>
+                <button class="button unlock-me" onclick="showGallery('unlock-me')" style="grid-column: 2;">Unlock-me</button>
+                <!-- Third row: Ctrl-1 (spans 2 columns) -->
+                <button class="button ctrl-1" onclick="showGallery('ctrl-1')" style="grid-column: 1 / 3;">Ctrl-1</button>
               </div>
 
               <!-- Exhibition info -->
               <div class="info-box"
-                   onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')"
+                   onclick="window.open('https://www.instagram.com/p/DR5bPvikl0w/?img_index=1', '_blank')"
                    style="margin-top:10px; text-align:center; background-color:#fff; border:2px solid var(--pink-2); border-radius:10px; padding:15px; cursor:pointer;">
-                Black Gallery in the Art building @ SJSU 11/12-20
+                Exhibited in the Black Gallery in the Art building @ SJSU 11/12/2025 - 11/20/2025
               </div>
             </div>
           </div>
@@ -684,7 +736,7 @@
                 </div>
                 
                 <div id="simulation-description" class="gallery-description" style="margin-top: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
-                  <p><strong>Brain Visualization (AE)</strong></p>
+                  <p><strong>Neural.gel (AE)</strong></p>
                   <p>Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment.</p>
                 </div>
               </div>
@@ -767,7 +819,7 @@
     </div>
 
     <!-- Right: Unlock-it (NEW) -->
-    <div class="right hidden" id="unlock-it-gallery">
+    <div class="right hidden" id="unlock-it-gallery" style="width: 100% !important;">
 
       <div class="gallery-item">
         <div class="sketchfab-embed-wrapper">
@@ -791,8 +843,8 @@
           <p><strong>Unlock-it</strong></p>
           <p>A 3D-printed locket frames a micro-SD card like a jewel—visible but forever sealed in resin. Part lock and part key, it keeps its data present yet unreachable, turning digital memory into a fossilized relic.</p>
         </div>
-
       </div>
+
       <div class="gallery-item gallery-item-wide">
         <div class="image-navigator">
           <button class="nav-arrow nav-arrow-left" onclick="previousImage()">‹</button>
@@ -801,7 +853,7 @@
         </div>
         <div class="gallery-description">
           <p><strong>Metal Cast (Bronze)</strong></p>
-          <p>I also 3D printed miniature versions of the locket as mold to metal cast. Pretty epic right? I got invited to share them for Stephanie Dinkin’s ICA show, Data Trust, so here’s what they looked like in the show. They weren’t actually done as some pieces still needed to be cut off and polished, but it made it to the show, nonetheless.</p>
+          <p>I also 3D printed miniature versions of the locket as mold to metal cast. Pretty epic right? I got invited to share them for <a href="https://www.icasanjose.org/upcoming-exhibitions/data_trust/?utm_source=San+Jose+ICA+News+Blast&utm_campaign=cfa71ae81f-EMAIL_CAMPAIGN_2023_10_16_08_15_COPY_01&utm_medium=email&utm_term=0_-5a0f930f36-97939396" target="_blank" style="color: var(--pink-2); font-weight: bold;">Stephanie Dinkin's ICA show, Data Trust</a>, so here’s what they looked like in the show. They weren’t actually done as some pieces still needed to be cut off and polished, but it made it to the show, nonetheless.</p>
           <p>The immersive simulations are visualized in a video I was working on to accompany all these components at once; the locket stores the immersive simulations that visualize embodiments of human–AI fusion, where flesh and digital code fuse as one. By localizing them inside a wearable object, the work compresses vast networks of computation into a personal relic.</p>
           <p>If the simulations represent a fusion of AI, internet culture, and human embodiment, then the locket becomes a symbolic “interface-organ” where the user is fused with their data. Wearing it enacts the merger: the body is no longer distinct from the network but bound to it.</p>
         </div>
@@ -863,11 +915,12 @@
     </div>
 
     <!-- Right: Live-thru-me -->
-    <div class="right hidden" id="live-thru-me-gallery">
-      <div class="gallery-item" style="width: 100%;">
+    <div class="right hidden" id="live-thru-me-gallery" style="width: 100% !important;">
+      <div class="gallery-item" style="width: 100%; max-width: none; margin: 0 auto;">
+        <img src="images/maris5.jpg" alt="Live-thru-me MIDI setup" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
         <div class="gallery-description">
           <p><strong>Live-thru-me: Interactive MIDI Experience</strong></p>
-          <p>At the center of the gallery is a midi board. Here, you can remix my simulations using a pre-baked VJing system I put together in Resolume Avenue. Ideally, I had a version of this experience programmed in MAX/MSP, but the processing wasn't done well, and I was running out of time to showcase it in the show. I tried this in TouchDesigner initially, but again, I wasn't able to finalize a working system in time.</p>
+          <iframe src="https://www.youtube.com/embed/fU1FfPY5tJQ?si=84eo6iv3gYbY7Z8Q" width="100%" height="500" style="border-radius: 8px; border: none; margin: 15px 0;" allowfullscreen></iframe>
           
           <p>In the gallery I invite visitors to interact with a midi board. The pads trigger my pre-rendered simulations. And the dials add surface effects like glow or distortion. You're not actually changing the mechanisms of the video editing or the video itself as it, you're just adding filters basically. Which parallels with thinking you have control on a digital platform when every decision you make feeds an algorithm that actively attempts to control the path you're on. The interface offers real interaction, but only inside a sandbox that I and the software already defined. In this case, I am using Resolume Avenue, which is a VJing software.</p>
           
@@ -878,17 +931,34 @@
       </div>
     </div>
 
+    <!-- Right: Ctrl-1 -->
+    <div class="right hidden" id="ctrl-1-gallery" style="width: 100% !important;">
+      <div class="gallery-item" style="width: 100%; max-width: none; margin: 0 auto;">
+        <img src="https://damarisguzman.neocities.org/link-gifs/blue.gif" alt="Blue gif animation" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;">
+        <div class="gallery-description">
+
+      <div class="gallery-item" style="width: 100%;">
+        <img src="images/ctrl-1.JPG" alt="Ctrl-1 Physical Console" style="width: 100%; height: 400px; border-radius: 8px; object-fit: cover;" class="previewable">
+        <div class="gallery-description">
+          <p><strong>Ctrl-1 *Prototype* Collaboration with Meriel Hossain</strong></p>
+          <p>Ctrl-1 is a laser cut console filled with recycled toy buttons, arcade switches, dials, a joystick, and an Arduino LCD display. This is a prototype. Most inputs are just for show; only one actually does anything. The goal was to basically create an experimental console where some buttons activate changes to a video projection while others don't. By allowing participant to discover which buttons work, the panel shows how technology can promise total control while giving almost none. Conceptually it sits beside algorithm driven platforms that mimic choice while quietly steering results to serve the platform's own goals, not the user's.</p>
+          <p>In this case, you're serving mine. (◕ᴗ◕✿)</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <!-- Footer -->
+  <div class="footer frosted-footer mt-auto">
+    <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN <i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
   </div>
 
   <!-- Image preview overlay (shared) -->
   <div id="image-preview-overlay">
     <img id="image-preview-img" src="" alt="Preview">
     <button class="close-btn" aria-label="Close preview">×</button>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
   </div>
 
   <script>
@@ -899,7 +969,7 @@
     }
 
     /* Gallery switching */
-    const galleryIds = ['sims', 'interactive-panel', 'full-video', 'unlock-it', 'unlock-me', 'live-thru-me'];
+    const galleryIds = ['sims', 'interactive-panel', 'full-video', 'unlock-it', 'unlock-me', 'live-thru-me', 'ctrl-1'];
     function showGallery(galleryId) {
       galleryIds.forEach(id => {
         const el = document.getElementById(id + '-gallery');
@@ -1072,7 +1142,30 @@
     });
   </script>
 
-  <!-- Bootstrap JavaScript Bundle -->
+    <!-- Bootstrap JavaScript Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // Sparkle effect on click
+    document.addEventListener('click', function(e) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        sparkle.style.left = e.pageX + 'px';
+        sparkle.style.top = e.pageY + 'px';
+        sparkle.style.position = 'fixed';
+        sparkle.style.fontSize = '24px';
+        sparkle.style.pointerEvents = 'none';
+        sparkle.style.zIndex = '9999';
+        sparkle.style.animation = 'sparkle-fade 0.6s ease-out';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 600);
+    });
+  </script>
 </body>
 </html>

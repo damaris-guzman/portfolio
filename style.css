@@ -480,17 +480,14 @@ body {
     }
 }
 
-/* Footer styles */
+/* Footer styles - matches index.html exactly */
 .footer {
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
     background-color: #ffbcd0;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     font-weight: bold;
-    text-transform: uppercase;
+    width: 100%;
     margin-top: auto;
 }
 
@@ -534,3 +531,20 @@ body {
         padding: 20px;
     }
 }
+
+/* ------------------------------------------------------------------
+   Force consistent page layout so the footer behaves like `currently.html`
+   This uses !important to override per-page <style> body rules so the
+   footer (with margin-top:auto and full-bleed tricks) always sits at
+   the bottom and spans the viewport.
+   ------------------------------------------------------------------ */
+html, body {
+    height: 100%;
+}
+body {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+    overflow-x: hidden !important;
+}
+
