@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -397,58 +397,14 @@
       margin: 0 10px;
     }
 
-    /* Image Navigator Styles */
-    .image-navigator {
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-
-    .nav-arrow {
-      position: absolute;
-      background-color: var(--pink-2);
+    /* Footer */
+    .footer {
+      background-color: var(--pink-3);
       color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      font-size: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      transition: all 0.3s ease;
-      opacity: 0.8;
-    }
-
-    .nav-arrow:hover {
-      opacity: 1;
-      transform: scale(1.1);
-      box-shadow: 0 4px 12px rgba(207, 119, 164, 0.4);
-    }
-
-    .nav-arrow-left {
-      left: 10px;
-    }
-
-    .nav-arrow-right {
-      right: 10px;
-    }
-
-    #navigable-image {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      transition: opacity 0.3s ease;
-    }
-
-    /* footer styling is managed in style.css */
-
-    .footer p {
-      margin: 0;
-      letter-spacing: 1px;
+      text-align: center;
+      padding: 12px;
+      font-weight: bold;
+      margin-top: auto;
     }
 
     /* Responsive */
@@ -481,119 +437,8 @@
         font-size: 0.8rem;
         padding: 6px 8px;
       }
-
-      /* Mobile optimization for simulation viewer */
-      .simulation-viewer {
-        flex-direction: column !important;
-        gap: 10px !important;
-        padding: 15px !important;
-        margin: 0 0 15px 0 !important;
-      }
-      
-      .simulation-content {
-        width: 100% !important;
-        max-width: none !important;
-      }
-      
-      #simulation-iframe {
-        height: 200px !important;
-      }
-      
-      #simulation-description {
-        margin-top: 10px !important;
-        padding: 10px !important;
-        font-size: 0.85rem !important;
-      }
-      
-      .simulation-viewer .arrow-button {
-        width: 35px !important;
-        height: 35px !important;
-        font-size: 1.2rem !important;
-      }
-
-      /* Mobile navigation arrows container */
-      .simulation-nav-mobile {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 10px;
-      }
-    }
-
-    /* Bootstrap Integration Styles */
-    .bootstrap-content {
-      margin-top: 0;
-      padding: 20px 0 60px 0;
-      min-height: auto;
-      flex: 1 0 auto;
-    }
-
-    .bootstrap-content .container {
-      max-width: 1200px;
-    }
-
-    .component-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      border-left: 4px solid var(--pink-2);
-      transition: all 0.3s ease;
-    }
-
-    .component-card:hover {
-      transform: translateX(5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      background: rgba(255, 255, 255, 0.95);
-    }
-
-    .component-title {
-      font-weight: bold;
-      color: var(--pink-2);
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .story-content {
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border-radius: 10px;
-      margin-top: 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .story-toggle {
-      cursor: pointer;
-      margin-bottom: 1rem;
-    }
-
-    /* Bootstrap override for maintaining existing styles */
-    .bootstrap-content .card {
-      border: none;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .bootstrap-content .card:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      transform: translateY(-3px);
-    }
-
-    .bootstrap-content .card-title {
-      color: var(--text);
-      font-family: 'DepartureMono', monospace;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .bootstrap-content .card-text {
-      font-family: 'DepartureMono', monospace;
-      font-size: 1.2rem;
+      .unlock-it-span { grid-column: 1; }
+      .button.unlock-it { width: 100%; }
     }
   </style>
 </head>
@@ -656,42 +501,52 @@
                 </div>
               </div>
 
-              <div class="expandable-box" onclick="toggleExpand('components-text')">
-                Components to the project ▼
-                <div class="hidden-text" id="components-text">
-                  <div style="padding-left:0; margin:0;">
-                    <div>★ Meditative AE simulations</div>
-                    <div>★ Remixed using Resolume Avenue</div>
-                    <div style="padding-left:20px; margin:8px 0 0;">➜ Webcam enabled</div>
-                    <div>★ Ctrl1 (Arduino Prototype)</div>
-                    <div>★ 3D Printed Lockets (2 variations)</div>
-                    <div>★ Metal Casted Locket</div>
-                    <div>★ Flight of Promise - Projection Mapping</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- BUTTONS AREA -->
-              <div class="buttons-wrap" style="position: relative; z-index: 10;">
-                <!-- Top row: Sims and Live-thru-me (2 columns) -->
-                <button class="button sims" onclick="showGallery('sims')" style="grid-column: 1;">Sims</button>
-                <button class="button live-thru-me" onclick="showGallery('live-thru-me')" style="grid-column: 2;">Live-thru-me</button>
-                <!-- Second row: Unlock-it and Unlock-me (2 columns) -->
-                <button class="button unlock-it" onclick="showGallery('unlock-it')" style="grid-column: 1;">Unlock-it</button>
-                <button class="button unlock-me" onclick="showGallery('unlock-me')" style="grid-column: 2;">Unlock-me</button>
-                <!-- Third row: Ctrl-1 (spans 2 columns) -->
-                <button class="button ctrl-1" onclick="showGallery('ctrl-1')" style="grid-column: 1 / 3;">Ctrl-1</button>
-              </div>
-
-              <!-- Exhibition info -->
-              <div class="info-box"
-                   onclick="window.open('https://www.instagram.com/p/DR5bPvikl0w/?img_index=1', '_blank')"
-                   style="margin-top:10px; text-align:center; background-color:#fff; border:2px solid var(--pink-2); border-radius:10px; padding:15px; cursor:pointer;">
-                Exhibited in the Black Gallery in the Art building @ SJSU 11/12/2025 - 11/20/2025
-              </div>
-            </div>
-          </div>
+      <div class="expandable-box" onclick="toggleExpand('components-text')">
+        Components to the project ▼
+        <div class="hidden-text" id="components-text">
+          <ul style="list-style-type:none; padding-left:0; margin:0;">
+            <li>★ 3D Printed + Metal Casted Locket</li>
+            <li>★ Meditative AE simulations</li>
+            <li>★ Audio-visual controller</li>
+            <li>★ Fully edited 33-second video.
+              <ul style="list-style-type:none; padding-left:20px; margin:8px 0 0;">
+                <li>➜ Equipped with VFX, 3D animation, and immersive film techniques.</li>
+              </ul>
+            </li>
+          </ul>
         </div>
+      </div>
+
+      <!-- BUTTONS AREA -->
+      <div class="buttons-wrap">
+        <!-- Top full-width Unlock-it (spans 3 cols) -->
+        <div class="unlock-it-span">
+          <button class="button unlock-it" onclick="showGallery('unlock-it')">Unlock-it</button>
+        </div>
+
+        <!-- Row of three original buttons (same size as before) -->
+        <button class="button sims" onclick="showGallery('sims')">Sims</button>
+        <button class="button interactive-panel" onclick="showGallery('interactive-panel')">Interactive Panel</button>
+        <button class="button full-video" onclick="showGallery('full-video')">Video in process</button>
+      </div>
+
+      <!-- Exhibition info -->
+      <div class="info-box"
+           onclick="window.open('https://docs.google.com/document/d/1m19moXU8Wf83u4iNiWQjssmwbKQEqLfmTlxPQAyOgDk/edit?usp=sharing', '_blank')"
+           style="margin-top:10px; text-align:center; background-color:#fff; border:2px solid var(--pink-2); border-radius:10px; padding:15px; cursor:pointer;">
+        This project will exhibit for two weeks in the Black Box Gallery at SJSU from November 11 to 20, 2025.
+      </div>
+    </div>
+
+    <!-- Right: Sims Gallery (default visible) -->
+    <div class="right" id="sims-gallery">
+      <div class="gallery-item">
+        <iframe src="https://drive.google.com/file/d/1Q-ht7v_ZnuyLt9Xj4kLzzibU03wlk8C2/preview" allowfullscreen></iframe>
+        <div class="gallery-description">
+          <p><strong>Brain Visualization (AE)</strong></p>
+          <p>Smooth gradients between colors and shapes lend the composition a hypnotic, dreamlike quality, blurring the line between something living and an artificial, computer-generated environment.</p>
+        </div>
+      </div>
 
         <!-- Right Column -->
         <div class="col-lg-8 col-md-12">
@@ -852,107 +707,13 @@
           <button class="nav-arrow nav-arrow-right" onclick="nextImage()">›</button>
         </div>
         <div class="gallery-description">
-          <p><strong>Metal Cast (Bronze)</strong></p>
-          <p>I also 3D printed miniature versions of the locket as mold to metal cast. Pretty epic right? I got invited to share them for <a href="https://www.icasanjose.org/upcoming-exhibitions/data_trust/?utm_source=San+Jose+ICA+News+Blast&utm_campaign=cfa71ae81f-EMAIL_CAMPAIGN_2023_10_16_08_15_COPY_01&utm_medium=email&utm_term=0_-5a0f930f36-97939396" target="_blank" style="color: var(--pink-2); font-weight: bold;">Stephanie Dinkin's ICA show, Data Trust</a>, so here’s what they looked like in the show. They weren’t actually done as some pieces still needed to be cut off and polished, but it made it to the show, nonetheless.</p>
-          <p>The immersive simulations are visualized in a video I was working on to accompany all these components at once; the locket stores the immersive simulations that visualize embodiments of human–AI fusion, where flesh and digital code fuse as one. By localizing them inside a wearable object, the work compresses vast networks of computation into a personal relic.</p>
-          <p>If the simulations represent a fusion of AI, internet culture, and human embodiment, then the locket becomes a symbolic “interface-organ” where the user is fused with their data. Wearing it enacts the merger: the body is no longer distinct from the network but bound to it.</p>
+          <p><strong>Metal Cast (Aluminum)</strong></p>
+          <p>Aluminum casting in progress — not yet finished and made for the “Video in process.” The immersive simulations are visualized in the main video to accompany all these components at once; the locket stores the immersive simulations that visualize embodiments of human–AI fusion, where flesh and digital code fuse as one. By localizing them inside a wearable object, the work compresses vast networks of computation into a personal relic.</p>
+          <p>If the simulations represent a fusion of AI, internet culture, and human embodiment, then the locket becomes a symbolic “interface-organ” — a prosthesis where the user is fused with their data. Wearing it enacts the merger: the body is no longer distinct from the network but bound to it.</p>
         </div>
       </div>
     </div>
 
-    <!-- Right: Unlock-me (NEW) -->
-    <div class="gallery-section hidden" id="unlock-me-gallery">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- 3D Model Column -->
-          <div class="col-lg-6 col-md-12 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <div class="sketchfab-embed-wrapper">
-                  <iframe title="Unlock-me" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/a503ecacc4014e57bc6d6af4537d613f/embed" style="width: 100%; height: 400px;">
-                  </iframe>
-                  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-                    <a href="https://sketchfab.com/3d-models/unlock-me-a503ecacc4014e57bc6d6af4537d613f?utm_medium=embed&utm_campaign=share-popup&utm_content=a503ecacc4014e57bc6d6af4537d613f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Unlock-me </a>
-                    by <a href="https://sketchfab.com/damarisisalive?utm_medium=embed&utm_campaign=share-popup&utm_content=a503ecacc4014e57bc6d6af4537d613f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> damarisisalive </a> on
-                    <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=a503ecacc4014e57bc6d6af4537d613f" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-                  </p>
-                </div>
-                <div class="gallery-description mt-3">
-                  <p><strong>Unlock-me 3D Model</strong></p>
-                  <p>Press play to activate the 3D viewer. Click and drag to rotate the model, and select full screen if you'd like a closer look at this interactive piece.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Video Column -->
-          <div class="col-lg-6 col-md-12 mb-4">
-            <div class="card h-100">
-              <div class="card-body">
-                <iframe src="https://drive.google.com/file/d/1cC-7iHczBKdF3KuH2qfex_BunYXBR6ST/preview" allowfullscreen style="width: 100%; height: 400px; border-radius: 8px; border: none;"></iframe>
-                <div class="gallery-description mt-3">
-                  <p><strong>Projection Mapping Installation</strong></p>
-                  <p>Opposite Unlock-it you will find three winged keys, my Unlock-me sculptures, glowing under tightly-mapped projections from MadMapper. The moving images cling to the plastic shells, so hardware and video fuse until each pendant seems to breathe. Media thinker Katherine Hayles calls this effect "embodied virtuality," code grafted onto matter in plain sight.</p>
-                  
-                  <p>Every key tells a different chapter of the same story:</p>
-                  
-                  <p><strong>Circuit / DNA hybrid</strong><br>
-                  Electric-blue traces race over the wings while a twisting DNA helix glows inside the keyhole; a pulse of crimson tissue flickers beneath, hinting at what lies under every line of code.</p>
-                  
-                  <p><strong>Flesh on flesh</strong><br>
-                  Two layered simulations of viscera ooze and ripple, pushing the viewer from electronics into raw biology.</p>
-                  
-                  <p><strong>Neural mesh</strong><br>
-                  A shimmering mesh of lime and violet neurons fires across the surface, completing the journey from silicon to skin to intersection...or completion.</p>
-                  
-                  <p>Look left to right, the sequence moves from pure circuitry to living tissue to thinking brain; a quick evolution that asks where technology ends and the body begins.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Live-thru-me -->
-    <div class="right hidden" id="live-thru-me-gallery" style="width: 100% !important;">
-      <div class="gallery-item" style="width: 100%; max-width: none; margin: 0 auto;">
-        <img src="images/maris5.jpg" alt="Live-thru-me MIDI setup" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
-        <div class="gallery-description">
-          <p><strong>Live-thru-me: Interactive MIDI Experience</strong></p>
-          <iframe src="https://www.youtube.com/embed/fU1FfPY5tJQ?si=84eo6iv3gYbY7Z8Q" width="100%" height="500" style="border-radius: 8px; border: none; margin: 15px 0;" allowfullscreen></iframe>
-          
-          <p>In the gallery I invite visitors to interact with a midi board. The pads trigger my pre-rendered simulations. And the dials add surface effects like glow or distortion. You're not actually changing the mechanisms of the video editing or the video itself as it, you're just adding filters basically. Which parallels with thinking you have control on a digital platform when every decision you make feeds an algorithm that actively attempts to control the path you're on. The interface offers real interaction, but only inside a sandbox that I and the software already defined. In this case, I am using Resolume Avenue, which is a VJing software.</p>
-          
-          <p>One of the pads turns on a live camera that blob-tracks the audience and loops their own image back into the projection. Legend Katherine Hayles would call this embodied virtuality information and body feeding each other in real time. Because the software still decides the outcome, the board also stages posthuman agency, where control is shared between human and machine.</p>
-          
-          <p>And honestly, the board is just fun. The visuals bloom and shimmer in a way that feels hypnotic. That pleasure loop mirrors how we swipe through social media: we make tiny choices about what to watch, the algorithm notes each pause, then serves an endless stream designed to hold us longer. Here, every pad tap or dial turn gives you that same hit of control, but the software is quietly steering the flow….nudging you to stay, explore, and lose track of time. The mathematician Norbert Wiener called this kind of two-way flow a "feedback loop." You try to control the image, but the image also measures you in real time. Agency feels shared rather than owned.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Ctrl-1 -->
-    <div class="right hidden" id="ctrl-1-gallery" style="width: 100% !important;">
-      <div class="gallery-item" style="width: 100%; max-width: none; margin: 0 auto;">
-        <img src="https://damarisguzman.neocities.org/link-gifs/blue.gif" alt="Blue gif animation" style="width: 100%; height: 300px; border-radius: 8px; object-fit: cover;">
-        <div class="gallery-description">
-
-      <div class="gallery-item" style="width: 100%;">
-        <img src="images/ctrl-1.JPG" alt="Ctrl-1 Physical Console" style="width: 100%; height: 400px; border-radius: 8px; object-fit: cover;" class="previewable">
-        <div class="gallery-description">
-          <p><strong>Ctrl-1 *Prototype* Collaboration with Meriel Hossain</strong></p>
-          <p>Ctrl-1 is a laser cut console filled with recycled toy buttons, arcade switches, dials, a joystick, and an Arduino LCD display. This is a prototype. Most inputs are just for show; only one actually does anything. The goal was to basically create an experimental console where some buttons activate changes to a video projection while others don't. By allowing participant to discover which buttons work, the panel shows how technology can promise total control while giving almost none. Conceptually it sits beside algorithm driven platforms that mimic choice while quietly steering results to serve the platform's own goals, not the user's.</p>
-          <p>In this case, you're serving mine. (◕ᴗ◕✿)</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-  <!-- Footer -->
-  <div class="footer frosted-footer mt-auto">
-    <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN <i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
   </div>
 
   <!-- Image preview overlay (shared) -->
@@ -1141,31 +902,6 @@
       });
     });
   </script>
-
-    <!-- Bootstrap JavaScript Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Initialize tooltips
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-
-    // Sparkle effect on click
-    document.addEventListener('click', function(e) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.innerHTML = '✨';
-        sparkle.style.left = e.pageX + 'px';
-        sparkle.style.top = e.pageY + 'px';
-        sparkle.style.position = 'fixed';
-        sparkle.style.fontSize = '24px';
-        sparkle.style.pointerEvents = 'none';
-        sparkle.style.zIndex = '9999';
-        sparkle.style.animation = 'sparkle-fade 0.6s ease-out';
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 600);
-    });
-  </script>
 </body>
 </html>
+

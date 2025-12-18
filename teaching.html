@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teaching</title>
-  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
+  <link rel="stylesheet" href="./style.css">
   <style>
     @font-face {
       font-family: 'DepartureMono';
@@ -110,22 +116,9 @@
       min-width: 300px;
       margin-top: 0; /* changed from 70px to 0 */
     }
-    .footer {
-      background-color: #ffbcd0;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-weight: bold;
-    }
-    /* Additional styles */
-    .expandable-box {
-      background: #ddd;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      position: relative;
-    }
+  
+    /* Footer */
+    /* footer styling is centralized in style.css */
     .expandable-box:hover {
       background: #ccc;
     }
@@ -233,21 +226,21 @@
 <body>
 
   <!-- Header and Navigation Menu -->
-  <div class="header">
+  <div class="header glass-header">
     <!-- Left-side tabs or logo could remain if needed -->
     <h1><a href="/about">Teaching</a></h1>
     <!-- Hamburger icon -->
     <button class="hamburger">&#9776;</button>
     <!-- Updated Pop-up Navigation Menu -->
     <div class="nav-menu">
-        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-        <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-        <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
-        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-        <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
-        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
-        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+         <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+         <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
+         <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
+         <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#128736;</span> New Media</a>
+         <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+         <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+         <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+         <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
     </div>
   </div>
 
@@ -312,8 +305,8 @@
   </div>
 
   <!-- Footer -->
-  <div class="footer" style="clear: both; width: 100%;">
-    <p>© 2024 DAMARIS GUZMAN @GRILL0101</p>
+  <div class="footer">
+    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
   </div>
   <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -328,4 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-</script></body></html>
+</script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body></html>

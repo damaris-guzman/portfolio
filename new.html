@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Page</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --pink-1:#ff8fb2;
+      --pink-2:#cf77a4;
+      --pink-3:#ffbcd0;
+      --pink-4:#ff6f91;
+      --text:#333;
+      --text-light:#555;
+      --bg:#f0f0f0;
+      --card:#fff;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      height: auto;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    .header {
+      background-color: var(--pink-2);
+      color: #fff;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 9998;
+    }
+    .header h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header h1 a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 2rem;
+      display: inline-block;
+      letter-spacing: 5px;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+    }
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      background-color: #ffbcd0;
+      border: 2px solid #b94a7b;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 5px;
+      gap: 10px;
+      z-index: 100;
+    }
+    .nav-menu a {
+      color: #000;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover { background-color: #ff8fb2; }
+    .icon { font-size: 1.2rem; }
+  </style>
+</head>
+<body class="animated-bg">
+
+<!-- Header -->
+<div class="header glass-header">
+  <h1><a href="/about">New Page</a></h1>
+  <button class="hamburger">&#9776;</button>
+  <div class="nav-menu">
+    <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+    <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
+    <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
+    <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#128736;</span> New Media</a>
+    <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+    <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+    <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="text-center">
+    <h2>Welcome to the New Page</h2>
+    <p>This is a new page. Add your content here.</p>
+  </div>
+</div>
+
+<div class="footer frosted-footer mt-auto">
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+</div>
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Hamburger menu toggle (from currently.html)
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+      if (navMenu.style.display === 'flex') {
+        navMenu.style.display = 'none';
+      } else {
+        navMenu.style.display = 'flex';
+        navMenu.style.flexDirection = 'column';
+      }
+    });
+  });
+  // Sparkle effect on click
+  document.addEventListener('click', function(e) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.innerHTML = '✨';
+    sparkle.style.left = e.pageX + 'px';
+    sparkle.style.top = e.pageY + 'px';
+    sparkle.style.fontSize = '24px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 600);
+  });
+</script>
+</body>
+</html>
