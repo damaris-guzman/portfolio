@@ -116,19 +116,28 @@
       min-width: 300px;
       margin-top: 0; /* changed from 70px to 0 */
     }
+    /* Augmented Reality Exhibition box styling */
+    .ar-exhibition-box {
+      background-color: #fff5f8;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ffbcd0;
+    }
   
-    /* Footer */
-    /* footer styling is centralized in style.css */
     .expandable-box:hover {
       background: #ccc;
     }
     .hidden-text {
       display: none;
-      padding-top: 10px;
+      padding: 15px;
+      background-color: #fff5f8;
+      border-radius: 5px;
       font-size: 0.9rem;
-      color: #666;
-      max-height: 150px;
+      color: #333;
+      max-height: 400px;
       overflow-y: auto;
+      text-align: left;
+      margin-bottom: 20px;
     }
     .glossy-button {
       display: inline-block;
@@ -177,6 +186,27 @@
     @keyframes a {
       to { background-position: 0 -200%; }
     }
+    /* Teaching Philosophy Toggle with gradient animation from index.html */
+    .teaching-philosophy-toggle {
+      background: linear-gradient(45deg, #ff8fb2, #ff6f91);
+      background-size: 200% 200%;
+      animation: gradient-teaching 3s infinite alternate;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    @keyframes gradient-teaching {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
     /* Spring Highlights title styling */
     .highlights-title {
       font-size: 1.5rem;
@@ -223,25 +253,24 @@
     }
   </script>
 </head>
-<body>
+<body class="animated-bg">
 
   <!-- Header and Navigation Menu -->
   <div class="header glass-header">
     <!-- Left-side tabs or logo could remain if needed -->
-    <h1><a href="/about">Teaching</a></h1>
-    <!-- Hamburger icon -->
-    <button class="hamburger">&#9776;</button>
-    <!-- Updated Pop-up Navigation Menu -->
-    <div class="nav-menu">
-         <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-         <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-         <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-         <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#128736;</span> New Media</a>
-         <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-         <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-         <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
-         <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
-    </div>
+  <h1><a>Teaching</a></h1>
+  <button class="hamburger">&#9776;</button>
+  <div class="nav-menu">
+    <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+    <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
+    <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
+    <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
+    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
+    <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+    <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
+    <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+  </div>
   </div>
 
   <!-- Main Content -->
@@ -255,7 +284,7 @@
         <p><strong>Course Overview:</strong></p>
         <p class="star-text">★ I’m currently teaching Art 74: Intro to Digital Media. The course emphasizes creative thinking, problem-solving, and computer literacy by introducing diverse software tools – from Adobe Creative Cloud to open‑source platforms.</p>
         <p><strong>What the Class Entails:</strong></p>
-        <p class="star-text">★ Students complete a series of short projects including glitch art, pixel art, meme culture, net art, and interactive code-based work, culminating in a final project and portfolio.</p>
+        <p class="star-text">★ Students complete a series of short projects including vector design, glitch art, meme culture, 3D modeling, net art, and interactive code-based work, culminating in a final project and portfolio.</p>
       </div>
       
       <!-- Review of Spring 2025 Toggle with animated rainbow gradient -->
@@ -271,7 +300,7 @@
       </div>
       
       <!-- Teaching Philosophy Toggle -->
-      <div class="expandable-box" onclick="toggleExpand('teaching-philosophy')">
+      <div class="teaching-philosophy-toggle" onclick="toggleExpand('teaching-philosophy')">
         Teaching Philosophy ▼
         <div class="hidden-text" id="teaching-philosophy">
           <p>As bell hooks reminds us, “the classroom remains the most radical space of possibility in the academy.” It is fundamentally our responsibility as educators to transform that space into one that liberates and empowers all learners. My teaching practice is grounded in inclusivity, empathy, and continuous curiosity. That curiosity drives me to keep exploring, revising, and improving so that every student has the opportunity to thrive.</p>
@@ -294,7 +323,7 @@
       <div class="highlights-title">Spring 2025 Highlights</div>
       
       <!-- Augmented Reality Exhibition with scrollable content -->
-      <div class="media-box scroll-box">
+      <div class="media-box scroll-box ar-exhibition-box">
         <h3>Augmented Reality Exhibition</h3>
         <p>My class was invited to showcase their glitch art at the "Echoes of Expression" augmented reality exhibition in the MLK Library's Digital Humanities Center, and several pieces were also displayed in a display case in the Art Building.</p>
         <p>I initially took a video at the library, but it didn't save, so I recorded another in a different room to capture how it looked. The students were thrilled about this opportunity and shared photos of their work with friends and family. Honestly, I felt very emotional as well; I’m incredibly grateful that we had this opportunity! ٩(◕‿◕｡)۶</p>
@@ -304,10 +333,6 @@
       </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
-  </div>
   <script>
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
