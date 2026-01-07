@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICA: Data Trust - Stephanie Dinkins</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --pink-1:#ff8fb2;
+      --pink-2:#cf77a4;
+      --pink-3:#ffbcd0;
+      --pink-4:#ff6f91;
+      --text:#333;
+      --text-light:#555;
+      --bg:#f0f0f0;
+      --card:#fff;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      height: auto;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    .header {
+      background-color: var(--pink-2);
+      color: #fff;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 9998;
+    }
+    .header h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header h1 a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 2rem;
+      display: inline-block;
+      letter-spacing: 5px;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+    }
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      background-color: #ffbcd0;
+      border: 2px solid #b94a7b;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 5px;
+      gap: 10px;
+      z-index: 100;
+    }
+    .nav-menu a {
+      color: #000;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover { background-color: #ff8fb2; }
+    .icon { font-size: 1.2rem; }
+    
+    /* Two column layout */
+    .content-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .left-image {
+      flex: 0 0 auto;
+      min-width: 0;
+      max-width: 350px;
+    }
+    
+    .left-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Left column containing image and text stacked */
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      flex: 0 0 auto;
+      width: 350px;
+      max-height: 565px;
+    }
+    
+    .slideshow-container {
+      flex: 1;
+      position: relative;
+      max-width: 500px;
+      height: fit-content;
+    }
+    
+    .slideshow-wrapper {
+      position: relative;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      aspect-ratio: 1;
+    }
+    
+    .slide-image {
+      width: 100%;
+      height: 100%;
+      display: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      object-fit: cover;
+    }
+    
+    .slide-image.active {
+      display: block;
+    }
+    
+    .slide-image:hover {
+      transform: scale(1.02);
+    }
+    
+    .slide-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(207, 119, 164, 0.8);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 5px;
+      z-index: 10;
+      transition: background 0.3s ease;
+    }
+    
+    .slide-nav:hover {
+      background: rgba(207, 119, 164, 1);
+    }
+    
+    .prev-slide {
+      left: 10px;
+    }
+    
+    .next-slide {
+      right: 10px;
+    }
+    
+    .slide-dots {
+      text-align: center;
+      padding: 15px;
+      background: #f5f5f5;
+    }
+    
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .dot.active {
+      background-color: #cf77a4;
+    }
+    
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 10px;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    
+    @media (max-width: 768px) {
+      .content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+      }
+    }
+    
+    /* Text box below image */
+    .description-box {
+      width: 100%;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      line-height: 1.6;
+      font-size: 0.9rem;
+      color: #333;
+      overflow-y: auto;
+      flex: 1;
+    }
+    
+    .description-box::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .description-box::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+    
+    .description-box::-webkit-scrollbar-thumb {
+      background: #cf77a4;
+      border-radius: 3px;
+    }
+    
+    .description-box::-webkit-scrollbar-thumb:hover {
+      background: #b94a7b;
+    }
+    
+    /* Second content section with image and text side by side */
+    .secondary-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .secondary-image {
+      flex: 0 0 auto;
+      width: 450px;
+    }
+    
+    .secondary-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Secondary slideshow */
+    .secondary-slideshow-wrapper {
+      position: relative;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+    
+    .secondary-slide-image {
+      width: 100%;
+      height: auto;
+      display: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      object-fit: contain;
+    }
+    
+    .secondary-slide-image.active {
+      display: block;
+    }
+    
+    .secondary-slide-image:hover {
+      transform: scale(1.02);
+    }
+    
+    .secondary-slide-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(207, 119, 164, 0.8);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 5px;
+      z-index: 10;
+      transition: background 0.3s ease;
+    }
+    
+    .secondary-slide-nav:hover {
+      background: rgba(207, 119, 164, 1);
+    }
+    
+    .prev-secondary-slide {
+      left: 10px;
+    }
+    
+    .next-secondary-slide {
+      right: 10px;
+    }
+    
+    .secondary-slide-dots {
+      text-align: center;
+      padding: 15px;
+      background: #f5f5f5;
+    }
+    
+    .secondary-dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .secondary-dot.active {
+      background-color: #cf77a4;
+    }
+    
+    .secondary-slideshow-container {
+      flex: 0 0 auto;
+      width: 500px;
+    }
+    
+    .secondary-text {
+      flex: 0 0 auto;
+      width: 400px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    
+    @media (max-width: 768px) {
+      .secondary-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+      }
+      
+      .secondary-image {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="animated-bg">
+
+<!-- Header -->
+<div class="header glass-header">
+  <h1>ICA: Data Trust - Stephanie Dinkins</h1>
+  <button class="hamburger">&#9776;</button>
+  <div class="nav-menu">
+    <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+    <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
+    <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
+    <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
+    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
+    <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+    <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
+    <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <!-- Left side: Image and text box stacked vertically -->
+  <div class="left-column">
+    <div class="left-image">
+      <a href="https://www.icasanjose.org/upcoming-exhibitions/data_trust/?utm_source=San+Jose+ICA+News+Blast&utm_campaign=cfa71ae81f-EMAIL_CAMPAIGN_2023_10_16_08_15_COPY_01&utm_medium=email&utm_term=0_-5a0f930f36-97939396" target="_blank">
+        <img src="images/data-trust.jpg" alt="ICA: Data Trust">
+      </a>
+    </div>
+    
+    <div class="description-box">
+      <p>I was invited to share my locket series, Unlock-casted, in Stephanie Dinkins’ ICA exhibition Data Trust. The first two images, photographed by Nicholas Lea Bruno, show how the pieces were installed in the gallery. Although the lockets were still in progress and some areas needed additional cutting and polishing, they were included in the exhibition nonetheless.</p>
+
+<p>The process began with 3D printing miniature versions of my original piece, Unlock-it. I used these prints as molds and, with the support of the SJSU foundry, translated them into metal casts. In the installation, the lockets are displayed alongside metal works by my incredibly skilled colleagues. What began as objects I was making for myself unexpectedly found their way into the exhibition.</p>
+    </div>
+  </div>
+  
+  <!-- Right side: Slideshow -->
+  <div class="slideshow-container">
+    <div class="slideshow-wrapper">
+      <img src="images/ica-locket.png" alt="ICA Locket" class="slide-image active">
+      <img src="images/ica-gal.png" alt="ICA Gallery" class="slide-image">
+      <img src="images/locket-p.jpg" alt="Locket Portrait" class="slide-image">
+      <img src="unlock1.jpg" alt="Unlock 1" class="slide-image">
+      
+      <button class="slide-nav prev-slide" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="slide-nav next-slide" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+    
+    <div class="slide-dots">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox for enlarged image preview -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img class="lightbox-image" id="lightbox-image" src="" alt="Full Size Preview">
+  </div>
+</div>
+
+<!-- Secondary section with slideshow and text -->
+<div class="secondary-wrapper">
+  <div class="secondary-slideshow-container">
+    <div class="secondary-slideshow-wrapper">
+      <img src="images/lock1(1).jpg" alt="Okra Locket" class="secondary-slide-image active">
+      <img src="images/prints.jpg" alt="Prints" class="secondary-slide-image">
+      <img src="images/okra-render.png" alt="Okra Render" class="secondary-slide-image">
+      
+      <button class="secondary-slide-nav prev-secondary-slide" onclick="changeSecondarySlide(-1)">&#10094;</button>
+      <button class="secondary-slide-nav next-secondary-slide" onclick="changeSecondarySlide(1)">&#10095;</button>
+    </div>
+    
+    <div class="secondary-slide-dots">
+      <span class="secondary-dot active" onclick="currentSecondarySlide(0)"></span>
+      <span class="secondary-dot" onclick="currentSecondarySlide(1)"></span>
+      <span class="secondary-dot" onclick="currentSecondarySlide(2)"></span>
+    </div>
+  </div>
+  
+  <div class="secondary-text">
+    <p>In April, I was working on this okra locket for the Data Trust exhibition by Stephanie Dinkins in a class led by Esteban Garcia Bravo. This pendant is modeled after the cross-section of an okra pod; a nod to seed-bearing vessels and personal memory.</p>
+    
+    <p>A scalloped brass shell frames a glass inset that reveals the pod's interior geometry: ten walnut-hued "seeds" (micro 3-D prints) encircle a faceted emerald core. Hinge it open and the seeds sit flush against the viewer, transforming a common vegetable slice into a miniature reliquary that stores growth, nourishment, and hidden value close to the heart. </p>
+    <p>As you can probably tell…it did not come out too well 😭. I planned to remake it over the summer, but I became unwell and physically couldn't make it happen. Chronic auto immune disease.</p></p>
+  </div>
+</div><div class="footer frosted-footer mt-auto">
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+</div>
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  let currentSlideIndex = 0;
+  
+  function changeSlide(n) {
+    showSlide(currentSlideIndex += n);
+  }
+  
+  function currentSlide(n) {
+    showSlide(currentSlideIndex = n);
+  }
+  
+  function showSlide(n) {
+    const slides = document.querySelectorAll('.slide-image');
+    const dots = document.querySelectorAll('.dot');
+    
+    if (n >= slides.length) {
+      currentSlideIndex = 0;
+    }
+    if (n < 0) {
+      currentSlideIndex = slides.length - 1;
+    }
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[currentSlideIndex].classList.add('active');
+    dots[currentSlideIndex].classList.add('active');
+  }
+  
+  // Secondary slideshow functions
+  let currentSecondarySlideIndex = 0;
+  
+  function changeSecondarySlide(n) {
+    showSecondarySlide(currentSecondarySlideIndex += n);
+  }
+  
+  function currentSecondarySlide(n) {
+    showSecondarySlide(currentSecondarySlideIndex = n);
+  }
+  
+  function showSecondarySlide(n) {
+    const slides = document.querySelectorAll('.secondary-slide-image');
+    const dots = document.querySelectorAll('.secondary-dot');
+    
+    if (n >= slides.length) {
+      currentSecondarySlideIndex = 0;
+    }
+    if (n < 0) {
+      currentSecondarySlideIndex = slides.length - 1;
+    }
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[currentSecondarySlideIndex].classList.add('active');
+    dots[currentSecondarySlideIndex].classList.add('active');
+  }
+  
+  function openLightbox(imageSrc) {
+    document.getElementById('lightbox').classList.add('active');
+    document.getElementById('lightbox-image').src = imageSrc;
+  }
+  
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  
+  // Add click handler to all slide images to open lightbox
+  document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide-image');
+    slides.forEach(slide => {
+      slide.addEventListener('click', function() {
+        openLightbox(this.src);
+      });
+    });
+    
+    const secondarySlides = document.querySelectorAll('.secondary-slide-image');
+    secondarySlides.forEach(slide => {
+      slide.addEventListener('click', function() {
+        openLightbox(this.src);
+      });
+    });
+    
+    // Close lightbox when clicking outside the image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+  });
+  
+  // Hamburger menu toggle (from currently.html)
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+      if (navMenu.style.display === 'flex') {
+        navMenu.style.display = 'none';
+      } else {
+        navMenu.style.display = 'flex';
+        navMenu.style.flexDirection = 'column';
+      }
+    });
+  });
+  // Sparkle effect on click
+  document.addEventListener('click', function(e) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.innerHTML = '✨';
+    sparkle.style.left = e.pageX + 'px';
+    sparkle.style.top = e.pageY + 'px';
+    sparkle.style.fontSize = '24px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 600);
+  });
+</script>
+</body>
+</html>

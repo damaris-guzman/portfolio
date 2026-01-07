@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Net Art ღゝ◡╹)ノ♡</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --pink-1:#ff8fb2;
+      --pink-2:#cf77a4;
+      --pink-3:#ffbcd0;
+      --pink-4:#ff6f91;
+      --text:#333;
+      --text-light:#555;
+      --bg:#f0f0f0;
+      --card:#fff;
+    }
+    html {
+      min-height: 100vh;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      height: 100%;
+      color: var(--text);
+      overflow-x: hidden;
+      flex: 1 0 auto;
+    }
+    .header {
+      background-color: var(--pink-2);
+      color: #fff;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 9998;
+    }
+    .header h1 {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .header h1 a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 2rem;
+      display: inline-block;
+      letter-spacing: 5px;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+    }
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      background-color: #ffbcd0;
+      border: 2px solid #b94a7b;
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 5px;
+      gap: 10px;
+      z-index: 100;
+    }
+    .nav-menu a {
+      color: #000;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover { background-color: #ff8fb2; }
+    .icon { font-size: 1.2rem; }
+  </style>
+</head>
+<body class="animated-bg">
+
+<!-- Header -->
+<div class="header glass-header">
+  <h1><a href="/about">Net Art ღゝ◡╹)ノ♡</a></h1>
+  <button class="hamburger">&#9776;</button>
+  <div class="nav-menu">
+    <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+    <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
+    <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
+    <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
+    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
+    <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+    <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
+    <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+  </div>
+</div>
+
+
+<div class="container my-5 flex-grow-1" style="flex: 1 0 auto;">
+  <div class="d-flex flex-column align-items-center justify-content-center">
+    <!-- Still-Together Gallery Slideshow -->
+    <div style="max-width: 1920px; width: 100%; margin-bottom: 30px;">
+      <div style="position: relative; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+        <!-- Slideshow Container -->
+        <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #f5f5f5;">
+          <img src="images/still-together-1.gif" alt="Still Together 1" class="gallery-slide active" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: block;" />
+          <img src="images/still-together-2.gif" alt="Still Together 2" class="gallery-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: none;" />
+          <img src="images/still-together-3.gif" alt="Still Together 3" class="gallery-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: none;" />
+          <img src="images/still-together-4.gif" alt="Still Together 4" class="gallery-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: none;" />
+          <img src="images/still-together-5.gif" alt="Still Together 5" class="gallery-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; display: none;" />
+          
+          <!-- Navigation Arrows -->
+          <button onclick="prevGallerySlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(207, 119, 164, 0.8); color: white; border: none; padding: 10px 15px; cursor: pointer; font-size: 20px; border-radius: 5px; z-index: 10; transition: background 0.3s ease;">&#10094;</button>
+          <button onclick="nextGallerySlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(207, 119, 164, 0.8); color: white; border: none; padding: 10px 15px; cursor: pointer; font-size: 20px; border-radius: 5px; z-index: 10; transition: background 0.3s ease;">&#10095;</button>
+        </div>
+      </div>
+    </div>
+    <!-- Text Box -->
+    <div class="glass-card p-4 mb-4 w-100" style="max-width: 1500px; text-align: center;">
+      <h3 class="mb-3">Still Together</h3>
+      <p style="color: var(--text-light);">Still together is a conceptual art game that stages a passage from claustrophobic surveillance to systemic revelation, using play to foreground the architectures that structure perception.</p>
+<p>The project is rooted in my own periods of manic psychosis, when the world appeared recursively mediated. Walls became screens, objects functioned like icons, and I chased cryptic signals toward what I assumed was the true reality I belonged to. Later, reading Krueger on responsive environments, Hayles on posthuman embodiment, and Deleuze on desiring machines, I encountered uncanny theoretical echoes of those same perceptual distortions. The thoughts I had interpreted as private transmissions now seemed to mirror a collective consciousness already articulated in critical discourse. That recognition redirected the momentum of delusion toward production: if the messages emerged from shared cultural circuitry, their energy could be re-channeled into designing media rather than deciphering it.</p>
+
+<p>Still together therefore treats destiny not as metaphysical appointment but as workflow. It proposes that the drive to uncover a single, stable truth is itself symptomatic of a media ecology where legibility is partial, agency distributed, and meaning arrives as pattern rather than proclamation. By inviting players to endure systems that neither explain nor resolve themselves, the game reframes paranoia as exaggerated pattern recognition and offers curiosity as its counter practice.</p>
+
+</p>
+    </div>
+    <!-- Glossy Button -->
+    <a href="https://damaris-guzman.github.io/still-together/" class="glossy-btn" style="font-size: 1.2rem; min-width: 180px; text-align: center;">Click here to visit!</a>
+
+    <!-- Predic Project Section -->
+    <div style="max-width: 1920px; width: 100%; margin-top: 60px; margin-bottom: 30px;">
+      <img src="images/predic.gif" alt="Predicted Systems" style="width: 100%; max-width: 1920px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);" />
+    </div>
+    
+    <!-- Text Box -->
+    <div class="glass-card p-4 mb-4 w-100" style="max-width: 1500px; text-align: center;">
+      <h3 class="mb-3">Predicted Systems</h3>
+      <p>“You’re a product of your environment” once referred only to the three-dimensional world; now we curate that environment pixel by pixel. Every time I unlock my phone, apps launch precision-targeted nudges straight into my subconscious.
+
+<p>This net-art archive displays only the Instagram ads I actually tapped, sorted into three pages: Music (events, songs), Fashion (merch, accessories), and Art practice-related consumption (art classes, events, creative products). For every ad I annotate the exact impulse that triggered the click so visitors can trace how visual cues, interests, and algorithms converge. Mapping those micro-decisions shows one thing clearly: the feed wins my clicks by weaponizing nostalgia. :3 </p>
+
+<p>Every page is a hypercolored moodboard of my own tastes: glitter fonts, scene-kid aesthetics, SoundCloud embeds, Matrix green text, etc. In other words, the layout itself feels custom-skinned for me; a visual mirror of how social media algorithms dress their pitches in my favorite palettes and references, so I’ll trust them.</p>
+
+<p>By mimicking those tailored visuals, the site exposes the trick: personalization is a purchase nudge. The louder the algorithm and the UI says “this is so you,” the easier it is to slide a buy-button under your thumb. Here, every glitter border or retro aesthetic becomes evidence of that seduction loop, proof that feeling special is often just step one in the conversion.</p>
+
+<p>Ideally, I’d like to expand this data set to include ads I scrolled by and how much time each ad was visible on my phone screen as I scrolled. Interestingly, when you export code on Instagram regarding ads, you see the username of the account, caption of the post, and the timestamp for when you clicked. If you go to your Accounts Center, there’s a category called “Ad Preferences,” and this shows you ads you clicked on, ads you saved, advertisers you saw ads from, and ad topics (customizable). Ideally, I’d like to go through all the data over the span of a year and try to make connections between the ads and my consumer habits. A lot of questions come up, like how can I compare that data across apps and my other devices (laptop, computer, etc.)? I guess it’s hard to track for a reason.<p> 
+
+    </div>
+    
+    <!-- Glossy Button -->
+    <a href="https://damaris-guzman.github.io/Predicted-Systems/" class="glossy-btn" style="font-size: 1.2rem; min-width: 180px; text-align: center;">Click here to visit!</a>
+  </div>
+</div>
+
+<div class="footer frosted-footer mt-auto">
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+</div>
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Gallery slideshow functions
+  let currentGalleryIndex = 0;
+  
+  function nextGallerySlide() {
+    const slides = document.querySelectorAll('.gallery-slide');
+    currentGalleryIndex = (currentGalleryIndex + 1) % slides.length;
+    updateGalleryDisplay();
+  }
+  
+  function prevGallerySlide() {
+    const slides = document.querySelectorAll('.gallery-slide');
+    currentGalleryIndex = (currentGalleryIndex - 1 + slides.length) % slides.length;
+    updateGalleryDisplay();
+  }
+  
+  function updateGalleryDisplay() {
+    const slides = document.querySelectorAll('.gallery-slide');
+    slides.forEach(slide => slide.style.display = 'none');
+    slides[currentGalleryIndex].style.display = 'block';
+  }
+  
+  // Hamburger menu toggle (from currently.html)
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+      if (navMenu.style.display === 'flex') {
+        navMenu.style.display = 'none';
+      } else {
+        navMenu.style.display = 'flex';
+        navMenu.style.flexDirection = 'column';
+      }
+    });
+  });
+  // Sparkle effect on click
+  document.addEventListener('click', function(e) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.innerHTML = '✨';
+    sparkle.style.left = e.pageX + 'px';
+    sparkle.style.top = e.pageY + 'px';
+    sparkle.style.fontSize = '24px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 600);
+  });
+</script>
+</body>
+</html>

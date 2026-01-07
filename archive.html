@@ -18,18 +18,17 @@
       font-weight: normal;
       font-style: normal;
     }
+    html, body {
+      min-height: 100vh;
+      height: auto;
+      overflow-y: auto;
+    }
     body {
       font-family: 'DepartureMono', monospace;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
-      background-attachment: fixed;
-      /* display: flex; */
-      /* flex-direction: column; */
-      min-height: 100vh;
-      height: auto;
+      background-color: #fff5f8;
       color: #333;
-      overflow-x: hidden;
     }
     .header {
       background-color: #cf77a4;
@@ -273,17 +272,17 @@
       border: none;
     }
     .nav-menu {
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 70px;
       right: 20px;
-      background-color: #ffbcd0;  /* New color instead of previous pink */
-      border: 2px solid #b94a7b;  /* Added border */
+      background-color: #ffbcd0;
+      border: 2px solid #b94a7b;
       display: none;
       flex-direction: column;
       padding: 10px;
       border-radius: 5px;
       gap: 10px;
-      z-index: 100; 
+      z-index: 99999; 
     }
     .nav-menu a {
       color: rgb(0, 0, 0);
@@ -350,10 +349,11 @@
     <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
     <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
     <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-    <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#128736;</span> New Media</a>
+    <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
+    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
     <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
     <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
     <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
   </div>
 </div>
