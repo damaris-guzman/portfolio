@@ -480,15 +480,26 @@ body {
     }
 }
 
-/* Footer styles - matches index.html exactly */
+/* Footer styles */
 .footer {
-    background-color: #ffbcd0;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-weight: bold;
-    width: 100%;
-    margin-top: auto;
+    /* Reliable full-width footer that sits at the bottom of the page.
+       Matches the index.html footer styling with frosted glass effect */
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #ffbcd0 !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 10px !important;
+    font-family: 'DepartureMono', monospace !important;
+    font-weight: bold !important;
+    margin-top: auto !important; /* pushes footer to bottom when body is flex column */
+    width: 100% !important; /* ensure footer spans its container */
+    align-self: stretch !important; /* stretch inside flex parent */
+    position: relative !important; /* avoid fixed/absolute positioning so it participates in document flow */
+    left: 0 !important;
+    flex-shrink: 0 !important;
 }
 
 /* Responsive design */
@@ -538,13 +549,14 @@ body {
    footer (with margin-top:auto and full-bleed tricks) always sits at
    the bottom and spans the viewport.
    ------------------------------------------------------------------ */
-html, body {
+html {
     height: 100%;
 }
 body {
     display: flex !important;
     flex-direction: column !important;
-    min-height: 100vh !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
     overflow-x: hidden !important;
 }
 
