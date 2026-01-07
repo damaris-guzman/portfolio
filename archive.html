@@ -1,16 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archiveヽ(•‿•)ノ</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <!-- Glossy Theme -->
-  <link rel="stylesheet" href="glossy-theme.css">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
     @font-face {
       font-family: 'DepartureMono';
@@ -18,17 +13,15 @@
       font-weight: normal;
       font-style: normal;
     }
-    html, body {
-      min-height: 100vh;
-      height: auto;
-      overflow-y: auto;
-    }
     body {
       font-family: 'DepartureMono', monospace;
       margin: 0;
       padding: 0;
-      background-color: #fff5f8;
-      color: #333;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;  /* Added to remove left/right scroll */
     }
     .header {
       background-color: #cf77a4;
@@ -183,7 +176,18 @@
       padding: 20px;
       flex: 1;
     }
-    /* footer styling is centralized in style.css */
+    .footer {
+      box-sizing: border-box;
+      display: block;
+      width: 100%; /* Full width */
+      background-color: #ffbcd0;
+      color: white;
+      text-align: center;
+      padding: 20px; /* Match header's padding */
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
     /* Instagram Videos Section */
     .instagram-videos-section {
       padding: 20px;
@@ -272,17 +276,17 @@
       border: none;
     }
     .nav-menu {
-      position: fixed;
-      top: 70px;
+      position: absolute;
+      top: 100%;
       right: 20px;
-      background-color: #ffbcd0;
-      border: 2px solid #b94a7b;
+      background-color: #ffbcd0;  /* New color instead of previous pink */
+      border: 2px solid #b94a7b;  /* Added border */
       display: none;
       flex-direction: column;
       padding: 10px;
       border-radius: 5px;
       gap: 10px;
-      z-index: 99999; 
+      z-index: 100; 
     }
     .nav-menu a {
       color: rgb(0, 0, 0);
@@ -339,23 +343,24 @@
     }
     </style>
 </head>
-<body class="animated-bg">
+<body>
 
-<div class="header glass-header">
+<div class="header">
     <!-- Left-side tabs or logo could remain if needed -->
-  <h1><a>Archive</a></h1>
-  <button class="hamburger">&#9776;</button>
-  <div class="nav-menu">
-    <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-    <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-    <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-    <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
-    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
-    <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-    <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
-    <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
-  </div>
+    <h1><a href="/about">Archive ヽ(•‿•)ノ</a></h1>
+    <!-- Hamburger icon -->
+    <button class="hamburger">&#9776;</button>
+    <!-- Updated Pop-up Navigation Menu -->
+    <div class="nav-menu">
+        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
+        <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
+        <a href="https://damaris-guzman.github.io/portfolio/currently.html"><span class="icon">&#128736;</span> Current Projects</a>
+        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
+        <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#127912;</span> New Media</a>
+        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
+        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
+        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+    </div>
 </div>
 <!-- Social Buttons with Mobile Scroll Arrows -->
 <div class="social-buttons-wrapper" style="position: relative; overflow: hidden;">
@@ -643,7 +648,43 @@
   });
   
 </script>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 </html>
