@@ -213,6 +213,31 @@
             margin: 0;
         }
 
+        /* Scroll box for 2025 and 2024 sections */
+        .grid-scroll-box {
+            max-height: 750px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .grid-scroll-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .grid-scroll-box::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .grid-scroll-box::-webkit-scrollbar-thumb {
+            background: #cf77a4;
+            border-radius: 10px;
+        }
+
+        .grid-scroll-box::-webkit-scrollbar-thumb:hover {
+            background: #b94a7b;
+        }
+
     </style>
 </head>
 <body class="animated-bg">
@@ -235,11 +260,6 @@
         </a>
     </h1>
 </div>
-
-<div class="construction-notice glossy-notice">
-    <p><i class="bi bi-cone-striped me-2"></i>This site is under construction<i class="bi bi-cone-striped ms-2"></i></p>
-</div>
-
 <div class="container-fluid my-4 pb-5" style="position: relative; z-index: 1; max-width: 1800px;">
     <div class="row g-2">
         <div class="col-lg-4">
@@ -261,7 +281,8 @@
         </div>
 
         <div class="col-lg-8">
-            <div class="row g-3">
+            <div class="grid-scroll-box">
+                <div class="row g-3">
                 <!-- 2025 Section -->
                 <div class="col-12">
                     <div style="background: linear-gradient(90deg, rgba(255, 143, 178, 0.3), rgba(207, 119, 164, 0.3)); padding: 8px 15px; border-radius: 8px; text-align: center; margin-bottom: 10px;">
@@ -341,6 +362,7 @@
                         </a>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
