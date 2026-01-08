@@ -35,15 +35,19 @@
       min-height: 100vh;
       height: auto;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
     body {
       font-family: 'DepartureMono', monospace;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+      background: #ffbcd0;
+      background-image: radial-gradient(circle, #ffffff 20%, transparent 20%);
+      background-size: 30px 30px;
+      background-position: 0 0;
       background-attachment: fixed;
       color: var(--text);
-      /* Remove display: flex and flex-direction: column to allow scrolling */
     }
     .header {
       background-color: var(--pink-2);
@@ -106,6 +110,27 @@
     }
     .nav-menu a:hover { background-color: #ff8fb2; }
     .icon { font-size: 1.2rem; }
+    
+    /* Animated polka dots background */
+    .animated-bg {
+      position: relative;
+    }
+    
+    .animated-bg::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-30px) translateX(30px); }
+    }
   </style>
 </head>
 <body class="animated-bg">
@@ -127,7 +152,7 @@
   </div>
 </div>
 
-<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 70vh;">
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: auto; padding: 40px 20px;">
   <h2 class="mb-3" style="font-size:2rem; font-weight:bold; color:#cf77a4;">From Here to Anywhere: Art Resources ★~(◠‿◕✿)</h2>
   <img src="images/zine-img.png" alt="From Here to Anywhere - Art Resources Zine" style="max-width: 350px; width: 100%; margin: 24px 0; border-radius: 12px; box-shadow: 0 2px 12px rgba(207,119,164,0.10);">
   <p class="lead" style="max-width: 600px; margin-bottom: 32px; color: #333; font-size: 1.15rem;">
@@ -137,7 +162,7 @@
 </div>
 
 <div class="footer frosted-footer mt-auto">
-  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
 </div>
 
 <!-- Bootstrap JavaScript Bundle -->
