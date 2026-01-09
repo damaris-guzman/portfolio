@@ -549,10 +549,18 @@
         aspect-ratio: auto;
       }
 
-      #prints-gallery img[alt="Print Net Art 1"],
-      #prints-gallery img[src*="more-info-blink.gif"] {
+      #prints-gallery img[alt="Print Net Art 1"] {
         width: 100% !important;
         max-width: 100% !important;
+      }
+
+      #prints-gallery img[src*="more-info-blink.gif"] {
+        width: auto !important;
+        max-width: 90vw !important;
+        height: auto !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
 
       /* Stack image and video vertically on mobile */
@@ -1036,10 +1044,12 @@
         <div class="gallery-description" style="font-size: 1.1rem; line-height: 1.6;">
           <p><strong>Predicted Systems</strong></p>
           <p>Print with a QR code that takes visitors to the net-art experience Predicted Systems.</p>
-          <a href="https://damaris-guzman.xyz/netart.html#predicted-systems" target="_blank" style="display: block; margin-top: 15px;"><img src="gifs/more-info-blink.gif" style="cursor: pointer; width: 100%; height: auto; border: none; background: none;" alt="More Info"></a>
         </div>
       </div>
     </div>
+
+    <!-- More Info Button - Outside the gallery-item container -->
+    <a href="https://damaris-guzman.xyz/netart.html#predicted-systems" target="_blank" style="display: block; margin-top: 15px;"><img src="gifs/more-info-blink.gif" style="cursor: pointer; max-width: 100%; height: auto; border: none; background: none;" alt="More Info"></a>
   </div>
 
   <script>
