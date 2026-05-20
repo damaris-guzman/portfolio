@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -46,8 +46,187 @@
                 line-height: 1.4;
             }
         }
-    </style>
+
+        .event-button {
+            display: block;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ff8fb2, #cf77a4);
+            color: white;
+            text-decoration: none;
+            border: 2px solid #b94a7b;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: left;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .event-button:hover {
+            background: linear-gradient(135deg, #cf77a4, #ff8fb2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 143, 178, 0.4);
+            color: white;
+        }
+
+        .event-title {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .event-subtitle {
+            display: block;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Sidebar Styles */
+        .container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 240px;
+            background-color: #F5F5F5;
+            padding: 15px 15px 15px 15px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            flex-shrink: 0;
+            align-self: flex-start;
+        }
+
+        .sidebar h2 {
+            font-size: 16px;
+            margin: 10px 0 15px 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .custom-fields {
+            margin-top: 15px;
+        }
+
+        .artist-statement {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #EEE;
+            padding: 18px 12px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .statement-main {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .statement-sub {
+            margin: 10px 0 0 0;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .custom-field {
+            background-color: #EEE;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .custom-field h3 {
+            margin: 0;
+            font-size: 11px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .custom-field p {
+            margin: 5px 0 0 0;
+            color: #777;
+            display: none;
+            font-size: 10px;
+        }
+
+        .profile-tags {
+            margin-top: 10px;
+        }
+
+        .profile-tags span {
+            display: inline-block;
+            padding: 2px 6px;
+            margin-top: 4px;
+            background-color: #DDD;
+            color: #555;
+            margin-right: 3px;
+            border-radius: 3px;
+            font-size: 9px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 0;
+        }
+
+        .social-icons a {
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .cv-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
+        }
+        .nav-menu a img {
+      display: block;
+      max-width: 208px;
+      height: auto;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover img { opacity: 0.85; }
+  </style>
   <script>
+    function toggleCustomField(fieldId) {
+      var fieldContent = document.getElementById(fieldId);
+      var isDisplayed = getComputedStyle(fieldContent).display === 'block';
+      fieldContent.style.display = isDisplayed ? 'none' : 'block';
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       const hamburger = document.querySelector('.hamburger');
       const navMenu = document.querySelector('.nav-menu');
@@ -68,20 +247,87 @@
     <h1><a>CV</a></h1>
     <button class="hamburger">&#9776;</button>
     <div class="nav-menu">
-        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-        <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-        <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-        <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
-        <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
-        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
-        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+      <a href="index.html"><img src="gifs/home-blinkie.gif" alt="Home"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/CV.html"><img src="gifs/cv-blinkie.gif" alt="CV"></a>
+      <a href="all-that.html"><img src="gifs/allthat-blinkie.gif" alt="All That I Wanted To Be"></a>
+      <a href="#"><img src="gifs/Free-throw-blinkie.gif" alt="Free Throw"></a>
+      <a href="https://damaris-guzman.xyz/dream.html"><img src="gifs/dream-blinkie.gif" alt="My Dream"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><img src="gifs/data-blinkie.gif" alt="ICA Data Trust"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><img src="gifs/teach-blinkie.gif" alt="Teaching"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><img src="gifs/archive-blinkie.gif" alt="Archive"></a>
     </div>
   </div>
 
   <div class="container">
+    <div class="sidebar">
+        <div class="profile-image" style="background-image: url('https://damarisguzman.neocities.org/About/IMG_6527.png');"></div>
+        <h2>Damaris Guzman</h2>
+
+        <!-- Artist Statement -->
+        <div class="artist-statement">
+            <p class="statement-main">New Media Artist / Educator / Immersive Storyteller</p>
+            <p class="statement-sub">Reflective Tech + Synthetic Worlds</p>
+        </div>
+
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="https://instagram.com/grill0101" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/in/damaris-guzman-0101/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
     <div class="cv-content">
+        <div class="cv-section">
+             <h2>Artistic Focus</h2>
+             <div class="artistic-focus-container">
+                 <p>Hi, it's so nice to connect with you. ٩(◕‿◕｡)۶ </p>
+                 <br>
+                 <p>I create digital worlds that oscillate between the hyperactive and the meditative, asking what happens to identity and agency when pixels start to pulse like living tissue. As an MFA candidate and Teaching Associate at San José State University, I move across experimental video, 3D animation, digital fabrication, and Arduino-driven interfaces, threading them together into immersive, multi-sensory narratives.</p>
+                 <br>
+                 <p>I'm captivated by how digital media goes beyond mere entertainment, actively
+reconfiguring how we think, feel, and connect. My work explores the blurred boundaries between
+identity, agency, and community in our hyperconnected age. Using Blender and After Effects, I
+produce looped narratives that merge 3D animation with real-world footage, mirroring social
+media's addictive feedback loops and examining how digital design can subtly shape behavior
+and perception.</p>
+                 <br>
+                 <p>Influenced by posthumanist thought, I see technology as an extension of the body: a
+merging of biology and code that challenges our understanding of embodiment. These visual
+experiments serve as both personal reflections and broader social commentaries, questioning
+whether we're steering technology or being steered, and whether our identities are truly ours or
+shaped by infinite feedback loops. I'm drawn to glossy, surreal aesthetics, often inspired by PC
+Music visual artists such as Timothy Luke, Daniel Swan, and Team Rolfes. Their visionary work
+blurs authenticity and artifice, reflecting my interest in the uneasy boundary between synthetic
+and organic forms.</p>
+                 <br>
+                 <p>As my practice evolves, I've begun incorporating physical elements that coincide with my
+digital visuals, including custom, digitally fabricated and circuit-based interactivity.
+These additions introduce a tactile layer that bridges the virtual and physical realms.</p>
+                 <br>
+                 <p>Despite the rush and sensory overload in many of my projects, I'm also invested in
+encouraging quiet introspection. I create meditative simulations as a counterpoint to the frenetic
+energy, slowing viewers down and encouraging them to drift into a more contemplative
+headspace. By balancing these two extremes (fast-paced, hyper-synthetic-reality versus a serene,
+dreamlike interlude) I reflect on how our external digital lives (scrolling, liking, posting)
+intertwine with our internal emotional states (yearning, comparing, questioning). In my view,
+self-expression meets external observation in the ways technology mediates everything we see,
+feel, and share.</p>
+                 <br>
+                 <p>Ultimately, I strive to create resonant moments of awareness by building spaces that unify
+mind and body, digital and physical, in a shared journey of reflection and discovery. My hope is
+that people leave feeling both energized and unsettled, questioning their own habits and
+assumptions, and perhaps reclaiming a bit of agency in the process.</p>
+                 <br>
+                 <p>Overall, my work centers around identity, perception, technological embodiment, and posthuman existence in an age of rapid technological consumption.</p>
+                 <br>
+                 <p>Every day I see my dream, so I invite you to see it too. ★~(◠‿◕✿)</p>
+             </div>
+         </div>
+
         <div class="cv-section">
             <h2>Education</h2>
             
@@ -233,6 +479,14 @@
              <h2>Group Exhibitions</h2>
              
              <div class="cv-entry">
+                 <div class="cv-dates">2026</div>
+                 <div class="cv-details">
+                     <h4>FRAGMENTS</h4>
+                     <p class="location">Black Gallery, San Jose [SJSU]</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
                  <div class="cv-dates">2025 - 2026</div>
                  <div class="cv-details">
                      <h4>Stephanie Dinkins: Data Trust</h4>
@@ -252,7 +506,7 @@
                   <div class="cv-dates">2024</div>
                   <div class="cv-details">
                       <h4>Glow</h4>
-                      <p class="location">Black Gallery, San Jose, CA</p>
+                      <p class="location">Black Gallery, San Jose [SJSU]</p>
                   </div>
               </div>
 
@@ -264,6 +518,25 @@
                   </div>
               </div>
           </div>
+
+         <div class="cv-section">
+            <h2>Selected Events</h2>
+            
+            <a href="https://www.instagram.com/freethrow_sj/" target="_blank" class="event-button">
+              <span class="event-title">2026 - Free Throw!</span>
+              <span class="event-subtitle">SAP Center East Façade, San José, CA | Projection mapping + interactive public activation</span>
+            </a>
+            
+            <a href="https://sjmusart.org/event/cadre-40-symposium" target="_blank" class="event-button">
+              <span class="event-title">2026 - CADRE 40 at SJMA</span>
+              <span class="event-subtitle">Panel: CADRE Students and the Future</span>
+            </a>
+            
+            <a href="https://www.instagram.com/p/DWPPCqIFMFf/" target="_blank" class="event-button">
+              <span class="event-title">2026 - Digital Swap Meet w/ zine.baby at SJMA</span>
+              <span class="event-subtitle"></span>
+            </a>
+         </div>
 
          <div class="cv-section">
              <h2>Awards</h2>
@@ -298,64 +571,18 @@
             <h2>Skills</h2>
             <ul>
                 <li>Video Editing (After Effects, Premiere Pro)</li>
-                <li>3D Animation (Blender)</li>
+                <li>3D Modeling + Animation (Blender)</li>
+                                <li>Projection Mapping (MadMapper, Resolume Avenue)</li>
                 <li>Higher Education Teaching</li>
                 <li>Digital Fabrication (3D printing / Laser cutting / CNC)</li>
                 <li>Web Design (HTML, CSS, p5.js)</li>
                 <li>Cinematography + Videography</li>
                 <li>Photography (Studio + Outdoor, Portrait, Event)</li>
                 <li>Boom Operation</li>
-                <li>Sound Editing</li>
+                <li>Sound Editing (ProTools)</li>
                 <li>Content Creation & Social Media Management</li>
             </ul>
         </div>
-
-         <div class="cv-section">
-             <h2>Artistic Focus</h2>
-             <div class="artistic-focus-container">
-                 <p>Hi, it's so nice to connect with you. ٩(◕‿◕｡)۶ </p>
-                 <br>
-                 <p>I create digital worlds that oscillate between the hyperactive and the meditative, asking what happens to identity and agency when pixels start to pulse like living tissue. As an MFA candidate and Teaching Associate at San José State University, I move across experimental video, 3D animation, digital fabrication, and Arduino-driven interfaces, threading them together into immersive, multi-sensory narratives.</p>
-                 <br>
-                 <p>I'm captivated by how digital media goes beyond mere entertainment, actively
-reconfiguring how we think, feel, and connect. My work explores the blurred boundaries between
-identity, agency, and community in our hyperconnected age. Using Blender and After Effects, I
-produce looped narratives that merge 3D animation with real-world footage, mirroring social
-media's addictive feedback loops and examining how digital design can subtly shape behavior
-and perception.</p>
-                 <br>
-                 <p>Influenced by posthumanist thought, I see technology as an extension of the body: a
-merging of biology and code that challenges our understanding of embodiment. These visual
-experiments serve as both personal reflections and broader social commentaries, questioning
-whether we're steering technology or being steered, and whether our identities are truly ours or
-shaped by infinite feedback loops. I'm drawn to glossy, surreal aesthetics, often inspired by PC
-Music visual artists such as Timothy Luke, Daniel Swan, and Team Rolfes. Their visionary work
-blurs authenticity and artifice, reflecting my interest in the uneasy boundary between synthetic
-and organic forms.</p>
-                 <br>
-                 <p>As my practice evolves, I've begun incorporating physical elements that coincide with my
-digital visuals, including custom, digitally fabricated and circuit-based interactivity.
-These additions introduce a tactile layer that bridges the virtual and physical realms.</p>
-                 <br>
-                 <p>Despite the rush and sensory overload in many of my projects, I'm also invested in
-encouraging quiet introspection. I create meditative simulations as a counterpoint to the frenetic
-energy, slowing viewers down and encouraging them to drift into a more contemplative
-headspace. By balancing these two extremes (fast-paced, hyper-synthetic-reality versus a serene,
-dreamlike interlude) I reflect on how our external digital lives (scrolling, liking, posting)
-intertwine with our internal emotional states (yearning, comparing, questioning). In my view,
-self-expression meets external observation in the ways technology mediates everything we see,
-feel, and share.</p>
-                 <br>
-                 <p>Ultimately, I strive to create resonant moments of awareness by building spaces that unify
-mind and body, digital and physical, in a shared journey of reflection and discovery. My hope is
-that people leave feeling both energized and unsettled, questioning their own habits and
-assumptions, and perhaps reclaiming a bit of agency in the process.</p>
-                 <br>
-                 <p>Overall, my work centers around identity, perception, technological embodiment, and posthuman existence in an age of rapid technological consumption.</p>
-                 <br>
-                 <p>Every day I see my dream, so I invite you to see it too. ★~(◠‿◕✿)</p>
-             </div>
-         </div>
 
         <div class="cv-section">
             <h2>Contact</h2>
@@ -369,8 +596,8 @@ assumptions, and perhaps reclaiming a bit of agency in the process.</p>
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<div class="footer">
-    <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
+<div class="footer frosted-footer mt-auto">
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
 </div>
 
 </body>

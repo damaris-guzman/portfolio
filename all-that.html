@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Page</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Glossy Theme -->
+  <link rel="stylesheet" href="glossy-theme.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @font-face {
+      font-family: 'DepartureMono';
+      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --pink-1:#ff8fb2;
+      --pink-2:#cf77a4;
+      --pink-3:#ffbcd0;
+      --pink-4:#ff6f91;
+      --text:#333;
+      --text-light:#555;
+      --bg:#f0f0f0;
+      --card:#fff;
+    }
+    body {
+      font-family: 'DepartureMono', monospace;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      height: auto;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .header {
+      background-color: var(--pink-2);
+      color: white;
+      height: 100px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 0 20px;
+      position: relative;
+      z-index: 9998;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    /* ===== IMMERSIVE PROJECT STYLES ===== */
+    .intro-section {
+      padding: 60px 20px;
+      background: #ffe7ee;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .intro-section + .intro-section {
+      background: linear-gradient(to bottom, #ffe7ee 0%, #ffffff 100%);
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+
+    .intro-text {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 0;
+    }
+
+    .intro-media-placeholder {
+      width: 90%;
+      max-width: 900px;
+      height: 400px;
+      background: linear-gradient(135deg, rgba(255, 143, 178, 0.3), rgba(207, 119, 164, 0.2));
+      border: 2px solid rgba(207, 119, 164, 0.4);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--text-light);
+      backdrop-filter: blur(5px);
+      margin: 0 auto;
+    }
+
+    /* INSTALLATION SECTION */
+    .installation-section {
+      padding: 80px 20px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(240, 240, 240, 0.95));
+    }
+
+    .installation-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 80px;
+      text-transform: lowercase;
+      letter-spacing: 2px;
+    }
+
+    .alt-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .alt-layout-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .alt-layout-row {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    .alt-layout-row:nth-child(even) {
+      direction: rtl;
+    }
+
+    .alt-layout-row:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .alt-text-block {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(207, 119, 164, 0.2);
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+    }
+
+    .alt-text-block p {
+      line-height: 1.8;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .alt-media-placeholder {
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(135deg, rgba(255, 143, 178, 0.25), rgba(207, 119, 164, 0.15), rgba(255, 255, 255, 0.2));
+      border: 2px solid rgba(255, 143, 178, 0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      backdrop-filter: blur(3px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .alt-media-placeholder::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+      animation: mediaShimmer 3s infinite;
+    }
+
+    @keyframes mediaShimmer {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* TRANSITION SECTION */
+    .transition-section {
+      padding: 120px 20px;
+      background: linear-gradient(to bottom, #f0f0f0, #2a2a2a);
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .transition-section::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03),
+        rgba(0, 0, 0, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      pointer-events: none;
+      animation: scanlines 8s linear infinite;
+    }
+
+    @keyframes scanlines {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(10px); }
+    }
+
+    .transition-statement {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      color: rgba(0, 0, 0, 0.8);
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      max-width: 800px;
+      line-height: 1.4;
+    }
+
+    .transition-gifs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 80px;
+      width: 100%;
+      max-width: 1000px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .game-gif-placeholder {
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(135deg, #333, #555);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* GAME SECTION */
+    .game-section {
+      padding: 100px 20px;
+      background: linear-gradient(to bottom, rgba(50, 50, 50, 0.95), rgba(0, 0, 0, 0.98));
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .game-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      text-transform: lowercase;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .game-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .large-gameplay-placeholder {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, rgba(100, 100, 100, 0.3), rgba(50, 50, 50, 0.3));
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 60px;
+      backdrop-filter: blur(2px);
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .game-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 143, 178, 0.3);
+      border-radius: 8px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: cardGlitch 3s infinite;
+    }
+
+    @keyframes cardGlitch {
+      0%, 100% { left: -100%; }
+      50% { left: 100%; }
+    }
+
+    .game-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 143, 178, 0.9);
+    }
+
+    .game-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .game-media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .small-game-placeholder {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, rgba(100, 100, 100, 0.2), rgba(50, 50, 50, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* GIF STRIP SECTION */
+    .gif-strip-section {
+      padding: 60px 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), rgba(30, 30, 30, 0.95));
+      overflow: hidden;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .gif-strip-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .gif-strip-item {
+      flex: 0 0 300px;
+      height: 300px;
+      background: linear-gradient(135deg, rgba(100, 100, 100, 0.2), rgba(50, 50, 50, 0.2));
+      border: 1px solid rgba(255, 143, 178, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+    }
+
+    /* ENDING SECTION */
+    .ending-section {
+      padding: 150px 20px;
+      background: linear-gradient(to bottom, rgba(30, 30, 30, 0.98), rgba(0, 0, 0, 0.99));
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ending-section::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(255, 143, 178, 0.05) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+
+    .ending-line {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      font-size: clamp(1.2rem, 4vw, 2.2rem);
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      line-height: 1.6;
+      max-width: 700px;
+    }
+
+    .hamburger {
+      cursor: pointer;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      background-color: #ffbcd0;
+      border: 2px solid #b94a7b;
+      display: none;
+      flex-direction: column;
+      padding: 13px;
+      border-radius: 5px;
+      gap: 13px;
+      z-index: 100;
+    }
+    .nav-menu a {
+      color: #000;
+      text-decoration: none;
+      padding: 7px 13px;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover { background-color: #ff8fb2; }
+    .icon { font-size: 1.2rem; }
+    .nav-menu a img {
+      display: block;
+      max-width: 208px;
+      height: auto;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover img { opacity: 0.85; }
+    .project-subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      color: var(--text);
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+    .project-description {
+      max-width: 850px;
+      margin: 0 auto 40px;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .connection-box {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(255, 143, 178, 0.15), rgba(207, 119, 164, 0.1));
+      border: 2px solid rgba(255, 143, 178, 0.4);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .connection-box h4 {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    .connection-box p {
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    /* VIDEO CAROUSEL */
+    .video-carousel { width: 100%; }
+    .video-carousel-slide { display: none; }
+    .video-carousel-slide.active { display: block; }
+    .video-carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .carousel-btn {
+      background: linear-gradient(135deg, #ff8fb2, #cf77a4);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .carousel-btn:hover { background: linear-gradient(135deg, #cf77a4, #ff8fb2); }
+    .carousel-dots { display: flex; gap: 6px; align-items: center; }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(207, 119, 164, 0.3);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dot.active { background: #cf77a4; }
+
+    /* IMAGE CAROUSEL */
+    .img-carousel { width: 100%; }
+    .img-carousel-slide { display: none; }
+    .img-carousel-slide.active { display: block; }
+    .img-carousel-slide img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: zoom-in;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .img-carousel-slide img:hover { opacity: 0.88; }
+
+    /* LIGHTBOX */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10001;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: #ff8fb2; }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+    .lightbox-nav-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+  </style>
+</head>
+<body class="animated-bg">
+
+<div class="header glass-header">
+    <h1>This page is under construction 🚧</h1>
+    <button class="hamburger">&#9776;</button>
+    <div class="nav-menu">
+      <a href="index.html"><img src="gifs/home-blinkie.gif" alt="Home"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/CV.html"><img src="gifs/cv-blinkie.gif" alt="CV"></a>
+      <a href="all-that.html"><img src="gifs/allthat-blinkie.gif" alt="All That I Wanted To Be"></a>
+      <a href="#"><img src="gifs/Free-throw-blinkie.gif" alt="Free Throw"></a>
+      <a href="https://damaris-guzman.xyz/dream.html"><img src="gifs/dream-blinkie.gif" alt="My Dream"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><img src="gifs/data-blinkie.gif" alt="ICA Data Trust"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><img src="gifs/teach-blinkie.gif" alt="Teaching"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><img src="gifs/archive-blinkie.gif" alt="Archive"></a>
+    </div>
+</div>
+
+<!-- SECTION 2: INTRO -->
+<section class="intro-section">
+  <div class="intro-media-placeholder">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/fC7aNNOCpjo?si=ELLXs_WjjvKUtYbA&amp;start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- SECTION 2.5: INTRO TEXT -->
+<section class="intro-section">
+  <div class="project-subtitle">2-part installation / projection-mapping / 3D / simulations</div>
+  <div class="project-description">
+    <p>All that i wanted to be was given effortlessly is a two-part installation combining projection mapping, 3D animation, and simulations with Still-Together v2 — a three.js browser game exploring connections between manic psychosis and new media theory. Viewers encounter the work as atmosphere first: illusion, light, visual lure. Then they find the laptop behind the screens.</p>
+  </div>
+  <div class="connection-box">
+    <h4>how the two works connect</h4>
+    <p>front side = projection / atmosphere / lure  
+back side = laptop / game / system  
+Still-Together v2 = the interactive core underneath the projected surface</p>
+  </div>
+</section>
+
+<!-- SECTION 3: INSTALLATION -->
+<section class="installation-section">
+  <div class="alt-layout">
+    <!-- First Row -->
+    <div class="alt-layout-row">
+      <div class="alt-text-block">
+        <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">spatial configuration</h3>
+        <p>Eight shoji panels are arranged in the space, but only seven display visuals. One panel is folded behind and covers another — one image is hidden even though the light is still present. Something is always just out of reach, like there's another layer you almost see but never fully access. The grid of the rice paper reads like pixels. The diffusion gives everything a dreamy, slightly faded quality — somewhere between present reality and recollection.</p>
+      </div>
+      <div class="img-carousel">
+        <div class="img-carousel-slide active">
+          <img src="images/hori-closeup-1.png" alt="Shoji wall detail 1" onclick="openLightbox(0)">
+        </div>
+        <div class="img-carousel-slide">
+          <img src="images/hori-closeup-2.png" alt="Shoji wall detail 2" onclick="openLightbox(1)">
+        </div>
+        <div class="img-carousel-slide">
+          <img src="images/all-h-2.jpg" alt="Shoji wall detail 3" onclick="openLightbox(2)">
+        </div>
+        <div class="video-carousel-nav">
+          <button class="carousel-btn" onclick="showImgCarouselSlide(imgCarouselIdx - 1)">&#8592;</button>
+          <div class="img-carousel-dots">
+            <span class="dot active" onclick="showImgCarouselSlide(0)"></span>
+            <span class="dot" onclick="showImgCarouselSlide(1)"></span>
+            <span class="dot" onclick="showImgCarouselSlide(2)"></span>
+          </div>
+          <button class="carousel-btn" onclick="showImgCarouselSlide(imgCarouselIdx + 1)">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="alt-layout-row">
+      <div class="video-carousel">
+        <div class="video-carousel-slide active">
+          <div style="padding:68.36% 0 0 0; position:relative;">
+            <iframe src="https://player.vimeo.com/video/1193788721?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="reborn-loop-15"></iframe>
+          </div>
+        </div>
+        <div class="video-carousel-slide">
+          <div style="padding:68.36% 0 0 0; position:relative;">
+            <iframe src="https://player.vimeo.com/video/1193788685?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kale-loop-2"></iframe>
+          </div>
+        </div>
+        <div class="video-carousel-slide">
+          <div style="padding:56.25% 0 0 0; position:relative;">
+            <iframe title="vimeo-player" src="https://player.vimeo.com/video/1193786282?h=533dc3c7e7" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+          </div>
+        </div>
+        <div class="video-carousel-slide">
+          <div style="padding:68.36% 0 0 0; position:relative;">
+            <iframe src="https://player.vimeo.com/video/1193788669?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="looped-sim-organic-v2"></iframe>
+          </div>
+        </div>
+        <div class="video-carousel-slide">
+          <div style="padding:68.36% 0 0 0; position:relative;">
+            <iframe src="https://player.vimeo.com/video/1193787835?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="purple-brain-matter"></iframe>
+          </div>
+        </div>
+        <div class="video-carousel-nav">
+          <button class="carousel-btn" onclick="showCarouselSlide(carouselIdx - 1)">&#8592;</button>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="showCarouselSlide(0)"></span>
+            <span class="dot" onclick="showCarouselSlide(1)"></span>
+            <span class="dot" onclick="showCarouselSlide(2)"></span>
+            <span class="dot" onclick="showCarouselSlide(3)"></span>
+            <span class="dot" onclick="showCarouselSlide(4)"></span>
+          </div>
+          <button class="carousel-btn" onclick="showCarouselSlide(carouselIdx + 1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="alt-text-block">
+        <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">simulation layers</h3>
+        <p>The visuals move left to right across the panels, each one flattening dimension a little more. It starts with a polished 3D animation — complete, immersive, a full surface. Then shifts into simulations: first a glittery cubic one, then three that feel organic and tissue-like, almost biological. The visuals grow darker, more ambiguous. Screen recordings of Still-Together begin to layer in. Instead of cutting between things, the wall holds all these states at once across space.</p>
+      </div>
+    </div>
+
+    <!-- Third Row -->
+    <div class="alt-layout-row">
+      <div class="alt-text-block">
+        <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">observer to participant</h3>
+        <p>These clips show a recorded play session already running — without the viewer. Visitors watch the recorded moves, then walk behind the screens and place their own hands on the laptop, completing the loop from observer to participant. Their bodies slip into the same circuit the footage previewed. Embodied virtuality, as Hayles describes it: nothing on a screen floats free of flesh and hardware. The instant you tap a key, your body and the code start co-driving the experience.</p>
+      </div>
+      <div class="alt-media-placeholder">
+        [Installation Front/Back Dual View Photographs]
+      </div>
+    </div>
+
+    <!-- Fourth Row -->
+    <div class="alt-layout-row">
+      <div class="alt-media-placeholder">
+        [Projection Texture Detail & Atmospheric Lighting]
+      </div>
+      <div class="alt-text-block">
+        <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">light as portal</h3>
+        <p>The light feels like it's leading you toward something meaningful. And it is — it leads you to the game. But it's also an illusion. The closer you get, the more the image breaks down. Rice paper diffuses the projection so instead of gaining clarity, you lose it. That reversal reflects how mania can feel: following signs feels meaningful and clear, but can lead somewhere unstable. The installation is a portal — but not a stable one. It opens into a space where meaning keeps slipping just out of reach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: TRANSITION -->
+<section class="transition-section">
+  <div class="transition-statement">
+    Behind the projection sits the system itself.
+  </div>
+</section>
+
+<!-- SECTION 5: GAME -->
+<section class="game-section">
+  <h2>Still-Together [v2]: The Game</h2>
+  
+  <div class="game-content">
+    <div class="large-gameplay-placeholder">
+      [Main Gameplay Video / Recording]
+    </div>
+    
+    <div class="game-grid">
+      <div class="game-card">
+        <h3>Portals</h3>
+        <p>Doorways between states. The installation itself is a portal — from light to system, surface to depth, observer to player. Inside the game, portals mark the same threshold: another layer you almost see but never fully access.</p>
+      </div>
+      
+      <div class="game-card">
+        <h3>Symbols</h3>
+        <p>Encrypted glyphs scattered throughout the interface. They mark pathways, suggest meaning, hide deeper layers beneath the glossy surface.</p>
+      </div>
+      
+      <div class="game-card">
+        <h3>Glitch Popups</h3>
+        <p>Unexpected moments of instability. Error messages appear and dissolve. The system momentarily reveals its seams.</p>
+      </div>
+      
+      <div class="game-card">
+        <h3>Pathways</h3>
+        <p>Navigable spaces within the interface. Players move through luminous corridors, encountering projections and simulations along the way.</p>
+      </div>
+      
+      <div class="game-card">
+        <h3>Staircases</h3>
+        <p>Vertical transitions between levels of the system. Climbing suggests ascension, descent implies depth and hidden infrastructure.</p>
+      </div>
+      
+      <div class="game-card">
+        <h3>Unstable Meaning</h3>
+        <p>Language breaks down in the game space. Words distort, messages fragment, meaning becomes contingent and multivalent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: GIF STRIP -->
+<section class="gif-strip-section">
+  <div class="gif-strip-container">
+    <div class="gif-strip-item">[Memory Fragment #1]</div>
+    <div class="gif-strip-item">[Memory Fragment #2]</div>
+    <div class="gif-strip-item">[Memory Fragment #3]</div>
+    <div class="gif-strip-item">[Memory Fragment #4]</div>
+    <div class="gif-strip-item">[Memory Fragment #5]</div>
+    <div class="gif-strip-item">[Memory Fragment #6]</div>
+    <div class="gif-strip-item">[Memory Fragment #7]</div>
+    <div class="gif-strip-item">[Memory Fragment #8]</div>
+  </div>
+</section>
+
+<!-- SECTION 7: ENDING -->
+<section class="ending-section">
+  <div class="ending-line">
+    The system remains. We move through it like light through glass.
+  </div>
+</section>
+
+
+<!-- LIGHTBOX MODAL -->
+<div id="lightbox-overlay" class="lightbox-overlay" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
+  <img id="lightbox-img" class="lightbox-img" src="" alt="Installation detail">
+  <div class="lightbox-nav-row">
+    <button class="carousel-btn" onclick="showLightboxSlide(imgCarouselIdx - 1)">&#8592;</button>
+    <div class="img-carousel-dots">
+      <span class="dot" onclick="showLightboxSlide(0)"></span>
+      <span class="dot" onclick="showLightboxSlide(1)"></span>
+      <span class="dot" onclick="showLightboxSlide(2)"></span>
+    </div>
+    <button class="carousel-btn" onclick="showLightboxSlide(imgCarouselIdx + 1)">&#8594;</button>
+  </div>
+</div>
+
+<!-- Vimeo Player API -->
+<script src="https://player.vimeo.com/api/player.js"></script>
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Hamburger menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+      if (navMenu.style.display === 'flex') {
+        navMenu.style.display = 'none';
+      } else {
+        navMenu.style.display = 'flex';
+        navMenu.style.flexDirection = 'column';
+      }
+    });
+  });
+
+  // Video carousel
+  let carouselIdx = 0;
+  function showCarouselSlide(index) {
+    const slides = document.querySelectorAll('.video-carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    carouselIdx = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === carouselIdx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === carouselIdx));
+  }
+
+  // Image carousel + lightbox
+  const imgCarouselSrcs = ['images/hori-closeup-1.png', 'images/hori-closeup-2.png', 'images/all-h-2.jpg'];
+  let imgCarouselIdx = 0;
+
+  function showImgCarouselSlide(index) {
+    const slides = document.querySelectorAll('.img-carousel-slide');
+    const dots = document.querySelectorAll('.img-carousel-dots .dot');
+    imgCarouselIdx = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === imgCarouselIdx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === imgCarouselIdx));
+  }
+
+  function openLightbox(index) {
+    imgCarouselIdx = index;
+    document.getElementById('lightbox-img').src = imgCarouselSrcs[imgCarouselIdx];
+    document.querySelectorAll('.img-carousel-dots .dot').forEach((d, i) => d.classList.toggle('active', i === imgCarouselIdx));
+    document.getElementById('lightbox-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showLightboxSlide(index) {
+    imgCarouselIdx = (index + imgCarouselSrcs.length) % imgCarouselSrcs.length;
+    document.getElementById('lightbox-img').src = imgCarouselSrcs[imgCarouselIdx];
+    document.querySelectorAll('.img-carousel-slide').forEach((s, i) => s.classList.toggle('active', i === imgCarouselIdx));
+    document.querySelectorAll('.img-carousel-dots .dot').forEach((d, i) => d.classList.toggle('active', i === imgCarouselIdx));
+  }
+
+  document.addEventListener('keydown', function(e) {
+    const lb = document.getElementById('lightbox-overlay');
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showLightboxSlide(imgCarouselIdx - 1);
+    if (e.key === 'ArrowRight') showLightboxSlide(imgCarouselIdx + 1);
+  });
+
+  // Sparkle effect on click
+  document.addEventListener('click', function(e) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'sparkle';
+    sparkle.innerHTML = '✨';
+    sparkle.style.left = e.pageX + 'px';
+    sparkle.style.top = e.pageY + 'px';
+    sparkle.style.fontSize = '24px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 600);
+  });
+</script>
+</body>
+</html>
