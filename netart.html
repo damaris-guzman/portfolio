@@ -112,6 +112,82 @@
     }
     .nav-menu a:hover { background-color: #ff8fb2; }
     .icon { font-size: 1.2rem; }
+      .nav-menu a img {
+      display: block;
+      max-width: 208px;
+      height: auto;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover img { opacity: 0.85; }
+
+    /* STILL-TOGETHER BANNER */
+    .st-banner-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 14px 20px 10px;
+      background: linear-gradient(to bottom, rgba(255, 188, 208, 0.45), rgba(255, 231, 238, 0.2));
+      border-bottom: 1px solid rgba(207, 119, 164, 0.25);
+      animation: bannerDrop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    @keyframes bannerDrop {
+      from { opacity: 0; transform: translateY(-28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .st-banner-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 32px;
+      font-family: 'DepartureMono', monospace;
+      font-size: 0.88rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 40px;
+      background: linear-gradient(135deg, #ff8fb2 0%, #cf77a4 40%, #ff6f91 70%, #cf77a4 100%);
+      background-size: 200% 200%;
+      animation: bannerShift 5s ease infinite, bannerPulse 3s ease-in-out infinite;
+      box-shadow: 0 4px 18px rgba(255, 111, 145, 0.45), 0 0 0 0 rgba(255, 143, 178, 0.5), inset 0 1px 0 rgba(255,255,255,0.35);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    @keyframes bannerShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    @keyframes bannerPulse {
+      0%, 100% { box-shadow: 0 4px 18px rgba(255, 111, 145, 0.45), 0 0 0 0 rgba(255, 143, 178, 0.5), inset 0 1px 0 rgba(255,255,255,0.35); }
+      50% { box-shadow: 0 6px 28px rgba(255, 111, 145, 0.65), 0 0 18px 4px rgba(255, 143, 178, 0.3), inset 0 1px 0 rgba(255,255,255,0.35); }
+    }
+    .st-banner-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -80%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg);
+      animation: bannerGloss 3.5s ease-in-out infinite;
+    }
+    @keyframes bannerGloss {
+      0% { left: -80%; }
+      100% { left: 130%; }
+    }
+    .st-banner-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(255, 111, 145, 0.65), 0 0 24px 6px rgba(255, 143, 178, 0.35), inset 0 1px 0 rgba(255,255,255,0.4);
+      color: #fff;
+    }
+    .st-banner-btn .banner-arrow {
+      font-size: 1rem;
+      animation: arrowBounce 1s ease-in-out infinite;
+    }
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+    }
   </style>
 </head>
 <body class="animated-bg">
@@ -121,18 +197,24 @@
   <h1><a href="/about">Net Art ღゝ◡╹)ノ♡</a></h1>
   <button class="hamburger">&#9776;</button>
   <div class="nav-menu">
-    <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-    <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-    <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-    <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
-    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
-    <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-    <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
-    <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
-  </div>
+      <a href="index.html"><img src="gifs/home-blinkie.gif" alt="Home"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/CV.html"><img src="gifs/cv-blinkie.gif" alt="CV"></a>
+      <a href="all-that.html"><img src="gifs/allthat-blinkie.gif" alt="All That I Wanted To Be"></a>
+      <a href="#"><img src="gifs/Free-throw-blinkie.gif" alt="Free Throw"></a>
+      <a href="https://damaris-guzman.xyz/dream.html"><img src="gifs/dream-blinkie.gif" alt="My Dream"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><img src="gifs/data-blinkie.gif" alt="ICA Data Trust"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><img src="gifs/teach-blinkie.gif" alt="Teaching"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><img src="gifs/archive-blinkie.gif" alt="Archive"></a>
+    </div>
 </div>
 
+<!-- STILL-TOGETHER BANNER -->
+<div class="st-banner-wrap">
+  <a href="https://damaris-guzman.xyz/all-that.html" target="_blank" class="st-banner-btn">
+    ✦ Click here for the updated version / installation of Still-Together!
+    <span class="banner-arrow">&#8594;</span>
+  </a>
+</div>
 
 <div class="container my-5 flex-grow-1" style="flex: 1 0 auto;">
   <div class="d-flex flex-column align-items-center justify-content-center">
@@ -172,7 +254,7 @@
     </div>
     
     <!-- Text Box -->
-    <div class="glass-card p-4 mb-4 w-100" style="max-width: 1500px; text-align: center;">
+    <div id="predicted-systems" class="glass-card p-4 mb-4 w-100" style="max-width: 1500px; text-align: center;">
       <h3 class="mb-3">Predicted Systems</h3>
       <p>“You’re a product of your environment” once referred only to the three-dimensional world; now we curate that environment pixel by pixel. Every time I unlock my phone, apps launch precision-targeted nudges straight into my subconscious.
 
@@ -192,7 +274,7 @@
 </div>
 
 <div class="footer frosted-footer mt-auto">
-  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2025 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
 </div>
 
 <!-- Bootstrap JavaScript Bundle -->
