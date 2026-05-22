@@ -277,12 +277,86 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
+    /* GAME SECTION BUTTON */
+    .game-launch-btn {
+      display: inline-block;
+      position: relative;
+      padding: 20px 48px;
+      font-family: 'DepartureMono', monospace;
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: lowercase;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      background: linear-gradient(to right,
+        #ffbcd0  0%,
+        #ff8fb2 18%,
+        #ff6f91 33%,
+        #cf77a4 46%,
+        #b94a7b 50%,
+        #c0c0c0 62%,
+        #d0d0d0 70%,
+        #888888 80%,
+        #303030 92%,
+        #000000 100%
+      );
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow:
+        0 0 22px rgba(207, 119, 164, 0.35),
+        0 0 50px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.55);
+      transition: box-shadow 0.3s, transform 0.2s, filter 0.2s;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+    .game-launch-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform: skewX(-20deg);
+      animation: btnGloss 3s ease-in-out infinite;
+    }
+    @keyframes btnGloss {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+    @keyframes btnShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .game-launch-btn:hover {
+      filter: brightness(1.12);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 0 38px rgba(207, 119, 164, 0.5),
+        0 0 80px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+    .game-launch-btn .btn-sub {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      opacity: 0.75;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .game-launch-wrap {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
     /* GAME SECTION */
     .game-section {
-      padding: 100px 20px;
+      padding: 100px 20px 60px;
       background: linear-gradient(to bottom, rgba(50, 50, 50, 0.95), rgba(0, 0, 0, 0.98));
       color: #fff;
-      min-height: 100vh;
     }
 
     .game-section h2 {
@@ -322,13 +396,12 @@
     }
 
     .game-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 143, 178, 0.3);
       border-radius: 8px;
       padding: 25px;
       backdrop-filter: blur(10px);
       position: relative;
-      overflow: hidden;
     }
 
     .game-card::before {
@@ -357,8 +430,8 @@
 
     .game-card p {
       font-size: 0.95rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.92);
     }
 
     .game-media-grid {
@@ -366,6 +439,24 @@
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
     }
+
+    /* GAME TEXT BOX */
+    .game-text-box {
+      max-width: 860px;
+      margin: 0 auto 60px;
+      padding: 36px 40px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 143, 178, 0.25);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+    }
+    .game-text-box p {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.88);
+      margin: 0 0 1.4em;
+    }
+    .game-text-box p:last-child { margin-bottom: 0; }
 
     .small-game-placeholder {
       width: 100%;
@@ -379,6 +470,29 @@
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.4);
     }
+
+    /* GIF CAROUSEL (game section) */
+    .gif-carousel { width: 100%; margin-bottom: 60px; }
+    .gif-carousel-slide { display: none; }
+    .gif-carousel-slide.active { display: block; }
+    .gif-carousel-slide img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      display: block;
+    }
+    .gif-carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .gif-carousel-dots { display: flex; gap: 6px; align-items: center; }
+    .gif-carousel-dots .dot { background: rgba(255, 143, 178, 0.3); }
+    .gif-carousel-dots .dot.active { background: #ff8fb2; }
 
     /* GIF STRIP SECTION */
     .gif-strip-section {
@@ -774,67 +888,64 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
 
 <!-- SECTION 5: GAME -->
 <section class="game-section">
-  <h2>Still-Together [v2]: The Game</h2>
-  
   <div class="game-content">
-    <div class="large-gameplay-placeholder">
-      [Main Gameplay Video / Recording]
+    <div class="gif-carousel" id="gif-carousel">
+      <div class="gif-carousel-slide active">
+        <img src="https://damarisguzman.neocities.org/link-gifs/still-together-v2-intro.gif" alt="Still-Together v2 intro">
+      </div>
+      <div class="gif-carousel-slide">
+        <img src="images/still-together_about.png" alt="Still-Together v2 about">
+      </div>
+      <div class="gif-carousel-slide">
+        <img src="https://damarisguzman.neocities.org/link-gifs/still-together-v2-lvl1.gif" alt="Still-Together v2 level">
+      </div>
+      <div class="gif-carousel-slide">
+        <img src="https://damarisguzman.neocities.org/link-gifs/still-together-v2-hat.gif" alt="Still-Together v2 hat">
+      </div>
+      <div class="gif-carousel-slide">
+        <img src="https://damarisguzman.neocities.org/link-gifs/still-together-v2-tostado.gif" alt="Still-Together v2 tostado">
+      </div>
+      <div class="gif-carousel-slide">
+        <img src="https://damarisguzman.neocities.org/link-gifs/still-together-v2-video.gif" alt="Still-Together v2 video">
+      </div>
+      <div class="gif-carousel-slide">
+        <img src="https://damarisguzman.neocities.org/link-gifs/still-together-v2-gears-1.gif" alt="Still-Together v2 gears">
+      </div>
+      <div class="gif-carousel-nav">
+        <button class="carousel-btn" onclick="showGifCarouselSlide(gifCarouselIdx - 1)">&#8592;</button>
+        <div class="gif-carousel-dots">
+          <span class="dot active" onclick="showGifCarouselSlide(0)"></span>
+          <span class="dot" onclick="showGifCarouselSlide(1)"></span>
+          <span class="dot" onclick="showGifCarouselSlide(2)"></span>
+          <span class="dot" onclick="showGifCarouselSlide(3)"></span>
+          <span class="dot" onclick="showGifCarouselSlide(4)"></span>
+          <span class="dot" onclick="showGifCarouselSlide(5)"></span>
+          <span class="dot" onclick="showGifCarouselSlide(6)"></span>
+        </div>
+        <button class="carousel-btn" onclick="showGifCarouselSlide(gifCarouselIdx + 1)">&#8594;</button>
+      </div>
     </div>
     
+    <div class="game-text-box">
+      <p>Still Together is a three.js browser-based game that uses rhizomatic structure to translate manic psychosis into a playable network of signs, glitches, pathways and systems. Instead of presenting delusion as one fixed story with one root cause, the game maps how perception can spread across objects, technologies, symbols and environments until everything feels connected. The player moves through this network by following lines of flight: glitches, aura vision, broken electricity, hidden pathways and staircases that appear when the system has been endured rather than solved.</p>
+      <p>As we navigate the world, we react to it. But during manic psychosis, reality reacted to me, and at any moment it felt ready to freeze into a flat 2D frame, then peel back to reveal hidden systems. Electricity went out when I stepped into stores, and every sign seemed to choreograph a route made just for me, so I chased them, believing they pointed toward the reality I truly belonged to. While finishing my film degree at UC Santa Cruz, I encountered the writings of Myron W. Krueger, Jean Baudrillard and N. Katherine Hayles, and discovered my private delusions already outlined in their descriptions of responsive environments, simulations, and posthuman embodiment. It felt as if those ideas had formed in a collective consciousness and surfaced first as urgent signals in my mind, then returned through books to show they were shared patterns, not secret prophecies. That recognition eased the pressure and redirected my energy from decoding signs to designing them. Still Together translates that shift into play, turning several symptoms into a mechanic so players engage with invisible systems, see how meaning emerges as a pattern, and trade paranoia for creative control.</p>
+    </div>
+
+    <div class="game-launch-wrap">
+      <a href="https://damaris-guzman.github.io/still-together/" target="_blank" class="game-launch-btn">
+        Still-Together [v2]: The Game
+        <span class="btn-sub">click to play &#8594;</span>
+      </a>
+    </div>
+
     <div class="game-grid">
-      <div class="game-card">
-        <h3>Portals</h3>
-        <p>Doorways between states. The installation itself is a portal — from light to system, surface to depth, observer to player. Inside the game, portals mark the same threshold: another layer you almost see but never fully access.</p>
-      </div>
-      
-      <div class="game-card">
-        <h3>Symbols</h3>
-        <p>Encrypted glyphs scattered throughout the interface. They mark pathways, suggest meaning, hide deeper layers beneath the glossy surface.</p>
-      </div>
-      
-      <div class="game-card">
-        <h3>Glitch Popups</h3>
-        <p>Unexpected moments of instability. Error messages appear and dissolve. The system momentarily reveals its seams.</p>
-      </div>
-      
-      <div class="game-card">
-        <h3>Pathways</h3>
-        <p>Navigable spaces within the interface. Players move through luminous corridors, encountering projections and simulations along the way.</p>
-      </div>
-      
-      <div class="game-card">
-        <h3>Staircases</h3>
-        <p>Vertical transitions between levels of the system. Climbing suggests ascension, descent implies depth and hidden infrastructure.</p>
-      </div>
-      
-      <div class="game-card">
-        <h3>Unstable Meaning</h3>
-        <p>Language breaks down in the game space. Words distort, messages fragment, meaning becomes contingent and multivalent.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 6: GIF STRIP -->
-<section class="gif-strip-section">
-  <div class="gif-strip-container">
-    <div class="gif-strip-item">[Memory Fragment #1]</div>
-    <div class="gif-strip-item">[Memory Fragment #2]</div>
-    <div class="gif-strip-item">[Memory Fragment #3]</div>
-    <div class="gif-strip-item">[Memory Fragment #4]</div>
-    <div class="gif-strip-item">[Memory Fragment #5]</div>
-    <div class="gif-strip-item">[Memory Fragment #6]</div>
-    <div class="gif-strip-item">[Memory Fragment #7]</div>
-    <div class="gif-strip-item">[Memory Fragment #8]</div>
-  </div>
-</section>
-
-<!-- SECTION 7: ENDING -->
-<section class="ending-section">
-  <div class="ending-line">
-    The system remains. We move through it like light through glass.
-  </div>
-</section>
+<div class="footer frosted-footer mt-auto">
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+</div>
 
 
 <!-- LIGHTBOX MODAL -->
@@ -891,6 +1002,16 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
     imgCarouselIdx = (index + slides.length) % slides.length;
     slides.forEach((s, i) => s.classList.toggle('active', i === imgCarouselIdx));
     dots.forEach((d, i) => d.classList.toggle('active', i === imgCarouselIdx));
+  }
+
+  // GIF carousel
+  let gifCarouselIdx = 0;
+  function showGifCarouselSlide(index) {
+    const slides = document.querySelectorAll('#gif-carousel .gif-carousel-slide');
+    const dots = document.querySelectorAll('#gif-carousel .gif-carousel-dots .dot');
+    gifCarouselIdx = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === gifCarouselIdx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === gifCarouselIdx));
   }
 
   function openLightbox(index) {
