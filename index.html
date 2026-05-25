@@ -460,6 +460,55 @@
         document.body.appendChild(sparkle);
         setTimeout(() => sparkle.remove(), 600);
     });
+
+    // Mac desktop warning popup
+    (function() {
+        const isMac = /Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.userAgent);
+        const isMobile = /iPhone|iPad|iPod|Android/.test(navigator.userAgent);
+        if (isMac && !isMobile) {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed; inset: 0; z-index: 9999;
+                background: rgba(7, 2, 14, 0.55);
+                display: flex; align-items: center; justify-content: center;
+                font-family: 'DepartureMono', monospace;
+            `;
+            overlay.innerHTML = `
+                <div style="
+                    background: linear-gradient(145deg, #ffd6e7, #ffb3cc, #f9a8d4);
+                    border: 2px solid #cf77a4;
+                    border-radius: 20px;
+                    padding: 32px 36px 28px;
+                    max-width: 420px;
+                    width: 90%;
+                    box-shadow: 0 8px 32px rgba(207,119,164,0.35);
+                    text-align: center;
+                    font-family: 'DepartureMono', monospace;
+                ">
+                    <p style="font-size: 1.1rem; font-weight: bold; margin: 0 0 12px; color: #07020e;">⚠️ warning!</p>
+                    <p style="font-size: 0.9rem; color: #07020e; margin: 0 0 24px; line-height: 1.6;">
+                        my website may appear differently on mac desktop.<br>i'm working on fixing this. thanks for your patience! 🌸
+                    </p>
+                    <button id="mac-warning-close" style="
+                        background: #cf77a4;
+                        color: white;
+                        border: none;
+                        border-radius: 30px;
+                        padding: 10px 28px;
+                        font-family: 'DepartureMono', monospace;
+                        font-size: 0.85rem;
+                        cursor: pointer;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                    ">ok, got it</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            document.getElementById('mac-warning-close').addEventListener('click', function() {
+                overlay.remove();
+            });
+        }
+    })();
 </script>
 
 </body>
