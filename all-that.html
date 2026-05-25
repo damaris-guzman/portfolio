@@ -149,7 +149,94 @@
     @media (max-width: 768px) {
       .alt-layout-row {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 20px;
+      }
+      /* cancel RTL flip — single column has no left/right to reverse */
+      .alt-layout-row:nth-child(even) {
+        direction: ltr;
+      }
+      /* tighten gap between rows */
+      .alt-layout {
+        gap: 40px;
+      }
+      /* header */
+      .header {
+        height: auto;
+        padding: 14px 16px;
+      }
+      .header h1 {
+        font-size: 15px;
+        letter-spacing: 0;
+      }
+      /* intro */
+      .intro-section {
+        padding: 28px 14px;
+      }
+      .intro-media-placeholder {
+        height: auto;
+        padding: 0;
+        overflow: hidden;
+      }
+      .intro-media-placeholder iframe {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+        min-height: unset;
+      }
+      /* connection / description box */
+      .connection-box {
+        padding: 18px 16px;
+        font-size: 0.88rem;
+      }
+      /* installation section */
+      .installation-section {
+        padding: 36px 14px;
+      }
+      .alt-text-block {
+        padding: 16px;
+      }
+      /* let media show fully — no fixed heights, no cropping */
+      .alt-media-placeholder {
+        height: auto !important;
+        min-height: unset !important;
+      }
+      .alt-media-placeholder img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+      .img-carousel-slide img {
+        max-height: none;
+        height: auto;
+        object-fit: contain;
+      }
+      /* transition section */
+      .transition-section {
+        padding: 60px 16px;
+      }
+      /* game section */
+      .game-section {
+        padding: 48px 14px 36px;
+      }
+      .game-text-box {
+        padding: 20px 16px;
+        font-size: 0.9rem;
+      }
+      .gif-carousel-slide img {
+        max-height: none;
+        height: auto;
+        object-fit: contain;
+      }
+      /* launch button */
+      .game-launch-btn {
+        padding: 14px 22px;
+        font-size: 0.95rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 36px;
+      }
+      .game-launch-btn .btn-sub {
+        font-size: 0.62rem;
+        letter-spacing: 1px;
       }
     }
 
@@ -287,56 +374,102 @@
       font-weight: bold;
       letter-spacing: 3px;
       text-transform: lowercase;
-      color: #fff;
+      color: rgba(255, 235, 248, 1);
       text-decoration: none;
       border-radius: 12px;
-      background: linear-gradient(to right,
-        #ffbcd0  0%,
-        #ff8fb2 18%,
-        #ff6f91 33%,
-        #cf77a4 46%,
-        #b94a7b 50%,
-        #c0c0c0 62%,
-        #d0d0d0 70%,
-        #888888 80%,
-        #303030 92%,
-        #000000 100%
-      );
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background-color: #07020e;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(55, 12, 78, 0.85) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 30%, rgba(18, 4, 36, 0.90) 0%, transparent 50%),
+        radial-gradient(ellipse at 55% 90%, rgba(7, 2, 14, 0.95) 0%, transparent 60%);
+      border: 1.5px solid rgba(255, 175, 230, 0.72);
       box-shadow:
-        0 0 22px rgba(207, 119, 164, 0.35),
-        0 0 50px rgba(0, 0, 0, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
-      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.55);
-      transition: box-shadow 0.3s, transform 0.2s, filter 0.2s;
+        0 0 18px rgba(190, 90, 240, 0.50),
+        0 0 40px rgba(240, 96, 168, 0.28),
+        0 0 65px rgba(64, 232, 240, 0.14),
+        0 4px 22px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+      text-shadow:
+        0 1px 5px rgba(0, 0, 0, 0.92),
+        0 0 20px rgba(200, 80, 230, 0.55);
+      transition: box-shadow 0.3s, transform 0.2s, filter 0.2s, border-color 0.3s;
       overflow: hidden;
       margin-bottom: 60px;
+      backdrop-filter: blur(6px);
+      animation: btnAuraPulse 5s ease-in-out infinite;
     }
+    /* iridescent blob overlay */
+    .game-launch-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 55%, rgba(240, 96, 168, 0.22) 0%, transparent 38%),
+        radial-gradient(circle at 88% 28%, rgba(64, 232, 240, 0.18) 0%, transparent 32%),
+        radial-gradient(circle at 52% 85%, rgba(160, 80, 248, 0.16) 0%, transparent 30%),
+        radial-gradient(circle at 70% 65%, rgba(200, 248, 64, 0.08) 0%, transparent 22%);
+      pointer-events: none;
+      animation: btnBlobsShift 6s ease-in-out infinite;
+    }
+    /* gloss sweep */
     .game-launch-btn::before {
       content: '';
       position: absolute;
       top: 0; left: -75%;
       width: 50%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
       transform: skewX(-20deg);
-      animation: btnGloss 3s ease-in-out infinite;
+      animation: btnGloss 3.5s ease-in-out infinite;
+      z-index: 1;
     }
     @keyframes btnGloss {
-      0% { left: -75%; }
+      0%   { left: -75%; }
       100% { left: 125%; }
     }
-    @keyframes btnShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    @keyframes btnAuraPulse {
+      0%, 100% {
+        box-shadow:
+          0 0 18px rgba(190, 90, 240, 0.50),
+          0 0 40px rgba(240, 96, 168, 0.28),
+          0 0 65px rgba(64, 232, 240, 0.14),
+          0 4px 22px rgba(0,0,0,0.85),
+          inset 0 1px 0 rgba(255,255,255,0.10);
+        border-color: rgba(255, 175, 230, 0.72);
+      }
+      33% {
+        box-shadow:
+          0 0 22px rgba(64, 232, 240, 0.55),
+          0 0 48px rgba(160, 80, 248, 0.38),
+          0 0 75px rgba(240, 96, 168, 0.16),
+          0 4px 22px rgba(0,0,0,0.85),
+          inset 0 1px 0 rgba(255,255,255,0.10);
+        border-color: rgba(100, 220, 245, 0.65);
+      }
+      66% {
+        box-shadow:
+          0 0 20px rgba(248, 128, 48, 0.42),
+          0 0 44px rgba(190, 90, 240, 0.32),
+          0 0 68px rgba(240, 96, 168, 0.14),
+          0 4px 22px rgba(0,0,0,0.85),
+          inset 0 1px 0 rgba(255,255,255,0.10);
+        border-color: rgba(255, 175, 120, 0.58);
+      }
+    }
+    @keyframes btnBlobsShift {
+      0%, 100% { opacity: 0.75; transform: scale(1); }
+      50%       { opacity: 1.00; transform: scale(1.04); }
     }
     .game-launch-btn:hover {
-      filter: brightness(1.12);
+      filter: brightness(1.18);
       transform: translateY(-3px) scale(1.03);
       box-shadow:
-        0 0 38px rgba(207, 119, 164, 0.5),
-        0 0 80px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        0 0 38px rgba(210, 80, 255, 0.70),
+        0 0 75px rgba(240, 96, 168, 0.48),
+        0 0 110px rgba(64, 232, 240, 0.28),
+        0 4px 30px rgba(0, 0, 0, 0.90),
+        inset 0 1px 0 rgba(255, 255, 255, 0.20);
+      border-color: rgba(255, 140, 220, 1.0);
       color: #fff;
     }
     .game-launch-btn .btn-sub {
@@ -647,6 +780,34 @@
       white-space: pre-line;
     }
 
+    /* INTRO VIDEO CAROUSEL */
+    .intro-video-carousel {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .intro-carousel-slide { display: none; }
+    .intro-carousel-slide.active { display: block; }
+    .intro-slide-inner.vertical {
+      max-width: 360px;
+      margin: 0 auto;
+      position: relative;
+      aspect-ratio: 9 / 16;
+    }
+    .intro-slide-inner.horizontal {
+      width: 100%;
+      position: relative;
+      aspect-ratio: 16 / 9;
+    }
+    .intro-slide-inner iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: none;
+    }
+
     /* VIDEO CAROUSEL */
     .video-carousel { width: 100%; }
     .video-carousel-slide { display: none; }
@@ -759,22 +920,48 @@
 
 <!-- SECTION 2: INTRO -->
 <section class="intro-section">
-  <div class="intro-media-placeholder">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/fC7aNNOCpjo?si=ELLXs_WjjvKUtYbA&amp;start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div class="intro-video-carousel" id="intro-carousel">
+
+    <!-- Slide 1: Short -->
+    <div class="intro-carousel-slide active">
+      <div class="intro-slide-inner vertical">
+        <iframe src="https://www.youtube.com/embed/57q5nChNgMY" title="Still-Together short 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Slide 2: Short -->
+    <div class="intro-carousel-slide">
+      <div class="intro-slide-inner vertical">
+        <iframe src="https://www.youtube.com/embed/nNSM8HfMj94" title="Still-Together short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Slide 3: Horizontal -->
+    <div class="intro-carousel-slide">
+      <div class="intro-slide-inner horizontal">
+        <iframe src="https://www.youtube.com/embed/fC7aNNOCpjo?si=ELLXs_WjjvKUtYbA&amp;start=8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <div class="video-carousel-nav" style="margin-top: 14px;">
+      <button class="carousel-btn" onclick="showIntroCarouselSlide(introCarouselIdx - 1)">&#8592;</button>
+      <div class="carousel-dots">
+        <span class="dot active" onclick="showIntroCarouselSlide(0)"></span>
+        <span class="dot" onclick="showIntroCarouselSlide(1)"></span>
+        <span class="dot" onclick="showIntroCarouselSlide(2)"></span>
+      </div>
+      <button class="carousel-btn" onclick="showIntroCarouselSlide(introCarouselIdx + 1)">&#8594;</button>
+    </div>
+
   </div>
 </section>
 
 <!-- SECTION 2.5: INTRO TEXT -->
 <section class="intro-section">
-  <div class="project-subtitle">2-part installation / projection-mapping / 3D / simulations</div>
-  <div class="project-description">
-    <p>All that i wanted to be was given effortlessly is a two-part installation combining projection mapping, 3D animation, and simulations with Still-Together v2 — a three.js browser game exploring connections between manic psychosis and new media theory. Viewers encounter the work as atmosphere first: illusion, light, visual lure. Then they find the laptop behind the screens.</p>
-  </div>
   <div class="connection-box">
-    <h4>how the two works connect</h4>
-    <p>front side = projection / atmosphere / lure  
-back side = laptop / game / system  
-Still-Together v2 = the interactive core underneath the projected surface</p>
+    <h4>2-part installation / projection-mapping / 3D / simulations</h4>
+    <p>All that i wanted to be was given effortlessly is a two-part installation combining projection mapping, 3D animation, and simulations with Still-Together v2 — a three.js browser game exploring connections between manic psychosis and new media theory. Viewers encounter the work as atmosphere first: illusion, light, visual lure. Then they find the laptop behind the screens.</p>
   </div>
 </section>
 
@@ -783,10 +970,6 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
   <div class="alt-layout">
     <!-- First Row -->
     <div class="alt-layout-row">
-      <div class="alt-text-block">
-        <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">spatial configuration</h3>
-        <p>Eight shoji panels are arranged in the space, but only seven display visuals. One panel is folded behind and covers another — one image is hidden even though the light is still present. Something is always just out of reach, like there's another layer you almost see but never fully access. The grid of the rice paper reads like pixels. The diffusion gives everything a dreamy, slightly faded quality — somewhere between present reality and recollection.</p>
-      </div>
       <div class="img-carousel">
         <div class="img-carousel-slide active">
           <img src="images/hori-closeup-1.png" alt="Shoji wall detail 1" onclick="openLightbox(0)">
@@ -806,6 +989,10 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
           </div>
           <button class="carousel-btn" onclick="showImgCarouselSlide(imgCarouselIdx + 1)">&#8594;</button>
         </div>
+      </div>
+      <div class="alt-text-block">
+        <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">spatial configuration</h3>
+        <p>Eight shoji panels are arranged in the space, but only seven display visuals. One panel is folded behind and covers another — one image is hidden even though the light is still present. Something is always just out of reach, like there's another layer you almost see but never fully access. The grid of the rice paper reads like pixels. The diffusion gives everything a dreamy, slightly faded quality — somewhere between present reality and recollection.</p>
       </div>
     </div>
 
@@ -857,19 +1044,19 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
 
     <!-- Third Row -->
     <div class="alt-layout-row">
+      <div class="alt-media-placeholder" style="background: none; border: none; padding: 0;">
+        <img src="images/all-that-still-together.PNG" alt="Installation front and back dual view" style="width: 100%; height: auto; border-radius: 12px; display: block; cursor: zoom-in;" onclick="openSingleLightbox(this.src, this.alt)">
+      </div>
       <div class="alt-text-block">
         <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">observer to participant</h3>
         <p>These clips show a recorded play session already running — without the viewer. Visitors watch the recorded moves, then walk behind the screens and place their own hands on the laptop, completing the loop from observer to participant. Their bodies slip into the same circuit the footage previewed. Embodied virtuality, as Hayles describes it: nothing on a screen floats free of flesh and hardware. The instant you tap a key, your body and the code start co-driving the experience.</p>
-      </div>
-      <div class="alt-media-placeholder">
-        [Installation Front/Back Dual View Photographs]
       </div>
     </div>
 
     <!-- Fourth Row -->
     <div class="alt-layout-row">
-      <div class="alt-media-placeholder">
-        [Projection Texture Detail & Atmospheric Lighting]
+      <div class="alt-media-placeholder" style="background: none; border: none; padding: 0;">
+        <img src="images/all-that-angled.PNG" alt="Projection texture detail and atmospheric lighting" style="width: 100%; height: auto; border-radius: 12px; display: block; cursor: zoom-in;" onclick="openSingleLightbox(this.src, this.alt)">
       </div>
       <div class="alt-text-block">
         <h3 style="text-transform: lowercase; font-size: 1.2rem; margin-bottom: 15px;">light as portal</h3>
@@ -982,6 +1169,16 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
     });
   });
 
+  // Intro video carousel
+  let introCarouselIdx = 0;
+  function showIntroCarouselSlide(index) {
+    const slides = document.querySelectorAll('#intro-carousel .intro-carousel-slide');
+    const dots = document.querySelectorAll('#intro-carousel .dot');
+    introCarouselIdx = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === introCarouselIdx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === introCarouselIdx));
+  }
+
   // Video carousel
   let carouselIdx = 0;
   function showCarouselSlide(index) {
@@ -1014,6 +1211,14 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
     dots.forEach((d, i) => d.classList.toggle('active', i === gifCarouselIdx));
   }
 
+  function openSingleLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt || '';
+    document.querySelector('.lightbox-nav-row').style.display = 'none';
+    document.getElementById('lightbox-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
   function openLightbox(index) {
     imgCarouselIdx = index;
     document.getElementById('lightbox-img').src = imgCarouselSrcs[imgCarouselIdx];
@@ -1024,6 +1229,7 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
 
   function closeLightbox() {
     document.getElementById('lightbox-overlay').classList.remove('active');
+    document.querySelector('.lightbox-nav-row').style.display = '';
     document.body.style.overflow = '';
   }
 
@@ -1053,6 +1259,100 @@ Still-Together v2 = the interactive core underneath the projected surface</p>
     document.body.appendChild(sparkle);
     setTimeout(() => sparkle.remove(), 600);
   });
+
+  // Floating "more info" popup — appears after 15s of scrolling
+  (function() {
+    let scrolled = false;
+    let timer = null;
+
+    function startTimer() {
+      if (scrolled) return;
+      scrolled = true;
+      timer = setTimeout(showPopup, 15000);
+    }
+
+    window.addEventListener('scroll', startTimer, { once: true });
+
+    function showPopup() {
+      const popup = document.createElement('div');
+      popup.id = 'info-popup';
+      popup.style.cssText = `
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 9999;
+        font-family: 'DepartureMono', monospace;
+        animation: popupBounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      `;
+      popup.innerHTML = `
+        <style>
+          @keyframes popupBounceIn {
+            0%   { opacity: 0; transform: scale(0.6) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+          }
+          @keyframes popupWiggle {
+            0%, 100% { transform: rotate(-2deg); }
+            50%       { transform: rotate(2deg); }
+          }
+          #info-popup-inner {
+            background: linear-gradient(145deg, #ffd6e7, #ffb3cc, #f9a8d4);
+            border: 2px solid #cf77a4;
+            border-radius: 18px;
+            padding: 18px 20px 16px;
+            max-width: 220px;
+            box-shadow: 0 8px 28px rgba(207,119,164,0.4);
+            text-align: center;
+            position: relative;
+            animation: popupWiggle 2.5s ease-in-out infinite;
+          }
+          #info-popup-close {
+            position: absolute;
+            top: 6px; right: 10px;
+            background: none;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: #b94a7b;
+            line-height: 1;
+            padding: 0;
+            font-family: 'DepartureMono', monospace;
+          }
+          #info-popup-close:hover { color: #07020e; }
+          #info-popup .popup-emoji {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 6px;
+          }
+          #info-popup .popup-msg {
+            font-size: 0.78rem;
+            color: #07020e;
+            line-height: 1.5;
+            margin: 0 0 12px;
+          }
+          #info-popup .popup-link {
+            display: inline-block;
+            background: #cf77a4;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 30px;
+            transition: background 0.2s;
+          }
+          #info-popup .popup-link:hover { background: #b94a7b; }
+        </style>
+        <div id="info-popup-inner">
+          <button id="info-popup-close" onclick="document.getElementById('info-popup').remove()">✕</button>
+          <span class="popup-emoji">✨📄✨</span>
+          <p class="popup-msg">want to read more about this project?</p>
+          <a class="popup-link" href="https://docs.google.com/document/d/1fCpMx1O7JyojW7VrYtfWBodC3dMd0nw6M2apNgu2GMc/edit?usp=sharing" target="_blank" rel="noopener">more info here →</a>
+        </div>
+      `;
+      document.body.appendChild(popup);
+    }
+  })();
 </script>
 </body>
 </html>
