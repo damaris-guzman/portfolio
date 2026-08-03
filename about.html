@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me</title>
+  <title>CV - Damaris Guzman</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -11,395 +12,588 @@
   <!-- Glossy Theme -->
   <link rel="stylesheet" href="glossy-theme.css">
   <link rel="stylesheet" href="./style.css">
-  <style>
-    @font-face {
-      font-family: 'DepartureMono';
-      src: url('https://humantooth.neocities.org/fonts/DepartureMono.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
-    body {
-      font-family: 'DepartureMono', monospace;
-      margin: 0;
-      padding: 0;
-      background-color: #F9F9F9;
-      /* display: flex; */
-      /* flex-direction: column; */
-      min-height: 100vh;
-      overflow-x: hidden;  /* Prevents horizontal scroll */
-    }
-    .header {
-      background-color: #cf77a4;
-      color: white;
-      padding: 20px;
-      text-transform: uppercase;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-    .header h1 {
-      margin: 0;
-      text-align: center;
-      flex-grow: 1;
-    }
-    .header h1 a {
-      color: white;
-      text-decoration: none;
-      font-size: 2rem;
-      display: inline-block;
-      letter-spacing: 5px;
-    }
-    .hamburger {
-      cursor: pointer;
-      font-size: 2rem;
-      color: white;
-      background: none;
-      border: none;
-    }
-    .nav-menu {
-      position: absolute;
-      top: 100%;
-      right: 20px;
-      background-color: #ffbcd0;
-      border: 2px solid #b94a7b;
-      display: none;
-      flex-direction: column;
-      padding: 10px;
-      border-radius: 5px;
-      gap: 10px;
-      z-index: 100;
-    }
-    .nav-menu a {
-      color: rgb(0, 0, 0);
-      text-decoration: none;
-      padding: 5px 10px;
+    <style>
+        /* CV mobile adjustments: stack dates above details on small screens */
+        .cv-entry {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .cv-dates {
+            min-width: 140px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .cv-entry {
+                flex-direction: column; /* stack vertically on mobile */
+                gap: 8px;
+            }
+
+            .cv-dates {
+                min-width: 0;
+                font-size: 0.95rem;
+            }
+
+            .cv-details h4 {
+                margin-top: 0.2rem;
+                font-size: 1.05rem;
+            }
+
+            .cv-details p, .cv-details .skills {
+                font-size: 0.95rem;
+                line-height: 1.4;
+            }
+        }
+
+        .event-button {
+            display: block;
+            padding: 15px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ff8fb2, #cf77a4);
+            color: white;
+            text-decoration: none;
+            border: 2px solid #b94a7b;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: left;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .event-button:hover {
+            background: linear-gradient(135deg, #cf77a4, #ff8fb2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 143, 178, 0.4);
+            color: white;
+        }
+
+        .event-title {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .event-subtitle {
+            display: block;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .experience-category {
+            margin-bottom: 2rem;
+        }
+
+        .experience-category h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            color: #cf77a4;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ffbfd2;
+            border-radius: 18px;
+            box-shadow: 0 14px 30px rgba(207, 119, 164, 0.12);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .role-card summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 22px;
+            cursor: pointer;
+            list-style: none;
+            gap: 16px;
+            background: linear-gradient(180deg, rgba(255, 188, 208, 0.18), rgba(255, 255, 255, 0.9));
+        }
+
+        details.role-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .role-card-header {
+            width: 100%;
+        }
+
+        .role-card-header h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: #3f1337;
+        }
+
+        .role-meta {
+            margin: 6px 0 0;
+            color: #7a4a68;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: #cf77a4;
+            font-family: 'DepartureMono', monospace;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease;
+        }
+
+        details[open] .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .role-card-body {
+            padding: 0 22px 22px;
+            display: none;
+            color: #3d2d3e;
+            line-height: 1.7;
+        }
+
+        details[open] .role-card-body {
+            display: block;
+        }
+
+        .role-card-body p {
+            margin: 0 0 12px;
+        }
+
+        .skills {
+            font-weight: bold;
+            color: #b94a7b;
+            margin-top: 0;
+        }
+
+        .linkedin-footer {
+            margin-top: 24px;
+            text-align: center;
+            padding-top: 14px;
+            border-top: 1px solid #ffe7ee;
+        }
+
+        .linkedin-footer p {
+            margin: 0;
+            color: #6e354e;
+            font-size: 0.95rem;
+        }
+
+        .linkedin-footer a {
+            color: #b94a7b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .linkedin-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar Styles */
+        .container {
+            display: flex;
+            gap: 20px;
+            margin: 30px auto;
+            padding: 0 20px;
+            max-width: 2028px;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 240px;
+            background-color: #F5F5F5;
+            padding: 15px 15px 15px 15px;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            flex-shrink: 0;
+            align-self: flex-start;
+        }
+
+        .sidebar h2 {
+            font-size: 16px;
+            margin: 10px 0 15px 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .custom-fields {
+            margin-top: 15px;
+        }
+
+        .artist-statement {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #EEE;
+            padding: 18px 12px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .statement-main {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .statement-sub {
+            margin: 10px 0 0 0;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .custom-field {
+            background-color: #EEE;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .custom-field h3 {
+            margin: 0;
+            font-size: 11px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .custom-field p {
+            margin: 5px 0 0 0;
+            color: #777;
+            display: none;
+            font-size: 10px;
+        }
+
+        .profile-tags {
+            margin-top: 10px;
+        }
+
+        .profile-tags span {
+            display: inline-block;
+            padding: 2px 6px;
+            margin-top: 4px;
+            background-color: #DDD;
+            color: #555;
+            margin-right: 3px;
+            border-radius: 3px;
+            font-size: 9px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 0;
+        }
+
+        .social-icons a {
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .cv-content {
+            flex: 1;
+            min-width: 0;
+            max-width: 1040px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
+        }
+        .nav-menu a img {
+      display: block;
+      max-width: 208px;
+      height: auto;
       border-radius: 3px;
     }
-    .nav-menu a:hover {
-      background-color: #ff8fb2;
-    }
-
-    /* Additional styles for the content */
-    .container {
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
-    }
-
-    .sidebar {
-      width: 200px;
-      background-color: #F5F5F5;
-      padding: 20px;
-      border: 1px solid #DDD;
-      border-radius: 5px;
-    }
-
-    .profile {
-      width: 500px;
-      background-color: #F5F5F5;
-      padding: 20px;
-      border: 1px solid #DDD;
-      border-radius: 5px;
-      margin-left: 20px;
-    }
-
-    .profile-image {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      margin: 0 auto;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .profile-info {
-      margin-bottom: 20px;
-    }
-
-    .profile-info h2 {
-      margin: 0;
-      font-size: 24px;
-      color: #333;
-      text-align: center;
-    }
-
-    .profile-info p {
-      margin: 5px 0;
-      color: #777;
-    }
-
-    .profile-description {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .profile-tags {
-      margin-top: 10px;
-    }
-
-    .profile-tags span {
-      display: inline-block;
-      padding: 3px 10px;
-      margin-top: 5px;
-      background-color: #DDD;
-      color: #555;
-      margin-right: 5px;
-      border-radius: 3px;
-      font-size: 12px;
-    }
-
-    .image-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .image-gallery img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-right: 5px;
-      cursor: pointer;
-      margin-top: 5px;
-    }
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 999;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .lightbox-image {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 5px;
-    }
-
-    .custom-fields {
-      margin-top: 20px;
-    }
-
-    .custom-field {
-      background-color: #EEE;
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .custom-field h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #333;
-      cursor: pointer;
-    }
-
-    .custom-field p {
-      margin: 5px 0;
-      color: #777;
-      display: none;
-    }
-
-    .divider {
-      position: relative;
-      padding: 5px;
-    }
-
-    .divider::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      border-top: 2px solid #DDD;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: flex-start;
-      gap: 20px;
-      margin: 20px 0;
-    }
-
-    .social-icons a {
-      display: inline-block;
-    }
-
-    .social-icons img {
-      width: 40px;
-      height: 40px;
-    }
-
-    /* footer styling is centralized in style.css */
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-      }
-      .sidebar {
-        width: 90%;
-        margin-bottom: 20px;
-      }
-      .profile {
-        width: 90%;
-        margin-left: 0;
-        margin-top: 20px; /* extra spacing between sidebar and profile */
-      }
-    }
+    .nav-menu a:hover img { opacity: 0.85; }
   </style>
   <script>
     function toggleCustomField(fieldId) {
       var fieldContent = document.getElementById(fieldId);
       var isDisplayed = getComputedStyle(fieldContent).display === 'block';
-
       fieldContent.style.display = isDisplayed ? 'none' : 'block';
-    }
-
-    function openLightbox(imageUrl) {
-      var lightbox = document.getElementById('lightbox');
-      var lightboxImage = document.getElementById('lightbox-image');
-
-      lightboxImage.src = imageUrl;
-      lightbox.style.display = 'flex';
-    }
-
-    function closeLightbox() {
-      var lightbox = document.getElementById('lightbox');
-
-      lightbox.style.display = 'none';
     }
 
     document.addEventListener('DOMContentLoaded', function() {
       const hamburger = document.querySelector('.hamburger');
       const navMenu = document.querySelector('.nav-menu');
-      hamburger.addEventListener('click', function() {
-          navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+
+      hamburger.addEventListener('click', () => {
+        if (navMenu.style.display === 'flex') {
+          navMenu.style.display = 'none';
+        } else {
+          navMenu.style.display = 'flex';
+          navMenu.style.flexDirection = 'column'; // ensure correct layout
+        }
       });
     });
   </script>
 </head>
 <body class="animated-bg">
   <div class="header glass-header">
-        <h1><a href="/about">New Page</a></h1>
-      <button class="hamburger">&#9776;</button>
-      <div class="nav-menu">
-        <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-        <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-        <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-        <a href="https://damaris-guzman.github.io/portfolio/newmaris.html"><span class="icon">&#128736;</span> New Media</a>
-        <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-        <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-        <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#128187;</span> 3D Animation</a>
-        <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
-      </div>
+    <h1>CV</h1>
+    <button class="hamburger">&#9776;</button>
+    <div class="nav-menu">
+      <a href="index.html"><img src="gifs/home-blinkie.gif" alt="Home"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/CV.html"><img src="gifs/cv-blinkie.gif" alt="CV"></a>
+      <a href="all-that.html"><img src="gifs/allthat-blinkie.gif" alt="All That I Wanted To Be"></a>
+      <a href="#"><img src="gifs/Free-throw-blinkie.gif" alt="Free Throw"></a>
+      <a href="https://damaris-guzman.xyz/dream.html"><img src="gifs/dream-blinkie.gif" alt="My Dream"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><img src="gifs/data-blinkie.gif" alt="ICA Data Trust"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><img src="gifs/teach-blinkie.gif" alt="Teaching"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><img src="gifs/archive-blinkie.gif" alt="Archive"></a>
+    </div>
   </div>
-
   <div class="container">
-    <div class="sidebar">
-        <div class="profile-image" style="background-image: url('https://damarisguzman.neocities.org/About/IMG_6527.png');"></div>
-        <h2>Damaris Guzman</h2>
+    <div class="cv-content">
+        <div class="cv-section">
+            <h2>Education</h2>
 
-        <!-- Custom Fields -->
-        <div class="custom-fields">
-            <div class="custom-field" onclick="toggleCustomField('custom-field-1-content')">
-                <h3>SJSU MFA Digital Media</h3>
-                <p id="custom-field-1-content">3rd Semester</p>
+            <div class="role-card">
+                <div class="role-card-header" style="padding:20px 22px;">
+                    <h4>Master of Fine Arts in Digital Media</h4>
+                    <p class="role-meta">San José State University · 2024 – Present</p>
+                </div>
             </div>
-            <div class="custom-field" onclick="toggleCustomField('custom-field-2-content')">
-                <h3>UCSC Film & Digital Media</h3>
-                <p id="custom-field-2-content">GPA: 3.5 - 2024</p>
+
+            <div class="role-card">
+                <div class="role-card-header" style="padding:20px 22px;">
+                    <h4>Bachelor of Arts in Film & Digital Media, with a focus in Film Studies</h4>
+                    <p class="role-meta">University of California, Santa Cruz · 2022 – 2024</p>
+                </div>
+            </div>
+
+            <div class="role-card">
+                <div class="role-card-header" style="padding:20px 22px;">
+                    <h4>Associate of Arts in Photography</h4>
+                    <p class="role-meta">Cabrillo College, Watsonville · 2018 – 2021</p>
+                </div>
+            </div>
+
+            <div class="role-card">
+                <div class="role-card-header" style="padding:20px 22px;">
+                    <h4>Associate of Arts in Liberal Arts</h4>
+                    <p class="role-meta">Cabrillo College, Watsonville · 2018 – 2021</p>
+                </div>
             </div>
         </div>
 
-        <!-- Profile Tags -->
-        <div class="profile-tags">
-            <span>Original Character</span>
-            <span>Based</span>
-            <span>Loved</span>
-            <span>Connected</span>
+         <div class="cv-section">
+             <h2>Experience</h2>
+
+             <div class="experience-category">
+                 <h3>Teaching</h3>
+
+                 <details class="role-card">
+                     <summary>
+                         <div class="role-card-header">
+                             <h4>Graduate Teaching Associate</h4>
+                             <p class="role-meta">San José State University · Jan 2025 – Present</p>
+                         </div>
+                         <span class="toggle-icon">+</span>
+                     </summary>
+                     <div class="role-card-body">
+                         <p>I'm currently teaching Art 74: Intro to Digital Media. The course emphasizes creative thinking, problem-solving, and computer literacy, introducing diverse software tools, including Adobe Creative Cloud, open‑source platforms, and emerging technologies like 3D printing workflows, to produce artworks for both print and web. Students will complete a series of short projects focused on topics such as glitch art, meme culture, net art, and code as a creative medium, culminating in a final project and a professional portfolio that highlights both their technical mastery and their ability to critically discuss their creative practice.</p>
+                         <p class="skills">Skills: Higher Education Teaching, Adobe Illustrator, Adobe Creative Cloud, 3D Printing, Digital Media</p>
+                     </div>
+                 </details>
+
+                 <details class="role-card">
+                     <summary>
+                         <div class="role-card-header">
+                             <h4>Graduate Teaching Assistant</h4>
+                             <p class="role-meta">San José State University · Aug 2024 – Dec 2024</p>
+                         </div>
+                         <span class="toggle-icon">+</span>
+                     </summary>
+                     <div class="role-card-body">
+                         <p>Taught undergraduates by leading on-screen demonstrations and guiding them through audio MaxMSP tutorials.</p>
+                         <p class="skills">Skills: MaxMSP, Visual Programming</p>
+                     </div>
+                 </details>
+             </div>
+
+             <div class="experience-category">
+                 <h3>Research &amp; Creative Practice</h3>
+
+                 <details class="role-card">
+                     <summary>
+                         <div class="role-card-header">
+                             <h4>Graduate Student Assistant</h4>
+                             <p class="role-meta">zine.baby · April 2026 – Present</p>
+                         </div>
+                         <span class="toggle-icon">+</span>
+                     </summary>
+                     <div class="role-card-body">
+                         <p>Support the development and promotion of the zine.baby digital publishing platform through platform testing, bug reporting, user experience feedback, event outreach, and social media content creation.</p>
+                     </div>
+                 </details>
+             </div>
+
+             <div class="experience-category">
+                 <h3>Public Art &amp; Production</h3>
+
+                 <details class="role-card">
+                     <summary>
+                         <div class="role-card-header">
+                             <h4>Associate Producer</h4>
+                             <p class="role-meta">VPM3D v5.0 – Free Throw · Jan – Mar 2026</p>
+                         </div>
+                         <span class="toggle-icon">+</span>
+                     </summary>
+                     <div class="role-card-body">
+                         <p>Associate Producer for Free Throw, a live projection mapping activation on the SAP Center façade. I coordinated production meetings, managed creative assets, and documented the event while working closely with lead artists and partner organizations.</p>
+                         <p class="skills">Skills: Production Coordination, Public Art, Projection Mapping, Event Documentation, Stakeholder Collaboration</p>
+                     </div>
+                 </details>
+             </div>
+
+             <div class="linkedin-footer">
+                 <p>Explore my full professional history on <a href="https://www.linkedin.com/in/damaris-guzman-0101/" target="_blank" rel="noopener noreferrer">LinkedIn →</a></p>
+             </div>
+         </div>
+
+         <div class="cv-section">
+             <h2>Solo Exhibitions</h2>
+             
+             <div class="cv-entry">
+                 <div class="cv-dates">Nov 2025</div>
+                 <div class="cv-details">
+                     <h4>Every day I see my dream</h4>
+                     <p class="location">Black Gallery</p>
+                 </div>
+             </div>
+         </div>
+
+         <div class="cv-section">
+             <h2>Group Exhibitions</h2>
+             
+             <div class="cv-entry">
+                 <div class="cv-dates">2026</div>
+                 <div class="cv-details">
+                     <h4>FRAGMENTS</h4>
+                     <p class="location">Black Gallery, San Jose [SJSU]</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2025 - 2026</div>
+                 <div class="cv-details">
+                     <h4>Stephanie Dinkins: Data Trust</h4>
+                     <p class="location">ICA, San Jose, CA</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2025</div>
+                 <div class="cv-details">
+                     <h4>Convergence</h4>
+                     <p class="location">Jo Farb Gallery, San Jose, CA</p>
+                 </div>
+             </div>
+
+              <div class="cv-entry">
+                  <div class="cv-dates">2024</div>
+                  <div class="cv-details">
+                      <h4>Glow</h4>
+                      <p class="location">Black Gallery, San Jose [SJSU]</p>
+                  </div>
+              </div>
+
+              <div class="cv-entry">
+                  <div class="cv-dates">2017</div>
+                  <div class="cv-details">
+                      <h4>Interwebs</h4>
+                      <p class="location">Digital Nest, Watsonville, CA</p>
+                  </div>
+              </div>
+          </div>
+
+         <div class="cv-section">
+             <h2>Awards</h2>
+             
+             <div class="cv-entry">
+                 <div class="cv-dates">2019</div>
+                 <div class="cv-details">
+                     <h4>Best Short Film</h4>
+                     <p class="location">United Latino International Film Festival</p>
+                     <p>Sequence editor</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2018</div>
+                 <div class="cv-details">
+                     <h4>Valedictorian</h4>
+                     <p class="location">Diamond Technology Institute</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2018</div>
+                 <div class="cv-details">
+                     <h4>Student of the Year</h4>
+                     <p class="location">PVUSD, Pajaro Valley Unified School District</p>
+                 </div>
+             </div>
+         </div>
+ 
+         <div class="cv-section">
+            <h2>Skills</h2>
+            <ul>
+                <li>Video Editing (After Effects, Premiere Pro)</li>
+                <li>3D Modeling + Animation (Blender)</li>
+                                <li>Projection Mapping (MadMapper, Resolume Avenue)</li>
+                <li>Digital Fabrication (3D printing / Laser cutting / CNC)</li>
+                <li>Web Design (HTML, CSS, p5.js)</li>
+                <li>Cinematography + Videography</li>
+                <li>Photography (Studio + Outdoor, Portrait, Event)</li>
+                <li>Boom Operation</li>
+                <li>Sound Editing (ProTools)</li>
+                <li>Content Creation & Social Media Management</li>
+                              <li>Higher Education Teaching</li>
+              <li>Team Leadership / Production Coordination </li>
         </div>
 
-        <!-- Social Icons -->
-        <div class="social-icons" style="display: flex; justify-content: flex-start; gap: 20px; margin: 20px 0;">
-            <a href="https://instagram.com/grill0101" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" style="width: 40px; height: 40px;">
-            </a>
-            <a href="https://www.linkedin.com/in/damaris-guzman-0101/" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" style="width: 40px; height: 40px;">
-            </a>
+        <div class="cv-section">
+            <h2>Contact</h2>
+            <p><strong>Email:</strong> damaris.guzman@sjsu.edu</p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/grill0101" target="_blank">@grill0101</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/damaris-guzman-0101/" target="_blank">linkedin.com/in/damaris-guzman-0101/</a></p>
         </div>
     </div>
-
-    <div class="profile">
-        <div class="banner-image">
-
-        </div>
-        <div class="profile-description">
-            <h2></h2>
-            <p>Hi, it's so nice to connect with you. ٩(◕‿◕｡)۶ </p>
-            <p>I create digital worlds that oscillate between the hyperactive and the meditative, asking what happens to identity and agency when pixels start to pulse like living tissue. As an MFA candidate and Teaching Associate at San José State University, I move across experimental video, 3D animation, digital fabrication, and Arduino-driven interfaces, threading them together into immersive, multi-sensory narratives.</p>
-            <p>I’m captivated by how digital media goes beyond mere entertainment, actively
-reconfiguring how we think, feel, and connect. My work explores the blurred boundaries between
-identity, agency, and community in our hyperconnected age. Using Blender and After Effects, I
-produce looped narratives that merge 3D animation with real-world footage, mirroring social
-media’s addictive feedback loops and examining how digital design can subtly shape behavior
-and perception.</p>
-<p>Influenced by posthumanist thought, I see technology as an extension of the body: a
-merging of biology and code that challenges our understanding of embodiment. These visual
-experiments serve as both personal reflections and broader social commentaries, questioning
-whether we’re steering technology or being steered, and whether our identities are truly ours or
-shaped by infinite feedback loops. I’m drawn to glossy, surreal aesthetics, often inspired by PC
-Music visual artists such as Timothy Luke, Daniel Swan, and Team Rolfes. Their visionary work
-blurs authenticity and artifice, reflecting my interest in the uneasy boundary between synthetic
-and organic forms.</p>
-<p>As my practice evolves, I’ve begun incorporating physical elements that coincide with my
-digital visuals, including custom, digitally fabricated and circuit-based interactivity.
-These additions introduce a tactile layer that bridges the virtual and physical realms.</p>
-<p>Despite the rush and sensory overload in many of my projects, I’m also invested in
-encouraging quiet introspection. I create meditative simulations as a counterpoint to the frenetic
-energy, slowing viewers down and encouraging them to drift into a more contemplative
-headspace. By balancing these two extremes (fast-paced, hyper-synthetic-reality versus a serene,
-dreamlike interlude) I reflect on how our external digital lives (scrolling, liking, posting)
-intertwine with our internal emotional states (yearning, comparing, questioning). In my view,
-self-expression meets external observation in the ways technology mediates everything we see,
-feel, and share.</p>
-<p>Ultimately, I strive to create resonant moments of awareness by building spaces that unify
-mind and body, digital and physical, in a shared journey of reflection and discovery. My hope is
-that people leave feeling both energized and unsettled, questioning their own habits and
-assumptions, and perhaps reclaiming a bit of agency in the process.</p>
-            <p>Overall, my work centers around identity, perception, technological embodiment, and posthuman existence in an age of rapid technological consumption.</p>
-    <p>Every day I see my dream, so I invite you to see it too. ★~(◠‿◕✿)</p>
-        </div>
-
-        <div class="divider"></div>
-        <div class="image-gallery">
-            <img src="https://damarisguzman.neocities.org/KIRI%20DANCE.gif" onclick="openLightbox('wow.jpg')">
-            <img src="https://damarisguzman.neocities.org/Portfolio/gra.JPG" onclick="openLightbox('wow.jpg')">
-        </div>
-    </div>
-</div>
-
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-image" class="lightbox-image" src="">
-</div>
-
-<div class="footer">
-  <p>© 2025 DAMARIS GUZMAN @GRILL0101</p>
 </div>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="footer frosted-footer mt-auto">
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+</div>
+
 </body>
 </html>
