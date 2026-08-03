@@ -86,6 +86,7 @@
 
         .sidebar {
             width: 100%;
+            max-width: 520px;
             background-color: #ffe7ee;
             padding: 25px;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
@@ -214,30 +215,6 @@
         }
 
         /* Scroll box for 2025 and 2024 sections */
-        .grid-scroll-box {
-            max-height: 750px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .grid-scroll-box::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .grid-scroll-box::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        .grid-scroll-box::-webkit-scrollbar-thumb {
-            background: #cf77a4;
-            border-radius: 10px;
-        }
-
-        .grid-scroll-box::-webkit-scrollbar-thumb:hover {
-            background: #b94a7b;
-        }
-
         .artist-statement {
             margin-top: 15px;
             margin-bottom: 15px;
@@ -250,7 +227,7 @@
 
         .statement-main {
             margin: 0 0 4px 0;
-            font-size: 13px;
+            font-size: 12px;
             color: #6b2050;
             font-weight: bold;
             line-height: 1.5;
@@ -260,17 +237,31 @@
 
         .statement-sub {
             margin: 6px 0 0 0;
-            font-size: 11px;
+            font-size: 10px;
             color: #9b4d72;
             line-height: 1.4;
         }
 
         .statement-mfa {
             margin: 8px 0 0 0;
-            font-size: 11px;
+            font-size: 10px;
             color: #b94a7b;
             line-height: 1.4;
             font-style: italic;
+        }
+
+        @media (max-width: 767px) {
+            .artist-statement {
+                text-align: left;
+                padding: 12px 14px;
+            }
+
+            .artist-statement p {
+                font-size: 13px;
+                line-height: 1.6;
+                text-align: left;
+                margin: 0 0 10px;
+            }
         }
 
         .social-icons {
@@ -311,9 +302,9 @@
         </a>
     </h1>
 </div>
-<div class="container-fluid my-4 pb-5" style="position: relative; z-index: 1; max-width: 1800px;">
+<div class="container-fluid my-4 pb-5" style="position: relative; z-index: 1; max-width: 1800px; padding-right: 30px;">
     <div class="row g-2">
-        <div class="col-lg-4">
+        <div class="col-lg-5">
             <div class="sidebar frosted-sidebar" data-bs-toggle="tooltip" data-bs-placement="top" title="Welcome!">
                 <img src="images/maris-edit-zine.PNG" alt="Your Image" class="img-fluid rounded shadow-sm">
 
@@ -321,15 +312,14 @@
 
                 <!-- Artist Statement -->
                 <div class="artist-statement">
-                    <p class="statement-main">New Media Artist</p>
-                    <p class="statement-main">Immersive Storyteller</p>
-                    <p class="statement-sub">Reflective Tech + Synthetic Worlds</p>
-                    <p class="statement-mfa">Digital Media MFA, SJSU 2027</p>
+                    <p>Damaris Guzman is an interdisciplinary new media artist whose practice transforms screen light into embodied experience. Working across animation, net art, digital fabrication, and projection mapping, she examines how perception, technological embodiment, and posthuman identity mutate as code infiltrates flesh, asking who truly holds agency.</p>
+                    <p>If a dream rises from the subconscious and an algorithm grows from your clicks and inclinations, both drift beneath awareness, quietly guiding daily choices long before you sense their pull; pause inside that waking dream and claim ownership of what comes next.</p>
+                    <p>Damaris Guzman earned a BFA in Film and Digital Media, with a focus in Film Studies, from the University of California, Santa Cruz. She is currently an MFA candidate and Teaching Associate in Digital Media Art at San José State University. ♡☆♡☆</p>
                 </div>
 
                 <div class="cute-box">
                     <a href="https://damaris-guzman.github.io/portfolio/CV.html" class="glossy-btn" data-bs-toggle="tooltip" title="Learn more about me">
-                        <i class="bi bi-person-circle me-2"></i>About Me
+                        <i class="bi bi-person-circle me-2"></i>CV
                     </a>
                 </div>
                 <div class="cute-box">
@@ -340,8 +330,8 @@
             </div>
         </div>
 
-        <div class="col-lg-8">
-            <div class="grid-scroll-box">
+        <div class="col-lg-7">
+            <div>
                 <div class="row g-3">
                 <!-- 2025 2x3 Grid -->
                 <div class="col-12">
