@@ -101,7 +101,7 @@ body {
 
 /* Sidebar styles */
 .sidebar {
-    width: 200px;
+    width: 240px;
     background-color: #F5F5F5;
     padding: 20px;
     border: 1px solid #DDD;
@@ -340,9 +340,10 @@ body {
 }
 
 .cv-entry {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    column-gap: 18px;
+    align-items: start;
     margin-bottom: 15px;
     padding: 10px 0;
     border-bottom: 1px solid #E0E0E0;
@@ -356,13 +357,13 @@ body {
     color: #cf77a4;
     font-weight: bold;
     font-size: 0.9rem;
-    min-width: 120px;
-    margin-right: 20px;
+    min-width: 180px;
     flex-shrink: 0;
 }
 
 .cv-details {
-    flex: 1;
+    min-width: 0;
+    padding-left: 4px;
 }
 
 .cv-details h4 {
