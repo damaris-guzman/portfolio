@@ -14,21 +14,29 @@
     <style>
         /* CV mobile adjustments: stack dates above details on small screens */
         .cv-entry {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 180px minmax(0, 1fr);
+            column-gap: 18px;
+            width: 100%;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .cv-details {
+            min-width: 0;
+            padding-left: 4px;
         }
 
         .cv-dates {
-            min-width: 140px;
+            min-width: 180px;
             color: #666;
             font-weight: bold;
         }
 
         @media (max-width: 768px) {
             .cv-entry {
-                flex-direction: column; /* stack vertically on mobile */
-                gap: 8px;
+                grid-template-columns: 1fr;
+                row-gap: 8px;
             }
 
             .cv-dates {
@@ -283,7 +291,7 @@
                 <div class="cv-details">
                     <h4>Master of Fine Arts in Digital Media</h4>
                     <p class="location">San José State University</p>
-                    <p>2nd year | Teaching Associate</p>
+                    <p>3nd year | Teaching Associate</p>
                 </div>
             </div>
 
@@ -292,7 +300,6 @@
                 <div class="cv-details">
                     <h4>Bachelor of Arts in Film & Digital Media</h4>
                     <p class="location">University of California, Santa Cruz</p>
-                    <p>GPA: 3.5</p>
                 </div>
             </div>
 
@@ -300,14 +307,7 @@
                 <div class="cv-dates">2018 - 2021</div>
                 <div class="cv-details">
                     <h4>Associate of Arts in Photography</h4>
-                    <p class="location">Cabrillo College, Watsonville</p>
-                </div>
-            </div>
-
-            <div class="cv-entry">
-                <div class="cv-dates">2018 - 2021</div>
-                <div class="cv-details">
-                    <h4>Associate of Arts in Liberal Arts</h4>
+                    <p>Associate of Arts in Liberal Arts</p>
                     <p class="location">Cabrillo College, Watsonville</p>
                 </div>
             </div>
@@ -315,17 +315,14 @@
 
          <div class="cv-section">
              <h2>Experience</h2>
-             
-             <div class="experience-container">
+
                  <div class="cv-entry">
-                     <div class="cv-dates">Jan – Mar 2026</div>
+                     <div class="cv-dates">Mar 2026 - Present</div>
                      <div class="cv-details">
-                         <h4>Associate Producer</h4>
-                         <p class="location"><a href="https://www.instagram.com/freethrow_sj/" target="_blank" rel="noopener noreferrer">VPM3D v5.0 – Free Throw</a> · San José, CA</p>
-                         <p>Served as Associate Producer on <em>Free Throw</em>, a live projection mapping experience that transformed the east façade of the SAP Center into a luminous arena for civic play. Conceived by G. Craig Hobbs and powered by Art 175 students alongside graduates and alumni from San José State University, the project reimagined downtown San José's Barack Obama Boulevard as an immersive interactive digital canvas across March 26 and 28, 2026.</p>
-                         <p>Facilitated weekly Zoom and in-person production meetings to align with the lead artist and project stakeholders. Led social media strategy from planning through execution, shot and edited photo and video across test shoots and the live event, maintained timelines, equipment rosters, and call sheets, and supported aesthetic and technical asset reviews.</p>
-                         <p>Partners: City of San José Office of Cultural Affairs, San José Sports Authority, and CADRE Media Lab.</p>
-                         <p class="skills">Skills: Production Management, Social Media Strategy and Management, Photo &amp; Video Production/Post-Production, Event Coordination</p>
+                         <h4>Graduate Student Assistant</h4>
+                         <p class="location"><a href="https://www.linkedin.com/in/damaris-guzman-0101/edit/forms/position/2992135395/" target="_blank" rel="noopener noreferrer">zine.baby</a> · Part-time</p>
+                         <p>I support the development and growth of zine.baby, a digital publishing platform for creating, sharing and selling web based zines. My work spans platform testing, creative outreach, social media and community engagement. I test new features and workflows, identify usability issues, create promotional and social media content and help prepare zines for both digital and physical presentation. I also represent zine.baby at community events and assist with whatever is needed to support the platform’s growth, presentation and creative community.</p>
+                         <p class="skills">Skills: Platform Testing, Creative Outreach, Social Media, Community Engagement, Digital Publishing, Content Creation</p>
                      </div>
                  </div>
 
@@ -336,6 +333,18 @@
                          <p class="location">San José State University · Part-time · On-site</p>
                          <p>I'm currently teaching Art 74: Intro to Digital Media. The course emphasizes creative thinking, problem-solving, and computer literacy, introducing diverse software tools, including Adobe Creative Cloud, open‑source platforms, and emerging technologies like 3D printing workflows, to produce artworks for both print and web. Students will complete a series of short projects focused on topics such as glitch art, meme culture, net art, and code as a creative medium, culminating in a final project and a professional portfolio that highlights both their technical mastery and their ability to critically discuss their creative practice.</p>
                          <p class="skills">Skills: Higher Education Teaching, Adobe Illustrator, Adobe Creative Cloud, 3D Printing, Digital Media</p>
+                     </div>
+                 </div>
+
+                 <div class="cv-entry">
+                     <div class="cv-dates">Jan – Mar 2026</div>
+                     <div class="cv-details">
+                         <h4>Associate Producer</h4>
+                         <p class="location"><a href="https://www.instagram.com/freethrow_sj/" target="_blank" rel="noopener noreferrer">VPM3D v5.0 – Free Throw</a> · San José, CA</p>
+                         <p>Served as Associate Producer on <em>Free Throw</em>, a live projection mapping experience that transformed the east façade of the SAP Center into a luminous arena for civic play. Conceived by G. Craig Hobbs and powered by Art 175 students alongside graduates and alumni from San José State University, the project reimagined downtown San José's Barack Obama Boulevard as an immersive interactive digital canvas across March 26 and 28, 2026.</p>
+                         <p>Facilitated weekly Zoom and in-person production meetings to align with the lead artist and project stakeholders. Led social media strategy from planning through execution, shot and edited photo and video across test shoots and the live event, maintained timelines, equipment rosters, and call sheets, and supported aesthetic and technical asset reviews.</p>
+                         <p>Partners: City of San José Office of Cultural Affairs, San José Sports Authority, and CADRE Media Lab.</p>
+                         <p class="skills">Skills: Production Management, Social Media Strategy and Management, Photo &amp; Video Production/Post-Production, Event Coordination</p>
                      </div>
                  </div>
 
@@ -354,7 +363,7 @@
                      <div class="cv-details">
                          <h4>Gaffer, Camera Operator, and Actor</h4>
                          <p class="location">UMF UMakeFilms · Internship · Hybrid</p>
-                         <p>UMakeFilms is a student-governed film collective at UCSC. I've worked on set as a boom operator, managed lighting setups, operated cameras, and performed in films.</p>
+                         <p>UMakeFilms is a student governed film collective at UC Santa Cruz focused on collaborative filmmaking and hands on production experience. Through the collective, I worked across a range of roles both behind and in front of the camera, including boom operation, lighting setup and camera operation as well as acting in student films.</p>
                          <p class="skills">Skills: Production Assistance, Camera Operation, Lighting, Acting</p>
                      </div>
                  </div>
@@ -394,32 +403,10 @@
                      <div class="cv-details">
                          <h4>Social Media Content Creator</h4>
                          <p class="location">Project Pollinate · Internship · Hybrid</p>
-                         <p>I filmed and edited media to enlighten viewers on what the program had to offer. I filmed and photographed events, advertisements, interviews, etc.</p>
+                         <p>I filmed, photographed and edited media showcasing the organization’s programs and environmental initiatives. My work included event coverage, promotional content, and interviews designed to inform and engage community members around environmental policy and sustainable practices.</p>
+                         <p class="skills">Skills: Videography, Video Editing, Photography, Photo Editing, Content Creation</p>
                      </div>
                  </div>
-
-                 <h3 style="margin-top: 20px; margin-bottom: 15px; color: #cf77a4; border-top: 1px solid #E0E0E0; padding-top: 15px;">Volunteer Experience</h3>
-
-                 <div class="cv-entry">
-                     <div class="cv-dates">Nov 2017 - Apr 2018</div>
-                     <div class="cv-details">
-                         <h4>Line Cook</h4>
-                         <p class="location">Teen Kitchen · Health</p>
-                         <p>Prepared and assisted in cooking nutritious, health-conscious meals for cancer patients and individuals with dietary restrictions. Supported kitchen operations by following food safety standards, maintaining a clean workspace, and working collaboratively with a team to ensure meals were prepared accurately and on time.</p>
-                         <p class="skills">Skills: Food Preparation, Food Safety, Kitchen Operations, Teamwork</p>
-                     </div>
-                 </div>
-
-                 <div class="cv-entry">
-                     <div class="cv-dates">Jan 2007 - Jun 2015</div>
-                     <div class="cv-details">
-                         <h4>Publisher / Auxiliary Pioneer</h4>
-                         <p class="location">Jehovah's Witnesses · Education</p>
-                         <p>Regularly led door-to-door and public outreach campaigns, engaging diverse audiences, offering educational literature, and coordinating home visits for follow-up discussions. Elevated to Auxiliary Pioneer, committing increased volunteer hours and collaborating closely with seasoned pioneers and former missionaries. The role honed my public-speaking, interpersonal communication, research, and time-management skills through tailored presentations, schedule planning, and stewardship of a substantial volunteer workload.</p>
-                         <p class="skills">Skills: Public Speaking, Interpersonal Communication, Research, Time Management, Leadership</p>
-                     </div>
-                 </div>
-             </div>
          </div>
 
          <div class="cv-section">
@@ -435,21 +422,53 @@
          </div>
 
          <div class="cv-section">
-             <h2>Group Exhibitions</h2>
+             <h2>Selected Group Exhibitions &amp; Events</h2>
              
              <div class="cv-entry">
                  <div class="cv-dates">2026</div>
                  <div class="cv-details">
-                     <h4>FRAGMENTS</h4>
-                     <p class="location">Black Gallery, San Jose [SJSU]</p>
+                     <h4>First Friday: The Mother of All Demos</h4>
+                     <p class="location">zine.baby interactive tech zone, San José Museum of Art, San José, California</p>
                  </div>
              </div>
 
              <div class="cv-entry">
-                 <div class="cv-dates">2025 - 2026</div>
+                 <div class="cv-dates">2026</div>
+                 <div class="cv-details">
+                     <h4>SubZERO Festival</h4>
+                     <p class="location">zine.baby participating artist, South FIRST FRIDAYS Art Walk + SubZERO Festival, SoFA District, San José, California</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2026</div>
+                 <div class="cv-details">
+                     <h4>Retro Tech Night</h4>
+                     <p class="location">zine.baby participant, Digital Swap Meet, San José Museum of Art</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2026</div>
+                 <div class="cv-details">
+                     <h4>Free Throw</h4>
+                     <p class="location">Associate Producer, public projection mapping experience at the SAP Center, San José, California</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2026</div>
+                 <div class="cv-details">
+                     <h4>FRAGMENTS</h4>
+                     <p class="location">Group exhibition, Black Gallery, San José State University</p>
+                 </div>
+             </div>
+
+             <div class="cv-entry">
+                 <div class="cv-dates">2025 – 2026</div>
                  <div class="cv-details">
                      <h4>Stephanie Dinkins: Data Trust</h4>
-                     <p class="location">ICA, San Jose, CA</p>
+                     <p class="location">Exhibition contributor, Institute of Contemporary Art San José</p>
                  </div>
              </div>
 
@@ -457,60 +476,23 @@
                  <div class="cv-dates">2025</div>
                  <div class="cv-details">
                      <h4>Convergence</h4>
-                     <p class="location">Jo Farb Gallery, San Jose, CA</p>
+                     <p class="location">Group exhibition, Jo Farb Gallery, San José State University</p>
                  </div>
              </div>
 
-              <div class="cv-entry">
-                  <div class="cv-dates">2024</div>
-                  <div class="cv-details">
-                      <h4>Glow</h4>
-                      <p class="location">Black Gallery, San Jose [SJSU]</p>
-                  </div>
-              </div>
-
-              <div class="cv-entry">
-                  <div class="cv-dates">2017</div>
-                  <div class="cv-details">
-                      <h4>Interwebs</h4>
-                      <p class="location">Digital Nest, Watsonville, CA</p>
-                  </div>
-              </div>
+             <div class="cv-entry">
+                 <div class="cv-dates">2024</div>
+                 <div class="cv-details">
+                     <h4>Glow</h4>
+                     <p class="location">Group exhibition, Black Gallery, San José State University</p>
+                 </div>
+             </div>
           </div>
 
          <div class="cv-section">
-             <h2>Awards</h2>
-             
-             <div class="cv-entry">
-                 <div class="cv-dates">2019</div>
-                 <div class="cv-details">
-                     <h4>Best Short Film</h4>
-                     <p class="location">United Latino International Film Festival</p>
-                     <p>Sequence editor</p>
-                 </div>
-             </div>
-
-             <div class="cv-entry">
-                 <div class="cv-dates">2018</div>
-                 <div class="cv-details">
-                     <h4>Valedictorian</h4>
-                     <p class="location">Diamond Technology Institute</p>
-                 </div>
-             </div>
-
-             <div class="cv-entry">
-                 <div class="cv-dates">2018</div>
-                 <div class="cv-details">
-                     <h4>Student of the Year</h4>
-                     <p class="location">PVUSD</p>
-                 </div>
-             </div>
-         </div>
- 
-         <div class="cv-section">
             <h2>Skills</h2>
             <ul>
-                <li>Video Editing (After Effects, Premiere Pro)</li>
+                <li>Video Editing (After Effects, CapCut, Premiere Pro)</li>
                 <li>3D Modeling + Animation (Blender)</li>
                                 <li>Projection Mapping (MadMapper, Resolume Avenue)</li>
                 <li>Digital Fabrication (3D printing / Laser cutting / CNC)</li>
@@ -521,7 +503,7 @@
                 <li>Sound Editing (ProTools)</li>
                 <li>Content Creation & Social Media Management</li>
                               <li>Higher Education Teaching</li>
-              <li>Team Leadership / Production Coordination / Pattern Recognition</li>
+              <li>Team Leadership / Production Coordination</li>
             </ul>
         </div>
 
