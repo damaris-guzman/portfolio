@@ -214,56 +214,6 @@
             margin: 0;
         }
 
-        /* Scroll box for 2025 and 2024 sections */
-        .artist-statement {
-            margin-top: 15px;
-            margin-bottom: 15px;
-            background-color: #ffbcd0;
-            border: 1px solid #cf77a4;
-            padding: 14px 12px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .statement-main {
-            margin: 0 0 4px 0;
-            font-size: 12px;
-            color: #6b2050;
-            font-weight: bold;
-            line-height: 1.5;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .statement-sub {
-            margin: 6px 0 0 0;
-            font-size: 10px;
-            color: #9b4d72;
-            line-height: 1.4;
-        }
-
-        .statement-mfa {
-            margin: 8px 0 0 0;
-            font-size: 10px;
-            color: #b94a7b;
-            line-height: 1.4;
-            font-style: italic;
-        }
-
-        @media (max-width: 767px) {
-            .artist-statement {
-                text-align: left;
-                padding: 12px 14px;
-            }
-
-            .artist-statement p {
-                font-size: 13px;
-                line-height: 1.6;
-                text-align: left;
-                margin: 0 0 10px;
-            }
-        }
-
         .social-icons {
             display: flex;
             justify-content: center;
@@ -278,6 +228,316 @@
         .social-icons img {
             width: 30px;
             height: 30px;
+        }
+
+        .homepage-content {
+            display: grid;
+            grid-template-columns: minmax(210px, 23%) minmax(0, 1fr);
+            align-items: start;
+            gap: 28px;
+            max-width: 1320px;
+            margin: 20px auto;
+            padding: 0 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-hero {
+            position: sticky;
+            top: 20px;
+            display: block;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(207, 119, 164, 0.16);
+            animation: none;
+        }
+
+        .intro-hero img {
+            width: 100%;
+            max-width: 190px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid rgba(207, 119, 164, 0.25);
+            display: block;
+            margin: 0 auto 13px;
+        }
+
+        .intro-copy h2 {
+            margin: 0 0 8px;
+            color: #b94a7b;
+            font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+            letter-spacing: 0.5px;
+        }
+
+        .intro-copy p {
+            max-width: 700px;
+            margin: 0;
+            color: #6b2050;
+            font-size: 0.72rem;
+            line-height: 1.45;
+        }
+
+        .intro-bio-mobile {
+            display: none;
+        }
+
+        .intro-actions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
+            margin-top: 12px;
+        }
+
+        .intro-actions .cute-box {
+            margin-top: 0;
+        }
+
+        .intro-actions .glossy-btn {
+            width: 100%;
+            padding: 7px 8px;
+            font-size: 0.66rem;
+            white-space: nowrap;
+        }
+
+        .works-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 0 0 7px;
+        }
+
+        .works-heading h2 {
+            margin: 0;
+            color: #6b2050;
+            font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+            letter-spacing: 1px;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+
+        .works-heading .work-filters {
+            justify-content: flex-end;
+            margin-bottom: 0;
+        }
+
+        .works-heading h2::before {
+            content: '✦ ';
+            color: #ff6f91;
+        }
+
+        .work-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .work-filter {
+            border: 1px solid #cf77a4;
+            border-radius: 18px;
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.65);
+            color: #9b4d72;
+            font-family: inherit;
+            font-size: 0.64rem;
+            cursor: pointer;
+        }
+
+        .work-filter:hover,
+        .work-filter.active {
+            background: #cf77a4;
+            color: white;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .work-card {
+            min-width: 0;
+        }
+
+        .work-card[hidden] {
+            display: none;
+        }
+
+        .work-card a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .work-card .glossy-grid-item {
+            aspect-ratio: 4 / 3;
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-card .overlay-text {
+            max-width: calc(100% - 24px);
+        }
+
+        .work-info {
+            padding: 7px 3px 1px;
+        }
+
+        .work-title {
+            display: block;
+            color: #6b2050;
+            font-size: 0.9rem;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+        .work-meta {
+            display: block;
+            margin-top: 2px;
+            color: rgba(155, 77, 114, 0.78);
+            font-size: 0.62rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 575px) {
+            .header {
+                height: 50px;
+                padding: 0 12px;
+            }
+
+            .header h1 {
+                font-size: 16px;
+                line-height: 1.15;
+            }
+
+            .header a {
+                letter-spacing: 1px;
+            }
+
+            .header .wave-icon {
+                font-size: 0.8em;
+            }
+
+            .homepage-content {
+                display: block;
+                padding: 0 12px 30px;
+            }
+
+            .intro-hero {
+                position: static;
+                display: grid;
+                grid-template-columns: 68px minmax(0, 1fr);
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+                margin-bottom: 12px;
+            }
+
+            .intro-hero img {
+                width: 68px;
+                max-width: none;
+                margin: 0;
+                border-radius: 10px;
+            }
+
+            .intro-copy h2 {
+                margin-bottom: 4px;
+                font-size: 1rem;
+                line-height: 1.15;
+            }
+
+            .intro-copy p {
+                font-size: 0.66rem;
+                line-height: 1.35;
+            }
+
+            .intro-bio-desktop {
+                display: none;
+            }
+
+            .intro-bio-mobile {
+                display: block;
+            }
+
+            .intro-actions .glossy-btn {
+                padding: 5px 6px;
+                font-size: 0.58rem;
+            }
+
+            .intro-actions {
+                grid-column: 1 / -1;
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 5px;
+                margin-top: 8px;
+            }
+
+            .works-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 5px;
+                margin-bottom: 5px;
+            }
+
+            .works-heading .work-filters {
+                justify-content: flex-start;
+                width: 100%;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 3px;
+                margin-bottom: 0;
+                scrollbar-width: thin;
+                scrollbar-color: #cf77a4 transparent;
+            }
+
+            .works-heading .work-filter {
+                flex: 0 0 auto;
+            }
+
+            .works-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+
+            .work-card .overlay-text {
+                font-size: 0.7rem;
+                padding: 6px 8px;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991px) {
+            .homepage-content {
+                display: block;
+            }
+
+            .intro-hero {
+                position: static;
+                display: grid;
+                grid-template-columns: 150px 1fr;
+                gap: 22px;
+                margin-bottom: 28px;
+            }
+
+            .intro-hero img {
+                margin: 0;
+            }
+
+            .works-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 360px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
     </style>
@@ -302,129 +562,86 @@
         </a>
     </h1>
 </div>
-<div class="container-fluid my-4 pb-5" style="position: relative; z-index: 1; max-width: 1800px; padding-right: 30px;">
-    <div class="row g-2">
-        <div class="col-lg-5">
-            <div class="sidebar frosted-sidebar" data-bs-toggle="tooltip" data-bs-placement="top" title="Welcome!">
-                <img src="images/maris-edit-zine.PNG" alt="Your Image" class="img-fluid rounded shadow-sm">
+<main class="homepage-content">
+    <section class="intro-hero frosted-sidebar" data-bs-toggle="tooltip" data-bs-placement="top" title="Welcome!">
+        <img src="images/maris-edit-zine.PNG" alt="Portrait of Damaris Guzman">
+        <div class="intro-copy">
+            <h2>Damaris Guzman</h2>
+            <p class="intro-bio-desktop">Damaris Guzman is an interdisciplinary new media artist working across animation, net art, fabrication, and projection. Her work explores perception, technological embodiment, and posthuman identity.</p>
+            <p class="intro-bio-mobile">New media artist working across animation, net art, fabrication, and projection. Her work explores perception and technological embodiment.</p>
+            <div class="intro-actions">
+                <div class="cute-box"><a href="https://damaris-guzman.github.io/portfolio/CV.html" class="glossy-btn" data-bs-toggle="tooltip" title="Learn more about me"><i class="bi bi-person-circle me-2"></i>CV</a></div>
+                <div class="cute-box"><a href="https://www.zine.baby/damaris" class="glossy-btn" data-bs-toggle="tooltip" title="Read my publications"><i class="bi bi-journal-text me-2"></i>Publications</a></div>
+            </div>
+        </div>
+    </section>
 
-                <h2 style="text-align: center; font-size: 1.3rem; color: #b94a7b; margin: 12px 0 8px; letter-spacing: 1px;">Damaris Guzman</h2>
-
-                <!-- Artist Statement -->
-                <div class="artist-statement">
-                    <p>Damaris Guzman is an interdisciplinary new media artist whose practice transforms screen light into embodied experience. Working across animation, net art, digital fabrication and projection mapping, she examines how perception, technological embodiment and posthuman identity mutate as code infiltrates flesh, asking where agency resides when bodies and technological systems become increasingly inseparable.</p>
-                    <p>If a dream rises from the subconscious and an algorithm grows from your clicks and inclinations, both drift beneath awareness, quietly guiding daily choices long before you sense their pull; pause inside that waking dream and claim ownership of what comes next.</p>
-                    <p>Damaris Guzman earned a BFA in Film and Digital Media, with a focus in Film Studies, from the University of California, Santa Cruz. She is currently an MFA candidate and Teaching Associate in Digital Media Art at San José State University. ♡☆♡☆</p>
-                </div>
-
-                <div class="cute-box">
-                    <a href="https://damaris-guzman.github.io/portfolio/CV.html" class="glossy-btn" data-bs-toggle="tooltip" title="Learn more about me">
-                        <i class="bi bi-person-circle me-2"></i>CV
-                    </a>
-                </div>
-                <div class="cute-box">
-                    <a href="https://www.zine.baby/damaris" class="glossy-btn" data-bs-toggle="tooltip" title="Read my publications">
-                        <i class="bi bi-journal-text me-2"></i>Publications/Zines
-                    </a>
-                </div>
+    <section aria-labelledby="selected-works-heading">
+        <div class="works-heading">
+            <h2 id="selected-works-heading">Selected Works</h2>
+            <div class="work-filters" aria-label="Filter selected works">
+                <button class="work-filter active" type="button" data-filter="all">All</button>
+                <button class="work-filter" type="button" data-filter="installation">Installation</button>
+                <button class="work-filter" type="button" data-filter="interactive">Interactive</button>
+                <button class="work-filter" type="button" data-filter="net-art">Net Art</button>
+                <button class="work-filter" type="button" data-filter="performance">Performance</button>
+                <button class="work-filter" type="button" data-filter="objects">Objects</button>
+                <button class="work-filter" type="button" data-filter="moving-image">Moving Image</button>
             </div>
         </div>
 
-        <div class="col-lg-7">
-            <div>
-                <div class="row g-3">
-                <!-- 2025 2x3 Grid -->
-                <div class="col-12">
-                    <div style="max-width: 625px; margin: 0 auto;">
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item">
-                                    <a href="https://damaris-guzman.github.io/portfolio/all-that.html">
-                                        <img src="images/all-h-1.jpg" alt="All that I wanted to be was given effortlessly" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text">All that I wanted to be was given effortlessly</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item">
-                                    <a href="https://damaris-guzman.github.io/portfolio/free-throw.html">
-                                        <img src="images/Free-throw-v.JPG" alt="Free Throw! @ The SAP Center" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text">Free Throw! @ The SAP Center</div>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item">
-                                    <a href="https://damaris-guzman.github.io/portfolio/dream.html">
-                                        <img src="images/maris5.jpg" alt="Every day I see my dream" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text">Every day I see my dream</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item">
-                                    <a href="https://damaris-guzman.github.io/portfolio/netart.html">
-                                        <img src="images/swagmaris.png" alt="Net Art" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text">Net Art</div>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item">
-                                    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html">
-                                        <img src="images/ica-locket.png" alt="ICA: Data Trust" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text">ICA: Data Trust</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="My teaching experience">
-                                    <a href="https://damaris-guzman.github.io/portfolio/teaching.html">
-                                        <img src="https://damarisguzman.neocities.org/kiri%20ar%20(1).gif" alt="Teaching" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text"><i class="bi bi-mortarboard me-2"></i>Teaching</div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2024 & Earlier Section -->
-                <div class="col-12" style="margin-top: 20px;">
-                    <div style="background: linear-gradient(90deg, rgba(255, 188, 208, 0.3), rgba(255, 111, 145, 0.3)); padding: 8px 15px; border-radius: 8px; text-align: center; margin-bottom: 10px;">
-                        <span style="font-weight: bold; font-size: 1.1rem; color: #ff6f91; letter-spacing: 2px;">⏳ 2024 & Earlier</span>
-                    </div>
-                </div>
-                
-                <div class="col-12">
-                    <div style="max-width: 625px; margin: 0 auto;">
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="3D animation projects">
-                                    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html">
-                                        <img src="https://damarisguzman.neocities.org/Portfolio/Guzman_One_2024.png" alt="3D Animation" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text"><i class="bi bi-box me-2"></i>3D Animation</div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="grid-item glossy-grid-item" data-bs-toggle="tooltip" title="Project archive">
-                                    <a href="https://damaris-guzman.github.io/portfolio/archive.html">
-                                        <img src="https://damarisguzman.neocities.org/Portfolio/IMG_5149.PNG" alt="Archive" class="w-100 h-100" style="object-fit: cover;">
-                                        <div class="overlay-text"><i class="bi bi-archive me-2"></i>Archive</div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
+        <div class="works-grid">
+            <article class="work-card" data-categories="installation interactive moving-image net-art">
+                <a href="https://damaris-guzman.github.io/portfolio/all-that.html">
+                    <div class="glossy-grid-item"><img src="images/all-h-1.jpg" alt="All that I wanted to be was given effortlessly"></div>
+                    <div class="work-info"><span class="work-title">All that I wanted to be was given effortlessly</span><span class="work-meta">Installation / Projection Mapping / Simulation / 3D / Net Art</span></div>
+                </a>
+            </article>
+            <article class="work-card" data-categories="installation interactive performance">
+                <a href="https://damaris-guzman.github.io/portfolio/free-throw.html">
+                    <div class="glossy-grid-item"><img src="images/Free-throw-v.JPG" alt="Free Throw! @ The SAP Center"></div>
+                    <div class="work-info"><span class="work-title">Free Throw! @ The SAP Center</span><span class="work-meta">Associate Producer / Social Media</span></div>
+                </a>
+            </article>
+            <article class="work-card" data-categories="installation interactive objects moving-image performance">
+                <a href="https://damaris-guzman.github.io/portfolio/dream.html">
+                    <div class="glossy-grid-item"><img src="images/maris5.jpg" alt="Every day I see my dream"></div>
+                    <div class="work-info"><span class="work-title">Every day I see my dream</span><span class="work-meta">Installation / Interactive media</span></div>
+                </a>
+            </article>
+            <article class="work-card" data-categories="net-art interactive">
+                <a href="https://damaris-guzman.github.io/portfolio/netart.html">
+                    <div class="glossy-grid-item"><img src="images/swagmaris.png" alt="Net Art"></div>
+                    <div class="work-info"><span class="work-title">Net Art</span><span class="work-meta">Browser-based work / Net art</span></div>
+                </a>
+            </article>
+            <article class="work-card" data-categories="installation objects">
+                <a href="https://damaris-guzman.github.io/portfolio/data-trust.html">
+                    <div class="glossy-grid-item"><img src="images/ica-locket.png" alt="ICA: Data Trust"></div>
+                    <div class="work-info"><span class="work-title">ICA: Data Trust</span><span class="work-meta">Installation / Metal Casting</span></div>
+                </a>
+            </article>
+            <article class="work-card" data-categories="">
+                <a href="https://damaris-guzman.github.io/portfolio/teaching.html">
+                    <div class="glossy-grid-item"><img src="https://damarisguzman.neocities.org/kiri%20ar%20(1).gif" alt="Teaching"></div>
+                    <div class="work-info"><span class="work-title">Teaching</span><span class="work-meta">IHigher Education / Digital Media Production</span></div>
+                </a>
+            </article>
+            <article class="work-card" data-categories="moving-image">
+                <a href="https://damaris-guzman.github.io/portfolio/3danimation.html">
+                    <div class="glossy-grid-item"><img src="https://damarisguzman.neocities.org/Portfolio/Guzman_One_2024.png" alt="3D Animation"></div>
+                    <div class="work-info"><span class="work-title">3D Animation</span><span class="work-meta">Animation / 3D Modeling</span></div>
+                </a>
+            </article>
+            <article class="work-card" data-categories="moving-image performance">
+                <a href="https://damaris-guzman.github.io/portfolio/archive.html">
+                    <div class="glossy-grid-item"><img src="https://damarisguzman.neocities.org/Portfolio/IMG_5149.PNG" alt="Archive"></div>
+                    <div class="work-info"><span class="work-title">Archive</span><span class="work-meta">Films / Video Art / VFX / 3D / Music Videos / Net Art Collages</span></div>
+                </a>
+            </article>
         </div>
-    </div>
-</div>
+    </section>
+</main>
 
 <div class="footer frosted-footer mt-auto">
   <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
@@ -437,6 +654,20 @@
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // Filter the selected works by artwork tags.
+    document.querySelectorAll('.work-filter').forEach(function(filterButton) {
+        filterButton.addEventListener('click', function() {
+            const selectedFilter = filterButton.dataset.filter;
+            document.querySelectorAll('.work-filter').forEach(function(button) {
+                button.classList.toggle('active', button === filterButton);
+            });
+            document.querySelectorAll('.work-card').forEach(function(card) {
+                const categories = card.dataset.categories.split(' ');
+                card.hidden = selectedFilter !== 'all' && !categories.includes(selectedFilter);
+            });
+        });
     });
 
     // Sparkle effect on click
