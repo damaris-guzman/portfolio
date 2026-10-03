@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archiveヽ(•‿•)ノ</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="glossy-theme.css">
   <style>
     @font-face {
       font-family: 'DepartureMono';
@@ -13,17 +13,26 @@
       font-style: normal;
     }
     body {
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
+            background-color: var(--pearl);
+            background-image:
+                radial-gradient(60% 50% at 15% 10%, rgba(230, 220, 255, .9), transparent 70%),
+                radial-gradient(50% 45% at 90% 25%, rgba(221, 247, 238, .8), transparent 70%),
+                radial-gradient(70% 55% at 50% 100%, rgba(255, 204, 230, .9), transparent 70%),
+                repeating-conic-gradient(rgba(255, 168, 213, .13) 0 25%, transparent 0 50%);
+            background-size: auto, auto, auto, 44px 44px;
+            background-attachment: fixed;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       overflow-x: hidden;  /* Added to remove left/right scroll */
     }
     .header {
-      background-color: #cf77a4;
+      background: linear-gradient(#ffb9dd, #ffa8d5 50%, #ff8cc8 51%, #ffb0d8);
+      border-bottom: 1px solid #f08cc2;
+      box-shadow: 0 2px 10px rgba(224, 48, 142, .25);
       color: white;
       padding: 20px;
       text-transform: uppercase;
@@ -54,7 +63,7 @@
       text-decoration: none;
       font-size: 1rem;
       padding: 10px 20px;
-      background-color: #ff8fb2;
+      background-color: #ffa8d5;
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
@@ -72,7 +81,7 @@
     }
     .video-item {
       background-color: #ffffff;
-      border: 2px solid #cf77a4;
+      border: 2px solid #e0308e;
       border-radius: 10px;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
       display: flex;
@@ -106,7 +115,7 @@
     .video-item .text-box h3 {
       margin: 0;
       font-size: 17px;
-      color: #cf77a4;
+      color: #e0308e;
       line-height: 1.3;
     }
     .video-item .text-box .video-role {
@@ -116,7 +125,7 @@
       letter-spacing: 1.2px;
       text-transform: uppercase;
       font-weight: bold;
-      color: #b94a7b;
+      color: #e0308e;
       background: rgba(185, 74, 123, 0.1);
       border: 1px solid rgba(185, 74, 123, 0.28);
       border-radius: 4px;
@@ -135,7 +144,7 @@
       height: 50px; /* Same height as your header/footer */
       line-height: 50px; /* Vertically center the text */
       margin: 20px 0;
-      background: linear-gradient(45deg, #ff8fb2, #cf77a4, #ffbcd0);
+      background: linear-gradient(45deg, #ffa8d5, #e0308e, #ffcce6);
       background-size: 300% 300%;
       color: white;
       border-radius: 5px;
@@ -198,7 +207,7 @@
       box-sizing: border-box;
       display: block;
       width: 100%; /* Full width */
-      background-color: #ffbcd0;
+      background-color: #ffcce6;
       color: white;
       text-align: center;
       padding: 20px; /* Match header's padding */
@@ -297,8 +306,8 @@
       position: absolute;
       top: 100%;
       right: 20px;
-      background-color: #ffbcd0;  /* New color instead of previous pink */
-      border: 2px solid #b94a7b;  /* Added border */
+      background-color: #ffcce6;  /* New color instead of previous pink */
+      border: 2px solid #e0308e;  /* Added border */
       display: none;
       flex-direction: column;
       padding: 10px;
@@ -313,7 +322,7 @@
       border-radius: 3px;
     }
     .nav-menu a:hover {
-      background-color: #ff8fb2;
+      background-color: #ffa8d5;
     }
     /* Glossy Social Media Buttons */
     .social-buttons {
@@ -381,7 +390,7 @@
       text-align: center;
       text-decoration: none;
       border-radius: 14px;
-      background: linear-gradient(120deg, #ffbcd0 0%, #ff8fb2 25%, #ff6f91 48%, #cf77a4 72%, #b94a7b 100%);
+      background: linear-gradient(120deg, #ffcce6 0%, #ffa8d5 25%, #ff5fb4 48%, #e0308e 72%, #e0308e 100%);
       background-size: 200% 200%;
       animation: bannerShift 6s ease infinite;
       box-shadow:
@@ -417,7 +426,7 @@
     }
     .film-banner-title {
       display: block;
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       font-size: 1.4rem;
       font-weight: bold;
       letter-spacing: 3px;
@@ -428,7 +437,7 @@
     }
     .film-banner-award {
       display: block;
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       font-size: 0.8rem;
       letter-spacing: 1.5px;
       color: rgba(255,255,255,0.88);
@@ -437,7 +446,7 @@
     }
     .film-banner-role {
       display: block;
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       font-size: 0.72rem;
       letter-spacing: 1px;
       color: rgba(255,255,255,0.7);
@@ -521,27 +530,27 @@
     <!-- Instagram Video Posts -->
     <h2 style="text-align: center; margin: 40px 0 10px;">Instagram Videos</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 0 20px 30px;">
-      <div style="width: 326px; flex-shrink: 0; border: 2px solid #ffbcd0; border-radius: 10px; overflow: hidden; box-shadow: 2px 2px 10px rgba(207,119,164,0.2);">
+      <div style="width: 326px; flex-shrink: 0; border: 2px solid #ffcce6; border-radius: 10px; overflow: hidden; box-shadow: 2px 2px 10px rgba(207,119,164,0.2);">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Cewbv-tgaB7/?hidecaption=true" data-instgrm-version="14" style="width:326px; margin: 0; padding: 0; border: 0;"></blockquote>
       </div>
-      <div style="width: 326px; flex-shrink: 0; border: 2px solid #ffbcd0; border-radius: 10px; overflow: hidden; box-shadow: 2px 2px 10px rgba(207,119,164,0.2);">
+      <div style="width: 326px; flex-shrink: 0; border: 2px solid #ffcce6; border-radius: 10px; overflow: hidden; box-shadow: 2px 2px 10px rgba(207,119,164,0.2);">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CesEN_ogjj1/?hidecaption=true" data-instgrm-version="14" style="width:326px; margin: 0; padding: 0; border: 0;"></blockquote>
       </div>
-      <div style="width: 326px; flex-shrink: 0; border: 2px solid #ffbcd0; border-radius: 10px; overflow: hidden; box-shadow: 2px 2px 10px rgba(207,119,164,0.2);">
+      <div style="width: 326px; flex-shrink: 0; border: 2px solid #ffcce6; border-radius: 10px; overflow: hidden; box-shadow: 2px 2px 10px rgba(207,119,164,0.2);">
         <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CSGOAOBggGN/?hidecaption=true" data-instgrm-version="14" style="width:326px; margin: 0; padding: 0; border: 0;"></blockquote>
       </div>
     </div>
 
     <!-- Out of Sync -->
     <div style="max-width: 860px; margin: 0 auto 40px; padding: 0 20px;">
-      <div style="background: #fff; border: 2px solid #cf77a4; border-radius: 10px; box-shadow: 2px 2px 10px rgba(207,119,164,0.2); overflow: hidden;">
+      <div style="background: #fff; border: 2px solid #e0308e; border-radius: 10px; box-shadow: 2px 2px 10px rgba(207,119,164,0.2); overflow: hidden;">
         <div style="position: relative; padding-top: 56.25%;">
           <iframe src="https://www.youtube.com/embed/Kd1HZfeYpHU?si=28J7ccXX4w1_5Tcm" title="Out of Sync" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
         </div>
         <div style="padding: 20px; background-color: #ffe7ee;">
-          <h3 style="margin: 0 0 10px; font-size: 1.2rem; color: #cf77a4; font-family: 'DepartureMono', monospace;">Out of Sync</h3>
-          <p style="margin: 0; font-size: 14px; line-height: 1.7; color: #333; font-family: 'DepartureMono', monospace;">Out of Sync is a found footage project exploring the human mind's relationship with technology and chaos. Through a mix of my own 3D animations, free vectors, and early web footage, it portrays the overwhelming nature of modern life. A moment of silence leads to a reconnecting with nature, symbolizing presence amidst chaos.</p>
-          <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: #333; font-family: 'DepartureMono', monospace;">The project reflects on technology's impact on the psyche, urging viewers to embrace the serenity of the present moment.</p>
+          <h3 style="margin: 0 0 10px; font-size: 1.2rem; color: #e0308e; font-family: var(--soft);">Out of Sync</h3>
+          <p style="margin: 0; font-size: 14px; line-height: 1.7; color: #333; font-family: var(--soft);">Out of Sync is a found footage project exploring the human mind's relationship with technology and chaos. Through a mix of my own 3D animations, free vectors, and early web footage, it portrays the overwhelming nature of modern life. A moment of silence leads to a reconnecting with nature, symbolizing presence amidst chaos.</p>
+          <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: #333; font-family: var(--soft);">The project reflects on technology's impact on the psyche, urging viewers to embrace the serenity of the present moment.</p>
         </div>
       </div>
     </div>
@@ -553,12 +562,12 @@
       <div class="film" style="flex: 1 1 45%; max-width: 45%; background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px;">
         <h3 style="margin: 0 0 10px;">What's a nice girl like you doing in a college like this? by Kevin Artemio Menez (2023)</h3>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/jwOuenl7ubI?si=1tqFwAaXlISvAnt7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
-        <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I love this film!</p>
+        <p style="font-family: var(--soft); margin: 10px 0 0;">I love this film!</p>
       </div>
       <div class="film" style="flex: 1 1 45%; max-width: 45%; background: #fff; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px;">
         <h3 style="margin: 0 0 10px;">Companion by Jacqueline Wong (2023)</h3>
         <iframe src="https://www.youtube.com/embed/bvA_GBx53o8?si=1WQeomlEeMRah_GT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio: 16/9; border: none;"></iframe>
-        <p style="font-family: 'DepartureMono', monospace; margin: 10px 0 0;">I was casted last minute, like the day before, Lol. I'm not an actor, by the way.</p>
+        <p style="font-family: var(--soft); margin: 10px 0 0;">I was casted last minute, like the day before, Lol. I'm not an actor, by the way.</p>
       </div>
     </div>
     
@@ -807,7 +816,7 @@
 </script>
     
     <div class="footer">
-      <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+      <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff5fb4;"></i></p>
     </div>
 
     <script async defer src="//www.instagram.com/embed.js"></script>
