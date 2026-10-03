@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🛝</title>
+  <title>Every Day I See My Dream</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,13 +25,13 @@
 
     /* Base */
     :root {
-      --pink-1:#ff8fb2;
-      --pink-2:#cf77a4;
-      --pink-3:#ffbcd0;
-      --pink-4:#ff6f91;
+      --pink-1: #ffa8d5;
+      --pink-2: #ff5fb4;
+      --pink-3: #ffcce6;
+      --pink-4: #e0308e;
       --text:#333;
       --text-light:#555;
-      --bg:#f0f0f0;
+      --bg: #fff6fb;
       --card:#fff;
     }
 
@@ -45,11 +45,17 @@
     }
 
     body {
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
-      background-attachment: fixed;
+            background-color: var(--pearl);
+            background-image:
+                radial-gradient(60% 50% at 15% 10%, rgba(230, 220, 255, .9), transparent 70%),
+                radial-gradient(50% 45% at 90% 25%, rgba(221, 247, 238, .8), transparent 70%),
+                radial-gradient(70% 55% at 50% 100%, rgba(255, 204, 230, .9), transparent 70%),
+                repeating-conic-gradient(rgba(255, 168, 213, .13) 0 25%, transparent 0 50%);
+            background-size: auto, auto, auto, 44px 44px;
+            background-attachment: fixed;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -108,8 +114,8 @@
       position: absolute;
       top: 100%;
       right: 20px;
-      background-color: #ffbcd0;
-      border: 2px solid #b94a7b;
+      background-color: #ffcce6;
+      border: 2px solid #e0308e;
       display: none;
       flex-direction: column;
       padding: 10px;
@@ -123,7 +129,7 @@
       padding: 5px 10px;
       border-radius: 3px;
     }
-    .nav-menu a:hover { background-color: #ff8fb2; }
+    .nav-menu a:hover { background-color: #ffa8d5; }
     .icon { font-size: 1.2rem; }
 
     /* Content layout */
@@ -291,14 +297,14 @@
     .button {
       padding: 10px 20px;
       font-size: 1rem;
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       color: #fff;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: transform 0.08s ease, box-shadow 0.25s ease;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 6px 12px rgba(0,0,0,0.12);
-      background: linear-gradient(to bottom, #f0f0f0, #d0f0d0); /* fallback */
+      background: linear-gradient(to bottom, #fff6fb, #d0f0d0); /* fallback */
       white-space: nowrap;
       width: 100%; /* fill grid cell so row of three fits under Unlock-it */
     }
@@ -311,22 +317,22 @@
       animation: gradientShift 4s ease infinite;
     }
     .button.interactive-panel {
-      background: linear-gradient(-45deg, var(--pink-2), #b0568a, var(--pink-4), #ff8fb2);
+      background: linear-gradient(-45deg, var(--pink-2), #b0568a, var(--pink-4), #ffa8d5);
       background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
     }
     .button.full-video {
-      background: linear-gradient(-45deg, var(--pink-3), #ff9cb0, var(--pink-1), #ffbcd0);
+      background: linear-gradient(-45deg, var(--pink-3), #ff9cb0, var(--pink-1), #ffcce6);
       background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
     }
     .button.live-thru-me {
-      background: linear-gradient(-45deg, #ff6fa3, var(--pink-1), var(--pink-4), #cf77a4);
+      background: linear-gradient(-45deg, #ff6fa3, var(--pink-1), var(--pink-4), #e0308e);
       background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
     }
     .button.ctrl-1 {
-      background: linear-gradient(-45deg, #cf77a4, #ff9ac6, var(--pink-2), #ff6fa3);
+      background: linear-gradient(-45deg, #e0308e, #ff9ac6, var(--pink-2), #ff6fa3);
       background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
     }
@@ -342,7 +348,7 @@
     }
     /* Animated Bootstrap-style gradient for Unlock-it */
     .button.unlock-it {
-      background: linear-gradient(-45deg, #ff9ac6, #ff6fa3, var(--pink-4), #ffbcd0);
+      background: linear-gradient(-45deg, #ff9ac6, #ff6fa3, var(--pink-4), #ffcce6);
       background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
       letter-spacing: 0.5px;
@@ -350,7 +356,7 @@
     }
     /* Animated Bootstrap-style gradient for Unlock-me */
     .button.unlock-me {
-      background: linear-gradient(-45deg, #ff8fb2, var(--pink-2), #ff6fa3, var(--pink-3));
+      background: linear-gradient(-45deg, #ffa8d5, var(--pink-2), #ff6fa3, var(--pink-3));
       background-size: 400% 400%;
       animation: gradientShift 4s ease infinite;
       letter-spacing: 0.5px;
@@ -635,26 +641,25 @@
 
     .bootstrap-content .card-title {
       color: var(--text);
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       font-size: 2rem;
       font-weight: bold;
     }
 
     .bootstrap-content .card-text {
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       font-size: 1.2rem;
     }
+      .nav-menu a img {
+      display: block;
+      max-width: 208px;
+      height: auto;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover img { opacity: 0.85; }
   </style>
 </head>
 <body class="animated-bg">
-
-<!-- Animated particles background -->
-<div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
-    <div style="position: absolute; width: 10px; height: 10px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 10%; left: 10%; animation: float 20s ease-in-out infinite;"></div>
-    <div style="position: absolute; width: 15px; height: 15px; background: rgba(207, 119, 164, 0.3); border-radius: 50%; top: 20%; left: 80%; animation: float 25s ease-in-out infinite 2s;"></div>
-    <div style="position: absolute; width: 8px; height: 8px; background: rgba(255, 188, 208, 0.3); border-radius: 50%; top: 70%; left: 20%; animation: float 30s ease-in-out infinite 4s;"></div>
-    <div style="position: absolute; width: 12px; height: 12px; background: rgba(255, 143, 178, 0.3); border-radius: 50%; top: 60%; left: 90%; animation: float 22s ease-in-out infinite 3s;"></div>
-</div>
 
   <!-- Header -->
 
@@ -662,20 +667,16 @@
     <h1><a>Every Day I See My Dream ◉‿◉</a></h1>
     <button class="hamburger">&#9776;</button>
     <div class="nav-menu">
-      <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-      <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-      <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-      <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
-      <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
-      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-      <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-      <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
-      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
+      <a href="index.html"><img src="gifs/home-blinkie.gif" alt="Home"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/CV.html"><img src="gifs/cv-blinkie.gif" alt="CV"></a>
+      <a href="all-that.html"><img src="gifs/allthat-blinkie.gif" alt="All That I Wanted To Be"></a>
+      <a href="#"><img src="gifs/Free-throw-blinkie.gif" alt="Free Throw"></a>
+      <a href="https://damaris-guzman.xyz/dream.html"><img src="gifs/dream-blinkie.gif" alt="My Dream"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><img src="gifs/data-blinkie.gif" alt="ICA Data Trust"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><img src="gifs/teach-blinkie.gif" alt="Teaching"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><img src="gifs/archive-blinkie.gif" alt="Archive"></a>
     </div>
       </div>
-
-  <!-- Notice -->
-  <div class="update-notice glossy-notice"><i class="bi bi-cone-striped me-2"></i>This page is still being updated<i class="bi bi-cone-striped ms-2"></i></div>
 
   <!-- Content -->
   <div class="bootstrap-content" style="position: relative; z-index: 1;">
