@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🍀</title>
 
+  <link rel="icon" href="🌟">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -22,21 +23,27 @@
       font-display: swap;
     }
     :root {
-      --pink-1:#ff8fb2;
-      --pink-2:#cf77a4;
-      --pink-3:#ffbcd0;
-      --pink-4:#ff6f91;
+      --pink-1: #ffa8d5;
+      --pink-2: #ff5fb4;
+      --pink-3: #ffcce6;
+      --pink-4: #e0308e;
       --text:#333;
       --text-light:#555;
-      --bg:#f0f0f0;
+      --bg: #fff6fb;
       --card:#fff;
     }
     body {
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
-      background-attachment: fixed;
+            background-color: var(--pearl);
+            background-image:
+                radial-gradient(60% 50% at 15% 10%, rgba(230, 220, 255, .9), transparent 70%),
+                radial-gradient(50% 45% at 90% 25%, rgba(221, 247, 238, .8), transparent 70%),
+                radial-gradient(70% 55% at 50% 100%, rgba(255, 204, 230, .9), transparent 70%),
+                repeating-conic-gradient(rgba(255, 168, 213, .13) 0 25%, transparent 0 50%);
+            background-size: auto, auto, auto, 44px 44px;
+            background-attachment: fixed;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -297,7 +304,7 @@
     /* TRANSITION SECTION */
     .transition-section {
       padding: 120px 20px;
-      background: linear-gradient(to bottom, #f0f0f0, #2a2a2a);
+      background: linear-gradient(to bottom, #fff6fb, #2a2a2a);
       min-height: auto;
       display: flex;
       flex-direction: column;
@@ -369,7 +376,7 @@
       display: inline-block;
       position: relative;
       padding: 20px 48px;
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       font-size: 1.2rem;
       font-weight: bold;
       letter-spacing: 3px;
@@ -625,7 +632,7 @@
     }
     .gif-carousel-dots { display: flex; gap: 6px; align-items: center; }
     .gif-carousel-dots .dot { background: rgba(255, 143, 178, 0.3); }
-    .gif-carousel-dots .dot.active { background: #ff8fb2; }
+    .gif-carousel-dots .dot.active { background: #ffa8d5; }
 
     /* GIF STRIP SECTION */
     .gif-strip-section {
@@ -712,8 +719,8 @@
       position: absolute;
       top: 100%;
       right: 20px;
-      background-color: #ffbcd0;
-      border: 2px solid #b94a7b;
+      background-color: #ffcce6;
+      border: 2px solid #e0308e;
       display: none;
       flex-direction: column;
       padding: 13px;
@@ -727,7 +734,7 @@
       padding: 7px 13px;
       border-radius: 3px;
     }
-    .nav-menu a:hover { background-color: #ff8fb2; }
+    .nav-menu a:hover { background-color: #ffa8d5; }
     .icon { font-size: 1.2rem; }
     .nav-menu a img {
       display: block;
@@ -820,7 +827,7 @@
       margin-top: 12px;
     }
     .carousel-btn {
-      background: linear-gradient(135deg, #ff8fb2, #cf77a4);
+      background: linear-gradient(135deg, #ffa8d5, #e0308e);
       color: white;
       border: none;
       border-radius: 50%;
@@ -832,7 +839,7 @@
       transition: background 0.2s;
       flex-shrink: 0;
     }
-    .carousel-btn:hover { background: linear-gradient(135deg, #cf77a4, #ff8fb2); }
+    .carousel-btn:hover { background: linear-gradient(135deg, #e0308e, #ffa8d5); }
     .carousel-dots { display: flex; gap: 6px; align-items: center; }
     .dot {
       width: 8px;
@@ -842,7 +849,7 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .dot.active { background: #cf77a4; }
+    .dot.active { background: #e0308e; }
 
     /* IMAGE CAROUSEL */
     .img-carousel { width: 100%; }
@@ -885,7 +892,7 @@
       line-height: 1;
       transition: color 0.2s;
     }
-    .lightbox-close:hover { color: #ff8fb2; }
+    .lightbox-close:hover { color: #ffa8d5; }
     .lightbox-img {
       max-width: 90vw;
       max-height: 80vh;
@@ -1131,7 +1138,7 @@
 </section>
 
 <div class="footer frosted-footer mt-auto">
-  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff5fb4;"></i></p>
 </div>
 
 
@@ -1281,7 +1288,7 @@
         bottom: 28px;
         right: 28px;
         z-index: 9999;
-        font-family: 'DepartureMono', monospace;
+        font-family: var(--soft);
         animation: popupBounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
       `;
       popup.innerHTML = `
@@ -1296,7 +1303,7 @@
           }
           #info-popup-inner {
             background: linear-gradient(145deg, #ffd6e7, #ffb3cc, #f9a8d4);
-            border: 2px solid #cf77a4;
+            border: 2px solid #e0308e;
             border-radius: 18px;
             padding: 18px 20px 16px;
             max-width: 220px;
@@ -1312,10 +1319,10 @@
             border: none;
             font-size: 0.9rem;
             cursor: pointer;
-            color: #b94a7b;
+            color: #e0308e;
             line-height: 1;
             padding: 0;
-            font-family: 'DepartureMono', monospace;
+            font-family: var(--soft);
           }
           #info-popup-close:hover { color: #07020e; }
           #info-popup .popup-emoji {
@@ -1331,7 +1338,7 @@
           }
           #info-popup .popup-link {
             display: inline-block;
-            background: #cf77a4;
+            background: #e0308e;
             color: #fff;
             text-decoration: none;
             font-size: 0.72rem;
@@ -1341,7 +1348,7 @@
             border-radius: 30px;
             transition: background 0.2s;
           }
-          #info-popup .popup-link:hover { background: #b94a7b; }
+          #info-popup .popup-link:hover { background: #e0308e; }
         </style>
         <div id="info-popup-inner">
           <button id="info-popup-close" onclick="document.getElementById('info-popup').remove()">✕</button>
