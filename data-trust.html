@@ -22,21 +22,27 @@
       font-display: swap;
     }
     :root {
-      --pink-1:#ff8fb2;
-      --pink-2:#cf77a4;
-      --pink-3:#ffbcd0;
-      --pink-4:#ff6f91;
+      --pink-1: #ffa8d5;
+      --pink-2: #ff5fb4;
+      --pink-3: #ffcce6;
+      --pink-4: #e0308e;
       --text:#333;
       --text-light:#555;
-      --bg:#f0f0f0;
+      --bg: #fff6fb;
       --card:#fff;
     }
     body {
-      font-family: 'DepartureMono', monospace;
+      font-family: var(--soft);
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #ffe7ee 0%, #fff5f8 50%, #ffe7ee 100%);
-      background-attachment: fixed;
+            background-color: var(--pearl);
+            background-image:
+                radial-gradient(60% 50% at 15% 10%, rgba(230, 220, 255, .9), transparent 70%),
+                radial-gradient(50% 45% at 90% 25%, rgba(221, 247, 238, .8), transparent 70%),
+                radial-gradient(70% 55% at 50% 100%, rgba(255, 204, 230, .9), transparent 70%),
+                repeating-conic-gradient(rgba(255, 168, 213, .13) 0 25%, transparent 0 50%);
+            background-size: auto, auto, auto, 44px 44px;
+            background-attachment: fixed;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -88,8 +94,8 @@
       position: absolute;
       top: 100%;
       right: 20px;
-      background-color: #ffbcd0;
-      border: 2px solid #b94a7b;
+      background-color: #ffcce6;
+      border: 2px solid #e0308e;
       display: none;
       flex-direction: column;
       padding: 10px;
@@ -103,7 +109,7 @@
       padding: 5px 10px;
       border-radius: 3px;
     }
-    .nav-menu a:hover { background-color: #ff8fb2; }
+    .nav-menu a:hover { background-color: #ffa8d5; }
     .icon { font-size: 1.2rem; }
     
     /* Two column layout */
@@ -217,7 +223,7 @@
     }
     
     .dot.active {
-      background-color: #cf77a4;
+      background-color: #e0308e;
     }
     
     /* Lightbox */
@@ -313,12 +319,12 @@
     }
     
     .description-box::-webkit-scrollbar-thumb {
-      background: #cf77a4;
+      background: #e0308e;
       border-radius: 3px;
     }
     
     .description-box::-webkit-scrollbar-thumb:hover {
-      background: #b94a7b;
+      background: #e0308e;
     }
     
     /* Second content section with image and text side by side */
@@ -417,7 +423,7 @@
     }
     
     .secondary-dot.active {
-      background-color: #cf77a4;
+      background-color: #e0308e;
     }
     
     .secondary-slideshow-container {
@@ -460,6 +466,13 @@
         width: 100%;
       }
     }
+      .nav-menu a img {
+      display: block;
+      max-width: 208px;
+      height: auto;
+      border-radius: 3px;
+    }
+    .nav-menu a:hover img { opacity: 0.85; }
   </style>
 </head>
 <body class="animated-bg">
@@ -469,16 +482,15 @@
   <h1>ICA: Data Trust - Stephanie Dinkins</h1>
   <button class="hamburger">&#9776;</button>
   <div class="nav-menu">
-    <a href="https://damaris-guzman.github.io/portfolio/"><span class="icon">&#8962;</span> Home</a>
-    <a href="https://damaris-guzman.github.io/portfolio/CV.html"><span class="icon">&#128196;</span> CV</a>
-    <a href="https://damaris-guzman.xyz/dream.html"><span class="icon">&#127775;</span> My Dream</a>
-    <a href="https://damaris-guzman.github.io/portfolio/netart.html"><span class="icon">&#128187;</span> Net Art</a>
-    <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><span class="icon">&#127795;</span> ICA - Data Trust</a>
-    <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><span class="icon">&#127891;</span> Teaching</a>
-    <a href="https://damaris-guzman.github.io/portfolio/video.html"><span class="icon">&#127916;</span> Video Editing</a>
-    <a href="https://damaris-guzman.github.io/portfolio/3danimation.html"><span class="icon">&#127744;</span> 3D Animation</a>
-    <a href="https://damaris-guzman.github.io/portfolio/archive.html"><span class="icon">&#128194;</span> Archive</a>
-  </div>
+      <a href="index.html"><img src="gifs/home-blinkie.gif" alt="Home"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/CV.html"><img src="gifs/cv-blinkie.gif" alt="CV"></a>
+      <a href="all-that.html"><img src="gifs/allthat-blinkie.gif" alt="All That I Wanted To Be"></a>
+      <a href="#"><img src="gifs/Free-throw-blinkie.gif" alt="Free Throw"></a>
+      <a href="https://damaris-guzman.xyz/dream.html"><img src="gifs/dream-blinkie.gif" alt="My Dream"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/data-trust.html"><img src="gifs/data-blinkie.gif" alt="ICA Data Trust"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/teaching.html"><img src="gifs/teach-blinkie.gif" alt="Teaching"></a>
+      <a href="https://damaris-guzman.github.io/portfolio/archive.html"><img src="gifs/archive-blinkie.gif" alt="Archive"></a>
+    </div>
 </div>
 
 <div class="content-wrapper">
@@ -552,7 +564,7 @@
     <p>As you can probably tell…it did not come out too well 😭. I planned to remake it over the summer, but I became unwell and physically couldn't make it happen. Chronic auto immune disease.</p></p>
   </div>
 </div><div class="footer frosted-footer mt-auto">
-  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff6f91;"></i></p>
+  <p class="mb-0"><i class="bi bi-c-circle me-1"></i>2026 DAMARIS GUZMAN @grill0101<i class="bi bi-heart-fill ms-2" style="color: #ff5fb4;"></i></p>
 </div>
 
 <!-- Bootstrap JavaScript Bundle -->
