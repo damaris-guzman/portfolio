@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Varela+Round&family=Courier+Prime&display=swap');
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
   --pearl:     #fff6fb;
   --blush:     #ffe3f1;
@@ -170,7 +174,7 @@
 /* Animated Background */
 .animated-bg {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .animated-bg::before {
@@ -180,7 +184,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--pearl);
+  background-color: var(--pearl);
+  background-image:
+      radial-gradient(60% 50% at 15% 10%, rgba(230, 220, 255, .9), transparent 70%),
+      radial-gradient(50% 45% at 90% 25%, rgba(221, 247, 238, .8), transparent 70%),
+      radial-gradient(70% 55% at 50% 100%, rgba(255, 204, 230, .9), transparent 70%),
+      repeating-conic-gradient(rgba(255, 168, 213, .13) 0 25%, transparent 0 50%);
+  background-size: auto, auto, auto, 44px 44px;
+  background-attachment: fixed;
   z-index: -1;
 }
 
