@@ -1,3 +1,7 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* Import DepartureMono font (kept for pages that still reference it explicitly) */
 @font-face {
     font-family: 'DepartureMono';
@@ -402,6 +406,12 @@ body {
     font-style: italic;
 }
 
+.cv-details .description {
+    color: #999;
+    font-style: italic;
+    margin: 3px 0;
+}
+
 .experience-container {
     max-height: 400px;
     overflow-y: auto;
@@ -577,8 +587,7 @@ html {
 body {
     display: flex !important;
     flex-direction: column !important;
-    height: 100vh !important;
-    overflow-y: auto !important;
+    min-height: 100vh !important;
     overflow-x: hidden !important;
 }
 
