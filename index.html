@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <link rel="icon" type="image/png" href="images/favicon-1.png">
+  <link rel="icon" type="image/png" href="images/favicon-1.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Damaris ٩(◕‿◕｡)۶</title>
@@ -18,6 +18,10 @@
     <style>
         /* ~ the credibility machine, applied to the portfolio ~
            pearl, gloss, and a little dread */
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
         :root {
             --pearl:     #fff6fb;
@@ -45,6 +49,8 @@
             color: var(--plum);
             margin: 0;
             padding: 0;
+            width: 100%;
+            max-width: 100vw;
             background-color: var(--pearl);
             background-image:
                 radial-gradient(60% 50% at 15% 10%, rgba(230, 220, 255, .9), transparent 70%),
@@ -61,6 +67,7 @@
         }
 
         html {
+            overflow-x: hidden;
             overflow-y: auto;
             scrollbar-gutter: stable;
         }
@@ -89,6 +96,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .header h1 a {
+            display: block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .header a {
@@ -105,8 +122,6 @@
             max-width: 1000px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             flex: 1;
         }
 
@@ -279,6 +294,8 @@
             position: sticky;
             top: 20px;
             display: block;
+            width: 100%;
+            max-width: 100%;
             padding: 18px;
             background: linear-gradient(#fff, var(--pearl));
             border: 1px solid #fff;
@@ -319,6 +336,8 @@
             color: var(--plum);
             font-size: 0.72rem;
             line-height: 1.45;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         .intro-copy p:last-child {
@@ -345,6 +364,8 @@
             padding: 7px 8px;
             font-size: 0.66rem;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .works-heading {
@@ -473,12 +494,12 @@
             }
 
             .header h1 {
-                font-size: 16px;
+                font-size: 15px;
                 line-height: 1.15;
             }
 
             .header a {
-                letter-spacing: 1px;
+                letter-spacing: 0.5px;
             }
 
             .header .wave-icon {
@@ -534,7 +555,7 @@
             .intro-actions {
                 grid-column: 1 / -1;
                 display: grid;
-                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 5px;
                 margin-top: 8px;
             }
@@ -580,7 +601,7 @@
             .intro-hero {
                 position: static;
                 display: grid;
-                grid-template-columns: 150px 1fr;
+                grid-template-columns: 150px minmax(0, 1fr);
                 gap: 22px;
                 margin-bottom: 28px;
             }
@@ -597,6 +618,18 @@
         @media (max-width: 360px) {
             .works-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 0 8px;
+            }
+
+            .header h1 {
+                font-size: 13px;
+            }
+
+            .header .wave-icon {
+                display: none;
             }
         }
 
@@ -721,7 +754,7 @@
 
 <div class="header glass-header">
     <h1>
-        <a href="/cv.html">
+        <a href="/cv">
             <span>D</span><span>a</span><span>m</span><span>a</span><span>r</span><span>i</span><span>s</span>
             <span> </span>
             <span>G</span><span>U</span><span>Z</span><span>M</span><span>A</span><span>N</span>
@@ -764,7 +797,7 @@
             <article class="work-card" data-categories="interactive moving-image net-art projection-mapping 3d">
                 <a href="https://damaris-guzman.github.io/portfolio/all-that.html">
                     <div class="glossy-grid-item"><img src="images/all-h-1.jpg" alt="All that I wanted to be was given effortlessly"></div>
-                    <div class="work-info"><span class="work-title">All that I wanted to be was given effortlessly</span><span class="work-meta">Interactive / Projection Mapping / Simulation / 3D / Net Art</span></div>
+                    <div class="work-info"><span class="work-title">All that I wanted to be was given effortlessly</span><span class="work-meta">Projection Mapping / Simulation / 3D / Net Art</span></div>
                 </a>
             </article>
             <article class="work-card" data-categories="interactive performance">
